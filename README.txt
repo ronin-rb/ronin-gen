@@ -7,8 +7,7 @@
 
 == DESCRIPTION:
 
-Ronin Gen is a Ruby library for Ronin that provides various Generators for
-Ronin.
+Ronin Gen is a Ruby library for Ronin that provides various generators.
 
 Ronin is a Ruby platform designed for information security and data
 exploration tasks. Ronin allows for the rapid development and distribution
@@ -61,8 +60,7 @@ of Ronin.
 
 == LICENSE:
 
-Ronin Gen - A Ruby library for Ronin that provides various Generators for
-Ronin.
+Ronin Gen - A Ruby library for Ronin that provides various generators.
 
 Copyright (c) 2009 Postmodern (postmodern.mod3 at gmail.com)
 

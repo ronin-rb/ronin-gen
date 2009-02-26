@@ -1,7 +1,6 @@
 #
 #--
-# Ronin Gen - A Ruby library for Ronin that provides various Generators for
-# Ronin.
+# Ronin Gen - A Ruby library for Ronin that provides various generators.
 #
 # Copyright (c) 2009 Postmodern (postmodern.mod3 at example.com)
 #
