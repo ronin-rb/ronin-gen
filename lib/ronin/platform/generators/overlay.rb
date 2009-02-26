@@ -128,7 +128,7 @@ module Ronin
             doc << XML::ProcessingInstruction.new(
               doc,
               'xml-stylesheet',
-              'type="text/xsl" href="http://ronin.rubyforge.org/dist/overlay.xsl"'
+              'type="text/xsl" href="http://ronin.rubyforge.org/static/ronin/platform/overlay.xsl"'
             )
 
             root = XML::Node.new('ronin-overlay',doc)
