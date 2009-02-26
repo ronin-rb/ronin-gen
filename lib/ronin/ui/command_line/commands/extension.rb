@@ -22,7 +22,7 @@
 #
 
 require 'ronin/ui/command_line/command'
-require 'ronin/platform/generators/extension_generator'
+require 'ronin/platform/generators/extension'
 
 module Ronin
   module UI
@@ -31,7 +31,7 @@ module Ronin
         class Extension < Command
 
           def defaults
-            @extension = Platform::Generators::ExtensionGenerator.new
+            @extension = Platform::Generators::Extension.new
           end
 
           def define_options(opts)

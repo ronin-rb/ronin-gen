@@ -1,5 +1,6 @@
 require 'ronin/generators/generator'
 require 'ronin/generators/config'
+require 'ronin/platform/extension'
 
 require 'fileutils'
 require 'erb'
@@ -7,7 +8,7 @@ require 'erb'
 module Ronin
   module Platform
     module Generators
-      class ExtensionGenerator < Generator
+      class Extension < Generator
 
         def generate(path)
           extension_path = File.join(path,Platform::Extension::EXTENSION_FILE)
