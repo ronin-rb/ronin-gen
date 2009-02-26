@@ -56,7 +56,7 @@ of Ronin.
 
 * Generate a skeleton Extension:
 
-  $ ronin-gen ext PATH
+  $ ronin-gen extension PATH
 
 == LICENSE:
 
