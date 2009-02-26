@@ -21,7 +21,7 @@
 #
 
 require 'ronin/generators/generator'
-require 'ronin/generators/config'
+require 'ronin/generators/static'
 require 'ronin/platform/extension'
 
 require 'fileutils'
@@ -32,10 +32,12 @@ module Ronin
     module Generators
       class Extension < Generator
 
+        include Static
+
         def generate(path)
           extension_path = File.join(path,Platform::Extension::EXTENSION_FILE)
           lib_dir = File.join(path,Platform::Extension::LIB_DIR)
-          template_path = File.join(Config::STATIC_DIR,'extension.rb')
+          template_path = find_static_file(File.join('ronin','platform','extension.rb'))
 
           FileUtils.mkdir_p(path)
           FileUtils.mkdir_p(lib_dir)
