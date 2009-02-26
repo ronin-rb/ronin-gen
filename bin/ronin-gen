@@ -10,7 +10,7 @@ end
 require 'ronin/ui/command_line'
 
 if ARGV.length > 0
-  ARGV[0] = "ronin-gen-#{ARGV.first}"
+  ARGV[0] = "gen-#{ARGV.first}"
 end
 
 Ronin::UI::CommandLine.run(*ARGV)
