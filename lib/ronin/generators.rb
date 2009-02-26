@@ -21,4 +21,6 @@
 #++
 #
 
+require 'ronin/generators/config'
+require 'ronin/generators/generator'
 require 'ronin/generators/version'
