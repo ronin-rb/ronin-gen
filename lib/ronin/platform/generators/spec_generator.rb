@@ -21,6 +21,7 @@
 #++
 #
 
+require 'ronin/generators/generator'
 require 'ronin/generators/config'
 
 require 'fileutils'
@@ -28,7 +29,7 @@ require 'fileutils'
 module Ronin
   module Platform
     module Generators
-      class SpecGenerator
+      class SpecGenerator < Generator
 
         def generate(path)
           spec_dir = File.join(path,'spec')

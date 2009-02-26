@@ -21,6 +21,7 @@
 #++
 #
 
+require 'ronin/generators/generator'
 require 'ronin/platform/overlay'
 
 require 'nokogiri'
@@ -30,7 +31,7 @@ require 'set'
 module Ronin
   module Platform
     module Generators
-      class OverlayGenerator
+      class OverlayGenerator < Generator
 
         include Nokogiri
 
