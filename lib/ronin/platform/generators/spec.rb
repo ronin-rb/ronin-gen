@@ -34,7 +34,7 @@ module Ronin
 
         def generate(path)
           spec_dir = File.join(path,'spec')
-          spec_helper = find_static_file(File.join('ronin','gen','spec','spec_helper.rb'))
+          spec_helper = find_static_file(File.join('ronin','platform','generators','spec','spec_helper.rb'))
 
           FileUtils.mkdir_p(spec_dir)
           FileUtils.cp(spec_helper,spec_dir)

@@ -20,5 +20,5 @@ lib/ronin/ui/command_line/commands/extension.rb
 tasks/spec.rb
 spec/spec_helper.rb
 spec/generators_spec.rb
-static/ronin/gen/platform/extension.rb
-static/ronin/gen/platform/spec/spec_helper.rb
+static/ronin/platform/generators/extension.rb
+static/ronin/platform/generators/spec/spec_helper.rb

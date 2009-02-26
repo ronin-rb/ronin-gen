@@ -37,7 +37,7 @@ module Ronin
         def generate(path)
           extension_path = File.join(path,Platform::Extension::EXTENSION_FILE)
           lib_dir = File.join(path,Platform::Extension::LIB_DIR)
-          template_path = find_static_file(File.join('ronin','platform','extension.rb'))
+          template_path = find_static_file(File.join('ronin','platform','generators','extension.rb'))
 
           FileUtils.mkdir_p(path)
           FileUtils.mkdir_p(lib_dir)
