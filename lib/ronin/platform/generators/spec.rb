@@ -21,7 +21,7 @@
 #
 
 require 'ronin/generators/generator'
-require 'ronin/generators/config'
+require 'ronin/generators/static'
 
 require 'fileutils'
 
@@ -30,14 +30,14 @@ module Ronin
     module Generators
       class Spec < Generator
 
+        include Static
+
         def generate(path)
           spec_dir = File.join(path,'spec')
+          spec_helper = find_static_file(File.join('ronin','gen','spec','spec_helper.rb'))
 
           FileUtils.mkdir_p(spec_dir)
-          FileUtils.cp(
-            File.join(Config::STATIC_DIR,'ronin','gen','spec','spec_helper.rb'),
-            spec_dir
-          )
+          FileUtils.cp(spec_helper,spec_dir)
         end
 
       end
