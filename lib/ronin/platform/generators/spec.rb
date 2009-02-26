@@ -36,7 +36,7 @@ module Ronin
 
           FileUtils.mkdir_p(spec_dir)
           FileUtils.cp(
-            File.join(Config::STATIC_DIR,'spec','spec_helper.rb'),
+            File.join(Config::STATIC_DIR,'ronin','gen','spec','spec_helper.rb'),
             spec_dir
           )
         end
