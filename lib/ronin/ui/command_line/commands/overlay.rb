@@ -22,7 +22,7 @@
 #
 
 require 'ronin/ui/command_line/command'
-require 'ronin/platform/generators/overlay_generator'
+require 'ronin/platform/generators/overlay'
 
 module Ronin
   module UI
@@ -33,7 +33,7 @@ module Ronin
           include Nokogiri
 
           def defaults
-            @metadata = Platform::Generators::Metadata.new
+            @metadata = Platform::Generators::Overlay.new
           end
 
           def define_options(opts)

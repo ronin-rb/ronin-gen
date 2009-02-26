@@ -31,7 +31,7 @@ require 'set'
 module Ronin
   module Platform
     module Generators
-      class OverlayGenerator < Generator
+      class Overlay < Generator
 
         include Nokogiri
 
@@ -122,7 +122,9 @@ module Ronin
             file << "\n# vim: syntax=Ruby"
           end
 
-          File.open(File.join(path,Overlay::METADATA_FILE),'w') do |file|
+          metadata_path = File.join(path,Platform::Overlay::METADATA_FILE)
+
+          File.open(metadata_path,'w') do |file|
             doc = XML::Document.new
             doc << XML::ProcessingInstruction.new(
               doc,
