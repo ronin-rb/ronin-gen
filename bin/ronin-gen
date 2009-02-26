@@ -2,8 +2,15 @@
 
 require 'rubygems'
 
-require 'ronin/ui/command_line/commands/console'
-require 'ronin/ui/console'
+lib_dir = File.expand_path(File.join(File.dirname(__FILE__),'..','lib'))
+unless $LOAD_PATH.include?(lib_dir)
+  $LOAD_PATH << lib_dir
+end
 
-Ronin::UI::Console.auto_load << 'ronin/generators'
-Ronin::UI::CommandLine::Commands::Console.run(*ARGV)
+require 'ronin/ui/command_line'
+
+if ARGV.length > 0
+  ARGV[0] = "ronin-gen-#{ARGV.first}"
+end
+
+Ronin::UI::CommandLine.run(*ARGV)
