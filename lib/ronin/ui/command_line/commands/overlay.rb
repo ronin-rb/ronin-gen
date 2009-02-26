@@ -1,9 +1,9 @@
 #
 #--
-# Ronin - A Ruby platform designed for information security and data
-# exploration tasks.
+# Ronin Gen - A Ruby library for Ronin that provides various Generators for
+# Ronin.
 #
-# Copyright (c) 2006-2009 Hal Brodigan (postmodern.mod3 at gmail.com)
+# Copyright (c) 2009 Postmodern (postmodern.mod3 at gmail.com)
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
