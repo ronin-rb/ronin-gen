@@ -1,0 +1,12 @@
+History.txt
+COPYING.txt
+Manifest.txt
+README.txt
+Rakefile
+TODO.txt
+bin/ronin-gen
+lib/ronin/generators.rb
+lib/ronin/generators/version.rb
+tasks/spec.rb
+spec/spec_helper.rb
+spec/generators_spec.rb
