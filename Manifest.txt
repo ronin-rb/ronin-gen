@@ -16,7 +16,7 @@ lib/ronin/platform/generators/overlay_generator.rb
 lib/ronin/platform/generators/spec_generator.rb
 lib/ronin/platform/generators/extension_generator.rb
 lib/ronin/ui/command_line/commands/overlay.rb
-lib/ronin/ui/command_line/commands/ext.rb
+lib/ronin/ui/command_line/commands/extension.rb
 tasks/spec.rb
 spec/spec_helper.rb
 spec/generators_spec.rb

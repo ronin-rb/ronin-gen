@@ -28,7 +28,7 @@ module Ronin
   module UI
     module CommandLine
       module Commands
-        class Ext < Command
+        class Extension < Command
 
           def defaults
             @extension = Platform::Generators::ExtensionGenerator.new
