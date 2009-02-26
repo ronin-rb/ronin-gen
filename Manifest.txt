@@ -5,6 +5,8 @@ README.txt
 Rakefile
 TODO.txt
 bin/ronin-gen
+bin/ronin-gen-overlay
+bin/ronin-gen-extension
 lib/ronin/generators.rb
 lib/ronin/generators/config.rb
 lib/ronin/generators/generator.rb
