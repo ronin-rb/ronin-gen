@@ -12,9 +12,9 @@ lib/ronin/generators/config.rb
 lib/ronin/generators/generator.rb
 lib/ronin/generators/version.rb
 lib/ronin/platform/generators.rb
-lib/ronin/platform/generators/overlay_generator.rb
-lib/ronin/platform/generators/spec_generator.rb
-lib/ronin/platform/generators/extension_generator.rb
+lib/ronin/platform/generators/overlay.rb
+lib/ronin/platform/generators/spec.rb
+lib/ronin/platform/generators/extension.rb
 lib/ronin/ui/command_line/commands/overlay.rb
 lib/ronin/ui/command_line/commands/extension.rb
 tasks/spec.rb
