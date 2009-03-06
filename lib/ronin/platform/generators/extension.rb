@@ -32,7 +32,7 @@ module Ronin
     module Generators
       class Extension < Generator
 
-        include Static
+        include Static::Finders
 
         def generate(path)
           extension_path = File.join(path,Platform::Extension::EXTENSION_FILE)

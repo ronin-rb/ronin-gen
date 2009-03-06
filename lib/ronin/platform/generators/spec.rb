@@ -30,7 +30,7 @@ module Ronin
     module Generators
       class Spec < Generator
 
-        include Static
+        include Static::Finders
 
         def generate(path)
           spec_dir = File.join(path,'spec')
