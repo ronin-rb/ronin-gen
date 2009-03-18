@@ -24,10 +24,35 @@ module Ronin
   module Generators
     class Generator
 
+      # Root directory to generate within
+      attr_accessor :root
+
       #
       # Default method which invokes the generator.
       #
-      def generate(path)
+      def generate
+      end
+
+      protected
+
+      #
+      # Creates the file at the specified _path_ within the root directory,
+      # passing the newly created File object to the given _block_.
+      #
+      def create_file(path,&block)
+        path = File.join(@root,path)
+
+        File.open(path,'w',&block)
+      end
+
+      #
+      # Creates a directory at the specified _path_ within the root
+      # directory.
+      #
+      def create_dir(path)
+        path = File.join(@root,path)
+
+        FileUtils.mkdir_p(path)
       end
 
     end
