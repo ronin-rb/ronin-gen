@@ -20,9 +20,13 @@
 #++
 #
 
+require 'ronin/static/finders'
+
 module Ronin
   module Generators
     class Generator
+
+      include Static::Finders
 
       # Root directory to generate within
       attr_accessor :root
@@ -53,6 +57,18 @@ module Ronin
         path = File.join(@root,path)
 
         FileUtils.mkdir_p(path)
+      end
+
+      #
+      # Creates a file at the specified _path_ within the root directory,
+      # using the ERB template with the specified _name_.
+      def template_file(path,name)
+        template_path = find_static_file(name)
+        erb = ERB.new(File.read(template_path))
+
+        create_file(path) do |file|
+          file.write(erb.result(binding))
+        end
       end
 
     end
