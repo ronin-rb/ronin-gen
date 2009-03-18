@@ -40,12 +40,34 @@ module Ronin
       protected
 
       #
+      # Print the specified _message_ of the specified _type_.
+      #
+      def print_message(type,message)
+        puts(type.to_s.rjust(20) + ": " + message.to_s)
+      end
+
+      #
+      # Print a file creation message.
+      #
+      def print_file(path)
+        print_message :file, path
+      end
+
+      #
+      # Print a directory creation message.
+      #
+      def print_dir(path)
+        print_message :directory, path
+      end
+
+      #
       # Creates the file at the specified _path_ within the root directory,
       # passing the newly created File object to the given _block_.
       #
       def create_file(path,&block)
         path = File.join(@root,path)
 
+        print_file path
         File.open(path,'w',&block)
       end
 
@@ -56,12 +78,14 @@ module Ronin
       def create_dir(path)
         path = File.join(@root,path)
 
+        print_directory path
         FileUtils.mkdir_p(path)
       end
 
       #
       # Creates a file at the specified _path_ within the root directory,
       # using the ERB template with the specified _name_.
+      #
       def template_file(path,name)
         template_path = find_static_file(name)
         erb = ERB.new(File.read(template_path))
