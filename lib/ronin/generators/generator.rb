@@ -22,6 +22,8 @@
 
 require 'ronin/static/finders'
 
+require 'fileutils'
+
 module Ronin
   module Generators
     class Generator
@@ -39,38 +41,53 @@ module Ronin
 
       protected
 
-      #
-      # Creates the file at the specified _path_ within the root directory,
-      # passing the newly created File object to the given _block_.
-      #
-      def create_file(path,&block)
-        path = File.join(@root,path)
-
-        puts "  #{path}"
-        File.open(path,'w',&block)
+      def expand_path(sub_path)
+        unless sub_path
+          return @root
+        else
+          return File.expand_path(File.join(@root,sub_path))
+        end
       end
 
-      #
-      # Creates a directory at the specified _path_ within the root
-      # directory.
-      #
-      def create_dir(path)
-        path = File.join(@root,path)
+      def print_path(sub_path)
+        full_path = expand_path(sub_path)
 
-        puts "  #{path}"
-        FileUtils.mkdir_p(path)
+        sub_path = File.join('.',sub_path)
+
+        if File.directory?(full_path)
+          sub_path << File::SEPARATOR
+        end
+
+        puts "  #{sub_path}"
       end
 
-      #
-      # Creates a file at the specified _path_ within the root directory,
-      # using the ERB template with the specified _name_.
-      #
-      def template_file(path,template_file)
-        template_path = find_static_file(template_file)
-        erb = ERB.new(File.read(template_path))
+      def file(sub_path,&block)
+        File.open(expand_path(sub_path),'w',&block)
+        print_path(sub_path)
+      end
 
-        create_file(path) do |file|
-          file.write(erb.result(binding))
+      def directory(sub_path)
+        FileUtils.mkdir_p(expand_path(sub_path))
+        print_path(sub_path)
+      end
+
+      def copy(static_file,sub_path)
+        static_file = find_static_file(static_file)
+
+        FileUtils.cp(static_file,expand_path(sub_path))
+        print_path(sub_path)
+      end
+
+      def template(static_file)
+        static_file = find_static_file(static_file)
+        erb = ERB.new(File.read(static_file))
+
+        return erb.result(binding)
+      end
+
+      def file_template(static_file,sub_path)
+        file(sub_path) do |file|
+          file.write(template(static_file))
         end
       end
 
