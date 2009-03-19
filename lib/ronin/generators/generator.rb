@@ -53,10 +53,7 @@ module Ronin
         full_path = expand_path(sub_path)
 
         sub_path = File.join('.',sub_path)
-
-        if File.directory?(full_path)
-          sub_path << File::SEPARATOR
-        end
+        sub_path << File::SEPARATOR if File.directory?(full_path)
 
         puts "  #{sub_path}"
       end
@@ -64,18 +61,25 @@ module Ronin
       def file(sub_path,&block)
         File.open(expand_path(sub_path),'w',&block)
         print_path(sub_path)
+        return sub_path
       end
 
-      def directory(sub_path)
+      def directory(sub_path,&block)
         FileUtils.mkdir_p(expand_path(sub_path))
+
         print_path(sub_path)
+
+        block.call(sub_path) if block
+        return sub_path
       end
 
       def copy(static_file,sub_path)
         static_file = find_static_file(static_file)
 
         FileUtils.cp(static_file,expand_path(sub_path))
+
         print_path(sub_path)
+        return sub_path
       end
 
       def template(static_file)
