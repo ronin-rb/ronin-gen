@@ -21,6 +21,12 @@ lib/ronin/ui/command_line/commands/overlay.rb
 lib/ronin/ui/command_line/commands/extension.rb
 tasks/spec.rb
 spec/spec_helper.rb
+spec/helpers/generators.rb
+spec/helpers/generators/file_generator.rb
+spec/helpers/generators/dir_generator.rb
+spec/helpers/generators/templated_generator.rb
+spec/helpers/static/generators/templated.txt.erb
+spec/generator_spec.rb
 spec/generators_spec.rb
 static/ronin/platform/generators/extension.rb
 static/ronin/platform/generators/spec/spec_helper.rb
