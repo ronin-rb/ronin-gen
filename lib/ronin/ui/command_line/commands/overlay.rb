@@ -32,7 +32,7 @@ module Ronin
           include Nokogiri
 
           def defaults
-            @metadata = Platform::Generators::Overlay.new
+            @generator = Platform::Generators::Overlay.new
           end
 
           def define_options(opts)
@@ -40,23 +40,23 @@ module Ronin
 
             opts.options do
               opts.on('-t','--title NAME','Name of the Overlay') do |title|
-                @metadata.title = title
+                @generate.title = title
               end
 
               opts.on('-S','--source URL','The URL where the source of the Overlay will be hosted') do |url|
-                @metadata.source = url
+                @generator.source = url
               end
 
               opts.on('-V','--source-view URL','The URL for viewing the contents of the Overlay') do |url|
-                @metadata.source_view = url
+                @generator.source_view = url
               end
 
               opts.on('-U','--website URL','The URL of the website of the Overlay') do |url|
-                @metadata.website = url
+                @generator.website = url
               end
 
               opts.on('-L','--license LICENSE','The license of the contents of the Overlay') do |license|
-                @metadata.license = license
+                @generator.license = license
               end
 
               opts.on('-m','--maintainer "NAME <EMAIL>"','Name of a maintainer of the Overlay') do |text|
@@ -65,15 +65,15 @@ module Ronin
 
                 email = email.first if email
 
-                @metadata.maintainers << {:name => name, :email => email}
+                @generator.maintainers << {:name => name, :email => email}
               end
 
               opts.on('-D','--description TEXT','The description for the Overlay') do |text|
-                @metadata.description = text
+                @generator.description = text
               end
 
               opts.on('--task TASK','Add the TASK to the Overlay') do |task|
-                @metadata.tasks << task.to_s
+                @generator.tasks << task.to_s
               end
             end
 
@@ -89,7 +89,7 @@ module Ronin
               fail('only one Overlay path maybe specified')
             end
 
-            @metadata.generate(File.expand_path(args.first))
+            @generator.run(File.expand_path(args.first))
           end
 
         end

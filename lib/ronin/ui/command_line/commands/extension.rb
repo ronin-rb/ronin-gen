@@ -30,7 +30,7 @@ module Ronin
         class Extension < Command
 
           def defaults
-            @extension = Platform::Generators::Extension.new
+            @generator = Platform::Generators::Extension.new
           end
 
           def define_options(opts)
@@ -45,7 +45,7 @@ module Ronin
 
           def arguments(*args)
             args.each do |path|
-              @extension.generate(File.expand_path(path))
+              @generator.run(File.expand_path(path))
             end
           end
 
