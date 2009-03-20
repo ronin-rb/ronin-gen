@@ -20,7 +20,7 @@
 #++
 #
 
-require 'ronin/generators/generate'
+require 'ronin/generators/generator'
 
 module Ronin
   module Generators
