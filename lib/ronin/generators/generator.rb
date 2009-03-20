@@ -51,11 +51,8 @@ module Ronin
       protected
 
       def expand_path(sub_path)
-        unless sub_path
-          return @path
-        else
-          return File.expand_path(File.join(@path,sub_path))
-        end
+        return @path if (sub_path.nil? || sub_path == @path)
+        return File.expand_path(File.join(@path,sub_path))
       end
 
       def print_path(sub_path)
