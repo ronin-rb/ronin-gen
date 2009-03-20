@@ -50,11 +50,18 @@ module Ronin
 
       protected
 
+      #
+      # Returns the absolute form of the specified _path_, with respect to
+      # the +@path+ instance variable.
+      #
       def expand_path(sub_path)
         return @path if (sub_path.nil? || sub_path == @path)
         return File.expand_path(File.join(@path,sub_path))
       end
 
+      #
+      # Prints the specified _sub_path_.
+      #
       def print_path(sub_path)
         full_path = expand_path(sub_path)
 
@@ -64,21 +71,33 @@ module Ronin
         puts "  #{sub_path}"
       end
 
+      #
+      # Opens the file at the specified _sub_path_. If a _block_ is given,
+      # it will be passed a newly created File object.
+      #
       def file(sub_path,&block)
         File.open(expand_path(sub_path),'w',&block)
+
         print_path(sub_path)
         return sub_path
       end
 
+      #
+      # Creates a directory at the specified _sub_path_. If a _block_ is
+      # given, it will be passed the _sub_path_ after the directory has
+      # been created.
+      #
       def directory(sub_path,&block)
         FileUtils.mkdir_p(expand_path(sub_path))
 
         print_path(sub_path)
-
         block.call(sub_path) if block
         return sub_path
       end
 
+      #
+      # Copies the _static_file_ to the specified _sub_path_.
+      #
       def copy(static_file,sub_path)
         static_file = find_static_file(static_file)
 
