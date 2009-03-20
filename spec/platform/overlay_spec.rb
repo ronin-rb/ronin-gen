@@ -42,6 +42,12 @@ describe Generators::Platform::Overlay do
     File.directory?(objects_dir).should == true
   end
 
+  it "should create a Rakefile" do
+    rakefile = File.join(@path,'Rakefile')
+
+    File.file?(rakefile).should == true
+  end
+
   it "should create a XML metadata file" do
     metadata_file = File.join(@path,Platform::Overlay::METADATA_FILE)
 
