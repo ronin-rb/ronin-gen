@@ -114,6 +114,9 @@ module Ronin
           generate_metadata!
         end
 
+        #
+        # Generates the Rakefile of the Overlay.
+        #
         def generate_rakefile!
           file('Rakefile') do |rakefile|
             rakefile << "# -*- ruby -*-\n\n"
@@ -126,6 +129,9 @@ module Ronin
           end
         end
 
+        #
+        # Generates the XML metadata file for the Overlay.
+        #
         def generate_metadata!
           file(Platform::Overlay::METADATA_FILE) do |metadata_file|
             doc = XML::Document.new
