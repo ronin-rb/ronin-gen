@@ -20,5 +20,7 @@
 #++
 #
 
-require 'ronin/platform/generators/overlay_generator'
-require 'ronin/platform/generators/spec_generator'
+require 'ronin/platform/generators/static'
+require 'ronin/platform/generators/overlay'
+require 'ronin/platform/generators/extension'
+require 'ronin/platform/generators/spec'
