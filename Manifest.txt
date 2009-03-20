@@ -10,6 +10,7 @@ bin/ronin-gen-extension
 lib/ronin/generators.rb
 lib/ronin/generators/static.rb
 lib/ronin/generators/generator.rb
+lib/ronin/generators/dir_generator.rb
 lib/ronin/generators/version.rb
 lib/ronin/platform/generators.rb
 lib/ronin/platform/generators/overlay.rb
