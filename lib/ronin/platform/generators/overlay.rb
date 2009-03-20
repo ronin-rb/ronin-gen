@@ -96,6 +96,8 @@ module Ronin
           @maintainers << {:name => name, :email => email}
         end
 
+        protected
+
         #
         # Generates a skeleton Overlay.
         #
@@ -108,6 +110,11 @@ module Ronin
           directory 'tasks'
           directory 'objects'
 
+          generate_rakefile!
+          generate_metadata!
+        end
+
+        def generate_rakefile!
           file('Rakefile') do |rakefile|
             rakefile << "# -*- ruby -*-\n\n"
 
@@ -117,7 +124,9 @@ module Ronin
 
             rakefile << "\n# vim: syntax=Ruby"
           end
+        end
 
+        def generate_metadata!
           file(Platform::Overlay::METADATA_FILE) do |metadata_file|
             doc = XML::Document.new
             doc << XML::ProcessingInstruction.new(
