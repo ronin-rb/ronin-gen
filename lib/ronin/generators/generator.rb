@@ -43,13 +43,13 @@ module Ronin
         return path
       end
 
+      protected
+
       #
       # Default method which invokes the generator.
       #
       def generate!
       end
-
-      protected
 
       #
       # Returns the absolute form of the specified _path_, with respect to
