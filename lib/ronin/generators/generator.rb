@@ -117,6 +117,12 @@ module Ronin
         return sub_path
       end
 
+      #
+      # Renders the ERB template using the specified _static_file_.
+      #
+      #   render_template 'ronin/platform/generators/Rakefile.erb'
+      #   # => "..."
+      #
       def render_template(static_file)
         static_file = find_static_file(static_file)
         erb = ERB.new(File.read(static_file))
@@ -124,6 +130,13 @@ module Ronin
         return erb.result(binding)
       end
 
+      #
+      # Renders the ERB template using the specified _static_file_,
+      # saving the result to the specified _sub_path_.
+      #
+      #   render_file 'ronin/platform/generators/Rakefile.erb', 'Rakefile'
+      #   # => nil
+      #
       def render_file(static_file,sub_path)
         file(sub_path) do |file|
           file.write(render_template(static_file))
