@@ -20,30 +20,31 @@
 #++
 #
 
-require 'ronin/generators/generator'
-require 'ronin/generators/static'
+require 'ronin/generators/dir_generator'
 require 'ronin/platform/extension'
-
-require 'fileutils'
-require 'erb'
 
 module Ronin
   module Platform
     module Generators
-      class Extension < Generator
+      class Extension < DirGenerator
 
-        include Static::Finders
+        # The default extension file
+        EXTENSION_FILE = File.join('ronin','platform','generators','extension.rb')
 
-        def generate(path)
-          extension_path = File.join(path,Platform::Extension::EXTENSION_FILE)
-          lib_dir = File.join(path,Platform::Extension::LIB_DIR)
-          template_path = find_static_file(File.join('ronin','platform','generators','extension.rb'))
+        protected
 
-          FileUtils.mkdir_p(path)
-          FileUtils.mkdir_p(lib_dir)
-          FileUtils.touch(File.join(lib_dir,File.basename(path) + '.rb'))
-          FileUtils.mkdir_p(File.join(lib_dir,File.basename(path)))
-          FileUtils.cp(template_path,extension_path)
+        #
+        # Generates a skeleton Extension.
+        #
+        def generate!
+          name = File.basename(@path)
+          lib_dir = Platform::Extension::LIB_DIR
+
+          directory lib_dir
+          file File.join(lib_dir,name + '.rb')
+          directory File.join(lib_dir,name)
+
+          copy EXTENSION_FILE, Platform::Extension::EXTENSION_FILE
         end
 
       end
