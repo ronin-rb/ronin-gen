@@ -23,6 +23,7 @@
 require 'ronin/static/finders'
 
 require 'fileutils'
+require 'erb'
 
 module Ronin
   module Generators
