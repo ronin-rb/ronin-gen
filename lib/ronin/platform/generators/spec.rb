@@ -21,23 +21,23 @@
 #
 
 require 'ronin/generators/generator'
-require 'ronin/generators/static'
-
-require 'fileutils'
 
 module Ronin
   module Platform
     module Generators
       class Spec < Generator
 
-        include Static::Finders
+        # The default spec_helper.rb file
+        SPEC_HELPER = File.join('ronin','platform','generators','spec','spec_helper.rb')
 
-        def generate(path)
-          spec_dir = File.join(path,'spec')
-          spec_helper = find_static_file(File.join('ronin','platform','generators','spec','spec_helper.rb'))
+        protected
 
-          FileUtils.mkdir_p(spec_dir)
-          FileUtils.cp(spec_helper,spec_dir)
+        #
+        # Generates a basic Spec test directory.
+        #
+        def generate!
+          directory 'spec'
+          copy SPEC_HELPER, 'spec'
         end
 
       end
