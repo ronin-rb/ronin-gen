@@ -34,6 +34,7 @@ module Ronin
       # Runs the generator with the specified _path_.
       #
       def run(path)
+        path = File.expand_path(path)
         @path = path
 
         generate!
