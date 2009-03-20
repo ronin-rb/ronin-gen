@@ -30,22 +30,31 @@ module Ronin
 
       include Static::Finders
 
-      # Root directory to generate within
-      attr_accessor :root
+      #
+      # Runs the generator with the specified _path_.
+      #
+      def run(path)
+        @path = path
+
+        generate!
+
+        @path = nil
+        return path
+      end
 
       #
       # Default method which invokes the generator.
       #
-      def generate
+      def generate!
       end
 
       protected
 
       def expand_path(sub_path)
         unless sub_path
-          return @root
+          return @path
         else
-          return File.expand_path(File.join(@root,sub_path))
+          return File.expand_path(File.join(@path,sub_path))
         end
       end
 
