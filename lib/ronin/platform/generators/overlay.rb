@@ -29,7 +29,7 @@ require 'set'
 module Ronin
   module Platform
     module Generators
-      class Overlay < DirGenerator
+      class Overlay < Generators::DirGenerator
 
         include Nokogiri
 

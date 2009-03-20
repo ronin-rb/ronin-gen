@@ -26,7 +26,7 @@ require 'ronin/platform/extension'
 module Ronin
   module Platform
     module Generators
-      class Extension < DirGenerator
+      class Extension < Generators::DirGenerator
 
         # The default extension file
         EXTENSION_FILE = File.join('ronin','platform','generators','extension.rb')
