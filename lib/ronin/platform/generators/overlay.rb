@@ -20,17 +20,16 @@
 #++
 #
 
-require 'ronin/generators/generator'
+require 'ronin/generators/dir_generator'
 require 'ronin/platform/overlay'
 
 require 'nokogiri'
-require 'fileutils'
 require 'set'
 
 module Ronin
   module Platform
     module Generators
-      class Overlay < Generator
+      class Overlay < DirGenerator
 
         include Nokogiri
 
@@ -98,32 +97,28 @@ module Ronin
         end
 
         #
-        # Generates the Overlay metadata file for the Overlay at the
-        # specified _path_.
+        # Generates a skeleton Overlay.
         #
-        def generate(path)
-          @title ||= File.basename(path).gsub(/[_\s]+/,' ').capitalize
+        def generate!
+          @title ||= File.basename(@path).gsub(/[_\s]+/,' ').capitalize
           @source_view ||= @source
           @website ||= @source_view
 
-          FileUtils.mkdir_p(path)
-          FileUtils.mkdir_p(File.join(path,'lib'))
-          FileUtils.mkdir_p(File.join(path,'tasks'))
-          FileUtils.mkdir_p(File.join(path,'objects'))
+          directory 'lib'
+          directory 'tasks'
+          directory 'objects'
 
-          File.open(File.join(path,'Rakefile'),'w') do |file|
-            file << "# -*- ruby -*-\n\n"
+          file('Rakefile') do |rakefile|
+            rakefile << "# -*- ruby -*-\n\n"
 
             @tasks.each do |task|
-              file << "require 'ronin/platform/tasks/#{task}'"
+              rakefile << "require 'ronin/platform/tasks/#{task}'"
             end
 
-            file << "\n# vim: syntax=Ruby"
+            rakefile << "\n# vim: syntax=Ruby"
           end
 
-          metadata_path = File.join(path,Platform::Overlay::METADATA_FILE)
-
-          File.open(metadata_path,'w') do |file|
+          file(Platform::Overlay::METADATA_FILE) do |metadata_file|
             doc = XML::Document.new
             doc << XML::ProcessingInstruction.new(
               doc,
@@ -195,7 +190,7 @@ module Ronin
             end
 
             doc << root
-            doc.write_xml_to(file)
+            doc.write_xml_to(metadata_file)
           end
         end
 
