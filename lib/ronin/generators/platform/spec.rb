@@ -23,9 +23,9 @@
 require 'ronin/generators/generator'
 
 module Ronin
-  module Platform
-    module Generators
-      class Spec < Generators::Generator
+  module Generators
+    module Platform
+      class Spec < Generator
 
         # The default spec_helper.rb file
         SPEC_HELPER = File.join('ronin','platform','generators','spec','spec_helper.rb')

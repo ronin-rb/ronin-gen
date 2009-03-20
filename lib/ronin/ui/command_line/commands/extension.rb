@@ -21,7 +21,7 @@
 #
 
 require 'ronin/ui/command_line/command'
-require 'ronin/platform/generators/extension'
+require 'ronin/generators/platform/extension'
 
 module Ronin
   module UI

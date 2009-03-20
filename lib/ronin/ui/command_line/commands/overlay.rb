@@ -21,7 +21,7 @@
 #
 
 require 'ronin/ui/command_line/command'
-require 'ronin/platform/generators/overlay'
+require 'ronin/generators/platform/overlay'
 
 module Ronin
   module UI

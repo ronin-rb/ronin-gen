@@ -11,12 +11,11 @@ lib/ronin/generators.rb
 lib/ronin/generators/generator.rb
 lib/ronin/generators/dir_generator.rb
 lib/ronin/generators/version.rb
-lib/ronin/platform/generators.rb
-lib/ronin/platform/generators/static.rb
-lib/ronin/platform/generators/overlay.rb
-lib/ronin/platform/generators/extension.rb
-lib/ronin/platform/generators/spec.rb
-lib/ronin/platform/generators/extension.rb
+lib/ronin/generators/platform/static.rb
+lib/ronin/generators/platform/overlay.rb
+lib/ronin/generators/platform/extension.rb
+lib/ronin/generators/platform/spec.rb
+lib/ronin/generators/platform/extension.rb
 lib/ronin/ui/command_line/commands/overlay.rb
 lib/ronin/ui/command_line/commands/extension.rb
 tasks/spec.rb
