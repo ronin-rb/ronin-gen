@@ -22,6 +22,7 @@
 
 require 'ronin/generators/dir_generator'
 require 'ronin/platform/overlay'
+require 'ronin/version'
 
 require 'nokogiri'
 require 'set'
@@ -32,6 +33,9 @@ module Ronin
       class Overlay < DirGenerator
 
         include Nokogiri
+
+        # The Overlay metadata file
+        METADATA_FILE = Ronin::Platform::Overlay::METADATA_FILE
 
         # Title of the overlay
         attr_accessor :title
@@ -133,7 +137,7 @@ module Ronin
         # Generates the XML metadata file for the Overlay.
         #
         def generate_metadata!
-          file(Platform::Overlay::METADATA_FILE) do |metadata_file|
+          file(METADATA_FILE) do |metadata_file|
             doc = XML::Document.new
             doc << XML::ProcessingInstruction.new(
               doc,
