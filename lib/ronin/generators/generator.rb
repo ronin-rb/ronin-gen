@@ -75,6 +75,10 @@ module Ronin
       # Opens the file at the specified _sub_path_. If a _block_ is given,
       # it will be passed a newly created File object.
       #
+      #   file 'metadata.xml' do |file|
+      #     ...
+      #   end
+      #
       def file(sub_path,&block)
         File.open(expand_path(sub_path),'w',&block)
 
@@ -87,6 +91,9 @@ module Ronin
       # given, it will be passed the _sub_path_ after the directory has
       # been created.
       #
+      #   directory 'objects'
+      #   # => "objects"
+      #
       def directory(sub_path,&block)
         FileUtils.mkdir_p(expand_path(sub_path))
 
@@ -98,6 +105,9 @@ module Ronin
       #
       # Copies the _static_file_ to the specified _sub_path_.
       #
+      #   copy 'ronin/platform/generators/extension.rb', 'myext/extension.rb'
+      #   # => "myext/extension.rb"
+      #
       def copy(static_file,sub_path)
         static_file = find_static_file(static_file)
 
@@ -107,16 +117,16 @@ module Ronin
         return sub_path
       end
 
-      def template(static_file)
+      def render_template(static_file)
         static_file = find_static_file(static_file)
         erb = ERB.new(File.read(static_file))
 
         return erb.result(binding)
       end
 
-      def file_template(static_file,sub_path)
+      def render_file(static_file,sub_path)
         file(sub_path) do |file|
-          file.write(template(static_file))
+          file.write(render_template(static_file))
         end
       end
 
