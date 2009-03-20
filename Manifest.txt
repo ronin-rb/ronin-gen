@@ -8,7 +8,6 @@ bin/ronin-gen
 bin/ronin-gen-overlay
 bin/ronin-gen-extension
 lib/ronin/generators.rb
-lib/ronin/generators/static.rb
 lib/ronin/generators/generator.rb
 lib/ronin/generators/dir_generator.rb
 lib/ronin/generators/version.rb
