@@ -32,7 +32,7 @@ module Ronin
           include Nokogiri
 
           def defaults
-            @generator = Platform::Generators::Overlay.new
+            @generator = Generators::Platform::Overlay.new
           end
 
           def define_options(opts)

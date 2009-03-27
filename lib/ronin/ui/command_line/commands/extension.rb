@@ -30,7 +30,7 @@ module Ronin
         class Extension < Command
 
           def defaults
-            @generator = Platform::Generators::Extension.new
+            @generator = Generators::Platform::Extension.new
           end
 
           def define_options(opts)
