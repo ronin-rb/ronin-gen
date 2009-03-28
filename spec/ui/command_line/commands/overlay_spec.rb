@@ -7,11 +7,26 @@ require 'tmpdir'
 require 'fileutils'
 
 describe UI::CommandLine::Commands::Overlay do
-  before(:all) do
-    @name = File.join(Dir.tmpdir,'ronin_test_overlay')
-    @path = File.join(Dir.tmpdir,@name)
 
-    UI::CommandLine::Commands::Overlay.run(@path)
+  before(:all) do
+    @name = 'ronin_generated_overlay'
+    @path = File.join(Dir.tmpdir,@name)
+    @title = 'Test Overlay'
+    @source = 'ssh+svn://www.example.com/var/svn/test/'
+    @source_view = 'http://www.example.com/test/'
+    @website = 'http://www.example.com/blog/'
+    @license = 'GPL-2'
+    @description = 'This is a test overlay'
+
+    UI::CommandLine::Commands::Overlay.run(
+      '--title', @title,
+      '--source', @source,
+      '--source-view', @source_view,
+      '--website', @website,
+      '--license', @license,
+      '--description', @description,
+      @path
+    )
   end
 
   it_should_behave_like "Generated Overlay"
@@ -19,4 +34,5 @@ describe UI::CommandLine::Commands::Overlay do
   after(:all) do
     FileUtils.rm_r(@path)
   end
+
 end
