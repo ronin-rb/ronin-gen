@@ -20,6 +20,7 @@
 #++
 #
 
+require 'ronin/generators/platform/static'
 require 'ronin/generators/dir_generator'
 require 'ronin/platform/extension'
 
@@ -46,7 +47,7 @@ module Ronin
           file File.join(LIB_DIR,name + '.rb')
           directory File.join(LIB_DIR,name)
 
-          copy EXTENSION_FILE, Platform::Extension::EXTENSION_FILE
+          copy EXTENSION_FILE, Ronin::Platform::Extension::EXTENSION_FILE
         end
 
       end
