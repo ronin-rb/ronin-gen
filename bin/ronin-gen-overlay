@@ -7,6 +7,6 @@ unless $LOAD_PATH.include?(lib_dir)
   $LOAD_PATH << lib_dir
 end
 
-require 'ronin/ui/command_line/commands/overlay'
+require 'ronin/ui/command_line/commands/gen_overlay'
 
-Ronin::UI::CommandLine::Commands::Overlay.run(*ARGV)
+Ronin::UI::CommandLine::Commands::GenOverlay.run(*ARGV)

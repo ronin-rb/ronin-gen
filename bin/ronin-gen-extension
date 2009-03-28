@@ -7,6 +7,6 @@ unless $LOAD_PATH.include?(lib_dir)
   $LOAD_PATH << lib_dir
 end
 
-require 'ronin/ui/command_line/commands/extension'
+require 'ronin/ui/command_line/commands/gen_extension'
 
-Ronin::UI::CommandLine::Commands::Extension.run(*ARGV)
+Ronin::UI::CommandLine::Commands::GenExtension.run(*ARGV)
