@@ -1,21 +1,22 @@
 require 'ronin/ui/command_line/commands/extension'
 
 require 'spec_helper'
+require 'generated_extension_examples'
+
 require 'tmpdir'
 require 'fileutils'
 
 describe UI::CommandLine::Commands::Extension do
   before(:all) do
-    @ext_dir = File.join(Dir.tmpdir,'ronin_test_ext')
+    @name = 'ronin_generated_extension'
+    @path = File.join(Dir.tmpdir,@name)
+
+    UI::CommandLine::Commands::Extension.run(@path)
   end
 
-  it "should be able to generate an extension directory" do
-    UI::CommandLine::Commands::Extension.run(@ext_dir)
-
-    File.directory?(@ext_dir).should == true
-  end
+  it_should_behave_like "Generated Extension"
 
   after(:all) do
-    FileUtils.rm_r(@ext_dir)
+    FileUtils.rm_r(@path)
   end
 end
