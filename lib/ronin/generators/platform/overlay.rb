@@ -42,6 +42,12 @@ module Ronin
         # The Overlay metadata XSL URL
         METADATA_XSL = 'http://ronin.rubyforge.org/static/ronin/platform/overlay.xsl'
 
+        # The Overlay lib directory
+        LIB_DIR = Ronin::Platform::Overlay::LIB_DIR
+
+        # The Overlay objects directory
+        OBJECTS_DIR = Ronin::Platform::Overlay::OBJECTS_DIR
+
         # Title of the overlay
         attr_accessor :title
 
@@ -115,9 +121,9 @@ module Ronin
           @source_view ||= @source
           @website ||= @source_view
 
-          directory 'lib'
+          directory LIB_DIR
+          directory OBJECTS_DIR
           directory 'tasks'
-          directory 'objects'
 
           generate_rakefile!
           generate_metadata!
