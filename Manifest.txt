@@ -28,6 +28,7 @@ spec/generators/helpers/static/generators/templated.txt.erb
 spec/generators/generator_spec.rb
 spec/generators/generators_spec.rb
 spec/generators/platform/overlay_spec.rb
+spec/generators/platform/extension_spec.rb
 spec/ui/command_line/commands/overlay_spec.rb
 spec/ui/command_line/commands/extension_spec.rb
 static/ronin/platform/generators/extension.rb
