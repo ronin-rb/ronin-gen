@@ -7,7 +7,8 @@ require 'fileutils'
 describe Generators::Platform::Overlay do
 
   before(:all) do
-    @path = File.join(Dir.tmpdir,'ronin_generated_overlay')
+    @name = 'ronin_generated_overlay'
+    @path = File.join(Dir.tmpdir,@name)
     @title = 'Test Overlay'
     @source = 'ssh+svn://www.example.com/var/svn/test/'
     @source_view = 'http://www.example.com/test/'
