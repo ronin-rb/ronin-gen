@@ -27,7 +27,7 @@ module Ronin
   module UI
     module CommandLine
       module Commands
-        class Overlay < Command
+        class GenOverlay < Command
 
           def defaults
             @generator = Generators::Platform::Overlay.new

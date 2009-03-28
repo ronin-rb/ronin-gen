@@ -1,4 +1,4 @@
-require 'ronin/ui/command_line/commands/overlay'
+require 'ronin/ui/command_line/commands/gen_overlay'
 
 require 'spec_helper'
 require 'generated_overlay_examples'
@@ -6,7 +6,7 @@ require 'generated_overlay_examples'
 require 'tmpdir'
 require 'fileutils'
 
-describe UI::CommandLine::Commands::Overlay do
+describe UI::CommandLine::Commands::GenOverlay do
 
   before(:all) do
     @name = 'ronin_generated_overlay'
@@ -18,7 +18,7 @@ describe UI::CommandLine::Commands::Overlay do
     @license = 'GPL-2'
     @description = 'This is a test overlay'
 
-    UI::CommandLine::Commands::Overlay.run(
+    UI::CommandLine::Commands::GenOverlay.run(
       '--title', @title,
       '--source', @source,
       '--source-view', @source_view,
