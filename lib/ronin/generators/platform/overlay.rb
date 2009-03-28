@@ -21,6 +21,7 @@
 #
 
 require 'ronin/generators/platform/static'
+require 'ronin/generators/platform/spec'
 require 'ronin/generators/dir_generator'
 require 'ronin/platform/overlay'
 require 'ronin/version'
@@ -37,6 +38,9 @@ module Ronin
 
         # The Overlay metadata file
         METADATA_FILE = Ronin::Platform::Overlay::METADATA_FILE
+
+        # The Overlay metadata XSL URL
+        METADATA_XSL = 'http://ronin.rubyforge.org/static/ronin/platform/overlay.xsl'
 
         # Title of the overlay
         attr_accessor :title
@@ -143,7 +147,7 @@ module Ronin
             doc << XML::ProcessingInstruction.new(
               doc,
               'xml-stylesheet',
-              'type="text/xsl" href="http://ronin.rubyforge.org/static/ronin/platform/overlay.xsl"'
+              "type=\"text/xsl\" href=\"#{METADATA_XSL}\""
             )
 
             root = XML::Node.new('ronin-overlay',doc)
