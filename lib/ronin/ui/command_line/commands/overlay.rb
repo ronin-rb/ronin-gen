@@ -38,7 +38,7 @@ module Ronin
 
             opts.options do
               opts.on('-t','--title NAME','Name of the Overlay') do |title|
-                @generate.title = title
+                @generator.title = title
               end
 
               opts.on('-S','--source URL','The URL where the source of the Overlay will be hosted') do |url|
