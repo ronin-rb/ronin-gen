@@ -1,21 +1,22 @@
 require 'ronin/ui/command_line/commands/overlay'
 
 require 'spec_helper'
+require 'generated_overlay_examples'
+
 require 'tmpdir'
 require 'fileutils'
 
 describe UI::CommandLine::Commands::Overlay do
   before(:all) do
-    @overlay_dir = File.join(Dir.tmpdir,'ronin_test_overlay')
+    @name = File.join(Dir.tmpdir,'ronin_test_overlay')
+    @path = File.join(Dir.tmpdir,@name)
+
+    UI::CommandLine::Commands::Overlay.run(@path)
   end
 
-  it "should be able to generate an overlay directory" do
-    UI::CommandLine::Commands::Overlay.run(@overlay_dir)
-
-    File.directory?(@overlay_dir).should == true
-  end
+  it_should_behave_like "Generated Overlay"
 
   after(:all) do
-    FileUtils.rm_r(@overlay_dir)
+    FileUtils.rm_r(@path)
   end
 end

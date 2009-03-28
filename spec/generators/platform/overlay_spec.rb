@@ -1,6 +1,8 @@
 require 'ronin/generators/platform/overlay'
 
 require 'spec_helper'
+require 'generated_overlay_examples'
+
 require 'tmpdir'
 require 'fileutils'
 
@@ -27,33 +29,7 @@ describe Generators::Platform::Overlay do
     generator.run(@path)
   end
 
-  it "should create the overlay directory" do
-    File.directory?(@path).should == true
-  end
-
-  it "should create a lib directory" do
-    lib_dir = File.join(@path,Platform::Overlay::LIB_DIR)
-
-    File.directory?(lib_dir).should == true
-  end
-
-  it "should create a objects directory" do
-    objects_dir = File.join(@path,Platform::Overlay::OBJECTS_DIR)
-
-    File.directory?(objects_dir).should == true
-  end
-
-  it "should create a Rakefile" do
-    rakefile = File.join(@path,'Rakefile')
-
-    File.file?(rakefile).should == true
-  end
-
-  it "should create a XML metadata file" do
-    metadata_file = File.join(@path,Platform::Overlay::METADATA_FILE)
-
-    File.file?(metadata_file).should == true
-  end
+  it_should_behave_like "Generated Overlay"
 
   after(:all) do
     FileUtils.rm_r(@path)
