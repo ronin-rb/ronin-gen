@@ -20,6 +20,7 @@
 #++
 #
 
+require 'ronin/generators/platform/static'
 require 'ronin/generators/dir_generator'
 require 'ronin/platform/overlay'
 require 'ronin/version'
