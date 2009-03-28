@@ -25,7 +25,7 @@ require 'ronin/static'
 module Ronin
   module Generators
     module Platform
-      Static.directory File.join(File.dirname(__FILE__),'..','..','..','static')
+      Static.directory File.join(File.dirname(__FILE__),'..','..','..','..','static')
     end
   end
 end
