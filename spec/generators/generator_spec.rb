@@ -1,7 +1,7 @@
 require 'ronin/generators/generator'
 
 require 'spec_helper'
-require 'helpers/generators'
+require 'generators/helpers/generators'
 
 require 'tmpdir'
 require 'fileutils'
