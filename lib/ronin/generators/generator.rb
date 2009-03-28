@@ -54,7 +54,7 @@ module Ronin
 
       #
       # Returns the absolute form of the specified _path_, with respect to
-      # the +@path+ instance variable.
+      # the +path+ instance variable.
       #
       def expand_path(sub_path)
         return @path if (sub_path.nil? || sub_path == @path)
@@ -77,7 +77,7 @@ module Ronin
       # Opens the file at the specified _sub_path_. If a _block_ is given,
       # it will be passed a newly created File object.
       #
-      #   file 'metadata.xml' do |file|
+      #   file('metadata.xml') do |file|
       #     ...
       #   end
       #

@@ -22,6 +22,7 @@
 
 module Ronin
   module Generators
+    # Ronin Gen version
     VERSION = '0.1.0'
   end
 end
