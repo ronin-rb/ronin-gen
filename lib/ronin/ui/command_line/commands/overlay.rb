@@ -29,8 +29,6 @@ module Ronin
       module Commands
         class Overlay < Command
 
-          include Nokogiri
-
           def defaults
             @generator = Generators::Platform::Overlay.new
           end
