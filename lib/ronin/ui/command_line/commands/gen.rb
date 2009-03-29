@@ -33,6 +33,7 @@ module Ronin
             opts.usage = '[options] NAME'
 
             opts.options do
+              opts.on('-l','--list','Lists the available generators')
             end
 
             opts.arguments(
