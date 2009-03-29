@@ -43,9 +43,13 @@ module Ronin
           end
 
           def arguments(*args)
-            CommandLine.commands.keys.select { |name|
-              name =~ /^gen-/
-            }.sort.each { |name| puts "  #{name}" }
+            puts CommandLine.commands.keys.map { |name|
+              if name =~ /^gen-/
+                name.gsub(/^gen-/,'  ')
+              else
+                nil
+              end
+            }.compact.sort
           end
 
         end
