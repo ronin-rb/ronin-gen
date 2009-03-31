@@ -129,11 +129,7 @@ module Ronin
           @source_view ||= @source
           @website ||= @source_view
           @license ||= DEFAULT_LICENSE
-
-          if @maintainers.empty?
-            @maintainers << DEFAULT_MAINTAINER
-          end
-
+          @maintainers << DEFAULT_MAINTAINER if @maintainers.empty?
           @description ||= DEFAULT_DESCRIPTION
 
           directory LIB_DIR
