@@ -47,6 +47,9 @@ module Ronin
         # The Overlay objects directory
         OBJECTS_DIR = Ronin::Platform::Overlay::OBJECTS_DIR
 
+        # Default maintainer to use
+        DEFAULT_MAINTAINER = {:name => 'Name', :email => 'name@example.com'}
+
         # Title of the overlay
         attr_accessor :title
 
@@ -119,6 +122,10 @@ module Ronin
           @title ||= File.basename(@path).gsub(/[_\s]+/,' ').capitalize
           @source_view ||= @source
           @website ||= @source_view
+
+          if @maintainers.empty?
+            @maintainers << DEFAULT_MAINTAINER
+          end
 
           directory LIB_DIR
           directory OBJECTS_DIR
