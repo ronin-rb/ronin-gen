@@ -191,37 +191,33 @@ module Ronin
               root << url_tag
             end
 
-            if @license
-              license_tag = XML::Node.new('license',doc)
-              license_tag << XML::Text.new(@license,doc)
-              root << license_tag
-            end
+            license_tag = XML::Node.new('license',doc)
+            license_tag << XML::Text.new(@license,doc)
+            root << license_tag
 
-            unless @maintainers.empty?
-              maintainers_tag = XML::Node.new('maintainers',doc)
+            maintainers_tag = XML::Node.new('maintainers',doc)
 
-              @maintainers.each do |author|
-                if (author[:name] || author[:email])
-                  maintainer_tag = XML::Node.new('maintainer',doc)
+            @maintainers.each do |author|
+              if (author[:name] || author[:email])
+                maintainer_tag = XML::Node.new('maintainer',doc)
 
-                  if author[:name]
-                    name_tag = XML::Node.new('name',doc)
-                    name_tag << XML::Text.new(author[:name],doc)
-                    maintainer_tag << name_tag
-                  end
-
-                  if author[:email]
-                    email_tag = XML::Node.new('email',doc)
-                    email_tag << XML::Text.new(author[:email],doc)
-                    maintainer_tag << email_tag
-                  end
-
-                  maintainers_tag << maintainer_tag
+                if author[:name]
+                  name_tag = XML::Node.new('name',doc)
+                  name_tag << XML::Text.new(author[:name],doc)
+                  maintainer_tag << name_tag
                 end
-              end
 
-              root << maintainers_tag
+                if author[:email]
+                  email_tag = XML::Node.new('email',doc)
+                  email_tag << XML::Text.new(author[:email],doc)
+                  maintainer_tag << email_tag
+                end
+
+                maintainers_tag << maintainer_tag
+              end
             end
+
+            root << maintainers_tag
 
             if @description
               description_tag = XML::Node.new('description',doc)
