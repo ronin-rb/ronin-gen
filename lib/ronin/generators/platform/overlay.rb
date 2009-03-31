@@ -53,6 +53,9 @@ module Ronin
         # Default maintainer to use
         DEFAULT_MAINTAINER = {:name => 'Name', :email => 'name@example.com'}
 
+        # Default description to use
+        DEFAULT_DESCRIPTION = 'This is an Overlay'
+
         # Title of the overlay
         attr_accessor :title
 
@@ -130,6 +133,8 @@ module Ronin
           if @maintainers.empty?
             @maintainers << DEFAULT_MAINTAINER
           end
+
+          @description ||= DEFAULT_DESCRIPTION
 
           directory LIB_DIR
           directory OBJECTS_DIR
@@ -219,11 +224,9 @@ module Ronin
 
             root << maintainers_tag
 
-            if @description
-              description_tag = XML::Node.new('description',doc)
-              description_tag << XML::Text.new(@description,doc)
-              root << description_tag
-            end
+            description_tag = XML::Node.new('description',doc)
+            description_tag << XML::Text.new(@description,doc)
+            root << description_tag
 
             doc << root
             doc.write_xml_to(metadata_file)
