@@ -47,6 +47,9 @@ module Ronin
         # The Overlay objects directory
         OBJECTS_DIR = Ronin::Platform::Overlay::OBJECTS_DIR
 
+        # Default license to use
+        DEFAULT_LICENSE = 'CC-by'
+
         # Default maintainer to use
         DEFAULT_MAINTAINER = {:name => 'Name', :email => 'name@example.com'}
 
@@ -122,6 +125,7 @@ module Ronin
           @title ||= File.basename(@path).gsub(/[_\s]+/,' ').capitalize
           @source_view ||= @source
           @website ||= @source_view
+          @license ||= DEFAULT_LICENSE
 
           if @maintainers.empty?
             @maintainers << DEFAULT_MAINTAINER
