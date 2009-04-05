@@ -11,7 +11,7 @@ require 'ronin/ui/command_line/commands/gen'
 require 'ronin/ui/command_line'
 
 if (ARGV.length > 0 && ARGV.first[0..0] != '-')
-  ARGV[0] = "gen-#{ARGV.first}"
+  ARGV[0] = "gen_#{ARGV.first}"
 
   Ronin::UI::CommandLine.run(*ARGV)
 else
