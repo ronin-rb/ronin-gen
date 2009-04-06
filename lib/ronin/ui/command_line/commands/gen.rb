@@ -45,8 +45,8 @@ module Ronin
 
           def arguments(*args)
             puts CommandLine.commands.keys.map { |name|
-              if name =~ /^gen-/
-                name.gsub(/^gen-/,'  ')
+              if name =~ /^gen_/
+                name.gsub(/^gen_/,'  ')
               else
                 nil
               end
