@@ -88,23 +88,26 @@ module Ronin
         # <tt>:source</tt>:: Source URL for the overlay.
         # <tt>:source_view</tt>:: Source View URL for the overlay.
         # <tt>:website</tt>:: Website for the overlay.
-        # <tt>:license</tt>:: License for the overlay.
+        # <tt>:license</tt>:: License for the overlay. Defaults to
+        #                     DEFUALT_LICENSE, if not given.
         # <tt>:maintainers</tt>:: List of maintainers for the overlay.
         # <tt>:description</tt>:: The description of the overlay.
+        #                         Defaults to DEFAULT_DESCRIPTION,
+        #                         if not given.
         #
         def initialize(options={})
           @title = options[:title]
           @source = options[:source]
           @source_view = options[:source_view]
           @website = options[:website]
-          @license = options[:license]
+          @license = (options[:license] || DEFAULT_LICENSE)
           @maintainers = []
           
           if options[:maintainers]
             @maintainers.merge!(options[:maintainers])
           end
 
-          @description = options[:description]
+          @description = (options[:description] || DEFAULT_DESCRIPTION)
           @tasks = Set[]
 
           if options[:tasks]
@@ -128,9 +131,7 @@ module Ronin
           @title ||= File.basename(@path).gsub(/[_\s]+/,' ').capitalize
           @source_view ||= @source
           @website ||= @source_view
-          @license ||= DEFAULT_LICENSE
           @maintainers << DEFAULT_MAINTAINER if @maintainers.empty?
-          @description ||= DEFAULT_DESCRIPTION
 
           directory LIB_DIR
           directory OBJECTS_DIR
