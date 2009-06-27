@@ -21,6 +21,7 @@
 #
 
 require 'ronin/static/finders'
+require 'ronin/templates/erb'
 
 require 'fileutils'
 require 'erb'
@@ -30,6 +31,7 @@ module Ronin
     class Generator
 
       include Static::Finders
+      include Templates::Erb
 
       #
       # Runs the generator with the specified _path_.
@@ -126,10 +128,7 @@ module Ronin
       #   # => "..."
       #
       def render_template(static_file)
-        static_file = find_static_file(static_file)
-        erb = ERB.new(File.read(static_file))
-
-        return erb.result(binding)
+        erb(find_static_file(static_file))
       end
 
       #
