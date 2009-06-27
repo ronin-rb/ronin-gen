@@ -24,7 +24,6 @@ require 'ronin/static/finders'
 require 'ronin/templates/erb'
 
 require 'fileutils'
-require 'erb'
 
 module Ronin
   module Generators
@@ -128,7 +127,7 @@ module Ronin
       #   # => "..."
       #
       def render_template(static_file)
-        erb(find_static_file(static_file))
+        erb_file(find_static_file(static_file))
       end
 
       #
