@@ -2,6 +2,10 @@ require 'ronin/generators/generator'
 
 require 'spec_helper'
 require 'generators/helpers/generators'
+require 'generators/classes/file_generator'
+require 'generators/classes/dir_generator'
+require 'generators/classes/templated_generator'
+
 
 require 'tmpdir'
 require 'fileutils'
