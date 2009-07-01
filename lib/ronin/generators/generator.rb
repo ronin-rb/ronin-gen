@@ -75,6 +75,18 @@ module Ronin
       end
 
       #
+      # Touches the file at the specified _sub_path_.
+      #
+      #   touch 'init.rb'
+      #
+      def touch(sub_path)
+        FileUtils.touch(expand_path(sub_path))
+
+        print_path(sub_path)
+        return sub_path
+      end
+
+      #
       # Opens the file at the specified _sub_path_. If a _block_ is given,
       # it will be passed a newly created File object.
       #
