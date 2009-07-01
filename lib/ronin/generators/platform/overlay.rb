@@ -134,6 +134,8 @@ module Ronin
           @maintainers << DEFAULT_MAINTAINER if @maintainers.empty?
 
           directory LIB_DIR
+          touch File.join(LIB_DIR,Ronin::Platform::Overlay::INIT_FILE)
+
           directory OBJECTS_DIR
           directory 'tasks'
 
