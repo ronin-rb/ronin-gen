@@ -1,3 +1,19 @@
+=== 0.1.1 / 2009-07-02
+
+* Use Hoe >= 2.0.0.
+* Require Ronin >= 0.2.4.
+* Added Generator#touch.
+* Added Ronin::UI::CommandLine::Commands::Gen for listing and
+  invoking generators.
+* Added more defaults to Ronin::Generators::Platform::Overlay:
+  * Default maintainer.
+  * Default license.
+  * Default description.
+* Make sure Ronin::Generators::Platform::Overlay creates an
+  empty lib/init.rb file.
+* Fixed a bug in the ronin-gen command, where generator names
+  were not being sanitized.
+
 === 0.1.0 / 2009-03-27
 
 * Initial release.
