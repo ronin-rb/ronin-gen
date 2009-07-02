@@ -26,6 +26,7 @@ spec/generated_extension_examples.rb
 spec/generators/helpers/generators.rb
 spec/generators/helpers/static/generators/templated.txt.erb
 spec/generators/classes/file_generator.rb
+spec/generators/classes/touch_generator.rb
 spec/generators/classes/dir_generator.rb
 spec/generators/classes/templated_generator.rb
 spec/generators/generator_spec.rb

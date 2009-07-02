@@ -3,6 +3,7 @@ require 'ronin/generators/generator'
 require 'spec_helper'
 require 'generators/helpers/generators'
 require 'generators/classes/file_generator'
+require 'generators/classes/touch_generator'
 require 'generators/classes/dir_generator'
 require 'generators/classes/templated_generator'
 
@@ -22,6 +23,13 @@ describe Generators::Generator do
     generator.run(@dir)
 
     File.read(File.join(@dir,'test.txt')).should == "hello\n"
+  end
+
+  it "should touch files" do
+    generator = TouchGenerator.new
+    generator.run(@dir)
+
+    File.file?(File.join(@dir,'test2.txt')).should == true
   end
 
   it "should generate directories" do
