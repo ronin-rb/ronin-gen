@@ -9,6 +9,8 @@
   * Default maintainer.
   * Default license.
   * Default description.
+* Added the --version option to the ronin-gen command.
+* Removed the --list option from the ronin-gen command.
 * Make sure Ronin::Generators::Platform::Overlay creates an
   empty lib/init.rb file.
 * Fixed a bug in the ronin-gen command, where generator names
