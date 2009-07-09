@@ -20,6 +20,7 @@
 #++
 #
 
+require 'ronin/generators/version'
 require 'ronin/ui/command_line/command'
 require 'ronin/ui/command_line/command_line'
 
@@ -33,7 +34,9 @@ module Ronin
             opts.usage = '[options] NAME'
 
             opts.options do
-              opts.on('-l','--list','Lists the available generators')
+              opts.on('-V','--version','Print version information and exit') do
+                success { puts "Ronin Gen #{Ronin::Generators::VERSION}" }
+              end
             end
 
             opts.arguments(
