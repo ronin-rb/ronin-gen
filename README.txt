@@ -46,7 +46,7 @@ of Ronin.
 
 == INSTALL:
 
-  $ sudo gem install ronin-gem
+  $ sudo gem install ronin-gen
 
 == SYNOPSIS:
 
