@@ -13,7 +13,7 @@ describe Generators::Platform::Overlay do
     @path = File.join(Dir.tmpdir,@name)
 
     generator = Generators::Platform::Extension.new
-    generator.run(@path)
+    generator.generate!(@path)
   end
 
   it_should_behave_like "Generated Extension"

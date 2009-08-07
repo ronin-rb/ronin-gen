@@ -35,19 +35,17 @@ module Ronin
         # The default extension file
         EXTENSION_FILE = File.join('ronin','platform','generators','extension.rb')
 
-        protected
-
         #
         # Generates a skeleton Extension.
         #
-        def generate!
-          name = File.basename(@path)
+        def generate
+          name = File.basename(self.destination_root)
 
-          directory LIB_DIR
-          file File.join(LIB_DIR,name + '.rb')
-          directory File.join(LIB_DIR,name)
+          mkdir LIB_DIR
+          touch File.join(LIB_DIR,name + '.rb')
+          mkdir File.join(LIB_DIR,name)
 
-          copy EXTENSION_FILE, Ronin::Platform::Extension::EXTENSION_FILE
+          copy_file EXTENSION_FILE, Ronin::Platform::Extension::EXTENSION_FILE
         end
 
       end
