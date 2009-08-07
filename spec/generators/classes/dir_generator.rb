@@ -2,10 +2,8 @@ require 'ronin/generators/generator'
 
 class DirGenerator < Generators::Generator
 
-  protected
-
-  def generate!
-    directory 'test'
+  def generate
+    mkdir 'test'
   end
 
 end

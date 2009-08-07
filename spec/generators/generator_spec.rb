@@ -20,28 +20,29 @@ describe Generators::Generator do
 
   it "should generate files" do
     generator = FileGenerator.new
-    generator.run(@dir)
+    generator.generate!(@dir)
 
-    File.read(File.join(@dir,'test.txt')).should == "hello\n"
+    File.read(File.join(@dir,'test.txt')).should == "hello"
   end
 
   it "should touch files" do
     generator = TouchGenerator.new
-    generator.run(@dir)
+    generator.generate!(@dir)
 
     File.file?(File.join(@dir,'test2.txt')).should == true
   end
 
   it "should generate directories" do
     generator = DirGenerator.new
-    generator.run(@dir)
+    generator.generate!(@dir)
 
     File.directory?(File.join(@dir,'test')).should == true
   end
 
   it "should generate files using templates" do
-    generator = TemplatedGenerator.new('hello')
-    generator.run(@dir)
+    generator = TemplatedGenerator.new
+    generator.message = 'hello'
+    generator.generate!(@dir)
 
     File.read(File.join(@dir,'templated.txt')).should == "message: hello\n"
   end

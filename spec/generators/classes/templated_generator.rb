@@ -4,14 +4,12 @@ class TemplatedGenerator < Generators::Generator
 
   TEMPLATE_FILE = File.join('generators','templated.txt.erb')
 
-  def initialize(message)
-    @message = message
+  no_tasks do
+    attr_accessor :message
   end
 
-  protected
-
-  def generate!
-    render_file TEMPLATE_FILE, 'templated.txt'
+  def generate
+    template TEMPLATE_FILE, 'templated.txt'
   end
 
 end
