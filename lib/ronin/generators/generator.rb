@@ -31,21 +31,20 @@ module Ronin
       include Thor::Actions
       include Static::Finders
 
-      alias path destination_root
-      alias path= destination_root=
-
-      default_task :generate
+      def self.source_root
+        Dir.pwd
+      end
 
       no_tasks do
         def generate!(path=nil)
           if path
-            self.path = File.expand_path(path)
+            self.destination_root = File.expand_path(path)
           end
 
           invoke()
 
           if path
-            self.path = nil
+            self.destination_root = nil
           end
 
           return path
@@ -63,9 +62,23 @@ module Ronin
       protected
 
       #
+      # Touches the file at the specified _destination_.
+      #
+      #   touch 'TODO.txt'
+      #
+      def touch(destination)
+        create_file(destination)
+      end
+
+      def mkdir(destination)
+        empty_directory(destination)
+      end
+
+      #
       # Copies the _static_file_ to the specified _destination_.
       #
-      #   copy_file 'ronin/platform/generators/extension.rb', 'myext/extension.rb'
+      #   copy_file 'ronin/platform/generators/extension.rb',
+      #             'myext/extension.rb'
       #
       def copy_file(static_file,destination)
         super(find_static_file(static_file),destination)
