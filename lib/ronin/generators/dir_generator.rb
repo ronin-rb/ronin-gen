@@ -29,17 +29,10 @@ module Ronin
     class DirGenerator < Generator
 
       no_tasks do
-        #
-        # Creates a directory at the specified _path_ then runs the
-        # generator.
-        #
-        def generate!(path=nil)
-          if path
-            path = File.expand_path(path)
-            FileUtils.mkdir_p(path)
+        def invoke(*names,&block)
+          inside() do |path|
+            super(*names,&block)
           end
-
-          return super(path)
         end
       end
 
