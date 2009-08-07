@@ -18,7 +18,8 @@ describe Generators::Platform::Overlay do
     @license = 'GPL-2'
     @description = 'This is a test overlay'
 
-    generator = Generators::Platform::Overlay.new(
+    Generators::Platform::Overlay.generate(
+      @path,
       :title => @title,
       :source => @source,
       :source_view => @source_view,
@@ -26,7 +27,6 @@ describe Generators::Platform::Overlay do
       :license => @license,
       :description => @description
     )
-    generator.run(@path)
   end
 
   it_should_behave_like "Generated Overlay"

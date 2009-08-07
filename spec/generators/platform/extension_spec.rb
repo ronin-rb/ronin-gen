@@ -12,8 +12,7 @@ describe Generators::Platform::Overlay do
     @name = 'ronin_generated_extension'
     @path = File.join(Dir.tmpdir,@name)
 
-    generator = Generators::Platform::Extension.new
-    generator.generate!(@path)
+    Generators::Platform::Extension.generator(@path)
   end
 
   it_should_behave_like "Generated Extension"

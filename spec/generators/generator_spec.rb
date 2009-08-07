@@ -18,30 +18,25 @@ describe Generators::Generator do
   end
 
   it "should generate files" do
-    generator = FileGenerator.new
-    generator.generate!(@dir)
+    FileGenerator.generate(@dir)
 
     File.read(File.join(@dir,'test.txt')).should == "hello"
   end
 
   it "should touch files" do
-    generator = TouchGenerator.new
-    generator.generate!(@dir)
+    TouchGenerator.generate(@dir)
 
     File.file?(File.join(@dir,'test2.txt')).should == true
   end
 
   it "should generate directories" do
-    generator = DirGenerator.new
-    generator.generate!(@dir)
+    DirGenerator.generate(@dir)
 
     File.directory?(File.join(@dir,'test')).should == true
   end
 
   it "should generate files using templates" do
-    generator = TemplatedGenerator.new
-    generator.message = 'hello'
-    generator.generate!(@dir)
+    TemplatedGenerator.generate(@dir, :message => 'hello')
 
     File.read(File.join(@dir,'templated.txt')).should == "message: hello\n"
   end
