@@ -51,10 +51,7 @@ module Ronin
         DEFAULT_LICENSE = 'CC-by'
 
         # Default maintainer to use
-        DEFAULT_MAINTAINER = {
-          :name => 'Name',
-          :email => 'name@example.com'
-        }
+        DEFAULT_MAINTAINER = {'Name' => 'name@example.com'}
 
         # Default description to use
         DEFAULT_DESCRIPTION = 'This is an Overlay'
@@ -65,7 +62,7 @@ module Ronin
         class_option :website, :type => :string
         class_option :license, :type => :string, :default => DEFAULT_LICENSE
         class_option :description, :type => :string, :default => DEFAULT_DESCRIPTION
-        class_option :maintainers, :type => :array, :default => []
+        class_option :maintainers, :type => :hash, :default => {}
         class_option :tasks, :type => :array, :default => []
         class_option :test_suite, :type => :string
 
@@ -86,7 +83,7 @@ module Ronin
             @website ||= @source_view
 
             if @maintainers
-              @maintainers = [DEFAULT_MAINTAINER]
+              @maintainers = DEFAULT_MAINTAINER
             end
 
             super(*names,&block)
@@ -172,24 +169,22 @@ module Ronin
 
             maintainers_tag = XML::Node.new('maintainers',doc)
 
-            @maintainers.each do |author|
-              if (author[:name] || author[:email])
-                maintainer_tag = XML::Node.new('maintainer',doc)
+            @maintainers.each do |name,email|
+              maintainer_tag = XML::Node.new('maintainer',doc)
 
-                if author[:name]
-                  name_tag = XML::Node.new('name',doc)
-                  name_tag << XML::Text.new(author[:name],doc)
-                  maintainer_tag << name_tag
-                end
-
-                if author[:email]
-                  email_tag = XML::Node.new('email',doc)
-                  email_tag << XML::Text.new(author[:email],doc)
-                  maintainer_tag << email_tag
-                end
-
-                maintainers_tag << maintainer_tag
+              if name
+                name_tag = XML::Node.new('name',doc)
+                name_tag << XML::Text.new(name,doc)
+                maintainer_tag << name_tag
               end
+
+              if email
+                email_tag = XML::Node.new('email',doc)
+                email_tag << XML::Text.new(email,doc)
+                maintainer_tag << email_tag
+              end
+
+              maintainers_tag << maintainer_tag
             end
 
             root << maintainers_tag
