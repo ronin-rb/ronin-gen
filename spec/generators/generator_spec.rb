@@ -7,7 +7,6 @@ require 'generators/classes/touch_generator'
 require 'generators/classes/dir_generator'
 require 'generators/classes/templated_generator'
 
-
 require 'tmpdir'
 require 'fileutils'
 
