@@ -69,13 +69,6 @@ module Ronin
         class_option :tasks, :type => :array, :default => []
 
         no_tasks do
-          #
-          # Adds a new maintainer with the specified _name_ and _email_.
-          #
-          def maintainer(name,email)
-            options[:maintainers] << {:name => name, :email => email}
-          end
-
           def invoke(*names,&block)
             @title = options[:title]
             @source = options[:source]
