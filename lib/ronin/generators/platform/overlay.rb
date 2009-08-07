@@ -63,6 +63,7 @@ module Ronin
         class_option :license, :type => :string, :default => DEFAULT_LICENSE
         class_option :description, :type => :string, :default => DEFAULT_DESCRIPTION
         class_option :maintainers, :type => :hash, :default => {}, :banner => 'NAME:EMAIL ...'
+        class_option :gems, :type => :array, :default => [], :banner => 'GEM ...'
         class_option :tasks, :type => :array, :default => [], :banner => 'TASK ...'
         class_option :test_suite, :type => :string, :banner => 'test|spec'
 
@@ -75,6 +76,7 @@ module Ronin
             @license = options[:license]
             @description = options[:description]
             @maintainers = options[:maintainers]
+            @gems = options[:gems]
             @tasks = options[:tasks]
             @test_suite = options[:test_suite]
 
@@ -188,6 +190,19 @@ module Ronin
             end
 
             root << maintainers_tag
+
+            unless @gems.empty?
+              dependencies_tag = XML::Node.new('dependencies',doc)
+              dependencies_tag << XML::Text.new(gems_tag,doc)
+
+              @gems.each do |gem_name|
+                gem_tag = XML::Node.new('gem',doc)
+                gem_tag << XML::Text.new(gem_name,doc)
+                dependencies_tag << gem_tag
+              end
+
+              root << dependencies_tag
+            end
 
             description_tag = XML::Node.new('description',doc)
             description_tag << XML::Text.new(@description,doc)
