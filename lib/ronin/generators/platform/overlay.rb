@@ -62,9 +62,9 @@ module Ronin
         class_option :website, :type => :string
         class_option :license, :type => :string, :default => DEFAULT_LICENSE
         class_option :description, :type => :string, :default => DEFAULT_DESCRIPTION
-        class_option :maintainers, :type => :hash, :default => {}
-        class_option :tasks, :type => :array, :default => []
-        class_option :test_suite, :type => :string
+        class_option :maintainers, :type => :hash, :default => {}, :banner => 'NAME:EMAIL ...'
+        class_option :tasks, :type => :array, :default => [], :banner => 'TASK ...'
+        class_option :test_suite, :type => :string, :banner => 'test|spec'
 
         no_tasks do
           def invoke(*names,&block)
