@@ -34,5 +34,6 @@ spec/generators/platform/overlay_spec.rb
 spec/generators/platform/extension_spec.rb
 spec/ui/command_line/commands/gen_overlay_spec.rb
 spec/ui/command_line/commands/gen_extension_spec.rb
+static/ronin/platform/generators/Rakefile.erb
 static/ronin/platform/generators/extension.rb
 static/ronin/platform/generators/spec/spec_helper.rb
