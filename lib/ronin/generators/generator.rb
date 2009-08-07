@@ -39,25 +39,15 @@ module Ronin
         Dir.pwd
       end
 
-      no_tasks do
-        #
-        # Invokes the generator with the optional _path_.
-        #
-        #   gen.generate!('path/to/dir')
-        #
-        def generate!(path=nil)
-          if path
-            self.destination_root = File.expand_path(path)
-          end
-
-          invoke()
-
-          if path
-            self.destination_root = nil
-          end
-
-          return path
-        end
+      #
+      # Invokes the generator with the specified _path_ and given _options_.
+      #
+      #   gen.generate!('path/to/dir')
+      #
+      def self.generate(path,options={})
+        generator = self.new(options)
+        generator.destination_root = File.expand_path(path)
+        generator.invoke()
       end
 
       desc "default generator task"
