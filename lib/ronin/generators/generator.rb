@@ -65,8 +65,8 @@ module Ronin
       #
       #   copy_file 'ronin/platform/generators/extension.rb', 'myext/extension.rb'
       #
-      def copy_static_file(static_file,destination)
-        copy_file(find_static_file(static_file),destination)
+      def copy_file(static_file,destination)
+        super(find_static_file(static_file),destination)
       end
 
       #
@@ -74,8 +74,8 @@ module Ronin
       #
       #   template 'ronin/platform/generators/Rakefile.erb', 'Rakefile.erb'
       #
-      def static_template(static_file,destination)
-        template(find_static_file(static_file),destination)
+      def template(static_file,destination)
+        super(find_static_file(static_file),destination)
       end
 
     end
