@@ -21,138 +21,56 @@
 #
 
 require 'ronin/static/finders'
-require 'ronin/templates/erb'
 
-require 'fileutils'
+require 'thor'
 
 module Ronin
   module Generators
-    class Generator
+    class Generator < Thor::Group
 
+      include Thor::Actions
       include Static::Finders
-      include Templates::Erb
+
+      alias path destination_root
+      alias path= destination_root=
+
+      no_tasks do
+        def generate!(path)
+          self.path = File.expand_path(path)
+
+          generate()
+
+          self.path = nil
+          return path
+        end
+      end
+
+      desc "default generator task"
 
       #
-      # Runs the generator with the specified _path_.
+      # Default generator method.
       #
-      def run(path)
-        path = File.expand_path(path)
-        @path = path
-
-        generate!
-
-        @path = nil
-        return path
+      def generate
       end
 
       protected
 
       #
-      # Default method which invokes the generator.
+      # Copies the _static_file_ to the specified _destination_.
       #
-      def generate!
-      end
-
+      #   copy_file 'ronin/platform/generators/extension.rb', 'myext/extension.rb'
       #
-      # Returns the absolute form of the specified _path_, with respect to
-      # the +path+ instance variable.
-      #
-      def expand_path(sub_path)
-        return @path if (sub_path.nil? || sub_path == @path)
-        return File.expand_path(File.join(@path,sub_path))
-      end
-
-      #
-      # Prints the specified _sub_path_.
-      #
-      def print_path(sub_path)
-        full_path = expand_path(sub_path)
-
-        sub_path = File.join('.',sub_path)
-        sub_path << File::SEPARATOR if File.directory?(full_path)
-
-        puts "  #{sub_path}"
-      end
-
-      #
-      # Touches the file at the specified _sub_path_.
-      #
-      #   touch 'init.rb'
-      #
-      def touch(sub_path)
-        FileUtils.touch(expand_path(sub_path))
-
-        print_path(sub_path)
-        return sub_path
-      end
-
-      #
-      # Opens the file at the specified _sub_path_. If a _block_ is given,
-      # it will be passed a newly created File object.
-      #
-      #   file('metadata.xml') do |file|
-      #     ...
-      #   end
-      #
-      def file(sub_path,&block)
-        File.open(expand_path(sub_path),'w',&block)
-
-        print_path(sub_path)
-        return sub_path
-      end
-
-      #
-      # Creates a directory at the specified _sub_path_. If a _block_ is
-      # given, it will be passed the _sub_path_ after the directory has
-      # been created.
-      #
-      #   directory 'objects'
-      #   # => "objects"
-      #
-      def directory(sub_path,&block)
-        FileUtils.mkdir_p(expand_path(sub_path))
-
-        print_path(sub_path)
-        block.call(sub_path) if block
-        return sub_path
-      end
-
-      #
-      # Copies the _static_file_ to the specified _sub_path_.
-      #
-      #   copy 'ronin/platform/generators/extension.rb', 'myext/extension.rb'
-      #   # => "myext/extension.rb"
-      #
-      def copy(static_file,sub_path)
-        static_file = find_static_file(static_file)
-
-        FileUtils.cp(static_file,expand_path(sub_path))
-
-        print_path(sub_path)
-        return sub_path
+      def copy_static_file(static_file,destination)
+        copy_file(find_static_file(static_file),destination)
       end
 
       #
       # Renders the ERB template using the specified _static_file_.
       #
-      #   render_template 'ronin/platform/generators/Rakefile.erb'
-      #   # => "..."
+      #   template 'ronin/platform/generators/Rakefile.erb', 'Rakefile.erb'
       #
-      def render_template(static_file)
-        erb_file(find_static_file(static_file))
-      end
-
-      #
-      # Renders the ERB template using the specified _static_file_,
-      # saving the result to the specified _sub_path_.
-      #
-      #   render_file 'ronin/platform/generators/Rakefile.erb', 'Rakefile'
-      #   # => nil
-      #
-      def render_file(static_file,sub_path)
-        file(sub_path) do |file|
-          file.write(render_template(static_file))
-        end
+      def static_template(static_file,destination)
+        template(find_static_file(static_file),destination)
       end
 
     end
