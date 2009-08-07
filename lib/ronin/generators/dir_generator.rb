@@ -22,6 +22,8 @@
 
 require 'ronin/generators/generator'
 
+require 'fileutils'
+
 module Ronin
   module Generators
     class DirGenerator < Generator
