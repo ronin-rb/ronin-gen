@@ -39,7 +39,7 @@ module Ronin
         # Generates a skeleton Extension.
         #
         def generate
-          name = File.basename(self.destination_root)
+          name = File.basename(self.path)
 
           mkdir LIB_DIR
           touch File.join(LIB_DIR,name + '.rb')

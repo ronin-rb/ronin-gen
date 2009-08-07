@@ -79,7 +79,7 @@ module Ronin
             @maintainers = options[:maintainers]
             @tasks = options[:tasks]
 
-            @title ||= File.basename(self.destination_root).gsub(/[_\s]+/,' ').capitalize
+            @title ||= File.basename(self.path).gsub(/[_\s]+/,' ').capitalize
             @source_view ||= @source
             @website ||= @source_view
 

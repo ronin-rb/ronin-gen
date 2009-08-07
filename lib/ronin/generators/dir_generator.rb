@@ -28,8 +28,26 @@ module Ronin
   module Generators
     class DirGenerator < Generator
 
+      argument :path, :type => :string, :require => true
+
+      #
+      # Invokes the generator with the specified _path_ and given _options_.
+      #
+      #   gen.generate!('path/to/dir')
+      #
+      def self.generate(path,options={})
+        path = File.expand_path(path)
+
+        generator = self.new([path], options)
+        generator.invoke()
+      end
+
       no_tasks do
         def invoke(*names,&block)
+          if self.path
+            self.destination_root = self.path
+          end
+
           inside() do |path|
             super(*names,&block)
           end
