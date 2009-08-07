@@ -34,13 +34,15 @@ module Ronin
       alias path destination_root
       alias path= destination_root=
 
+      default_task :generate
+
       no_tasks do
         def generate!(path=nil)
           if path
             self.path = File.expand_path(path)
           end
 
-          generate()
+          invoke()
 
           if path
             self.path = nil
