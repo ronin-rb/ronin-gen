@@ -67,6 +67,7 @@ module Ronin
         class_option :description, :type => :string, :default => DEFAULT_DESCRIPTION
         class_option :maintainers, :type => :array, :default => []
         class_option :tasks, :type => :array, :default => []
+        class_option :test_suite, :type => :string
 
         no_tasks do
           def invoke(*names,&block)
@@ -78,6 +79,7 @@ module Ronin
             @description = options[:description]
             @maintainers = options[:maintainers]
             @tasks = options[:tasks]
+            @test_suite = options[:test_suite]
 
             @title ||= File.basename(self.path).gsub(/[_\s]+/,' ').capitalize
             @source_view ||= @source
@@ -107,6 +109,19 @@ module Ronin
         #
         def rakefile
           template File.join('ronin','platform','generators','Rakefile.erb'), 'Rakefile'
+        end
+
+        #
+        # Generates a base test suite for the Overlay.
+        #
+        def test_suite
+          case @test_suite
+          when 'test','unit'
+            mkdir 'test'
+          when 'spec'
+            mkdir 'spec'
+            copy_file File.join('ronin','platform','generators','spec','spec_helper.rb'),'spec'
+          end
         end
 
         #

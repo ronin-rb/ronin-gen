@@ -13,7 +13,6 @@ lib/ronin/generators/version.rb
 lib/ronin/generators/platform/static.rb
 lib/ronin/generators/platform/overlay.rb
 lib/ronin/generators/platform/extension.rb
-lib/ronin/generators/platform/spec.rb
 lib/ronin/generators/platform/extension.rb
 lib/ronin/ui/command_line/commands/gen.rb
 lib/ronin/ui/command_line/commands/gen_overlay.rb
