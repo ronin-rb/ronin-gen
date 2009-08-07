@@ -109,7 +109,7 @@ module Ronin
         #
         def rakefile
           case @test_suite
-          when 'spec'
+          when 'rspec', 'spec'
             @tasks << 'spec' unless @tasks.include?('spec')
           end
 
@@ -123,7 +123,7 @@ module Ronin
           case @test_suite
           when 'test','unit'
             mkdir 'test'
-          when 'spec'
+          when 'rspec', 'spec'
             mkdir 'spec'
             copy_file File.join('ronin','platform','generators','spec','spec_helper.rb'),'spec'
           end
