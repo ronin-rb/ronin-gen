@@ -20,34 +20,13 @@
 #++
 #
 
-require 'ronin/ui/command_line/command'
 require 'ronin/generators/platform/extension'
 
 module Ronin
   module UI
     module CommandLine
       module Commands
-        class GenExtension < Command
-
-          def defaults
-            @generator = Generators::Platform::Extension.new
-          end
-
-          def define_options(opts)
-            opts.usage = 'PATH [...]'
-
-            opts.arguments(
-              'PATH' => 'The PATH of the Extension to be created'
-            )
-
-            opts.summary('Create an empty Extension at the specified PATH')
-          end
-
-          def arguments(*args)
-            args.each do |path|
-              @generator.run(File.expand_path(path))
-            end
-          end
+        class GenExtension < Generators::Platform::Extension
 
         end
       end
