@@ -22,6 +22,7 @@
 
 require 'ronin/static/finders'
 
+require 'extlib'
 require 'thor'
 
 module Ronin
@@ -30,6 +31,11 @@ module Ronin
 
       include Thor::Actions
       include Static::Finders
+
+      def self.inherited(super_class)
+        class_name = super_class.name.split('::').last.snake_case
+        super_class.namespace("ronin #{class_name}")
+      end
 
       #
       # Defines the default source root of the generator as the current
