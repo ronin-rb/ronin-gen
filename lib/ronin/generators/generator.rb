@@ -31,11 +31,20 @@ module Ronin
       include Thor::Actions
       include Static::Finders
 
+      #
+      # Defines the default source root of the generator as the current
+      # working directory.
+      #
       def self.source_root
         Dir.pwd
       end
 
       no_tasks do
+        #
+        # Invokes the generator with the optional _path_.
+        #
+        #   gen.generate!('path/to/dir')
+        #
         def generate!(path=nil)
           if path
             self.destination_root = File.expand_path(path)
@@ -70,6 +79,11 @@ module Ronin
         create_file(destination)
       end
 
+      #
+      # Creates an empty directory at the specified _destination_.
+      #
+      #   directory 'sub/dir'
+      #
       def mkdir(destination)
         empty_directory(destination)
       end
