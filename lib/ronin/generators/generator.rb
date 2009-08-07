@@ -35,12 +35,17 @@ module Ronin
       alias path= destination_root=
 
       no_tasks do
-        def generate!(path)
-          self.path = File.expand_path(path)
+        def generate!(path=nil)
+          if path
+            self.path = File.expand_path(path)
+          end
 
           generate()
 
-          self.path = nil
+          if path
+            self.path = nil
+          end
+
           return path
         end
       end
