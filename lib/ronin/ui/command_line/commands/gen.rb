@@ -30,23 +30,14 @@ module Ronin
       module Commands
         class Gen < Command
 
-          def define_options(opts)
-            opts.usage = '[options] NAME'
-
-            opts.options do
-              opts.on('-V','--version','Print version information and exit') do
-                success { puts "Ronin Gen #{Ronin::Generators::VERSION}" }
-              end
-            end
-
-            opts.arguments(
-              'NAME' => 'Name of the Generator to run'
-            )
-
-            opts.summary('Runs the Generator with the specified NAME and options')
+          desc "version", "Prints the version and exists"
+          def version
+            puts "Ronin Gen #{Ronin::Generators::VERSION}"
+            exit
           end
 
-          def arguments(*args)
+          desc "gen", "Prints the list of available generators"
+          def default
             puts CommandLine.commands.map { |name|
               if name =~ /^gen_/
                 name.gsub(/^gen_/,'  ')
