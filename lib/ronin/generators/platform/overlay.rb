@@ -108,6 +108,11 @@ module Ronin
         # Generates the Rakefile of the Overlay.
         #
         def rakefile
+          case @test_suite
+          when 'spec'
+            @tasks << 'spec' unless @tasks.include?('spec')
+          end
+
           template File.join('ronin','platform','generators','Rakefile.erb'), 'Rakefile'
         end
 
