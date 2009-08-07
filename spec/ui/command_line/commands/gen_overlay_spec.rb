@@ -18,15 +18,15 @@ describe UI::CommandLine::Commands::GenOverlay do
     @license = 'GPL-2'
     @description = 'This is a test overlay'
 
-    UI::CommandLine::Commands::GenOverlay.run(
+    UI::CommandLine::Commands::GenOverlay.start [
+      @path,
       '--title', @title,
       '--source', @source,
       '--source-view', @source_view,
       '--website', @website,
       '--license', @license,
-      '--description', @description,
-      @path
-    )
+      '--description', @description
+    ]
   end
 
   it_should_behave_like "Generated Overlay"

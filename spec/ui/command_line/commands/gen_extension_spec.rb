@@ -11,7 +11,7 @@ describe UI::CommandLine::Commands::GenExtension do
     @name = 'ronin_generated_extension'
     @path = File.join(Dir.tmpdir,@name)
 
-    UI::CommandLine::Commands::GenExtension.run(@path)
+    UI::CommandLine::Commands::GenExtension.start [@path]
   end
 
   it_should_behave_like "Generated Extension"
