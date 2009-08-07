@@ -51,118 +51,76 @@ module Ronin
         DEFAULT_LICENSE = 'CC-by'
 
         # Default maintainer to use
-        DEFAULT_MAINTAINER = {:name => 'Name', :email => 'name@example.com'}
+        DEFAULT_MAINTAINER = {
+          :name => 'Name',
+          :email => 'name@example.com'
+        }
 
         # Default description to use
         DEFAULT_DESCRIPTION = 'This is an Overlay'
 
-        # Title of the overlay
-        attr_accessor :title
+        class_option :title, :type => :string
+        class_option :source, :type => :string
+        class_option :source_view, :type => :string
+        class_option :website, :type => :string
+        class_option :license, :type => :string, :default => DEFAULT_LICENSE
+        class_option :description, :type => :string, :default => DEFAULT_DESCRIPTION
+        class_option :maintainers, :type => :array, :default => []
+        class_option :tasks, :type => :array, :default => []
 
-        # Source URL for the overlay
-        attr_accessor :source
-
-        # Source View URL for the overlay
-        attr_accessor :source_view
-
-        # Website of the overlay
-        attr_accessor :website
-
-        # License of the overlay
-        attr_accessor :license
-
-        # Maintainers of the overlay
-        attr_reader :maintainers
-
-        # Description of the overlay
-        attr_accessor :description
-
-        # Tasks to require for the overlay
-        attr_reader :tasks
-
-        #
-        # Creates a new Metadata object with the given _options_.
-        #
-        # _options_ may include the following keys:
-        # <tt>:title</tt>:: Title for the overlay.
-        # <tt>:source</tt>:: Source URL for the overlay.
-        # <tt>:source_view</tt>:: Source View URL for the overlay.
-        # <tt>:website</tt>:: Website for the overlay.
-        # <tt>:license</tt>:: License for the overlay. Defaults to
-        #                     DEFUALT_LICENSE, if not given.
-        # <tt>:maintainers</tt>:: List of maintainers for the overlay.
-        # <tt>:description</tt>:: The description of the overlay.
-        #                         Defaults to DEFAULT_DESCRIPTION,
-        #                         if not given.
-        #
-        def initialize(options={})
-          @title = options[:title]
-          @source = options[:source]
-          @source_view = options[:source_view]
-          @website = options[:website]
-          @license = (options[:license] || DEFAULT_LICENSE)
-          @maintainers = []
-          
-          if options[:maintainers]
-            @maintainers.merge!(options[:maintainers])
+        no_tasks do
+          #
+          # Adds a new maintainer with the specified _name_ and _email_.
+          #
+          def maintainer(name,email)
+            options[:maintainers] << {:name => name, :email => email}
           end
 
-          @description = (options[:description] || DEFAULT_DESCRIPTION)
-          @tasks = Set[]
+          def invoke(*names,&block)
+            @title = options[:title]
+            @source = options[:source]
+            @source_view = options[:source_view]
+            @website = options[:website]
+            @license = options[:license]
+            @description = options[:description]
+            @maintainers = options[:maintainers]
+            @tasks = options[:tasks]
 
-          if options[:tasks]
-            @tasks.merge!(options[:tasks])
+            @title ||= File.basename(self.destination_root).gsub(/[_\s]+/,' ').capitalize
+            @source_view ||= @source
+            @website ||= @source_view
+
+            if @maintainers
+              @maintainers = [DEFAULT_MAINTAINER]
+            end
+
+            super(*names,&block)
           end
         end
-
-        #
-        # Adds a new maintainer with the specified _name_ and _email_.
-        #
-        def maintainer(name,email)
-          @maintainers << {:name => name, :email => email}
-        end
-
-        protected
 
         #
         # Generates a skeleton Overlay.
         #
-        def generate!
-          @title ||= File.basename(@path).gsub(/[_\s]+/,' ').capitalize
-          @source_view ||= @source
-          @website ||= @source_view
-          @maintainers << DEFAULT_MAINTAINER if @maintainers.empty?
-
-          directory LIB_DIR
+        def generate
+          mkdir LIB_DIR
           touch File.join(LIB_DIR,Ronin::Platform::Overlay::INIT_FILE)
 
-          directory OBJECTS_DIR
-          directory 'tasks'
-
-          generate_rakefile!
-          generate_metadata!
+          mkdir OBJECTS_DIR
+          mkdir 'tasks'
         end
 
         #
         # Generates the Rakefile of the Overlay.
         #
-        def generate_rakefile!
-          file('Rakefile') do |rakefile|
-            rakefile << "# -*- ruby -*-\n\n"
-
-            @tasks.each do |task|
-              rakefile << "require 'ronin/platform/tasks/#{task}'"
-            end
-
-            rakefile << "\n# vim: syntax=Ruby"
-          end
+        def rakefile
+          template File.join('ronin','platform','generators','Rakefile.erb'), 'Rakefile'
         end
 
         #
         # Generates the XML metadata file for the Overlay.
         #
-        def generate_metadata!
-          file(METADATA_FILE) do |metadata_file|
+        def metadata
+          create_file(METADATA_FILE) do
             doc = XML::Document.new
             doc << XML::ProcessingInstruction.new(
               doc,
@@ -177,7 +135,7 @@ module Ronin
             title_tag << XML::Text.new(@title,doc)
             root << title_tag
 
-            if @source
+            if options[:source]
               source_tag = XML::Node.new('source',doc)
               source_tag << XML::Text.new(@source,doc)
               root << source_tag
@@ -228,7 +186,7 @@ module Ronin
             root << description_tag
 
             doc << root
-            doc.write_xml_to(metadata_file)
+            doc.to_xml
           end
         end
 
