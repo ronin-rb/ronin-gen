@@ -96,6 +96,7 @@ module Ronin
         # Generates a skeleton Overlay.
         #
         def generate
+          mkdir 'static'
           mkdir LIB_DIR
           touch File.join(LIB_DIR,Ronin::Platform::Overlay::INIT_FILE)
 

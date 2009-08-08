@@ -9,6 +9,12 @@ shared_examples_for "Generated Overlay" do
     File.directory?(@path).should == true
   end
 
+  it "should create a static directory" do
+    static_dir = File.join(@path,'static')
+
+    File.directory?(static_dir).should == true
+  end
+
   it "should create a lib directory" do
     lib_dir = File.join(@path,Ronin::Platform::Overlay::LIB_DIR)
 
