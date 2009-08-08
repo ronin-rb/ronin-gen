@@ -36,7 +36,7 @@ module Ronin
             exit
           end
 
-          desc "gen", "Prints the list of available generators"
+          desc "default", "Prints the list of available generators"
           def default
             puts CommandLine.commands.map { |name|
               if name =~ /^gen_/
