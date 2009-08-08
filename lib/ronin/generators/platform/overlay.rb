@@ -39,7 +39,7 @@ module Ronin
         METADATA_FILE = Ronin::Platform::Overlay::METADATA_FILE
 
         # The Overlay metadata XSL URL
-        METADATA_XSL = 'http://ronin.rubyforge.org/static/ronin/platform/overlay.xsl'
+        METADATA_XSL = File.join('ronin','platform','overlay.xsl')
 
         # The Overlay lib directory
         LIB_DIR = Ronin::Platform::Overlay::LIB_DIR
@@ -97,6 +97,11 @@ module Ronin
         #
         def generate
           mkdir 'static'
+
+          inside File.join('static','ronin','platform') do
+            copy_file METADATA_XSL, File.basename(METADATA_XSL)
+          end
+
           mkdir LIB_DIR
           touch File.join(LIB_DIR,Ronin::Platform::Overlay::INIT_FILE)
 
@@ -138,7 +143,7 @@ module Ronin
             doc << XML::ProcessingInstruction.new(
               doc,
               'xml-stylesheet',
-              "type=\"text/xsl\" href=\"#{METADATA_XSL}\""
+              "type=\"text/xsl\" href=\"static/#{METADATA_XSL}\""
             )
 
             root = XML::Node.new('ronin-overlay',doc)
