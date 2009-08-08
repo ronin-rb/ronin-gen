@@ -13,7 +13,7 @@ require 'ronin/ui/command_line'
 if (ARGV.length > 0 && ARGV.first[0..0] != '-')
   ARGV[0] = "gen_#{ARGV.first}"
 
-  Ronin::UI::CommandLine.run(*ARGV)
+  Ronin::UI::CommandLine.start
 else
-  Ronin::UI::CommandLine::Commands::Gen.run(*ARGV)
+  Ronin::UI::CommandLine::Commands::Gen.start
 end
