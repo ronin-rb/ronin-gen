@@ -47,12 +47,13 @@ module Ronin
       end
 
       #
-      # Invokes the generator with the specified _path_ and given _options_.
+      # Invokes the generator with the specified _path_, the given
+      # _options_ and the given _arguments_.
       #
       #   gen.generate!('path/to/dir')
       #
-      def self.generate(path,options={})
-        generator = self.new([], options)
+      def self.generate(path,options={},arguments=[])
+        generator = self.new(arguments, options)
         generator.destination_root = File.expand_path(path)
         generator.invoke()
       end

@@ -31,14 +31,15 @@ module Ronin
       argument :path, :type => :string, :require => true
 
       #
-      # Invokes the generator with the specified _path_ and given _options_.
+      # Invokes the generator with the specified _path_, the given
+      # _options_ and the given _arguments_.
       #
       #   gen.generate!('path/to/dir')
       #
-      def self.generate(path,options={})
+      def self.generate(path,options={},arguments=[])
         path = File.expand_path(path)
 
-        generator = self.new([path], options)
+        generator = self.new([path] + arguments, options)
         generator.invoke()
       end
 
