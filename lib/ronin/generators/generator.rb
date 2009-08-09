@@ -108,9 +108,9 @@ module Ronin
       #
       # Renders the ERB template using the specified _static_file_.
       #
-      #   partial 'ronin/platform/generators/_Rakefile.erb'
+      #   erb 'ronin/platform/generators/_Rakefile.erb'
       #
-      def partial(static_file)
+      def erb(static_file)
         path = find_static_file(static_file)
 
         return ERB.new(File.read(path)).result(binding)
