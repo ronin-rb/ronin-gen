@@ -97,23 +97,19 @@ module Ronin
 
       #
       # Renders the ERB template using the specified _static_file_ and
-      # saves the result at the specified _destination_.
+      # saves the result at the given _destination_. If _destination_
+      # is not given, the result will simply be returned.
       #
       #   template 'ronin/platform/generators/Rakefile.erb', 'Rakefile.erb'
       #
-      def template(static_file,destination)
-        super(find_static_file(static_file),destination)
-      end
-
-      #
-      # Renders the ERB template using the specified _static_file_.
-      #
-      #   erb 'ronin/platform/generators/_Rakefile.erb'
-      #
-      def erb(static_file)
+      def template(static_file,destination=nil)
         path = find_static_file(static_file)
 
-        return ERB.new(File.read(path)).result(binding)
+        if destination
+          return super(path,destination)
+        else
+          return ERB.new(File.read(path)).result(binding)
+        end
       end
 
     end
