@@ -23,6 +23,7 @@
 require 'ronin/static/finders'
 
 require 'extlib'
+require 'erb'
 require 'thor'
 
 module Ronin
@@ -95,12 +96,24 @@ module Ronin
       end
 
       #
-      # Renders the ERB template using the specified _static_file_.
+      # Renders the ERB template using the specified _static_file_ and
+      # saves the result at the specified _destination_.
       #
       #   template 'ronin/platform/generators/Rakefile.erb', 'Rakefile.erb'
       #
       def template(static_file,destination)
         super(find_static_file(static_file),destination)
+      end
+
+      #
+      # Renders the ERB template using the specified _static_file_.
+      #
+      #   partial 'ronin/platform/generators/_Rakefile.erb'
+      #
+      def partial(static_file)
+        path = find_static_file(static_file)
+
+        return ERB.new(File.read(path)).result(binding)
       end
 
     end
