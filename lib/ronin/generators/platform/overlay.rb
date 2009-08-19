@@ -118,7 +118,7 @@ module Ronin
             @tasks << 'spec' unless @tasks.include?('spec')
           end
 
-          template File.join('ronin','platform','generators','Rakefile.erb'), 'Rakefile'
+          template File.join('ronin','generators','platform','Rakefile.erb'), 'Rakefile'
         end
 
         #
@@ -130,7 +130,7 @@ module Ronin
             mkdir 'test'
           when 'rspec', 'spec'
             mkdir 'spec'
-            copy_file File.join('ronin','platform','generators','spec','spec_helper.rb'),'spec'
+            copy_file File.join('ronin','generators','platform','spec','spec_helper.rb'),'spec'
           end
         end
 

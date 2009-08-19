@@ -33,7 +33,7 @@ module Ronin
         LIB_DIR = Ronin::Platform::Extension::LIB_DIR
 
         # The default extension file
-        EXTENSION_FILE = File.join('ronin','platform','generators','extension.rb')
+        EXTENSION_FILE = File.join('ronin','generators','platform','extension.rb')
 
         #
         # Generates a skeleton Extension.
