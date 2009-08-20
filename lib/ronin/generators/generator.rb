@@ -108,7 +108,7 @@ module Ronin
         if destination
           return super(path,destination)
         else
-          return ERB.new(File.read(path)).result(binding)
+          return ERB.new(File.read(path)).result(binding).chomp
         end
       end
 
