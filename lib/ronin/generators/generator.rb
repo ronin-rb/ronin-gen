@@ -48,7 +48,7 @@ module Ronin
       # Invokes the generator with the given _options_ and the given
       # _arguments_.
       #
-      #   gen.generate!
+      #   gen.generate
       #
       def self.generate(options={},arguments=[])
         generator = self.new(arguments, options)
