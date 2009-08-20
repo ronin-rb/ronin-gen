@@ -7,7 +7,6 @@ require 'tmpdir'
 require 'fileutils'
 
 describe Generators::Platform::Overlay do
-
   before(:all) do
     @name = 'ronin_generated_extension'
     @path = File.join(Dir.tmpdir,@name)
@@ -20,5 +19,4 @@ describe Generators::Platform::Overlay do
   after(:all) do
     FileUtils.rm_r(@path)
   end
-
 end
