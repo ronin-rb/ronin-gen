@@ -52,11 +52,11 @@ of Ronin.
 
 * Generate a skeleton Overlay:
 
-  $ ronin-gen overlay PATH [options]
+    $ ronin-gen overlay PATH [options]
 
 * Generate a skeleton Extension:
 
-  $ ronin-gen extension PATH
+    $ ronin-gen extension PATH
 
 == LICENSE:
 
