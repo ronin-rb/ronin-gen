@@ -12,36 +12,39 @@ require 'fileutils'
 
 describe Generators::Generator do
   before(:all) do
+    @previous_dir = Dir.pwd
     @dir = File.join(Dir.tmpdir,'ronin_generators')
 
     FileUtils.mkdir(@dir)
+    Dir.chdir(@dir)
   end
 
   it "should generate files" do
-    FileGenerator.generate(@dir)
+    FileGenerator.generate
 
     File.read(File.join(@dir,'test.txt')).should == "hello"
   end
 
   it "should touch files" do
-    TouchGenerator.generate(@dir)
+    TouchGenerator.generate
 
     File.file?(File.join(@dir,'test2.txt')).should == true
   end
 
   it "should generate directories" do
-    DirGenerator.generate(@dir)
+    DirGenerator.generate
 
     File.directory?(File.join(@dir,'test')).should == true
   end
 
   it "should generate files using templates" do
-    TemplatedGenerator.generate(@dir, :message => 'hello')
+    TemplatedGenerator.generate(:message => 'hello')
 
     File.read(File.join(@dir,'templated.txt')).should == "message: hello\n"
   end
 
   after(:all) do
     FileUtils.rm_r(@dir)
+    Dir.chdir(@previous_dir)
   end
 end
