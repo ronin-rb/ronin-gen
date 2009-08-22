@@ -48,6 +48,7 @@ module Ronin
       # Invokes the generator with the given _options_ and the given
       # _arguments_.
       #
+      # @example
       #   gen.generate
       #
       def self.generate(options={},arguments=[])
@@ -68,6 +69,7 @@ module Ronin
       #
       # Touches the file at the specified _destination_.
       #
+      # @example
       #   touch 'TODO.txt'
       #
       def touch(destination)
@@ -77,6 +79,7 @@ module Ronin
       #
       # Creates an empty directory at the specified _destination_.
       #
+      # @example
       #   directory 'sub/dir'
       #
       def mkdir(destination)
@@ -86,6 +89,7 @@ module Ronin
       #
       # Copies the _static_file_ to the specified _destination_.
       #
+      # @example
       #   copy_file 'ronin/platform/generators/extension.rb',
       #             'myext/extension.rb'
       #
@@ -98,6 +102,7 @@ module Ronin
       # saves the result at the given _destination_. If _destination_
       # is not given, the result will simply be returned.
       #
+      # @example
       #   template 'ronin/platform/generators/Rakefile.erb', 'Rakefile.erb'
       #
       def template(static_file,destination=nil)

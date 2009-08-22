@@ -32,6 +32,7 @@ module Ronin
       # Invokes the generator with the specified _path_, the given
       # _options_ and the given _arguments_.
       #
+      # @example
       #   gen.generate('path/to/dir')
       #
       def self.generate(path,options={},arguments=[])
