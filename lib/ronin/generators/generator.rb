@@ -18,6 +18,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #
 
+require 'ronin/templates/template'
 require 'ronin/static/finders'
 
 require 'extlib'
@@ -29,6 +30,7 @@ module Ronin
     class Generator < Thor::Group
 
       include Thor::Actions
+      include Templates::Template
       include Static::Finders
 
       def self.inherited(super_class)
@@ -105,13 +107,13 @@ module Ronin
       # @example
       #   template 'ronin/platform/generators/Rakefile.erb', 'Rakefile.erb'
       #
-      def template(static_file,destination=nil)
-        path = find_static_file(static_file)
-
-        if destination
-          return super(path,destination)
-        else
-          return ERB.new(File.read(path)).result(binding).chomp
+      def template(template_path,destination=nil)
+        enter_template(template_path) do |path|
+          if destination
+            super(path,destination)
+          else
+            ERB.new(File.read(path)).result(binding).chomp
+          end
         end
       end
 
