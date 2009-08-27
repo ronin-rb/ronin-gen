@@ -42,16 +42,22 @@ module Ronin
       # Defines the default source root of the generator as the current
       # working directory.
       #
+      # @since 0.2.0
+      #
       def self.source_root
         Dir.pwd
       end
 
       #
-      # Invokes the generator with the given _options_ and the given
-      # _arguments_.
+      # Invokes the generator.
+      #
+      # @param [Hash] options Class options to use with the generator.
+      # @param [Array] arguments Additional arguments for the generator.
       #
       # @example
       #   gen.generate
+      #
+      # @since 0.2.0
       #
       def self.generate(options={},arguments=[])
         generator = self.new(arguments, options)
@@ -63,6 +69,8 @@ module Ronin
       #
       # Default generator method.
       #
+      # @since 0.2.0
+      #
       def generate
       end
 
@@ -71,8 +79,12 @@ module Ronin
       #
       # Touches the file at the specified _destination_.
       #
+      # @param [String] destination The relative path to the file to touch.
+      #
       # @example
       #   touch 'TODO.txt'
+      #
+      # @since 0.2.0
       #
       def touch(destination)
         create_file(destination)
@@ -81,8 +93,13 @@ module Ronin
       #
       # Creates an empty directory at the specified _destination_.
       #
+      # @param [String] destination The relative path of the directory to
+      #                             create.
+      #
       # @example
       #   directory 'sub/dir'
+      #
+      # @since 0.2.0
       #
       def mkdir(destination)
         empty_directory(destination)
@@ -91,21 +108,37 @@ module Ronin
       #
       # Copies the _static_file_ to the specified _destination_.
       #
+      # @param [String] static_file The relative path to the static file.
+      # @param [String] destination The destination to copy the static
+      #                             file to.
+      #
       # @example
       #   copy_file 'ronin/platform/generators/extension.rb',
       #             'myext/extension.rb'
+      #
+      # @since 0.2.0
       #
       def copy_file(static_file,destination)
         super(find_static_file(static_file),destination)
       end
 
       #
-      # Renders the ERB template using the specified _static_file_ and
-      # saves the result at the given _destination_. If _destination_
-      # is not given, the result will simply be returned.
+      # Renders the ERB template at the specified _template_path_ and
+      # saves the result at the given _destination_.
+      #
+      # @param [String] template_path The relative path to the template.
+      # @param [String, nil] destination The destination to write the
+      #                                  result of the rendered template to.
+      #
+      # @return [nil, String] If destination is +nil+, the result of the
+      #                       rendered template will be returned.
       #
       # @example
       #   template 'ronin/platform/generators/Rakefile.erb', 'Rakefile.erb'
+      #
+      #   template '_helpers.erb'
+      #
+      # @since 0.2.0
       #
       def template(template_path,destination=nil)
         enter_template(template_path) do |path|
