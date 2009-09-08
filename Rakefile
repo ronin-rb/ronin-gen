@@ -11,6 +11,11 @@ Hoe.spec('ronin-gen') do
   self.developer('Postmodern', 'postmodern.mod3@gmail.com')
   self.remote_rdoc_dir = 'docs/ronin-gen'
   self.extra_deps = [['ronin', '>=0.2.5']]
+
+  self.extra_dev_deps = [
+    ['rspec', '>=1.1.12']
+  ]
+
   self.spec_extras = {:has_rdoc => 'yard'}
 end
 
