@@ -29,8 +29,16 @@ module Ronin
       argument :path, :type => :string, :require => true
 
       #
-      # Invokes the generator with the specified _path_, the given
-      # _options_ and the given _arguments_.
+      # Invokes the generator.
+      #
+      # @param [String] path
+      #   The directory to generate within.
+      #
+      # @param [Hash] options
+      #   Additional command-line options for the generator.
+      #
+      # @param [Array] arguments
+      #   Additional command-line arguments for the generator.
       #
       # @example
       #   gen.generate('path/to/dir')
@@ -43,6 +51,12 @@ module Ronin
       end
 
       no_tasks do
+        #
+        # Invokes the tasks of the generator.
+        #
+        # @param [Array] names
+        #   The task names to invoke.
+        #
         def invoke(*names,&block)
           if self.path
             self.destination_root = self.path
