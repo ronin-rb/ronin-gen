@@ -51,8 +51,11 @@ module Ronin
       #
       # Invokes the generator.
       #
-      # @param [Hash] options Class options to use with the generator.
-      # @param [Array] arguments Additional arguments for the generator.
+      # @param [Hash] options
+      #   Class options to use with the generator.
+      #
+      # @param [Array] arguments
+      #   Additional arguments for the generator.
       #
       # @example
       #   gen.generate
@@ -77,9 +80,10 @@ module Ronin
       protected
 
       #
-      # Touches the file at the specified _destination_.
+      # Touches a file.
       #
-      # @param [String] destination The relative path to the file to touch.
+      # @param [String] destination
+      #   The relative path to the file to touch.
       #
       # @example
       #   touch 'TODO.txt'
@@ -91,10 +95,10 @@ module Ronin
       end
 
       #
-      # Creates an empty directory at the specified _destination_.
+      # Creates an empty directory.
       #
-      # @param [String] destination The relative path of the directory to
-      #                             create.
+      # @param [String] destination
+      #   The relative path of the directory to create.
       #
       # @example
       #   directory 'sub/dir'
@@ -106,11 +110,13 @@ module Ronin
       end
 
       #
-      # Copies the _static_file_ to the specified _destination_.
+      # Copies a static-file.
       #
-      # @param [String] static_file The relative path to the static file.
-      # @param [String] destination The destination to copy the static
-      #                             file to.
+      # @param [String] static_file
+      #   The relative path to the static file.
+      #
+      # @param [String] destination
+      #   The destination to copy the static file to.
       #
       # @example
       #   copy_file 'ronin/platform/generators/extension.rb',
@@ -126,12 +132,15 @@ module Ronin
       # Renders the ERB template at the specified _template_path_ and
       # saves the result at the given _destination_.
       #
-      # @param [String] template_path The relative path to the template.
-      # @param [String, nil] destination The destination to write the
-      #                                  result of the rendered template to.
+      # @param [String] template_path
+      #   The relative path to the template.
       #
-      # @return [nil, String] If destination is +nil+, the result of the
-      #                       rendered template will be returned.
+      # @param [String, nil] destination
+      #   The destination to write the result of the rendered template to.
+      #
+      # @return [nil, String]
+      #   If destination is +nil+, the result of the rendered template
+      #   will be returned.
       #
       # @example
       #   template 'ronin/platform/generators/Rakefile.erb', 'Rakefile.erb'
