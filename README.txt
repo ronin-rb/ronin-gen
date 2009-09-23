@@ -38,14 +38,6 @@ install or update Overlays.
 
 * Generators for Overlays and Extensions.
 
-== REQUIREMENTS:
-
-* {ronin}[http://ronin.rubyforge.org/] >= 0.2.5
-
-== INSTALL:
-
-  $ sudo gem install ronin-gen
-
 == SYNOPSIS:
 
 * Generate a skeleton Overlay:
@@ -55,6 +47,14 @@ install or update Overlays.
 * Generate a skeleton Extension:
 
     $ ronin-gen extension PATH
+
+== REQUIREMENTS:
+
+* {ronin}[http://ronin.rubyforge.org/] >= 0.2.5
+
+== INSTALL:
+
+  $ sudo gem install ronin-gen
 
 == LICENSE:
 
