@@ -50,7 +50,7 @@ install or update Overlays.
 
 == REQUIREMENTS:
 
-* {ronin}[http://ronin.rubyforge.org/] >= 0.2.5
+* {ronin}[http://ronin.rubyforge.org/] >= 0.3.0
 
 == INSTALL:
 

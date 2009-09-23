@@ -10,7 +10,9 @@ Hoe.spec('ronin-gen') do
   self.rubyforge_name = 'ronin'
   self.developer('Postmodern', 'postmodern.mod3@gmail.com')
   self.remote_rdoc_dir = 'docs/ronin-gen'
-  self.extra_deps = [['ronin', '>=0.2.5']]
+  self.extra_deps = [
+    ['ronin', '>=0.3.0']
+  ]
 
   self.extra_dev_deps = [
     ['rspec', '>=1.1.12'],
