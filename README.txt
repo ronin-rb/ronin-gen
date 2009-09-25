@@ -36,6 +36,10 @@ install or update Overlays.
 
 == FEATURES:
 
+* Provides {Ronin::Generators::Generator}, a Thor based generator class that
+  can be used to create new generators.
+* Provides {Ronin::Generators::DirGenerator}, a Thor based generator that
+  can be used to create new directory generators.
 * Generators for Overlays and Extensions.
 
 == SYNOPSIS:
