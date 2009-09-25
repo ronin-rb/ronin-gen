@@ -36,9 +36,9 @@ module Ronin
 
           desc "default", "Prints the list of available generators"
           def default
-            puts CommandLine.commands.map { |name|
+            print_array CommandLine.commands.map { |name|
               if name =~ /^gen_/
-                name.gsub(/^gen_/,'  ')
+                name.gsub(/^gen_/,'')
               else
                 nil
               end
