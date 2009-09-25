@@ -1,7 +1,7 @@
 === 0.2.0 / 2009-09-24
 
-* Require Ronin >= 0.3.0.
-* Require RSpec >= 1.2.8.
+* Require ronin >= 0.3.0.
+* Require rspec >= 1.2.8.
 * Updated the project summary and 3-point description of Ronin Gen.
 * Moved to YARD based documentation.
 * Refactored Ronin::Generators::Generator to inherit from Thor.
