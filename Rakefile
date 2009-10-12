@@ -11,7 +11,7 @@ Hoe.spec('ronin-gen') do
   self.developer('Postmodern', 'postmodern.mod3@gmail.com')
   self.remote_rdoc_dir = 'docs/ronin-gen'
   self.extra_deps = [
-    ['ronin', '>=0.3.0']
+    ['ronin', '>=0.3.1']
   ]
 
   self.extra_dev_deps = [
