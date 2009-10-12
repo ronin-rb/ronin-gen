@@ -42,9 +42,6 @@ module Ronin
         # The Overlay lib directory
         LIB_DIR = Ronin::Platform::Overlay::LIB_DIR
 
-        # The Overlay objects directory
-        OBJECTS_DIR = Ronin::Platform::Overlay::OBJECTS_DIR
-
         # Default license to use
         DEFAULT_LICENSE = 'CC-by'
 
@@ -103,7 +100,7 @@ module Ronin
           mkdir LIB_DIR
           touch File.join(LIB_DIR,Ronin::Platform::Overlay::INIT_FILE)
 
-          mkdir OBJECTS_DIR
+          mkdir Ronin::Platform::Overlay::CACHE_DIR
           mkdir 'tasks'
         end
 

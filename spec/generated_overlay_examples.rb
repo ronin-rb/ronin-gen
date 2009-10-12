@@ -21,10 +21,10 @@ shared_examples_for "Generated Overlay" do
     File.directory?(lib_dir).should == true
   end
 
-  it "should create a objects directory" do
-    objects_dir = File.join(@path,Ronin::Platform::Overlay::OBJECTS_DIR)
+  it "should create a cache directory" do
+    cache_dir = File.join(@path,Ronin::Platform::Overlay::CACHE_DIR)
 
-    File.directory?(objects_dir).should == true
+    File.directory?(cache_dir).should == true
   end
 
   it "should create a Rakefile" do
