@@ -9,25 +9,25 @@ shared_examples_for "Generated Overlay" do
     File.directory?(@path).should == true
   end
 
-  it "should create a static directory" do
+  it "should create a static/ directory" do
     static_dir = File.join(@path,'static')
 
     File.directory?(static_dir).should == true
   end
 
-  it "should create a lib directory" do
+  it "should create a lib/ directory" do
     lib_dir = File.join(@path,Ronin::Platform::Overlay::LIB_DIR)
 
     File.directory?(lib_dir).should == true
   end
 
-  it "should create a cache directory" do
+  it "should create a cache/ directory" do
     cache_dir = File.join(@path,Ronin::Platform::Overlay::CACHE_DIR)
 
     File.directory?(cache_dir).should == true
   end
 
-  it "should create a exts directory" do
+  it "should create a exts/ directory" do
     exts_dir = File.join(@path,Ronin::Platform::Overlay::EXTS_DIR)
 
     File.directory?(exts_dir).should == true
