@@ -101,6 +101,8 @@ module Ronin
           touch File.join(LIB_DIR,Ronin::Platform::Overlay::INIT_FILE)
 
           mkdir Ronin::Platform::Overlay::CACHE_DIR
+          mkdir Ronin::Platform::Overlay::EXTS_DIR
+
           mkdir 'tasks'
         end
 
