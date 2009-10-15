@@ -27,6 +27,12 @@ shared_examples_for "Generated Overlay" do
     File.directory?(cache_dir).should == true
   end
 
+  it "should create a exts directory" do
+    exts_dir = File.join(@path,Ronin::Platform::Overlay::EXTS_DIR)
+
+    File.directory?(exts_dir).should == true
+  end
+
   it "should create a Rakefile" do
     rakefile = File.join(@path,'Rakefile')
 
