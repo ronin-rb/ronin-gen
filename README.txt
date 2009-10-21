@@ -2,8 +2,9 @@
 
 * http://ronin.rubyforge.org/gen/
 * http://github.com/postmodern/ronin-gen
+* http://github.com/postmodern/ronin-gen/issues
+* http://groups.google.com/group/ronin-ruby
 * irc.freenode.net #ronin
-* Postmodern (postmodern.mod3 at gmail.com)
 
 == DESCRIPTION:
 
