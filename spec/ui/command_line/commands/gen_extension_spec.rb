@@ -8,8 +8,7 @@ require 'fileutils'
 
 describe UI::CommandLine::Commands::GenExtension do
   before(:all) do
-    @name = 'ronin_generated_extension'
-    @path = File.join(Dir.tmpdir,@name)
+    @path = File.join(Dir.tmpdir,'ronin_generated_extension.rb')
 
     UI::CommandLine::Commands::GenExtension.start [@path]
   end

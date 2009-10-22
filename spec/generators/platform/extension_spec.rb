@@ -8,10 +8,9 @@ require 'fileutils'
 
 describe Generators::Platform::Overlay do
   before(:all) do
-    @name = 'ronin_generated_extension'
-    @path = File.join(Dir.tmpdir,@name)
+    @path = File.join(Dir.tmpdir,'ronin_generated_extension.rb')
 
-    Generators::Platform::Extension.generate(@path)
+    Generators::Platform::Extension.generate({},[@path])
   end
 
   it_should_behave_like "Generated Extension"

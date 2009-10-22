@@ -19,31 +19,24 @@
 #
 
 require 'ronin/generators/platform/static'
-require 'ronin/generators/dir_generator'
+require 'ronin/generators/generator'
 require 'ronin/platform/extension'
 
 module Ronin
   module Generators
     module Platform
-      class Extension < DirGenerator
-
-        # The lib/ directory of the extension
-        LIB_DIR = Ronin::Platform::Extension::LIB_DIR
+      class Extension < Generator
 
         # The default extension file
         EXTENSION_FILE = File.join('ronin','generators','platform','extension.rb')
+
+        argument :path, :type => :string, :require => true
 
         #
         # Generates a skeleton Extension.
         #
         def generate
-          name = File.basename(self.path)
-
-          mkdir LIB_DIR
-          touch File.join(LIB_DIR,name + '.rb')
-          mkdir File.join(LIB_DIR,name)
-
-          copy_file EXTENSION_FILE, Ronin::Platform::Extension::EXTENSION_FILE
+          copy_file EXTENSION_FILE, self.path
         end
 
       end
