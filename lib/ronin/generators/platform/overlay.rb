@@ -91,14 +91,13 @@ module Ronin
         # Generates a skeleton Overlay.
         #
         def generate
-          mkdir 'static'
+          mkdir LIB_DIR
+          touch File.join(LIB_DIR,Ronin::Platform::Overlay::INIT_FILE)
 
+          mkdir 'static'
           inside File.join('static','ronin','platform') do
             copy_file METADATA_XSL, File.basename(METADATA_XSL)
           end
-
-          mkdir LIB_DIR
-          touch File.join(LIB_DIR,Ronin::Platform::Overlay::INIT_FILE)
 
           mkdir Ronin::Platform::Overlay::CACHE_DIR
           mkdir Ronin::Platform::Overlay::EXTS_DIR
