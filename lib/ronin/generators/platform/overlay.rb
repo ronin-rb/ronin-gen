@@ -143,7 +143,7 @@ module Ronin
             )
 
             root = XML::Node.new('ronin-overlay',doc)
-            root['version'] = Ronin::VERSION
+            root['version'] = Ronin::Platform::Overlay::VERSION.to_s
 
             title_tag = XML::Node.new('title',doc)
             title_tag << XML::Text.new(@title,doc)

@@ -50,6 +50,10 @@ shared_examples_for "Generated Overlay" do
       @doc = Nokogiri::XML(open(File.join(@path,Ronin::Platform::Overlay::METADATA_FILE)))
     end
 
+    it "should have a version" do
+      @doc.at('/ronin-overlay/@version').inner_text.to_i.should == Ronin::Platform::Overlay::VERSION
+    end
+
     it "should have the title" do
       @doc.at('/ronin-overlay/title').inner_text.should == @title
     end
