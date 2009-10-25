@@ -48,34 +48,35 @@ shared_examples_for "Generated Overlay" do
   describe "XML metadata file" do
     before(:all) do
       @doc = Nokogiri::XML(open(File.join(@path,Ronin::Platform::Overlay::METADATA_FILE)))
+      @root = @doc.at('/ronin-overlay')
     end
 
     it "should have a version" do
-      @doc.at('/ronin-overlay/@version').inner_text.to_i.should == Ronin::Platform::Overlay::VERSION
+      @root['version'].to_i.should == Ronin::Platform::Overlay::VERSION
     end
 
     it "should have the title" do
-      @doc.at('/ronin-overlay/title').inner_text.should == @title
+      @root.at('title').inner_text.should == @title
     end
 
     it "should have the source URL" do
-      @doc.at('/ronin-overlay/source').inner_text.should == @source
+      @root.at('source').inner_text.should == @source
     end
 
     it "should have the source-view URL" do
-      @doc.at('/ronin-overlay/source-view').inner_text.should == @source_view
+      @root.at('source-view').inner_text.should == @source_view
     end
 
     it "should have the website URL" do
-      @doc.at('/ronin-overlay/website').inner_text.should == @website
+      @root.at('website').inner_text.should == @website
     end
 
     it "should have the license" do
-      @doc.at('/ronin-overlay/license').inner_text.should == @license
+      @root.at('license').inner_text.should == @license
     end
 
     it "should have the description" do
-      @doc.at('/ronin-overlay/description').inner_text.should == @description
+      @root.at('description').inner_text.should == @description
     end
   end
 
