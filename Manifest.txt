@@ -20,6 +20,7 @@ lib/ronin/ui/command_line/commands/gen_extension.rb
 tasks/spec.rb
 tasks/yard.rb
 spec/spec_helper.rb
+spec/helpers/database.rb
 spec/generated_overlay_examples.rb
 spec/generated_extension_examples.rb
 spec/generators/helpers/generators.rb
