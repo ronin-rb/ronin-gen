@@ -17,7 +17,6 @@ lib/ronin/generators/platform/extension.rb
 lib/ronin/ui/command_line/commands/gen.rb
 lib/ronin/ui/command_line/commands/gen_overlay.rb
 lib/ronin/ui/command_line/commands/gen_extension.rb
-tasks/spec.rb
 tasks/yard.rb
 spec/spec_helper.rb
 spec/helpers/database.rb
