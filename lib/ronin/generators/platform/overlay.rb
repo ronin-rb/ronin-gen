@@ -60,7 +60,7 @@ module Ronin
         class_option :maintainers, :type => :hash, :default => {}, :banner => 'NAME:EMAIL ...'
         class_option :gems, :type => :array, :default => [], :banner => 'GEM ...'
         class_option :tasks, :type => :array, :default => [], :banner => 'TASK ...'
-        class_option :test_suite, :type => :string, :banner => 'test|spec'
+        class_option :test_suite, :type => :string, :banner => 'test|rspec'
 
         def defaults
           @title = options[:title]
