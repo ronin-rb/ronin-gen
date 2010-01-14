@@ -20,7 +20,7 @@ Hoe.spec('ronin-gen') do
   ]
 
   self.extra_dev_deps = [
-    ['rspec', '>=1.2.8'],
+    ['rspec', '>=1.2.9'],
     ['yard', '>=0.5.2']
   ]
 
