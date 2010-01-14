@@ -6,7 +6,6 @@ require 'hoe/signing'
 require './tasks/yard.rb'
 
 Hoe.spec('ronin-gen') do
-  self.rubyforge_name = 'ronin'
   self.developer('Postmodern', 'postmodern.mod3@gmail.com')
 
   self.rspec_options += ['--colour', '--format', 'specdoc']
