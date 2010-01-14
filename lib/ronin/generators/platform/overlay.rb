@@ -62,28 +62,24 @@ module Ronin
         class_option :tasks, :type => :array, :default => [], :banner => 'TASK ...'
         class_option :test_suite, :type => :string, :banner => 'test|spec'
 
-        no_tasks do
-          def invoke(*names,&block)
-            @title = options[:title]
-            @source = options[:source]
-            @source_view = options[:source_view]
-            @website = options[:website]
-            @license = options[:license]
-            @description = options[:description]
-            @maintainers = options[:maintainers]
-            @gems = options[:gems]
-            @tasks = options[:tasks]
-            @test_suite = options[:test_suite]
+        def defaults
+          @title = options[:title]
+          @source = options[:source]
+          @source_view = options[:source_view]
+          @website = options[:website]
+          @license = options[:license]
+          @description = options[:description]
+          @maintainers = options[:maintainers]
+          @gems = options[:gems]
+          @tasks = options[:tasks]
+          @test_suite = options[:test_suite]
 
-            @title ||= File.basename(self.path).gsub(/[_\s]+/,' ').capitalize
-            @source_view ||= @source
-            @website ||= @source_view
+          @title ||= File.basename(self.path).gsub(/[_\s]+/,' ').capitalize
+          @source_view ||= @source
+          @website ||= @source_view
 
-            if @maintainers
-              @maintainers = DEFAULT_MAINTAINER
-            end
-
-            super(*names,&block)
+          if @maintainers
+            @maintainers = DEFAULT_MAINTAINER
           end
         end
 
@@ -125,8 +121,9 @@ module Ronin
           when 'test','unit'
             mkdir 'test'
           when 'rspec', 'spec'
+            copy_file File.join('ronin','generators','platform','tasks','spec.rb'), 'tasks'
             mkdir 'spec'
-            copy_file File.join('ronin','generators','platform','spec','spec_helper.rb'),'spec'
+            copy_file File.join('ronin','generators','platform','spec','spec_helper.rb'), 'spec'
           end
         end
 
