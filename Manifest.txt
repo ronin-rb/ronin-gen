@@ -23,6 +23,7 @@ spec/generated_overlay_examples.rb
 spec/generated_extension_examples.rb
 spec/generators/helpers/generators.rb
 spec/generators/helpers/static/generators/templated.txt.erb
+spec/generators/classes/basic_generator.rb
 spec/generators/classes/file_generator.rb
 spec/generators/classes/touch_generator.rb
 spec/generators/classes/dir_generator.rb
@@ -35,4 +36,5 @@ spec/ui/command_line/commands/gen_overlay_spec.rb
 spec/ui/command_line/commands/gen_extension_spec.rb
 static/ronin/generators/platform/Rakefile.erb
 static/ronin/generators/platform/extension.rb
+static/ronin/generators/platform/tasks/spec.rb
 static/ronin/generators/platform/spec/spec_helper.rb

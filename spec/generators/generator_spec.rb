@@ -2,6 +2,7 @@ require 'ronin/generators/generator'
 
 require 'spec_helper'
 require 'generators/helpers/generators'
+require 'generators/classes/basic_generator'
 require 'generators/classes/file_generator'
 require 'generators/classes/touch_generator'
 require 'generators/classes/dir_generator'
@@ -17,6 +18,13 @@ describe Generators::Generator do
 
     FileUtils.mkdir(@dir)
     Dir.chdir(@dir)
+  end
+
+  it "should set default values before invoking any tasks" do
+    @generator = BasicGenerator.new
+
+    @generator.invoke
+    @generator.var.should == 'test'
   end
 
   it "should generate files" do
