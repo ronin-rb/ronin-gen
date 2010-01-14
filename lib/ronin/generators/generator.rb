@@ -77,7 +77,24 @@ module Ronin
       def generate
       end
 
+      no_tasks do
+        def invoke(*names,&block)
+          defaults()
+
+          super(*names,&block)
+        end
+      end
+
       protected
+
+      #
+      # Default method to initialize any instance variables before any of
+      # the tasks are invoked.
+      #
+      # @since 0.2.2
+      #
+      def defaults
+      end
 
       #
       # Touches a file.
