@@ -93,7 +93,7 @@ module Ronin
           touch File.join(LIB_DIR,Ronin::Platform::Overlay::INIT_FILE)
 
           mkdir 'static'
-          copy_file File.join('ronin','static',METADATA_XSL), File.join('static',File.basename(METADATA_XSL))
+          copy_file File.join('ronin','platform',METADATA_XSL), File.join('static',METADATA_XSL)
 
           mkdir Ronin::Platform::Overlay::CACHE_DIR
           mkdir Ronin::Platform::Overlay::EXTS_DIR
