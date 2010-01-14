@@ -107,7 +107,7 @@ module Ronin
         def rakefile
           case @test_suite
           when 'rspec', 'spec'
-            @tasks << 'spec' unless @tasks.include?('spec')
+            @tasks << './tasks/spec.rb'
           end
 
           template File.join('ronin','generators','platform','Rakefile.erb'), 'Rakefile'
