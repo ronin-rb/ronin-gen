@@ -37,7 +37,7 @@ module Ronin
         METADATA_FILE = Ronin::Platform::Overlay::METADATA_FILE
 
         # The Overlay metadata XSL URL
-        METADATA_XSL = File.join('ronin','platform','overlay.xsl')
+        METADATA_XSL = 'overlay.xsl'
 
         # The Overlay lib directory
         LIB_DIR = Ronin::Platform::Overlay::LIB_DIR
@@ -91,7 +91,7 @@ module Ronin
           touch File.join(LIB_DIR,Ronin::Platform::Overlay::INIT_FILE)
 
           mkdir 'static'
-          copy_file METADATA_XSL, File.join('static',File.basename(METADATA_XSL))
+          copy_file File.join('ronin','static',METADATA_XSL), File.join('static',File.basename(METADATA_XSL))
 
           mkdir Ronin::Platform::Overlay::CACHE_DIR
           mkdir Ronin::Platform::Overlay::EXTS_DIR
