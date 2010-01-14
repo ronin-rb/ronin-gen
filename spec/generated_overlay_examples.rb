@@ -9,10 +9,22 @@ shared_examples_for "Generated Overlay" do
     File.directory?(@path).should == true
   end
 
+  it "should create a tasks/ directory" do
+    tasks_dir = File.join(@path,'tasks')
+
+    File.directory?(tasks_dir).should == true
+  end
+
   it "should create a static/ directory" do
     static_dir = File.join(@path,'static')
 
     File.directory?(static_dir).should == true
+  end
+
+  it "should copy the overlay.xsl file into the static/ directory" do
+    overlay_xsl = File.join(@path,'static','overlay.xsl')
+
+    File.file?(overlay_xsl).should == true
   end
 
   it "should create a lib/ directory" do
