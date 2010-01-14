@@ -37,4 +37,5 @@ spec/ui/command_line/commands/gen_extension_spec.rb
 static/ronin/generators/platform/Rakefile.erb
 static/ronin/generators/platform/extension.rb
 static/ronin/generators/platform/tasks/spec.rb
+static/ronin/generators/platform/tasks/yard.rb.erb
 static/ronin/generators/platform/spec/spec_helper.rb

@@ -61,6 +61,7 @@ module Ronin
         class_option :gems, :type => :array, :default => [], :banner => 'GEM ...'
         class_option :tasks, :type => :array, :default => [], :banner => 'TASK ...'
         class_option :test_suite, :type => :string, :banner => 'unit|rspec'
+        class_option :docs, :type => :boolean
 
         def defaults
           @title = options[:title]
@@ -73,6 +74,7 @@ module Ronin
           @gems = options[:gems]
           @tasks = options[:tasks]
           @test_suite = options[:test_suite]
+          @docs = options[:docs]
 
           @title ||= File.basename(self.path).gsub(/[_\s]+/,' ').capitalize
           @source_view ||= @source
@@ -108,6 +110,10 @@ module Ronin
             @tasks << './tasks/spec.rb'
           end
 
+          if @docs
+            @tasks << './tasks/yard.rb'
+          end
+
           template File.join('ronin','generators','platform','Rakefile.erb'), 'Rakefile'
         end
 
@@ -122,6 +128,15 @@ module Ronin
             copy_file File.join('ronin','generators','platform','tasks','spec.rb'), File.join('tasks','spec.rb')
             mkdir 'spec'
             copy_file File.join('ronin','generators','platform','spec','spec_helper.rb'), File.join('spec','spec_helper.rb')
+          end
+        end
+
+        #
+        # Generate the YARD documentation generation task.
+        #
+        def docs
+          if @docs
+            template File.join('ronin','generators','platform','tasks','yard.rb.erb'), File.join('tasks','yard.rb')
           end
         end
 
