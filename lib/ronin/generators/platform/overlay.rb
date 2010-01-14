@@ -121,9 +121,9 @@ module Ronin
           when 'test','unit'
             mkdir 'test'
           when 'rspec', 'spec'
-            copy_file File.join('ronin','generators','platform','tasks','spec.rb'), 'tasks'
+            copy_file File.join('ronin','generators','platform','tasks','spec.rb'), File.join('tasks','spec.rb')
             mkdir 'spec'
-            copy_file File.join('ronin','generators','platform','spec','spec_helper.rb'), 'spec'
+            copy_file File.join('ronin','generators','platform','spec','spec_helper.rb'), File.join('spec','spec_helper.rb')
           end
         end
 
