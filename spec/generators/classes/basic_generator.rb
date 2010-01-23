@@ -9,7 +9,7 @@ class BasicGenerator < Generators::Generator
 
   protected
 
-  def defaults
+  def setup
     @var = 'test'
   end
 

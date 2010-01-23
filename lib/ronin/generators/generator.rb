@@ -111,7 +111,7 @@ module Ronin
       def initialize(arguments=[],options={},config={},&block)
         super(arguments,options,config)
 
-        defaults()
+        setup()
         block.call(self) if block
       end
 
@@ -121,7 +121,7 @@ module Ronin
       #
       # @since 0.2.2
       #
-      def defaults
+      def setup
       end
 
       #

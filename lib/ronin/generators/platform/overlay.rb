@@ -63,7 +63,7 @@ module Ronin
         class_option :test_suite, :type => :string, :banner => 'unit|rspec'
         class_option :docs, :type => :boolean
 
-        def defaults
+        def setup
           @title = options[:title]
           @source = options[:source]
           @source_view = options[:source_view]
