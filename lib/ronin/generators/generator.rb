@@ -19,8 +19,8 @@
 #
 
 require 'ronin/templates/template'
-require 'ronin/static/finders'
 
+require 'static_paths/finders'
 require 'extlib'
 require 'erb'
 require 'thor'
@@ -31,7 +31,7 @@ module Ronin
 
       include Thor::Actions
       include Templates::Template
-      include Static::Finders
+      include StaticPaths::Finders
 
       def self.inherited(super_class)
         class_name = super_class.name.split('::').last.snake_case

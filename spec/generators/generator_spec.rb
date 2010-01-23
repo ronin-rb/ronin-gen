@@ -1,7 +1,7 @@
 require 'ronin/generators/generator'
 
 require 'spec_helper'
-require 'generators/helpers/generators'
+require 'generators/helpers/static'
 require 'generators/classes/basic_generator'
 require 'generators/classes/file_generator'
 require 'generators/classes/touch_generator'
