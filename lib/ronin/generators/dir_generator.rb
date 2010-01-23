@@ -50,21 +50,25 @@ module Ronin
         generator.invoke()
       end
 
-      no_tasks do
-        #
-        # Invokes the tasks of the generator.
-        #
-        # @param [Array] names
-        #   The task names to invoke.
-        #
-        def invoke(*names,&block)
-          if self.path
-            self.destination_root = self.path
-          end
+      protected
 
-          inside() do |path|
-            super(*names,&block)
-          end
+      #
+      # Initializes the generator.
+      #
+      # @param [Array] arguments
+      #   Additional arguments for the generator.
+      #
+      # @param [Hash] options
+      #   Options to pass to the generator.
+      #
+      # @param [Hash] config
+      #   Additional configuration for the generator.
+      #
+      # @since 0.2.2
+      #
+      def initialize(arguments=[],options={},config={})
+        super(arguments,options,config) do |gen|
+          gen.destination_root = self.path
         end
       end
 

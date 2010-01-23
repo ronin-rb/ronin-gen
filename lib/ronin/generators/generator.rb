@@ -77,15 +77,28 @@ module Ronin
       def generate
       end
 
-      no_tasks do
-        def invoke(*names,&block)
-          defaults()
-
-          super(*names,&block)
-        end
-      end
-
       protected
+
+      #
+      # Initializes the generator.
+      #
+      # @param [Array] arguments
+      #   Additional arguments for the generator.
+      #
+      # @param [Hash] options
+      #   Options to pass to the generator.
+      #
+      # @param [Hash] config
+      #   Additional configuration for the generator.
+      #
+      # @since 0.2.2
+      #
+      def initialize(arguments=[],options={},config={},&block)
+        super(arguments,options,config)
+
+        defaults()
+        block.call(self) if block
+      end
 
       #
       # Default method to initialize any instance variables before any of
