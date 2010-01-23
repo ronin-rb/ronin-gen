@@ -45,7 +45,22 @@ module Ronin
       # @since 0.2.0
       #
       def self.source_root
-        Dir.pwd
+        @generator_source_root ||= Dir.pwd
+      end
+
+      #
+      # Sets the source root of the generator.
+      #
+      # @param [String] new_dir
+      #   The new source root directory.
+      #
+      # @return [String]
+      #   The source root directory of the generator.
+      #
+      # @since 0.2.2
+      #
+      def self.source_root=(new_dir)
+        @genereator_source_root = File.expand_path(new_dir)
       end
 
       #
