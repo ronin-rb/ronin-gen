@@ -9,6 +9,7 @@ bin/ronin-gen-extension
 lib/ronin/gen.rb
 lib/ronin/gen/generator.rb
 lib/ronin/gen/dir_generator.rb
+lib/ronin/gen/generatable.rb
 lib/ronin/gen/version.rb
 lib/ronin/gen/platform/config.rb
 lib/ronin/gen/platform/overlay.rb

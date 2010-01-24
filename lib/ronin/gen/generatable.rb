@@ -1,7 +1,7 @@
 #
 # Ronin Gen - A Ruby library for Ronin that provides various generators.
 #
-# Copyright (c) 2009 Hal Brodigan (postmodern.mod3 at gmail.com)
+# Copyright (c) 2009-2010 Hal Brodigan (postmodern.mod3 at example.com)
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,8 +18,19 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #
 
-require 'ronin/gen/generator'
-require 'ronin/gen/dir_generator'
-require 'ronin/gen/generatable'
-require 'ronin/gen/platform'
-require 'ronin/gen/version'
+module Ronin
+  module Gen
+    module Generatable
+      #
+      # Default method which will be called upon generation.
+      #
+      # @param [String] path
+      #   The path to pass to the generator.
+      #
+      # @since 0.3.0
+      #
+      def generate(path)
+      end
+    end
+  end
+end
