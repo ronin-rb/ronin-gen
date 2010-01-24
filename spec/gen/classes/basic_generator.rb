@@ -1,6 +1,6 @@
-require 'ronin/generators/generator'
+require 'ronin/gen/generator'
 
-class BasicGenerator < Generators::Generator
+class BasicGenerator < Gen::Generator
 
   attr_reader :var
 

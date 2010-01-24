@@ -18,8 +18,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #
 
-require 'ronin/generators/platform/config'
-require 'ronin/generators/dir_generator'
+require 'ronin/gen/platform/config'
+require 'ronin/gen/dir_generator'
 require 'ronin/platform/overlay'
 require 'ronin/version'
 
@@ -27,7 +27,7 @@ require 'nokogiri'
 require 'set'
 
 module Ronin
-  module Generators
+  module Gen
     module Platform
       class Overlay < DirGenerator
 
@@ -114,7 +114,7 @@ module Ronin
             @tasks << './tasks/yard.rb'
           end
 
-          template File.join('ronin','generators','platform','Rakefile.erb'), 'Rakefile'
+          template File.join('ronin','gen','platform','Rakefile.erb'), 'Rakefile'
         end
 
         #
@@ -125,9 +125,9 @@ module Ronin
           when 'test','unit'
             mkdir 'test'
           when 'rspec', 'spec'
-            copy_file File.join('ronin','generators','platform','tasks','spec.rb'), File.join('tasks','spec.rb')
+            copy_file File.join('ronin','gen','platform','tasks','spec.rb'), File.join('tasks','spec.rb')
             mkdir 'spec'
-            copy_file File.join('ronin','generators','platform','spec','spec_helper.rb'), File.join('spec','spec_helper.rb')
+            copy_file File.join('ronin','gen','platform','spec','spec_helper.rb'), File.join('spec','spec_helper.rb')
           end
         end
 
@@ -136,7 +136,7 @@ module Ronin
         #
         def docs
           if @docs
-            template File.join('ronin','generators','platform','tasks','yard.rb.erb'), File.join('tasks','yard.rb')
+            template File.join('ronin','gen','platform','tasks','yard.rb.erb'), File.join('tasks','yard.rb')
           end
         end
 

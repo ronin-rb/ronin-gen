@@ -1,6 +1,6 @@
-require 'ronin/generators/generator'
+require 'ronin/gen/generator'
 
-class FileGenerator < Generators::Generator
+class FileGenerator < Gen::Generator
 
   def generate
     create_file('test.txt') do

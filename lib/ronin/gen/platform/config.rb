@@ -21,7 +21,7 @@
 require 'static_paths'
 
 module Ronin
-  module Generators
+  module Gen
     module Platform
       module Config
         include StaticPaths

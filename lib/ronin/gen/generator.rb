@@ -26,7 +26,7 @@ require 'erb'
 require 'thor'
 
 module Ronin
-  module Generators
+  module Gen
     class Generator < Thor::Group
 
       include Thor::Actions

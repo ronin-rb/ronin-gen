@@ -1,4 +1,4 @@
-require 'ronin/generators/platform/overlay'
+require 'ronin/gen/platform/overlay'
 
 require 'spec_helper'
 require 'generated_overlay_examples'
@@ -6,7 +6,7 @@ require 'generated_overlay_examples'
 require 'tmpdir'
 require 'fileutils'
 
-describe Generators::Platform::Overlay do
+describe Gen::Platform::Overlay do
   before(:all) do
     @name = 'ronin_generated_overlay'
     @path = File.join(Dir.tmpdir,@name)
@@ -17,7 +17,7 @@ describe Generators::Platform::Overlay do
     @license = 'GPL-2'
     @description = 'This is a test overlay'
 
-    Generators::Platform::Overlay.generate(
+    Gen::Platform::Overlay.generate(
       @path,
       :title => @title,
       :source => @source,

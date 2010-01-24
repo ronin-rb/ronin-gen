@@ -1,7 +1,7 @@
 #
 # Ronin Gen - A Ruby library for Ronin that provides various generators.
 #
-# Copyright (c) 2009 Hal Brodigan (postmodern.mod3 at example.com)
+# Copyright (c) 2009 Hal Brodigan (postmodern.mod3 at gmail.com)
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,9 +18,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #
 
+require 'ronin/gen/platform/config'
+require 'ronin/gen/generator'
+require 'ronin/platform/extension'
+
 module Ronin
-  module Generators
-    # Ronin Gen version
-    VERSION = '0.2.1'
+  module Gen
+    module Platform
+      class Extension < Generator
+
+        # The default extension file
+        EXTENSION_FILE = File.join('ronin','gen','platform','extension.rb')
+
+        argument :path, :type => :string, :require => true
+
+        #
+        # Generates a skeleton Extension.
+        #
+        def generate
+          copy_file EXTENSION_FILE, self.path
+        end
+
+      end
+    end
   end
 end

@@ -1,17 +1,17 @@
-require 'ronin/generators/generator'
+require 'ronin/gen/generator'
 
 require 'spec_helper'
-require 'generators/helpers/static'
-require 'generators/classes/basic_generator'
-require 'generators/classes/file_generator'
-require 'generators/classes/touch_generator'
-require 'generators/classes/dir_generator'
-require 'generators/classes/templated_generator'
+require 'gen/helpers/static'
+require 'gen/classes/basic_generator'
+require 'gen/classes/file_generator'
+require 'gen/classes/touch_generator'
+require 'gen/classes/dir_generator'
+require 'gen/classes/templated_generator'
 
 require 'tmpdir'
 require 'fileutils'
 
-describe Generators::Generator do
+describe Gen::Generator do
   before(:all) do
     @previous_dir = Dir.pwd
     @dir = File.join(Dir.tmpdir,'ronin_generators')

@@ -18,13 +18,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #
 
-require 'ronin/generators/platform/overlay'
+require 'ronin/gen/platform/overlay'
 
 module Ronin
   module UI
     module CommandLine
       module Commands
-        class GenOverlay < Generators::Platform::Overlay
+        class GenOverlay < Gen::Platform::Overlay
 
         end
       end

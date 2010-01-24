@@ -1,6 +1,6 @@
-require 'ronin/generators/generator'
+require 'ronin/gen/generator'
 
-class TemplatedGenerator < Generators::Generator
+class TemplatedGenerator < Gen::Generator
 
   TEMPLATE_FILE = File.join('generators','templated.txt.erb')
 

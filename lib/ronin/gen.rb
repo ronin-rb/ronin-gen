@@ -18,28 +18,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #
 
-require 'ronin/generators/platform/config'
-require 'ronin/generators/generator'
-require 'ronin/platform/extension'
-
-module Ronin
-  module Generators
-    module Platform
-      class Extension < Generator
-
-        # The default extension file
-        EXTENSION_FILE = File.join('ronin','generators','platform','extension.rb')
-
-        argument :path, :type => :string, :require => true
-
-        #
-        # Generates a skeleton Extension.
-        #
-        def generate
-          copy_file EXTENSION_FILE, self.path
-        end
-
-      end
-    end
-  end
-end
+require 'ronin/gen/generator'
+require 'ronin/gen/dir_generator'
+require 'ronin/gen/platform'
+require 'ronin/gen/version'

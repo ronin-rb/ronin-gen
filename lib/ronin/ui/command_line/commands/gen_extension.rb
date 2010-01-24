@@ -18,13 +18,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #
 
-require 'ronin/generators/platform/extension'
+require 'ronin/gen/platform/extension'
 
 module Ronin
   module UI
     module CommandLine
       module Commands
-        class GenExtension < Generators::Platform::Extension
+        class GenExtension < Gen::Platform::Extension
 
         end
       end
