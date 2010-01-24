@@ -24,7 +24,7 @@ module Ronin
   module UI
     module CommandLine
       module Commands
-        class GenOverlay < Gen::Platform::Overlay
+        class GenOverlay < Ronin::Gen::Platform::Overlay
 
         end
       end

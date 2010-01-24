@@ -24,7 +24,7 @@ module Ronin
   module UI
     module CommandLine
       module Commands
-        class GenExtension < Gen::Platform::Extension
+        class GenExtension < Ronin::Gen::Platform::Extension
 
         end
       end
