@@ -57,7 +57,7 @@ module Ronin
       # @return [String]
       #   The source root directory of the generator.
       #
-      # @since 0.2.2
+      # @since 0.3.0
       #
       def self.source_root=(new_dir)
         @genereator_source_root = File.expand_path(new_dir)
@@ -106,7 +106,7 @@ module Ronin
       # @param [Hash] config
       #   Additional configuration for the generator.
       #
-      # @since 0.2.2
+      # @since 0.3.0
       #
       def initialize(arguments=[],options={},config={},&block)
         super(arguments,options,config)
@@ -119,7 +119,7 @@ module Ronin
       # Default method to initialize any instance variables before any of
       # the tasks are invoked.
       #
-      # @since 0.2.2
+      # @since 0.3.0
       #
       def setup
       end
@@ -188,7 +188,7 @@ module Ronin
       # @option config [Boolean] :recursive (false)
       #   Recursively copies the contents.
       #
-      # @since 0.2.1
+      # @since 0.3.0
       #
       def directory(static_dir,destination=nil,config={})
         each_static_dir(static_dir) do |dir|
