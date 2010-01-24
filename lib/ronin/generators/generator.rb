@@ -174,6 +174,29 @@ module Ronin
       end
 
       #
+      # Copies the contents of all static directories.
+      #
+      # @param [String] static_dir
+      #   The static directories to copy from.
+      #
+      # @param [String, nil] destination
+      #   The optional destination directory to copy the files to.
+      #
+      # @param [Hash] config
+      #   The optional configuration information.
+      #
+      # @option config [Boolean] :recursive (false)
+      #   Recursively copies the contents.
+      #
+      # @since 0.2.1
+      #
+      def directory(static_dir,destination=nil,config={})
+        each_static_dir(static_dir) do |dir|
+          super(dir,destination || static_dir,config)
+        end
+      end
+
+      #
       # Renders the ERB template at the specified _template_path_ and
       # saves the result at the given _destination_.
       #
