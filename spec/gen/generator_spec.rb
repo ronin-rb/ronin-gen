@@ -20,6 +20,10 @@ describe Gen::Generator do
     Dir.chdir(@dir)
   end
 
+  it "should include Thor::Actions" do
+    Gen::Generator.should include(Thor::Actions)
+  end
+
   it "should set default values before invoking any tasks" do
     @generator = BasicGenerator.new
 
