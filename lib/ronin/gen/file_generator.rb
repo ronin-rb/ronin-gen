@@ -19,8 +19,13 @@
 #
 
 require 'ronin/gen/generator'
-require 'ronin/gen/file_generator'
-require 'ronin/gen/dir_generator'
-require 'ronin/gen/generatable'
-require 'ronin/gen/platform'
-require 'ronin/gen/version'
+
+module Ronin
+  module Gen
+    class FileGenerator < Generator
+
+      argument :path, :type => :string, :require => true
+
+    end
+  end
+end

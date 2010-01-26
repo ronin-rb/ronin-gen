@@ -19,18 +19,16 @@
 #
 
 require 'ronin/gen/platform/config'
-require 'ronin/gen/generator'
 require 'ronin/platform/extension'
+require 'ronin/gen/file_generator'
 
 module Ronin
   module Gen
     module Platform
-      class Extension < Generator
+      class Extension < FileGenerator
 
         # The default extension file
         EXTENSION_FILE = File.join('ronin','gen','platform','extension.rb')
-
-        argument :path, :type => :string, :require => true
 
         #
         # Generates a skeleton Extension.
