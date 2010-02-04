@@ -207,7 +207,7 @@ module Ronin
       #   The destination to write the result of the rendered template to.
       #
       # @return [nil, String]
-      #   If destination is +nil+, the result of the rendered template
+      #   If destination is `nil`, the result of the rendered template
       #   will be returned.
       #
       # @example

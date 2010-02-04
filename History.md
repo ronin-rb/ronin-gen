@@ -1,4 +1,4 @@
-=== 0.2.0 / 2009-09-24
+### 0.2.0 / 2009-09-24
 
 * Require ronin >= 0.3.0.
 * Require rspec >= 1.2.8.
@@ -12,7 +12,7 @@
 * Rewrote the Ronin::UI::CommandLine generator commands to simply inherit
   from the new Thor based generator classes within Ronin::Generators.
 
-=== 0.1.1 / 2009-07-02
+### 0.1.1 / 2009-07-02
 
 * Use Hoe >= 2.0.0.
 * Require Ronin >= 0.2.4.
@@ -30,7 +30,7 @@
 * Fixed a bug in the ronin-gen command, where generator names
   were not being sanitized.
 
-=== 0.1.0 / 2009-03-27
+### 0.1.0 / 2009-03-27
 
 * Initial release.
   * Provides the Ronin::Generators::Platform::Overlay generator.
