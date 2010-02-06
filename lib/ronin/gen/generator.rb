@@ -24,6 +24,8 @@ require 'static_paths/finders'
 require 'extlib'
 require 'erb'
 require 'thor'
+require 'thor/group'
+require 'thor/actions'
 
 module Ronin
   module Gen
