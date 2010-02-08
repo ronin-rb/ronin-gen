@@ -18,7 +18,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #
 
-require 'ronin/gen/platform/config'
+require 'ronin/gen/config'
 require 'ronin/platform/extension'
 require 'ronin/gen/file_generator'
 

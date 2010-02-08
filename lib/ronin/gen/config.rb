@@ -22,12 +22,10 @@ require 'static_paths'
 
 module Ronin
   module Gen
-    module Platform
-      module Config
-        include StaticPaths
+    module Config
+      include StaticPaths
 
-        register_static_dir File.join(File.dirname(__FILE__),'..','..','..','..','static')
-      end
+      register_static_dir File.join(File.dirname(__FILE__),'..','..','..','static')
     end
   end
 end
