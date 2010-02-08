@@ -1,0 +1,9 @@
+require 'ronin/<%= @dir_name %>/version'
+
+require 'spec_helper'
+
+describe <%= @module_name %> do
+  it "should have a VERSION constant" do
+    <%= @module_name %>.const_defined?('VERSION').should == true
+  end
+end

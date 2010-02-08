@@ -4,6 +4,7 @@ Manifest.txt
 README.md
 Rakefile
 bin/ronin-gen
+bin/ronin-gen-library
 bin/ronin-gen-overlay
 bin/ronin-gen-extension
 lib/ronin/gen.rb
@@ -12,6 +13,7 @@ lib/ronin/gen/generator.rb
 lib/ronin/gen/file_generator.rb
 lib/ronin/gen/dir_generator.rb
 lib/ronin/gen/generatable.rb
+lib/ronin/gen/library.rb
 lib/ronin/gen/version.rb
 lib/ronin/gen/platform/overlay.rb
 lib/ronin/gen/platform/extension.rb
@@ -36,6 +38,16 @@ spec/gen/platform/overlay_spec.rb
 spec/gen/platform/extension_spec.rb
 spec/ui/command_line/commands/gen_overlay_spec.rb
 spec/ui/command_line/commands/gen_extension_spec.rb
+static/ronin/gen/library/COPYING.txt
+static/ronin/gen/library/History.md.erb
+static/ronin/gen/library/Manifest.txt.erb
+static/ronin/gen/library/README.md.erb
+static/ronin/gen/library/Rakefile.erb
+static/ronin/gen/library/bin/ronin-example.erb
+static/ronin/gen/library/lib/ronin/example.rb.erb
+static/ronin/gen/library/lib/ronin/example/version.rb.erb
+static/ronin/gen/library/spec/spec_helper.rb.erb
+static/ronin/gen/library/spec/example/example_spec.rb.erb
 static/ronin/gen/platform/Rakefile.erb
 static/ronin/gen/platform/extension.rb
 static/ronin/gen/platform/tasks/spec.rb
