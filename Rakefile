@@ -3,10 +3,12 @@
 require 'rubygems'
 require 'hoe'
 require 'hoe/signing'
+require './lib/ronin/gen/version.rb'
 
 Hoe.plugin :yard
 
 Hoe.spec('ronin-gen') do
+  self.version = Ronin::Gen::VERSION
   self.developer('Postmodern', 'postmodern.mod3@gmail.com')
 
   self.rspec_options += ['--colour', '--format', 'specdoc']
