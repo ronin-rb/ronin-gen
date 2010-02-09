@@ -18,8 +18,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #
 
-require 'ronin/gen/dir_generator'
 require 'ronin/gen/config'
+require 'ronin/gen/dir_generator'
 require 'ronin/platform/overlay'
 require 'ronin/version'
 
@@ -28,7 +28,7 @@ require 'set'
 
 module Ronin
   module Gen
-    module Platform
+    module Generators
       class Overlay < DirGenerator
 
         include Nokogiri

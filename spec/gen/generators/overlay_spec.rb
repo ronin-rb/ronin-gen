@@ -1,9 +1,31 @@
-require 'ronin/platform/overlay'
+require 'ronin/gen/generators/overlay'
 
 require 'spec_helper'
-require 'nokogiri'
 
-shared_examples_for "Generated Overlay" do
+require 'tmpdir'
+require 'fileutils'
+
+describe Gen::Generators::Overlay do
+  before(:all) do
+    @name = 'ronin_generated_overlay'
+    @path = File.join(Dir.tmpdir,@name)
+    @title = 'Test Overlay'
+    @source = 'ssh+svn://www.example.com/var/svn/test/'
+    @source_view = 'http://www.example.com/test/'
+    @website = 'http://www.example.com/blog/'
+    @license = 'GPL-2'
+    @description = 'This is a test overlay'
+
+    Gen::Generators::Overlay.generate(
+      @path,
+      :title => @title,
+      :source => @source,
+      :source_view => @source_view,
+      :website => @website,
+      :license => @license,
+      :description => @description
+    )
+  end
 
   it "should create the overlay directory" do
     File.directory?(@path).should == true
@@ -92,4 +114,7 @@ shared_examples_for "Generated Overlay" do
     end
   end
 
+  after(:all) do
+    FileUtils.rm_r(@path)
+  end
 end
