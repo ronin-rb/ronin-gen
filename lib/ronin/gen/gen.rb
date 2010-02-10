@@ -74,7 +74,7 @@ module Ronin
         pattern = File.join('lib',GENERATORS_DIR,'**','*.rb')
 
         Ronin.find_files(pattern).each do |path|
-          sub_path = path.match(File.join(GENERATORS_DIR,"(.*)$"))
+          sub_path = path.match(File.join(GENERATORS_DIR,"(.*).rb$"))
 
           if (sub_path && sub_path[1])
             name = sub_path[1].split(File::SEPARATOR).join(':')
