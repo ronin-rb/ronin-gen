@@ -77,7 +77,7 @@ module Ronin
           sub_path = path.match(File.join(GENERATORS_DIR,"(.*)$"))
 
           if (sub_path && sub_path[1])
-            name = sub_path.split(File::SEPARATOR).join(':')
+            name = sub_path[1].split(File::SEPARATOR).join(':')
             @@ronin_gen_generators << name
           end
         end
