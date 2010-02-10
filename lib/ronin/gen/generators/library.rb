@@ -22,6 +22,8 @@ require 'ronin/gen/config'
 require 'ronin/gen/dir_generator'
 require 'ronin/version'
 
+require 'set'
+
 module Ronin
   module Gen
     module Generators
@@ -37,9 +39,9 @@ module Ronin
 
         YARD_VERSION = '0.5.3'
 
-        COMMANDS_DIR = File.join('ronin','ui','command_line','commands')
+        COMMANDS_DIR = File.join('lib','ronin','ui','command_line','commands')
 
-        GENERATORS_DIR = File.join('ronin','gen','generators')
+        GENERATORS_DIR = File.join('lib','ronin','gen','generators')
 
         class_option :name, :type => :string
         class_option :author, :type => :string, :default => DEFAULT_AUTHOR
@@ -60,6 +62,23 @@ module Ronin
           @author = options[:author]
           @email = options[:email]
           @safe_email = @email.gsub(/\s*@\s*/,' at ')
+
+          @bin_files = SortedSet[]
+          @lib_files = SortedSet[]
+          @spec_files = SortedSet[]
+
+          options[:commands].each do |name|
+            file_name = name.downcase.gsub(/[_-]+/,'_')
+
+            @bin_files << File.join('bin',"ronin-#{file_name}")
+            @lib_files << File.join(COMMANDS_DIR,"#{file_name}.rb")
+          end
+
+          options[:generators].each do |name|
+            file_name = name.downcase.gsub(/[_-]+/,'_')
+
+            @lib_files << File.join(GENERATORS_DIR,"#{file_name}.rb")
+          end
         end
 
         def generate
@@ -125,8 +144,8 @@ module Ronin
               template File.join('ronin','gen','library','bin','ronin-command.erb'),
                 File.join('bin','ronin-' + @command_file.gsub('_','-'))
 
-              template File.join('ronin','gen','library','lib',COMMANDS_DIR,'command.rb.erb'),
-                File.join('lib',COMMANDS_DIR,"#{@command_file}.rb")
+              template File.join('ronin','gen','library',COMMANDS_DIR,'command.rb.erb'),
+                File.join(COMMANDS_DIR,"#{@command_file}.rb")
             end
           end
         end
@@ -139,8 +158,8 @@ module Ronin
               @generator_file = name.downcase.gsub(/[_-]+/,'_')
               @generator_class = @generator_file.to_const_string
 
-              template File.join('ronin','gen','library','lib',GENERATORS_DIR,'generator.rb.erb'),
-                File.join('lib',GENERATORS_DIR,"#{@generator_file}.rb")
+              template File.join('ronin','gen','library',GENERATORS_DIR,'generator.rb.erb'),
+                File.join(GENERATORS_DIR,"#{@generator_file}.rb")
             end
           end
         end
