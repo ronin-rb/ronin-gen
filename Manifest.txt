@@ -5,11 +5,14 @@ README.md
 Rakefile
 bin/ronin-gen
 lib/ronin/gen.rb
+lib/ronin/gen/exceptions.rb
+lib/ronin/gen/exceptions/unknown_generator.rb
 lib/ronin/gen/config.rb
 lib/ronin/gen/generator.rb
 lib/ronin/gen/file_generator.rb
 lib/ronin/gen/dir_generator.rb
 lib/ronin/gen/generatable.rb
+lib/ronin/gen/gen.rb
 lib/ronin/gen/version.rb
 lib/ronin/gen/generators/library.rb
 lib/ronin/gen/generators/overlay.rb
