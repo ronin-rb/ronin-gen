@@ -223,11 +223,13 @@ module Ronin
       # @since 0.2.0
       #
       def template(template_path,destination=nil)
-        enter_template(template_path) do |path|
-          if destination
+        if destination
+          enter_template(template_path) do |path|
             super(path,destination)
-          else
-            ERB.new(File.read(path)).result(binding).chomp
+          end
+        else
+          read_template(template_path) do |template|
+            ERB.new(template).result(binding).chomp
           end
         end
       end
