@@ -36,8 +36,10 @@ module Ronin
       include StaticPaths::Finders
 
       def self.inherited(super_class)
-        class_name = super_class.name.split('::').last.snake_case
-        super_class.namespace("ronin #{class_name}")
+        class_name = super_class.name.sub('Ronin::Gen::Generators::','')
+        gen_name = class_name.split('::').join(':').snake_case
+
+        super_class.namespace(gen_name)
       end
 
       #
