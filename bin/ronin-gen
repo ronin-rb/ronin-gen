@@ -7,13 +7,18 @@ unless $LOAD_PATH.include?(lib_dir)
   $LOAD_PATH << lib_dir
 end
 
+require 'ronin/gen/gen'
 require 'ronin/ui/command_line/commands/gen'
 require 'ronin/ui/command_line'
 
 if (ARGV.length > 0 && ARGV.first[0..0] != '-')
-  ARGV[0] = "gen_#{ARGV.first}"
-
-  Ronin::UI::CommandLine.start
+  name = ARGV.shift
+  begin
+    Ronin::Gen.generator(name).start
+  rescue Ronin::Gen::UnknownGenerator
+    STDERR.puts "unknown generator #{name}"
+    exit -1
+  end
 else
   Ronin::UI::CommandLine::Commands::Gen.start
 end

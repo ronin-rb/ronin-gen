@@ -18,6 +18,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #
 
+require 'ronin/gen/gen'
 require 'ronin/gen/version'
 require 'ronin/ui/command_line/command'
 require 'ronin/ui/command_line/command_line'
@@ -30,19 +31,13 @@ module Ronin
 
           desc "version", "Prints the version and exists"
           def version
-            puts "Ronin Gen #{Ronin::Generators::VERSION}"
+            puts "Ronin Gen #{Ronin::Gen::VERSION}"
             exit
           end
 
           desc "default", "Prints the list of available generators"
           def default
-            print_array CommandLine.commands.map { |name|
-              if name =~ /^gen_/
-                name.gsub(/^gen_/,'')
-              else
-                nil
-              end
-            }.compact.sort
+            print_array Ronin::Gen.generators
           end
 
         end
