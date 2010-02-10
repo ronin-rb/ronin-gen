@@ -37,8 +37,12 @@ static/ronin/gen/library/Manifest.txt.erb
 static/ronin/gen/library/README.md.erb
 static/ronin/gen/library/Rakefile.erb
 static/ronin/gen/library/bin/ronin-example.erb
+static/ronin/gen/library/bin/ronin-command.erb
+static/ronin/gen/library/lib/ronin/_license.erb
 static/ronin/gen/library/lib/ronin/example.rb.erb
 static/ronin/gen/library/lib/ronin/example/version.rb.erb
+static/ronin/gen/library/lib/ronin/gen/generators/generator.rb.erb
+static/ronin/gen/library/lib/ronin/ui/command_line/commands/command.rb.erb
 static/ronin/gen/library/spec/spec_helper.rb.erb
 static/ronin/gen/library/spec/example/example_spec.rb.erb
 static/ronin/gen/platform/Rakefile.erb

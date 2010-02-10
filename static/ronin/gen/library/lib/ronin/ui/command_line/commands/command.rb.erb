@@ -1,0 +1,22 @@
+<%= template File.join('..','..','..','_license.erb') %>
+
+require 'ronin/ui/command_line/command'
+
+module Ronin
+  module UI
+    module CommandLine
+      module Commands
+        class <%= @command_class %> < Command
+
+          desc 'A command'
+          class_option :name, :type => :string
+          argument :path, :type => :string
+
+          def default
+          end
+
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,22 @@
+<%= template File.join('..','..','_license.erb') %>
+
+require 'ronin/gen/generators/file_generator'
+
+module Ronin
+  module Gen
+    module Generators
+      class <%= @generator_class %> < FileGenerator
+
+        class_option :opt, :type => :string
+        arguments :arg, :type => :string
+
+        def setup
+        end
+
+        def generate
+        end
+
+      end
+    end
+  end
+end

@@ -37,10 +37,16 @@ module Ronin
 
         YARD_VERSION = '0.5.3'
 
+        COMMANDS_DIR = File.join('ronin','ui','command_line','commands')
+
+        GENERATORS_DIR = File.join('ronin','gen','generators')
+
         class_option :name, :type => :string
         class_option :author, :type => :string, :default => DEFAULT_AUTHOR
         class_option :email, :type => :string, :default => DEFAULT_EMAIL
         class_option :version, :type => :string, :default => DEFAULT_VERSION
+        class_option :commands, :type => :array, :default => []
+        class_option :generators, :type => :array, :default => []
 
         def setup
           @name = (options[:name] || File.basename(self.destination_root))
@@ -106,6 +112,37 @@ module Ronin
           mkdir File.join('spec',@dir_name)
           template File.join('ronin','gen','library','spec','example','example_spec.rb.erb'),
             File.join('spec',@dir_name,"#{@dir_name}_spec.rb")
+        end
+
+        def command_line
+          unless options[:commands].empty?
+            mkdir COMMANDS_DIR
+
+            options[:commands].each do |name|
+              @command_file = name.downcase.gsub(/[_-]+/,'_')
+              @command_class = @command_file.to_const_string
+
+              template File.join('ronin','gen','library','bin','ronin-command.erb'),
+                File.join('bin','ronin-' + @command_file.gsub('_','-'))
+
+              template File.join('ronin','gen','library','lib',COMMANDS_DIR,'command.rb.erb'),
+                File.join('lib',COMMANDS_DIR,"#{@command_file}.rb")
+            end
+          end
+        end
+
+        def gen
+          unless options[:generators].empty?
+            mkdir GENERATORS_DIR
+
+            options[:generators].each do |name|
+              @generator_file = name.downcase.gsub(/[_-]+/,'_')
+              @generator_class = @generator_file.to_const_string
+
+              template File.join('ronin','gen','library','lib',GENERATORS_DIR,'generator.rb.erb'),
+                File.join('lib',GENERATORS_DIR,"#{@generator_file}.rb")
+            end
+          end
         end
 
       end
