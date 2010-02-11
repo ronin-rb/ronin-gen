@@ -34,6 +34,9 @@ module Ronin
     #   The loaded generator. If `nil` is returned, then the generator
     #   could not be found.
     #
+    # @raise [UnknownGenerator]
+    #   The generator could not be found or loaded.
+    #
     # @example
     #   Gen.generator 'library'
     #   # => Ronin::Gen::Generators::Library
