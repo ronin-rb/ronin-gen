@@ -14,6 +14,7 @@ lib/ronin/gen/dir_generator.rb
 lib/ronin/gen/generatable.rb
 lib/ronin/gen/gen.rb
 lib/ronin/gen/version.rb
+lib/ronin/gen/generators.rb
 lib/ronin/gen/generators/library.rb
 lib/ronin/gen/generators/overlay.rb
 lib/ronin/gen/generators/extension.rb
