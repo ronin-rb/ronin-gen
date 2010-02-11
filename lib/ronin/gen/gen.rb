@@ -70,10 +70,11 @@ module Ronin
       unless class_variable_defined?('@@ronin_gen_generators')
         @@ronin_gen_generators = SortedSet[]
 
-        pattern = File.join('lib',GENERATORS_DIR,'**','*.rb')
+        pattern = File.join('lib',Generators.namespace_root,'**','*.rb')
+        sub_pattern = File.join(Generators.namespace_root,"(.*).rb$")
 
         Ronin.find_files(pattern).each do |path|
-          sub_path = path.match(File.join(GENERATORS_DIR,"(.*).rb$"))
+          sub_path = path.match(sub_pattern)
 
           if (sub_path && sub_path[1])
             name = sub_path[1].split(File::SEPARATOR).join(':')
