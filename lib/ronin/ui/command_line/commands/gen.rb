@@ -29,14 +29,15 @@ module Ronin
       module Commands
         class Gen < Command
 
-          desc "version", "Prints the version and exists"
-          def version
-            puts "Ronin Gen #{Ronin::Gen::VERSION}"
-            exit
-          end
+          desc "Prints the list of available generators"
+          class_option :version, :type => :boolean
 
-          desc "default", "Prints the list of available generators"
-          def default
+          def execute
+            if options.version?
+              puts "ronin-gen #{Ronin::Gen::VERSION}"
+              return
+            end
+
             print_array Ronin::Gen.generators
           end
 
