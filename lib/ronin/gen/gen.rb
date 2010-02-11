@@ -19,13 +19,11 @@
 #
 
 require 'ronin/gen/exceptions/unknown_generator'
-require 'ronin/extensions/kernel'
+require 'ronin/gen/generators'
 require 'ronin/ronin'
 
 module Ronin
   module Gen
-    GENERATORS_DIR = File.join('ronin','gen','generators')
-
     #
     # Loads the generator with the given name.
     #
@@ -48,11 +46,9 @@ module Ronin
     #
     def Gen.generator(name)
       name = name.to_s
+      path = name.gsub(/[_-]+/,'_').gsub(/:+/,File::SEPARATOR)
 
-      dirs = name.gsub(/[_-]+/,'_').split(':')
-      path = File.join(*dirs)
-
-      unless (generator = require_const_in(GENERATORS_DIR,path))
+      unless (generator = Generators.require_const(path))
         raise(UnknownGenerator,"unknown generator #{name.dump}",caller)
       end
 

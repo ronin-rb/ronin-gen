@@ -18,6 +18,7 @@ Hoe.spec('ronin-gen') do
   self.remote_yard_dir = 'docs/ronin-gen'
 
   self.extra_deps += [
+    ['open-namespace', '>=0.1.0'],
     ['thor', '>=0.13.0'],
     ['ronin', '>=0.4.0']
   ]
