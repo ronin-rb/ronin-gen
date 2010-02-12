@@ -22,8 +22,6 @@ require 'ronin/gen/config'
 require 'ronin/gen/dir_generator'
 require 'ronin/version'
 
-require 'set'
-
 module Ronin
   module Gen
     module Generators
@@ -51,7 +49,7 @@ module Ronin
         class_option :generators, :type => :array, :default => []
 
         def setup
-          @name = (options[:name] || File.basename(self.destination_root))
+          @name = (options[:name] || File.basename(self.path))
           @dir_name = @name.gsub(/^ronin[-_]/,'')
           @module_name = @dir_name.capitalize
 
@@ -62,28 +60,26 @@ module Ronin
           @author = options[:author]
           @email = options[:email]
           @safe_email = @email.gsub(/\s*@\s*/,' at ')
-
-          @bin_files = SortedSet[]
-          @lib_files = SortedSet[]
-          @spec_files = SortedSet[]
-
-          options[:commands].each do |name|
-            file_name = name.downcase.gsub(/[_-]+/,'_')
-
-            @bin_files << File.join('bin',"ronin-#{file_name}")
-            @lib_files << File.join(COMMANDS_DIR,"#{file_name}.rb")
-          end
-
-          options[:generators].each do |name|
-            file_name = name.downcase.gsub(/[_-]+/,'_')
-
-            @lib_files << File.join(GENERATORS_DIR,"#{file_name}.rb")
-          end
         end
 
         def generate
+          copy_file File.join('ronin','gen','library','.specopts'),
+            '.specopts'
+
+          template File.join('ronin','gen','library','.yardopts.erb'),
+            '.yardopts'
+
           copy_file File.join('ronin','gen','library','COPYING.txt'),
             'COPYING.txt'
+
+          template File.join('ronin','gen','library','ChangeLog.md.erb'),
+            'ChangeLog.md'
+
+          template File.join('ronin','gen','library','README.md.erb'),
+            'README.md'
+
+          template File.join('ronin','gen','library','Rakefile.erb'),
+            'Rakefile'
 
           mkdir 'static'
         end
@@ -101,26 +97,6 @@ module Ronin
             File.join('lib','ronin',"#{@dir_name}.rb")
           template File.join('ronin','gen','library','lib','ronin','example','version.rb.erb'),
             File.join('lib','ronin',@dir_name,'version.rb')
-        end
-
-        def history
-          template File.join('ronin','gen','library','History.md.erb'),
-            'History.md'
-        end
-
-        def manifest
-          template File.join('ronin','gen','library','Manifest.txt.erb'),
-            'Manifest.txt'
-        end
-
-        def readme
-          template File.join('ronin','gen','library','README.md.erb'),
-            'README.md'
-        end
-
-        def rakefile
-          template File.join('ronin','gen','library','Rakefile.erb'),
-            'Rakefile'
         end
 
         def test_suite

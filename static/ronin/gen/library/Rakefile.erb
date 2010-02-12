@@ -1,23 +1,42 @@
-# -*- ruby -*-
-
 require 'rubygems'
-require 'hoe'
-require 'hoe/signing'
+require 'rake'
+require './lib/ronin/<%= @dir_name %>/version.rb'
 
-Hoe.plugin :yard
-
-Hoe.spec('<%= @name %>') do
-  self.developer('<%= @author %>', '<%= @email %>')
-
-  self.rspec_options += ['--colour', '--format', 'specdoc']
-
-  self.yard_options += ['--protected']
-  self.remote_yard_dir = '/'
-
-  self.extra_dev_deps += [
-    ['rspec', '>=<%= RSPEC_VERSION %>'],
-    ['yard', '>=<%= YARD_VERSION %>']
-  ]
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |gem|
+    gem.name = '<%= @name %>'
+    gem.version = Ronin::<%= @module_name %>::VERSION
+    gem.summary = %Q{}
+    gem.description = %Q{}
+    gem.email = '<%= @email %>'
+    gem.homepage = 'http://github.com/ronin-ruby/ronin-ext'
+    gem.authors = ['<%= @author %>']
+    gem.add_dependency 'ronin', '>= 0.4.0'
+    gem.add_development_dependency 'rspec', '>= <%= RSPEC_VERSION %>'
+    gem.add_development_dependency 'yard', '>= <%= YARD_VERSION %>'
+    gem.has_rdoc = 'yard'
+  end
+rescue LoadError
+  puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
 end
 
-# vim: syntax=ruby
+require 'spec/rake/spectask'
+Spec::Rake::SpecTask.new(:spec) do |spec|
+  spec.libs += ['lib', 'spec']
+  spec.spec_files = FileList['spec/**/*_spec.rb']
+  spec.spec_opts = ['--options', '.specopts']
+end
+
+task :spec => :check_dependencies
+task :default => :spec
+
+begin
+  require 'yard'
+
+  YARD::Rake::YardocTask.new
+rescue LoadError
+  task :yard do
+    abort "YARD is not available. In order to run yard, you must: gem install yard"
+  end
+end
