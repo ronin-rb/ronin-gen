@@ -42,6 +42,7 @@ Gem::Specification.new do |s|
     "lib/ronin/gen/generators/overlay.rb",
     "lib/ronin/gen/version.rb",
     "lib/ronin/ui/command_line/commands/gen.rb",
+    "ronin-gen.gemspec",
     "spec/gen/classes/basic_generator.rb",
     "spec/gen/classes/dir_generator.rb",
     "spec/gen/classes/file_generator.rb",
