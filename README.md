@@ -1,12 +1,12 @@
 # Ronin Gen
 
-* http://ronin.rubyforge.org/gen/
-* http://github.com/postmodern/ronin-gen
-* http://github.com/postmodern/ronin-gen/issues
-* http://groups.google.com/group/ronin-ruby
+* [ronin.rubyforge.org/gen](http://ronin.rubyforge.org/gen/)
+* [github.com/postmodern/ronin-gen](http://github.com/postmodern/ronin-gen)
+* [github.com/postmodern/ronin-gen/issues](http://github.com/postmodern/ronin-gen/issues)
+* [groups.google.com/group/ronin-ruby](http://groups.google.com/group/ronin-ruby)
 * irc.freenode.net #ronin
 
-## DESCRIPTION:
+## Description
 
 Ronin Gen is a Ruby library for Ronin that provides various generators.
 
@@ -35,7 +35,7 @@ data via Overlays. Overlays are directories of code and data that can be
 hosted on any SVN, Hg, Git or Rsync server. Ronin makes it easy to create,
 install or update Overlays.
 
-## FEATURES:
+## Features
 
 * Provides {Ronin::Generators::Generator}, a Thor based generator class that
   can be used to create new generators.
@@ -43,7 +43,7 @@ install or update Overlays.
   can be used to create new directory generators.
 * Generators for Overlays and Extensions.
 
-## SYNOPSIS:
+## Synopsis
 
 Generate a skeleton Overlay:
 
@@ -53,15 +53,15 @@ Generate a skeleton Extension:
 
     $ ronin-gen extension PATH
 
-## REQUIREMENTS:
+## Requirements
 
 * [ronin](http://ronin.rubyforge.org/) >= 0.3.0
 
-## INSTALL:
+## Install
 
     $ sudo gem install ronin-gen
 
-## LICENSE:
+## License
 
 Ronin Gen - A Ruby library for Ronin that provides various generators.
 
