@@ -27,18 +27,25 @@ module Ronin
     module Generators
       class Library < DirGenerator
 
+        # Default version of the library
         DEFAULT_VERSION = '0.1.0'
 
+        # Default author of the library
         DEFAULT_AUTHOR = 'Author'
 
+        # Default email of the library
         DEFAULT_EMAIL = 'name@host.com'
 
+        # Default RSpec version to use
         RSPEC_VERSION = '1.3.0'
 
+        # Default YARD version to use
         YARD_VERSION = '0.5.3'
 
+        # Directory to store command classes in
         COMMANDS_DIR = File.join('lib','ronin','ui','command_line','commands')
 
+        # Directory to store generator classes in
         GENERATORS_DIR = File.join('lib','ronin','gen','generators')
 
         class_option :name, :type => :string
@@ -62,6 +69,9 @@ module Ronin
           @safe_email = @email.gsub(/\s*@\s*/,' at ')
         end
 
+        #
+        # Generates top-level files.
+        #
         def generate
           copy_file File.join('ronin','gen','library','.specopts'),
             '.specopts'
@@ -84,12 +94,18 @@ module Ronin
           mkdir 'static'
         end
 
+        #
+        # Generates the contents of the `bin` directory.
+        #
         def bin
           mkdir 'bin'
           template File.join('ronin','gen','library','bin','ronin-example.erb'),
             File.join('bin',"ronin-#{@dir_name}")
         end
 
+        #
+        # Generates the contents of the `lib` directory.
+        #
         def lib
           mkdir File.join('lib','ronin',@dir_name)
 
@@ -99,6 +115,9 @@ module Ronin
             File.join('lib','ronin',@dir_name,'version.rb')
         end
 
+        #
+        # Generates the test suite.
+        #
         def test_suite
           mkdir 'spec'
           template File.join('ronin','gen','library','spec','spec_helper.rb.erb'),
@@ -109,6 +128,9 @@ module Ronin
             File.join('spec',@dir_name,"#{@dir_name}_spec.rb")
         end
 
+        #
+        # Generates any optional commands for the library.
+        #
         def command_line
           unless options[:commands].empty?
             mkdir COMMANDS_DIR
@@ -126,6 +148,9 @@ module Ronin
           end
         end
 
+        #
+        # Generates any optional generators for the library.
+        #
         def gen
           unless options[:generators].empty?
             mkdir GENERATORS_DIR
