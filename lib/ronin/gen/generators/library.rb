@@ -50,6 +50,7 @@ module Ronin
         # Directory to store generator classes in
         GENERATORS_DIR = File.join('lib',Generators.namespace_root)
 
+        desc 'Generates a new Ronin library'
         class_option :name, :type => :string
         class_option :author, :type => :string, :default => DEFAULT_AUTHOR
         class_option :email, :type => :string, :default => DEFAULT_EMAIL
