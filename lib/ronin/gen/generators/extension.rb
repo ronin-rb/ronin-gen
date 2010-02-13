@@ -30,7 +30,7 @@ module Ronin
         # The default extension file
         EXTENSION_FILE = File.join('ronin','gen','platform','extension.rb')
 
-        desc 'Generate a new Ronin extension'
+        desc 'Generate a new Ronin Extension'
 
         #
         # Generates a skeleton Extension.
