@@ -51,6 +51,7 @@ module Ronin
         # Default description to use
         DEFAULT_DESCRIPTION = 'This is an Overlay'
 
+        desc 'Generates a new Ronin overlay'
         class_option :title, :type => :string
         class_option :source, :type => :string
         class_option :source_view, :type => :string
