@@ -24,11 +24,13 @@ require 'ronin/gen/file_generator'
 
 module Ronin
   module Gen
-    module Generators
+    module Public
       class Extension < FileGenerator
 
         # The default extension file
         EXTENSION_FILE = File.join('ronin','gen','platform','extension.rb')
+
+        desc 'Generate a new Ronin extension'
 
         #
         # Generates a skeleton Extension.
