@@ -24,7 +24,7 @@ require 'ronin/gen/file_generator'
 
 module Ronin
   module Gen
-    module Public
+    module Generators
       class Extension < FileGenerator
 
         # The default extension file
