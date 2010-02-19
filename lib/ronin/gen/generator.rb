@@ -194,9 +194,9 @@ module Ronin
       #
       # @since 0.3.0
       #
-      def directory(static_dir,destination=nil,config={})
+      def cp_r(static_dir,destination=nil,config={})
         each_static_dir(static_dir) do |dir|
-          super(dir,destination || static_dir,config)
+          directory(dir,destination || static_dir,config)
         end
       end
 
