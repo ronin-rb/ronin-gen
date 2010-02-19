@@ -173,8 +173,8 @@ module Ronin
       #
       # @since 0.2.0
       #
-      def copy_file(static_file,destination)
-        super(find_static_file(static_file),destination)
+      def cp(static_file,destination)
+        copy_file(find_static_file(static_file),destination)
       end
 
       #
