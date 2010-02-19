@@ -222,10 +222,10 @@ module Ronin
       #
       # @since 0.2.0
       #
-      def template(template_path,destination=nil)
+      def erb(template_path,destination=nil)
         if destination
           enter_template(template_path) do |path|
-            super(path,destination)
+            template(path,destination)
           end
         else
           read_template(template_path) do |template|
