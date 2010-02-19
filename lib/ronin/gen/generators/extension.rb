@@ -36,7 +36,7 @@ module Ronin
         # Generates a skeleton Extension.
         #
         def generate
-          copy_file EXTENSION_FILE, self.path
+          cp EXTENSION_FILE, self.path
         end
 
       end

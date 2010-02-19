@@ -76,23 +76,23 @@ module Ronin
         # Generates top-level files.
         #
         def generate
-          copy_file File.join('ronin','gen','library','.specopts'),
-            '.specopts'
+          cp File.join('ronin','gen','library','.specopts'),
+             '.specopts'
 
-          template File.join('ronin','gen','library','.yardopts.erb'),
-            '.yardopts'
+          erb File.join('ronin','gen','library','.yardopts.erb'),
+              '.yardopts'
 
-          copy_file File.join('ronin','gen','library','COPYING.txt'),
-            'COPYING.txt'
+          cp File.join('ronin','gen','library','COPYING.txt'),
+             'COPYING.txt'
 
-          template File.join('ronin','gen','library','ChangeLog.md.erb'),
-            'ChangeLog.md'
+          erb File.join('ronin','gen','library','ChangeLog.md.erb'),
+             'ChangeLog.md'
 
-          template File.join('ronin','gen','library','README.md.erb'),
-            'README.md'
+          erb File.join('ronin','gen','library','README.md.erb'),
+             'README.md'
 
-          template File.join('ronin','gen','library','Rakefile.erb'),
-            'Rakefile'
+          erb File.join('ronin','gen','library','Rakefile.erb'),
+             'Rakefile'
 
           mkdir 'static'
         end
@@ -102,8 +102,8 @@ module Ronin
         #
         def bin
           mkdir 'bin'
-          template File.join('ronin','gen','library','bin','ronin-example.erb'),
-            File.join('bin',"ronin-#{@dir_name}")
+          erb File.join('ronin','gen','library','bin','ronin-example.erb'),
+              File.join('bin',"ronin-#{@dir_name}")
         end
 
         #
@@ -112,10 +112,11 @@ module Ronin
         def lib
           mkdir File.join('lib','ronin',@dir_name)
 
-          template File.join('ronin','gen','library','lib','ronin','example.rb.erb'),
-            File.join('lib','ronin',"#{@dir_name}.rb")
-          template File.join('ronin','gen','library','lib','ronin','example','version.rb.erb'),
-            File.join('lib','ronin',@dir_name,'version.rb')
+          erb File.join('ronin','gen','library','lib','ronin','example.rb.erb'),
+              File.join('lib','ronin',"#{@dir_name}.rb")
+
+          erb File.join('ronin','gen','library','lib','ronin','example','version.rb.erb'),
+              File.join('lib','ronin',@dir_name,'version.rb')
         end
 
         #
@@ -123,12 +124,12 @@ module Ronin
         #
         def test_suite
           mkdir 'spec'
-          template File.join('ronin','gen','library','spec','spec_helper.rb.erb'),
-            File.join('spec','spec_helper.rb')
+          erb File.join('ronin','gen','library','spec','spec_helper.rb.erb'),
+              File.join('spec','spec_helper.rb')
 
           mkdir File.join('spec',@dir_name)
-          template File.join('ronin','gen','library','spec','example','example_spec.rb.erb'),
-            File.join('spec',@dir_name,"#{@dir_name}_spec.rb")
+          erb File.join('ronin','gen','library','spec','example','example_spec.rb.erb'),
+              File.join('spec',@dir_name,"#{@dir_name}_spec.rb")
         end
 
         #
@@ -142,11 +143,11 @@ module Ronin
               @command_file = name.downcase.gsub(/[_-]+/,'_')
               @command_class = @command_file.to_const_string
 
-              template File.join('ronin','gen','library','bin','ronin-command.erb'),
-                File.join('bin','ronin-' + @command_file.gsub('_','-'))
+              erb File.join('ronin','gen','library','bin','ronin-command.erb'),
+                  File.join('bin','ronin-' + @command_file.gsub('_','-'))
 
-              template File.join('ronin','gen','library',COMMANDS_DIR,'command.rb.erb'),
-                File.join(COMMANDS_DIR,"#{@command_file}.rb")
+              erb File.join('ronin','gen','library',COMMANDS_DIR,'command.rb.erb'),
+                  File.join(COMMANDS_DIR,"#{@command_file}.rb")
             end
           end
         end
@@ -162,8 +163,8 @@ module Ronin
               @generator_file = name.downcase.gsub(/[_-]+/,'_')
               @generator_class = @generator_file.to_const_string
 
-              template File.join('ronin','gen','library',GENERATORS_DIR,'generator.rb.erb'),
-                File.join(GENERATORS_DIR,"#{@generator_file}.rb")
+              erb File.join('ronin','gen','library',GENERATORS_DIR,'generator.rb.erb'),
+                  File.join(GENERATORS_DIR,"#{@generator_file}.rb")
             end
           end
         end

@@ -7,7 +7,7 @@ class TemplatedGenerator < Gen::Generator
   class_option :message, :type => :string
 
   def generate
-    template TEMPLATE_FILE, 'templated.txt'
+    erb TEMPLATE_FILE, 'templated.txt'
   end
 
 end

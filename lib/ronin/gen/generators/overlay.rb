@@ -94,7 +94,7 @@ module Ronin
           touch File.join(LIB_DIR,Ronin::Platform::Overlay::INIT_FILE)
 
           mkdir 'static'
-          copy_file File.join('ronin','platform',METADATA_XSL), File.join('static',METADATA_XSL)
+          cp File.join('ronin','platform',METADATA_XSL), File.join('static',METADATA_XSL)
 
           mkdir Ronin::Platform::Overlay::CACHE_DIR
           mkdir Ronin::Platform::Overlay::EXTS_DIR
@@ -115,7 +115,7 @@ module Ronin
             @tasks << './tasks/yard.rb'
           end
 
-          template File.join('ronin','gen','platform','Rakefile.erb'), 'Rakefile'
+          erb File.join('ronin','gen','platform','Rakefile.erb'), 'Rakefile'
         end
 
         #
@@ -126,9 +126,10 @@ module Ronin
           when 'test','unit'
             mkdir 'test'
           when 'rspec', 'spec'
-            copy_file File.join('ronin','gen','platform','tasks','spec.rb'), File.join('tasks','spec.rb')
+            cp File.join('ronin','gen','platform','tasks','spec.rb'), File.join('tasks','spec.rb')
+
             mkdir 'spec'
-            copy_file File.join('ronin','gen','platform','spec','spec_helper.rb'), File.join('spec','spec_helper.rb')
+            cp File.join('ronin','gen','platform','spec','spec_helper.rb'), File.join('spec','spec_helper.rb')
           end
         end
 
@@ -137,7 +138,7 @@ module Ronin
         #
         def docs
           if @docs
-            template File.join('ronin','gen','platform','tasks','yard.rb.erb'), File.join('tasks','yard.rb')
+            erb File.join('ronin','gen','platform','tasks','yard.rb.erb'), File.join('tasks','yard.rb')
           end
         end
 
