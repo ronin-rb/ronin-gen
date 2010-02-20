@@ -22,6 +22,9 @@ require 'ronin/gen/generator'
 
 module Ronin
   module Gen
+    #
+    # A {Generator} class for creating files.
+    #
     class FileGenerator < Generator
 
       argument :path, :type => :string, :require => true

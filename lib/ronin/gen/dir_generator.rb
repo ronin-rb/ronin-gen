@@ -24,6 +24,9 @@ require 'fileutils'
 
 module Ronin
   module Gen
+    #
+    # A {Generator} class for creating directories.
+    #
     class DirGenerator < Generator
 
       argument :path, :type => :string, :require => true

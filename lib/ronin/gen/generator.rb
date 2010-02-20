@@ -29,6 +29,14 @@ require 'thor/actions'
 
 module Ronin
   module Gen
+    #
+    # The {Generator} class leverages `Thor::Group` and `Thor::Actions`
+    # to create a generic generator class. The generator class can
+    # define `class_options` that can be used to parse command-line
+    # arguments or set directly in Ruby.
+    #
+    # @see http://yardoc.org/docs/wycats-thor/file:README.rdoc
+    #
     class Generator < Thor::Group
 
       include Thor::Actions
