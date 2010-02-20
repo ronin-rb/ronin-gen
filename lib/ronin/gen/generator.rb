@@ -35,6 +35,47 @@ module Ronin
     # define `class_options` that can be used to parse command-line
     # arguments or set directly in Ruby.
     #
+    # ## Extending
+    #
+    # To create a new type of generator one can extend {Generator},
+    # {FileGenerator} or {DirGenerator} classes. The new generator can
+    # define it's own `class_options`, which are made available to other
+    # classes that extend our generator. The functionality of the generator
+    # is defined via instance methods, which are called all at once when
+    # the generator is invoked.
+    #
+    #     class MyGenerator < FileGenerator
+    #
+    #       desc 'My generator'
+    #
+    #       # generator options
+    #       class_option :stuff, :type => :boolean
+    #       class_option :syntax, :type => :string
+    #       class_option :includes, :type => :array
+    #
+    #       #
+    #       # Performs the generation.
+    #       #
+    #       def generate
+    #         erb 'some_template.erb', self.path
+    #       end
+    #
+    #     end
+    #
+    # ## Invoking
+    #
+    # To invoke the generator from Ruby, one can call the `generate`
+    # class method with the options and arguments to run the generator with:
+    #
+    #     MyGenerator.generate(
+    #       {:stuff => true, :syntax => 'bla', :includes => ['other']}
+    #       ['path/to/file'],
+    #     )
+    #
+    # To make your generator accessible to the `ronin-gen` command, simply
+    # place your generator file within the `ronin/gen/generators` directory
+    # of any Ronin library.
+    #
     # @see http://yardoc.org/docs/wycats-thor/file:README.rdoc
     #
     class Generator < Thor::Group
