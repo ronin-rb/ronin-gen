@@ -25,6 +25,9 @@ require 'ronin/gen/file_generator'
 module Ronin
   module Gen
     module Generators
+      #
+      # Generates a new Ronin Extension file for an Overlay.
+      #
       class Extension < FileGenerator
 
         # The default extension file

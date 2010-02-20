@@ -27,6 +27,9 @@ require 'ronin/version'
 module Ronin
   module Gen
     module Generators
+      #
+      # Generates a completely new Ronin library.
+      #
       class Library < DirGenerator
 
         # Default version of the library

@@ -29,6 +29,9 @@ require 'set'
 module Ronin
   module Gen
     module Generators
+      #
+      # Generates a completely new Ronin Overlay.
+      #
       class Overlay < DirGenerator
 
         include Nokogiri
