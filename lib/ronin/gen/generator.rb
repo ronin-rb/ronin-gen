@@ -43,30 +43,38 @@ module Ronin
     # {FileGenerator} or {DirGenerator} classes. The new generator can
     # define it's own `class_options`, which are made available to other
     # classes that extend our generator. The functionality of the generator
-    # is defined via instance methods, which are called all at once when
+    # is defined via instance methods, which are called sequentially when
     # the generator is invoked.
     #
-    #     class MyGenerator < FileGenerator
+    #     require 'ronin/gen/file_generator'
     #
-    #       desc 'My generator'
+    #     module Ronin
+    #       module Gen
+    #         module Generators
+    #           class MyGenerator < FileGenerator
     #
-    #       # generator options
-    #       class_option :stuff, :type => :boolean
-    #       class_option :syntax, :type => :string
-    #       class_option :includes, :type => :array
+    #             desc 'My generator'
     #
-    #       #
-    #       # Performs the generation.
-    #       #
-    #       def generate
-    #         erb 'some_template.erb', self.path
+    #             # generator options
+    #             class_option :stuff, :type => :boolean
+    #             class_option :syntax, :type => :string
+    #             class_option :includes, :type => :array
+    #
+    #             #
+    #             # Performs the generation.
+    #             #
+    #             def generate
+    #               erb 'some_template.erb', self.path
+    #             end
+    #
+    #           end
+    #         end
     #       end
-    #
     #     end
     #
     # ## Invoking
     #
-    # To invoke the generator from Ruby, one can call the `generate`
+    # To invoke the generator from ruby, one can call the {generate}
     # class method with the options and arguments to run the generator with:
     #
     #     MyGenerator.generate(
@@ -76,9 +84,11 @@ module Ronin
     #
     # To make your generator accessible to the `ronin-gen` command, simply
     # place your generator file within the `ronin/gen/generators` directory
-    # of any Ronin library. If your generator file is named
-    # `my_generator.rb`, than `ronin-gen` can invoke the generator using
-    # the `my_generator` name.
+    # of any Ronin library. If your generator class is named
+    # `MyGenerator`, than it's ruby file must be named `my_generator.rb`.
+    #
+    # To run the generator using the `ronin-gen` command, simply specify
+    # it's underscored name:
     #
     #     ronin-gen my_generator path/to/file --stuff --syntax bla --includes other
     #
