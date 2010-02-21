@@ -22,6 +22,9 @@ require 'open_namespace'
 
 module Ronin
   module Gen
+    #
+    # {Generators} is the namespace where all generators are loaded from.
+    #
     module Generators
       include OpenNamespace
     end
