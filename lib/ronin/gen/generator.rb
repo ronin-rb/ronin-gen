@@ -35,8 +35,6 @@ module Ronin
     # define `class_options` that can be used to parse command-line
     # arguments or set directly in Ruby.
     #
-    # @see http://yardoc.org/docs/wycats-thor/file:README.rdoc
-    #
     # ## Extending
     #
     # To create a new type of generator one can extend {Generator},
