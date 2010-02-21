@@ -74,7 +74,11 @@ module Ronin
     #
     # To make your generator accessible to the `ronin-gen` command, simply
     # place your generator file within the `ronin/gen/generators` directory
-    # of any Ronin library.
+    # of any Ronin library. If your generator file is named
+    # `my_generator.rb`, than `ronin-gen` can invoke the generator using
+    # the `my_generator` name.
+    #
+    #     ronin-gen my_generator path/to/file --stuff --syntax bla --includes other
     #
     # @see http://yardoc.org/docs/wycats-thor/file:README.rdoc
     #
