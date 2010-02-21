@@ -27,6 +27,9 @@ module Ronin
   module UI
     module CommandLine
       module Commands
+        #
+        # Lists the available generators.
+        #
         class Gen < Command
 
           desc "Prints the list of available generators"
