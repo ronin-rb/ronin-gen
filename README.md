@@ -59,6 +59,8 @@ Generate a skeleton Extension:
 
 ## Requirements
 
+* [open-namespace](http://github.com/postmodern/open-namespace) >= 0.1.0
+* [thor](http://github.com/wycats/thor) >= 0.13.0
 * [ronin](http://ronin.rubyforge.org/) >= 0.4.0
 
 ## Install
