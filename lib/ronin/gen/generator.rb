@@ -35,7 +35,7 @@ module Ronin
     # define `class_options` that can be used to parse command-line
     # arguments or set directly in Ruby.
     #
-    # ## Extending
+    # # Extending
     #
     # To create a new type of generator one can extend {Generator},
     # {FileGenerator} or {DirGenerator} classes. The new generator can
@@ -70,7 +70,7 @@ module Ronin
     #       end
     #     end
     #
-    # ## Invoking
+    # # Invoking
     #
     # To invoke the generator from ruby, one can call the {generate}
     # class method with the options and arguments to run the generator with:
