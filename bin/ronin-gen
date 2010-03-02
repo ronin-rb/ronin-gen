@@ -17,7 +17,7 @@ if (ARGV.length > 0 && ARGV.first[0..0] != '-')
     Ronin::Gen.generator(name).start
   rescue Ronin::Gen::UnknownGenerator
     STDERR.puts "ronin-gen: unknown generator #{name}"
-    STDERR.puts "ronin-gen: see 'ronin-gen help' for a complete listing"
+    STDERR.puts "ronin-gen: run 'ronin-gen' for a list of generators"
     exit -1
   end
 else
