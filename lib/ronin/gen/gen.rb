@@ -20,7 +20,6 @@
 
 require 'ronin/gen/exceptions/unknown_generator'
 require 'ronin/gen/generators'
-require 'ronin/ronin'
 
 module Ronin
   module Gen
@@ -68,18 +67,11 @@ module Ronin
     #
     def Gen.generators
       unless class_variable_defined?('@@ronin_gen_generators')
-        @@ronin_gen_generators = SortedSet[]
+        @@ronin_gen_generators = Set[]
 
-        pattern = File.join('lib',Generators.namespace_root,'**','*.rb')
-        sub_pattern = File.join(Generators.namespace_root,"(.*).rb$")
-
-        Ronin.find_files(pattern).each do |path|
-          sub_path = path.match(sub_pattern)
-
-          if (sub_path && sub_path[1])
-            name = sub_path[1].split(File::SEPARATOR).join(':')
-            @@ronin_gen_generators << name
-          end
+        Generators.namespace_files.each do |file_name|
+          name = file_name.split(File::SEPARATOR).join(':')
+          @@ronin_gen_generators << name
         end
       end
 
