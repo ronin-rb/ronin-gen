@@ -36,6 +36,9 @@ module Ronin
 
         include Nokogiri
 
+        # The Overlay Format Version
+        FORMAT_VERSION = Ronin::Platform::Overlay::FORMAT_VERSION
+
         # The Overlay metadata file
         METADATA_FILE = Ronin::Platform::Overlay::METADATA_FILE
 
@@ -56,8 +59,8 @@ module Ronin
 
         desc 'Generates a new Ronin Overlay'
         class_option :title, :type => :string
+        class_option :uri, :type => :string
         class_option :source, :type => :string
-        class_option :source_view, :type => :string
         class_option :website, :type => :string
         class_option :license, :type => :string, :default => DEFAULT_LICENSE
         class_option :description, :type => :string, :default => DEFAULT_DESCRIPTION
@@ -69,8 +72,8 @@ module Ronin
 
         def setup
           @title = options[:title]
+          @uri = options[:uri]
           @source = options[:source]
-          @source_view = options[:source_view]
           @website = options[:website]
           @license = options[:license]
           @description = options[:description]
@@ -81,8 +84,7 @@ module Ronin
           @docs = options[:docs]
 
           @title ||= File.basename(self.path).gsub(/[_\s]+/,' ').capitalize
-          @source_view ||= @source
-          @website ||= @source_view
+          @website ||= @source
 
           if @maintainers
             @maintainers = DEFAULT_MAINTAINER
@@ -158,28 +160,28 @@ module Ronin
             )
 
             root = XML::Node.new('ronin-overlay',doc)
-            root['version'] = Ronin::Platform::Overlay::VERSION.to_s
+            root['version'] = FORMAT_VERSION.to_s
 
             title_tag = XML::Node.new('title',doc)
             title_tag << XML::Text.new(@title,doc)
             root << title_tag
 
-            if options[:source]
+            if @uri
+              uri_tag = XML::Node.new('uri',doc)
+              uri_tag << XML::Text.new(@uri,doc)
+              root << uri_tag
+            end
+
+            if @source
               source_tag = XML::Node.new('source',doc)
               source_tag << XML::Text.new(@source,doc)
               root << source_tag
             end
 
-            if @source_view
-              source_view_tag = XML::Node.new('source-view',doc)
-              source_view_tag << XML::Text.new(@source_view,doc)
-              root << source_view_tag
-            end
-
             if @website
-              url_tag = XML::Node.new('website',doc)
-              url_tag << XML::Text.new(@website,doc)
-              root << url_tag
+              website_tag = XML::Node.new('website',doc)
+              website_tag << XML::Text.new(@website,doc)
+              root << website_tag
             end
 
             license_tag = XML::Node.new('license',doc)

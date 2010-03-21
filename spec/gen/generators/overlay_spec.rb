@@ -10,8 +10,8 @@ describe Gen::Generators::Overlay do
     @name = 'ronin_generated_overlay'
     @path = File.join(Dir.tmpdir,@name)
     @title = 'Test Overlay'
-    @source = 'ssh+svn://www.example.com/var/svn/test/'
-    @source_view = 'http://www.example.com/test/'
+    @uri = 'ssh+svn://www.example.com/var/svn/test/'
+    @source = 'http://www.example.com/test/'
     @website = 'http://www.example.com/blog/'
     @license = 'GPL-2'
     @description = 'This is a test overlay'
@@ -19,8 +19,8 @@ describe Gen::Generators::Overlay do
     Gen::Generators::Overlay.generate(
       @path,
       :title => @title,
+      :uri => @uri,
       :source => @source,
-      :source_view => @source_view,
       :website => @website,
       :license => @license,
       :description => @description
@@ -86,19 +86,19 @@ describe Gen::Generators::Overlay do
     end
 
     it "should have a version" do
-      @root['version'].to_i.should == Ronin::Platform::Overlay::VERSION
+      @root['version'].to_i.should == Ronin::Platform::Overlay::FORMAT_VERSION
     end
 
     it "should have the title" do
       @root.at('title').inner_text.should == @title
     end
 
-    it "should have the source URL" do
-      @root.at('source').inner_text.should == @source
+    it "should have the repository URI" do
+      @root.at('uri').inner_text.should == @uri
     end
 
-    it "should have the source-view URL" do
-      @root.at('source-view').inner_text.should == @source_view
+    it "should have the source URL" do
+      @root.at('source').inner_text.should == @source
     end
 
     it "should have the website URL" do
