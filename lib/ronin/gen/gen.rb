@@ -20,6 +20,7 @@
 
 require 'ronin/gen/exceptions/unknown_generator'
 require 'ronin/gen/generators'
+require 'ronin/installation'
 
 module Ronin
   module Gen
@@ -66,11 +67,14 @@ module Ronin
     # @since 0.3.0
     #
     def Gen.generators
-      unless class_variable_defined?('@@ronin_gen_generators')
+      unless defined?(@@ronin_gen_generators)
+        directory = File.join('lib',Generators.namespace_root)
+
         @@ronin_gen_generators = Set[]
 
-        Generators.namespace_files.each do |file_name|
-          name = file_name.split(File::SEPARATOR).join(':')
+        Installation.each_file_in(directory).each do |path|
+          name = path.split(File::SEPARATOR).join(':')
+
           @@ronin_gen_generators << name
         end
       end
