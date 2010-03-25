@@ -1,8 +1,8 @@
 # Ronin Gen
 
 * [ronin.rubyforge.org/gen](http://ronin.rubyforge.org/gen/)
-* [github.com/postmodern/ronin-gen](http://github.com/postmodern/ronin-gen)
-* [github.com/postmodern/ronin-gen/issues](http://github.com/postmodern/ronin-gen/issues)
+* [github.com/ronin-ruby/ronin-gen](http://github.com/ronin-ruby/ronin-gen)
+* [github.com/ronin-ruby/ronin-gen/issues](http://github.com/ronin-ruby/ronin-gen/issues)
 * [groups.google.com/group/ronin-ruby](http://groups.google.com/group/ronin-ruby)
 * irc.freenode.net #ronin
 
