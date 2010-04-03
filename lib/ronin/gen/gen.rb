@@ -61,8 +61,8 @@ module Ronin
     #
     # The names of all available generators.
     #
-    # @return [SortedSet<String>]
-    #   The names of all installed generators.
+    # @return [Hash]
+    #   The names and paths of all installed generators.
     #
     # @since 0.3.0
     #
@@ -70,12 +70,12 @@ module Ronin
       unless defined?(@@ronin_gen_generators)
         directory = File.join('lib',Generators.namespace_root)
 
-        @@ronin_gen_generators = Set[]
+        @@ronin_gen_generators = {}
 
         Installation.each_file_in(directory) do |path|
           name = path.gsub(/\.rb$/,'').split(File::SEPARATOR).join(':')
 
-          @@ronin_gen_generators << name
+          @@ronin_gen_generators[name] = path
         end
       end
 
