@@ -9,73 +9,73 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Postmodern"]
-  s.date = %q{2010-04-02}
+  s.date = %q{2010-04-13}
   s.default_executable = %q{ronin-gen}
   s.description = %q{Ronin Gen is a Ruby library for Ronin that provides various generators.}
   s.email = %q{postmodern.mod3@gmail.com}
   s.executables = ["ronin-gen"]
   s.extra_rdoc_files = [
     "ChangeLog.md",
-    "README.md"
+     "README.md"
   ]
   s.files = [
     ".gitignore",
-    ".specopts",
-    ".yardopts",
-    "COPYING.txt",
-    "ChangeLog.md",
-    "README.md",
-    "Rakefile",
-    "bin/ronin-gen",
-    "lib/ronin/gen.rb",
-    "lib/ronin/gen/config.rb",
-    "lib/ronin/gen/dir_generator.rb",
-    "lib/ronin/gen/exceptions.rb",
-    "lib/ronin/gen/exceptions/unknown_generator.rb",
-    "lib/ronin/gen/file_generator.rb",
-    "lib/ronin/gen/gen.rb",
-    "lib/ronin/gen/generatable.rb",
-    "lib/ronin/gen/generator.rb",
-    "lib/ronin/gen/generators.rb",
-    "lib/ronin/gen/generators/extension.rb",
-    "lib/ronin/gen/generators/library.rb",
-    "lib/ronin/gen/generators/overlay.rb",
-    "lib/ronin/gen/version.rb",
-    "lib/ronin/ui/command_line/commands/gen.rb",
-    "ronin-gen.gemspec",
-    "spec/gen/classes/basic_generator.rb",
-    "spec/gen/classes/dir_generator.rb",
-    "spec/gen/classes/file_generator.rb",
-    "spec/gen/classes/templated_generator.rb",
-    "spec/gen/classes/touch_generator.rb",
-    "spec/gen/gen_spec.rb",
-    "spec/gen/generator_spec.rb",
-    "spec/gen/generators/extension_spec.rb",
-    "spec/gen/generators/overlay_spec.rb",
-    "spec/gen/helpers/static.rb",
-    "spec/gen/helpers/static/generators/templated.txt.erb",
-    "spec/helpers/database.rb",
-    "spec/spec_helper.rb",
-    "static/ronin/gen/library/.specopts",
-    "static/ronin/gen/library/.yardopts.erb",
-    "static/ronin/gen/library/COPYING.txt",
-    "static/ronin/gen/library/ChangeLog.md.erb",
-    "static/ronin/gen/library/README.md.erb",
-    "static/ronin/gen/library/Rakefile.erb",
-    "static/ronin/gen/library/bin/ronin-command.erb",
-    "static/ronin/gen/library/bin/ronin-example.erb",
-    "static/ronin/gen/library/lib/ronin/_license.erb",
-    "static/ronin/gen/library/lib/ronin/example.rb.erb",
-    "static/ronin/gen/library/lib/ronin/example/version.rb.erb",
-    "static/ronin/gen/library/lib/ronin/gen/generators/generator.rb.erb",
-    "static/ronin/gen/library/lib/ronin/ui/command_line/commands/command.rb.erb",
-    "static/ronin/gen/library/spec/example/example_spec.rb.erb",
-    "static/ronin/gen/library/spec/spec_helper.rb.erb",
-    "static/ronin/gen/platform/Rakefile.erb",
-    "static/ronin/gen/platform/extension.rb",
-    "static/ronin/gen/platform/spec/spec_helper.rb",
-    "static/ronin/gen/platform/tasks/spec.rb",
-    "static/ronin/gen/platform/tasks/yard.rb.erb"
+     ".specopts",
+     ".yardopts",
+     "COPYING.txt",
+     "ChangeLog.md",
+     "README.md",
+     "Rakefile",
+     "bin/ronin-gen",
+     "lib/ronin/gen.rb",
+     "lib/ronin/gen/config.rb",
+     "lib/ronin/gen/dir_generator.rb",
+     "lib/ronin/gen/exceptions.rb",
+     "lib/ronin/gen/exceptions/unknown_generator.rb",
+     "lib/ronin/gen/file_generator.rb",
+     "lib/ronin/gen/gen.rb",
+     "lib/ronin/gen/generatable.rb",
+     "lib/ronin/gen/generator.rb",
+     "lib/ronin/gen/generators.rb",
+     "lib/ronin/gen/generators/extension.rb",
+     "lib/ronin/gen/generators/library.rb",
+     "lib/ronin/gen/generators/overlay.rb",
+     "lib/ronin/gen/version.rb",
+     "lib/ronin/ui/command_line/commands/gen.rb",
+     "ronin-gen.gemspec",
+     "spec/gen/classes/basic_generator.rb",
+     "spec/gen/classes/dir_generator.rb",
+     "spec/gen/classes/file_generator.rb",
+     "spec/gen/classes/templated_generator.rb",
+     "spec/gen/classes/touch_generator.rb",
+     "spec/gen/gen_spec.rb",
+     "spec/gen/generator_spec.rb",
+     "spec/gen/generators/extension_spec.rb",
+     "spec/gen/generators/overlay_spec.rb",
+     "spec/gen/helpers/static.rb",
+     "spec/gen/helpers/static/generators/templated.txt.erb",
+     "spec/helpers/database.rb",
+     "spec/spec_helper.rb",
+     "static/ronin/gen/library/.specopts",
+     "static/ronin/gen/library/.yardopts.erb",
+     "static/ronin/gen/library/COPYING.txt",
+     "static/ronin/gen/library/ChangeLog.md.erb",
+     "static/ronin/gen/library/README.md.erb",
+     "static/ronin/gen/library/Rakefile.erb",
+     "static/ronin/gen/library/bin/ronin-command.erb",
+     "static/ronin/gen/library/bin/ronin-example.erb",
+     "static/ronin/gen/library/lib/ronin/_license.erb",
+     "static/ronin/gen/library/lib/ronin/example.rb.erb",
+     "static/ronin/gen/library/lib/ronin/example/version.rb.erb",
+     "static/ronin/gen/library/lib/ronin/gen/generators/generator.rb.erb",
+     "static/ronin/gen/library/lib/ronin/ui/command_line/commands/command.rb.erb",
+     "static/ronin/gen/library/spec/example/example_spec.rb.erb",
+     "static/ronin/gen/library/spec/spec_helper.rb.erb",
+     "static/ronin/gen/platform/Rakefile.erb",
+     "static/ronin/gen/platform/extension.rb",
+     "static/ronin/gen/platform/spec/spec_helper.rb",
+     "static/ronin/gen/platform/tasks/spec.rb",
+     "static/ronin/gen/platform/tasks/yard.rb.erb"
   ]
   s.has_rdoc = %q{yard}
   s.homepage = %q{http://github.com/ronin-ruby/ronin-gen}
@@ -86,17 +86,17 @@ Gem::Specification.new do |s|
   s.summary = %q{A Ruby library for Ronin that provides various generators.}
   s.test_files = [
     "spec/spec_helper.rb",
-    "spec/helpers/database.rb",
-    "spec/gen/classes/basic_generator.rb",
-    "spec/gen/classes/dir_generator.rb",
-    "spec/gen/classes/file_generator.rb",
-    "spec/gen/classes/templated_generator.rb",
-    "spec/gen/classes/touch_generator.rb",
-    "spec/gen/gen_spec.rb",
-    "spec/gen/generator_spec.rb",
-    "spec/gen/helpers/static.rb",
-    "spec/gen/generators/extension_spec.rb",
-    "spec/gen/generators/overlay_spec.rb"
+     "spec/gen/gen_spec.rb",
+     "spec/gen/generators/overlay_spec.rb",
+     "spec/gen/generators/extension_spec.rb",
+     "spec/gen/helpers/static.rb",
+     "spec/gen/generator_spec.rb",
+     "spec/gen/classes/basic_generator.rb",
+     "spec/gen/classes/templated_generator.rb",
+     "spec/gen/classes/dir_generator.rb",
+     "spec/gen/classes/touch_generator.rb",
+     "spec/gen/classes/file_generator.rb",
+     "spec/helpers/database.rb"
   ]
 
   if s.respond_to? :specification_version then
@@ -104,20 +104,20 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<open-namespace>, ["~> 0.1.0"])
+      s.add_runtime_dependency(%q<open_namespace>, ["~> 0.2.0"])
       s.add_runtime_dependency(%q<thor>, ["~> 0.13.0"])
       s.add_runtime_dependency(%q<ronin>, ["~> 0.4.0"])
       s.add_development_dependency(%q<rspec>, ["~> 1.3.0"])
       s.add_development_dependency(%q<yard>, ["~> 0.5.3"])
     else
-      s.add_dependency(%q<open-namespace>, ["~> 0.1.0"])
+      s.add_dependency(%q<open_namespace>, ["~> 0.2.0"])
       s.add_dependency(%q<thor>, ["~> 0.13.0"])
       s.add_dependency(%q<ronin>, ["~> 0.4.0"])
       s.add_dependency(%q<rspec>, ["~> 1.3.0"])
       s.add_dependency(%q<yard>, ["~> 0.5.3"])
     end
   else
-    s.add_dependency(%q<open-namespace>, ["~> 0.1.0"])
+    s.add_dependency(%q<open_namespace>, ["~> 0.2.0"])
     s.add_dependency(%q<thor>, ["~> 0.13.0"])
     s.add_dependency(%q<ronin>, ["~> 0.4.0"])
     s.add_dependency(%q<rspec>, ["~> 1.3.0"])
