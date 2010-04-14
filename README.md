@@ -60,6 +60,7 @@ Generate a skeleton Extension:
 ## Requirements
 
 * [open_namespace](http://github.com/postmodern/open_namespace) ~> 0.2.0
+* [open_namespace](http://github.com/postmodern/data_paths) ~> 0.2.1
 * [thor](http://github.com/wycats/thor) ~> 0.13.0
 * [ronin](http://ronin.rubyforge.org/) ~> 0.4.0
 
