@@ -20,7 +20,7 @@
 
 require 'ronin/templates/template'
 
-require 'static_paths/finders'
+require 'data_paths/finders'
 require 'extlib'
 require 'erb'
 require 'thor'
@@ -94,7 +94,7 @@ module Ronin
 
       include Thor::Actions
       include Templates::Template
-      include StaticPaths::Finders
+      include DataPaths::Finders
 
       def self.inherited(super_class)
         class_name = super_class.name.sub('Ronin::Gen::Generators::','')
@@ -220,13 +220,13 @@ module Ronin
       end
 
       #
-      # Copies a static-file.
+      # Copies a data file.
       #
-      # @param [String] static_file
-      #   The relative path to the static file.
+      # @param [String] data_file
+      #   The relative path to the data file.
       #
       # @param [String] destination
-      #   The destination to copy the static file to.
+      #   The destination to copy the data file to.
       #
       # @example
       #   copy_file 'ronin/platform/generators/extension.rb',
@@ -234,15 +234,15 @@ module Ronin
       #
       # @since 0.2.0
       #
-      def cp(static_file,destination)
-        copy_file(find_static_file(static_file),destination)
+      def cp(data_file,destination)
+        copy_file(find_data_file(data_file),destination)
       end
 
       #
-      # Copies the contents of all static directories.
+      # Copies the contents of all data directories.
       #
-      # @param [String] static_dir
-      #   The static directories to copy from.
+      # @param [String] data_dir
+      #   The data directories to copy from.
       #
       # @param [String, nil] destination
       #   The optional destination directory to copy the files to.
@@ -255,9 +255,9 @@ module Ronin
       #
       # @since 0.3.0
       #
-      def cp_r(static_dir,destination=nil,config={})
-        each_static_dir(static_dir) do |dir|
-          directory(dir,destination || static_dir,config)
+      def cp_r(data_dir,destination=nil,config={})
+        each_data_dir(data_dir) do |dir|
+          directory(dir,destination || data_dir,config)
         end
       end
 

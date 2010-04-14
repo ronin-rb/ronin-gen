@@ -105,12 +105,14 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<open_namespace>, ["~> 0.2.0"])
+      s.add_runtime_dependency(%q<data_paths>, ["~> 0.2.1"])
       s.add_runtime_dependency(%q<thor>, ["~> 0.13.0"])
       s.add_runtime_dependency(%q<ronin>, ["~> 0.4.0"])
       s.add_development_dependency(%q<rspec>, ["~> 1.3.0"])
       s.add_development_dependency(%q<yard>, ["~> 0.5.3"])
     else
       s.add_dependency(%q<open_namespace>, ["~> 0.2.0"])
+      s.add_dependency(%q<data_paths>, ["~> 0.2.1"])
       s.add_dependency(%q<thor>, ["~> 0.13.0"])
       s.add_dependency(%q<ronin>, ["~> 0.4.0"])
       s.add_dependency(%q<rspec>, ["~> 1.3.0"])
@@ -118,6 +120,7 @@ Gem::Specification.new do |s|
     end
   else
     s.add_dependency(%q<open_namespace>, ["~> 0.2.0"])
+    s.add_dependency(%q<data_paths>, ["~> 0.2.1"])
     s.add_dependency(%q<thor>, ["~> 0.13.0"])
     s.add_dependency(%q<ronin>, ["~> 0.4.0"])
     s.add_dependency(%q<rspec>, ["~> 1.3.0"])

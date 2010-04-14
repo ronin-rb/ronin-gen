@@ -18,14 +18,14 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #
 
-require 'static_paths'
+require 'data_paths'
 
 module Ronin
   module Gen
     module Config
-      include StaticPaths
+      include DataPaths
 
-      register_static_dir File.join(File.dirname(__FILE__),'..','..','..','data')
+      register_data_dir File.join(File.dirname(__FILE__),'..','..','..','data')
     end
   end
 end
