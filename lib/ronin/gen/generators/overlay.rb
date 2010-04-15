@@ -98,8 +98,8 @@ module Ronin
           mkdir LIB_DIR
           touch File.join(LIB_DIR,Ronin::Platform::Overlay::INIT_FILE)
 
-          mkdir 'static'
-          cp File.join('ronin','platform',METADATA_XSL), File.join('static',METADATA_XSL)
+          mkdir 'data'
+          cp File.join('ronin','platform',METADATA_XSL), File.join('data',METADATA_XSL)
 
           mkdir Ronin::Platform::Overlay::CACHE_DIR
           mkdir Ronin::Platform::Overlay::EXTS_DIR
@@ -156,7 +156,7 @@ module Ronin
             doc << XML::ProcessingInstruction.new(
               doc,
               'xml-stylesheet',
-              "type=\"text/xsl\" href=\"static/#{METADATA_XSL}\""
+              "type=\"text/xsl\" href=\"data/#{METADATA_XSL}\""
             )
 
             root = XML::Node.new('ronin-overlay',doc)
