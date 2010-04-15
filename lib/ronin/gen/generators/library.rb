@@ -97,7 +97,7 @@ module Ronin
           erb File.join('ronin','gen','library','Rakefile.erb'),
              'Rakefile'
 
-          mkdir 'static'
+          mkdir 'data'
         end
 
         #
