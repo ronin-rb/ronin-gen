@@ -37,14 +37,14 @@ describe Gen::Generators::Overlay do
     File.directory?(tasks_dir).should == true
   end
 
-  it "should create a static/ directory" do
-    static_dir = File.join(@path,'static')
+  it "should create a data/ directory" do
+    data_dir = File.join(@path,'data')
 
-    File.directory?(static_dir).should == true
+    File.directory?(data_dir).should == true
   end
 
-  it "should copy the overlay.xsl file into the static/ directory" do
-    overlay_xsl = File.join(@path,'static','overlay.xsl')
+  it "should copy the overlay.xsl file into the data/ directory" do
+    overlay_xsl = File.join(@path,'data','overlay.xsl')
 
     File.file?(overlay_xsl).should == true
   end
