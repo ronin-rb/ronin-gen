@@ -15,3 +15,5 @@ group :development do
   gem 'rspec',			'~> 1.3.0'
   gem 'yard',			'~> 0.5.3'
 end
+
+gem 'rspec',	'~> 1.3.0', :group => [:development, :test]

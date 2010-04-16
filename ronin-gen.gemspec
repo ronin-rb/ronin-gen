@@ -114,6 +114,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<jeweler>, ["~> 1.4.0"])
       s.add_development_dependency(%q<rspec>, ["~> 1.3.0"])
       s.add_development_dependency(%q<yard>, ["~> 0.5.3"])
+      s.add_development_dependency(%q<rspec>, ["~> 1.3.0"])
     else
       s.add_dependency(%q<open_namespace>, ["~> 0.2.0"])
       s.add_dependency(%q<data_paths>, ["~> 0.2.1"])
@@ -124,6 +125,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<jeweler>, ["~> 1.4.0"])
       s.add_dependency(%q<rspec>, ["~> 1.3.0"])
       s.add_dependency(%q<yard>, ["~> 0.5.3"])
+      s.add_dependency(%q<rspec>, ["~> 1.3.0"])
     end
   else
     s.add_dependency(%q<open_namespace>, ["~> 0.2.0"])
@@ -135,6 +137,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<jeweler>, ["~> 1.4.0"])
     s.add_dependency(%q<rspec>, ["~> 1.3.0"])
     s.add_dependency(%q<yard>, ["~> 0.5.3"])
+    s.add_dependency(%q<rspec>, ["~> 1.3.0"])
   end
 end
 
