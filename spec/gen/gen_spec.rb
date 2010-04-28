@@ -1,7 +1,6 @@
+require 'spec_helper'
 require 'ronin/gen/gen'
 require 'ronin/gen/version'
-
-require 'spec_helper'
 
 describe Gen do
   it "should have a version" do

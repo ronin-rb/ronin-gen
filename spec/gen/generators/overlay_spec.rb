@@ -1,6 +1,5 @@
-require 'ronin/gen/generators/overlay'
-
 require 'spec_helper'
+require 'ronin/gen/generators/overlay'
 
 require 'tmpdir'
 require 'fileutils'

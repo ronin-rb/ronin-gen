@@ -1,6 +1,5 @@
-require 'ronin/gen/generators/extension'
-
 require 'spec_helper'
+require 'ronin/gen/generators/extension'
 
 require 'tmpdir'
 require 'fileutils'
