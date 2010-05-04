@@ -173,11 +173,12 @@ module Ronin
       #
       # @since 0.3.0
       #
-      def initialize(arguments=[],options={},config={},&block)
+      def initialize(arguments=[],options={},config={})
         super(arguments,options,config)
 
         setup()
-        block.call(self) if block
+
+        yield self if block_given?
       end
 
       #
