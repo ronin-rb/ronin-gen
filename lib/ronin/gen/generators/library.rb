@@ -57,6 +57,7 @@ module Ronin
         class_option :name, :type => :string
         class_option :author, :type => :string, :default => DEFAULT_AUTHOR
         class_option :email, :type => :string, :default => DEFAULT_EMAIL
+        class_option :homepage, :type => :string
         class_option :version, :type => :string, :default => DEFAULT_VERSION
         class_option :commands, :type => :array, :default => []
         class_option :generators, :type => :array, :default => []
@@ -73,6 +74,11 @@ module Ronin
           @author = options[:author]
           @email = options[:email]
           @safe_email = @email.gsub(/\s*@\s*/,' at ')
+          @homepage = if options[:homepage]
+                        options[:homepage]
+                      else
+                        "http://github.com/ronin-ruby/#{@dir_name}"
+                      end
         end
 
         #
