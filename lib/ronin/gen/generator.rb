@@ -277,10 +277,10 @@ module Ronin
       #   will be returned.
       #
       # @example
-      #   template 'ronin/platform/generators/Rakefile.erb', 'Rakefile.erb'
+      #   erb 'ronin/platform/generators/Rakefile.erb', 'Rakefile.erb'
       #
       # @example
-      #   template '_helpers.erb'
+      #   erb '_helpers.erb'
       #
       # @since 0.2.0
       #
