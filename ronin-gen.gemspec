@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Postmodern"]
-  s.date = %q{2010-05-08}
+  s.date = %q{2010-05-09}
   s.default_executable = %q{ronin-gen}
   s.description = %q{Ronin Gen is a Ruby library for Ronin that provides various generators.}
   s.email = %q{postmodern.mod3@gmail.com}
@@ -72,6 +72,7 @@ Gem::Specification.new do |s|
     "spec/gen/gen_spec.rb",
     "spec/gen/generator_spec.rb",
     "spec/gen/generators/extension_spec.rb",
+    "spec/gen/generators/library_spec.rb",
     "spec/gen/generators/overlay_spec.rb",
     "spec/gen/helpers/data.rb",
     "spec/gen/helpers/data/generators/templated.txt.erb",
@@ -93,6 +94,7 @@ Gem::Specification.new do |s|
     "spec/gen/gen_spec.rb",
     "spec/gen/generator_spec.rb",
     "spec/gen/generators/extension_spec.rb",
+    "spec/gen/generators/library_spec.rb",
     "spec/gen/generators/overlay_spec.rb",
     "spec/gen/helpers/data.rb",
     "spec/helpers/database.rb",
