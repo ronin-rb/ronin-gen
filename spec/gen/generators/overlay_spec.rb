@@ -1,13 +1,13 @@
 require 'spec_helper'
 require 'ronin/gen/generators/overlay'
 
+require 'pathname'
 require 'tmpdir'
-require 'fileutils'
 
 describe Gen::Generators::Overlay do
   before(:all) do
     @name = 'ronin_generated_overlay'
-    @path = File.join(Dir.tmpdir,@name)
+    @path = Pathname.new(Dir.tmpdir).join(@name)
     @title = 'Test Overlay'
     @uri = 'ssh+svn://www.example.com/var/svn/test/'
     @source = 'http://www.example.com/test/'
@@ -27,60 +27,44 @@ describe Gen::Generators::Overlay do
   end
 
   it "should create the overlay directory" do
-    File.directory?(@path).should == true
+    @path.should be_directory
   end
 
   it "should create a tasks/ directory" do
-    tasks_dir = File.join(@path,'tasks')
-
-    File.directory?(tasks_dir).should == true
+    @path.join('tasks').should be_directory
   end
 
   it "should create a data/ directory" do
-    data_dir = File.join(@path,'data')
-
-    File.directory?(data_dir).should == true
+    @path.join('data').should be_directory
   end
 
   it "should copy the overlay.xsl file into the data/ directory" do
-    overlay_xsl = File.join(@path,'data','overlay.xsl')
-
-    File.file?(overlay_xsl).should == true
+    @path.join('data','overlay.xsl').should be_file
   end
 
   it "should create a lib/ directory" do
-    lib_dir = File.join(@path,Ronin::Platform::Overlay::LIB_DIR)
-
-    File.directory?(lib_dir).should == true
+    @path.join(Ronin::Platform::Overlay::LIB_DIR).should be_directory
   end
 
   it "should create a cache/ directory" do
-    cache_dir = File.join(@path,Ronin::Platform::Overlay::CACHE_DIR)
-
-    File.directory?(cache_dir).should == true
+    @path.join(Ronin::Platform::Overlay::CACHE_DIR).should be_directory
   end
 
   it "should create a exts/ directory" do
-    exts_dir = File.join(@path,Ronin::Platform::Overlay::EXTS_DIR)
-
-    File.directory?(exts_dir).should == true
+    @path.join(Ronin::Platform::Overlay::EXTS_DIR).should be_directory
   end
 
   it "should create a Rakefile" do
-    rakefile = File.join(@path,'Rakefile')
-
-    File.file?(rakefile).should == true
+    @path.join('Rakefile').should be_file
   end
 
   it "should create a XML metadata file" do
-    metadata_file = File.join(@path,Ronin::Platform::Overlay::METADATA_FILE)
-
-    File.file?(metadata_file).should == true
+    @path.join(Ronin::Platform::Overlay::METADATA_FILE).should be_file
   end
 
   describe "XML metadata file" do
     before(:all) do
-      @doc = Nokogiri::XML(open(File.join(@path,Ronin::Platform::Overlay::METADATA_FILE)))
+      @doc = Nokogiri::XML(open(@path.join(Ronin::Platform::Overlay::METADATA_FILE)))
       @root = @doc.at('/ronin-overlay')
     end
 
@@ -114,6 +98,6 @@ describe Gen::Generators::Overlay do
   end
 
   after(:all) do
-    FileUtils.rm_r(@path)
+    @path.rmtree
   end
 end
