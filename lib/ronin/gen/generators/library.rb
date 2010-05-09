@@ -35,6 +35,9 @@ module Ronin
         # Default version of the library
         DEFAULT_VERSION = '0.1.0'
 
+        # Default license of the library
+        DEFAULT_LICENSE = 'GPL-2'
+
         # Default author of the library
         DEFAULT_AUTHOR = 'Author'
 
@@ -55,10 +58,10 @@ module Ronin
 
         desc 'Generates a new Ronin library'
         class_option :name, :type => :string
+        class_option :version, :type => :string, :default => DEFAULT_VERSION
         class_option :author, :type => :string, :default => DEFAULT_AUTHOR
         class_option :email, :type => :string, :default => DEFAULT_EMAIL
         class_option :homepage, :type => :string
-        class_option :version, :type => :string, :default => DEFAULT_VERSION
         class_option :commands, :type => :array, :default => []
         class_option :generators, :type => :array, :default => []
 
@@ -70,6 +73,8 @@ module Ronin
           @title = @name.split(/[\s_-]+/).map { |word|
             word.capitalize
           }.join(' ')
+
+          @license = DEFAULT_LICENSE
 
           @author = options[:author]
           @email = options[:email]
