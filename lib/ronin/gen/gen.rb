@@ -72,7 +72,7 @@ module Ronin
 
         @@ronin_gen_generators = {}
 
-        Installation.each_file_in(directory) do |path|
+        Installation.each_file(directory) do |path|
           name = path.gsub(/\.rb$/,'').split(File::SEPARATOR).join(':')
 
           @@ronin_gen_generators[name] = path
