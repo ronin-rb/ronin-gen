@@ -96,6 +96,7 @@ module Ronin
         #
         def generate
           mkdir LIB_DIR
+          mkdir File.join(LIB_DIR,'ronin')
           touch File.join(LIB_DIR,Ronin::Platform::Overlay::INIT_FILE)
 
           mkdir 'data'

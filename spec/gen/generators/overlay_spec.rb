@@ -46,6 +46,10 @@ describe Gen::Generators::Overlay do
     @path.join(Ronin::Platform::Overlay::LIB_DIR).should be_directory
   end
 
+  it "should create a lib/ronin/ directory" do
+    @path.join(Ronin::Platform::Overlay::LIB_DIR,'ronin').should be_directory
+  end
+
   it "should create a cache/ directory" do
     @path.join(Ronin::Platform::Overlay::CACHE_DIR).should be_directory
   end
