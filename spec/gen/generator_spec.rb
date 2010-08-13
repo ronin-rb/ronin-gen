@@ -11,51 +11,58 @@ require 'tmpdir'
 require 'fileutils'
 
 describe Gen::Generator do
-  before(:all) do
-    @previous_dir = Dir.pwd
-    @dir = File.join(Dir.tmpdir,'ronin_generators')
-
-    FileUtils.mkdir(@dir)
-    Dir.chdir(@dir)
-  end
-
   it "should include Thor::Actions" do
     Gen::Generator.should include(Thor::Actions)
   end
 
-  it "should set default values before invoking any tasks" do
-    @generator = BasicGenerator.new
+  describe "setup" do
+    subject { BasicGenerator.new }
 
-    @generator.invoke
-    @generator.var.should == 'test'
+    before(:all) do
+      subject.invoke
+    end
+
+    it "should set default values before invoking any tasks" do
+      subject.var.should == 'test'
+    end
   end
 
-  it "should generate files" do
-    FileGenerator.generate
+  describe "actions" do
+    before(:all) do
+      @previous_dir = Dir.pwd
+      @dir = File.join(Dir.tmpdir,'ronin_generators')
 
-    File.read(File.join(@dir,'test.txt')).should == "hello"
-  end
+      FileUtils.mkdir(@dir)
+      Dir.chdir(@dir)
+    end
 
-  it "should touch files" do
-    TouchGenerator.generate
+    it "should generate files" do
+      FileGenerator.generate
 
-    File.file?(File.join(@dir,'test2.txt')).should == true
-  end
+      File.read(File.join(@dir,'test.txt')).should == "hello"
+    end
 
-  it "should generate directories" do
-    DirGenerator.generate
+    it "should touch files" do
+      TouchGenerator.generate
 
-    File.directory?(File.join(@dir,'test')).should == true
-  end
+      File.file?(File.join(@dir,'test2.txt')).should == true
+    end
 
-  it "should generate files using templates" do
-    TemplatedGenerator.generate(:message => 'hello')
+    it "should generate directories" do
+      DirGenerator.generate
 
-    File.read(File.join(@dir,'templated.txt')).should == "message: hello\n"
-  end
+      File.directory?(File.join(@dir,'test')).should == true
+    end
 
-  after(:all) do
-    FileUtils.rm_r(@dir)
-    Dir.chdir(@previous_dir)
+    it "should generate files using templates" do
+      TemplatedGenerator.generate(:message => 'hello')
+
+      File.read(File.join(@dir,'templated.txt')).should == "message: hello\n"
+    end
+
+    after(:all) do
+      FileUtils.rm_r(@dir)
+      Dir.chdir(@previous_dir)
+    end
   end
 end
