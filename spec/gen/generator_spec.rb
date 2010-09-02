@@ -19,7 +19,7 @@ describe Gen::Generator do
     subject { BasicGenerator.new }
 
     before(:all) do
-      subject.invoke
+      subject.invoke_all
     end
 
     it "should set default values before invoking any tasks" do

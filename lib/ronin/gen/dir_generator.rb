@@ -47,10 +47,7 @@ module Ronin
       #   gen.generate('path/to/dir')
       #
       def self.generate(path,options={},arguments=[])
-        path = File.expand_path(path)
-
-        generator = self.new([path] + arguments, options)
-        generator.invoke()
+        super(options,[File.expand_path(path)] + arguments)
       end
 
       protected

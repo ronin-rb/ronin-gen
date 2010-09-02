@@ -144,7 +144,7 @@ module Ronin
       #
       def self.generate(options={},arguments=[])
         generator = self.new(arguments, options)
-        generator.invoke()
+        generator.invoke_all()
       end
 
       desc "default generator task"
