@@ -44,6 +44,9 @@ module Ronin
         # Default email of the library
         DEFAULT_EMAIL = 'name@host.com'
 
+        # Default homepage for the library
+        DEFAULT_HOMEPAGE = 'http://ronin-ruby.github.com'
+
         # Default RSpec version to use
         RSPEC_VERSION = '1.3.0'
 
@@ -61,7 +64,8 @@ module Ronin
         class_option :version, :type => :string, :default => DEFAULT_VERSION
         class_option :author, :type => :string, :default => DEFAULT_AUTHOR
         class_option :email, :type => :string, :default => DEFAULT_EMAIL
-        class_option :homepage, :type => :string
+        class_option :homepage, :type => :string,
+                                :default => DEFAULT_HOMEPAGE
         class_option :commands, :type => :array, :default => []
         class_option :generators, :type => :array, :default => []
 
@@ -79,11 +83,7 @@ module Ronin
           @author = options[:author]
           @email = options[:email]
           @safe_email = @email.gsub(/\s*@\s*/,' at ')
-          @homepage = if options[:homepage]
-                        options[:homepage]
-                      else
-                        "http://github.com/ronin-ruby/#{@dir_name}"
-                      end
+          @homepage = options[:homepage]
         end
 
         #
