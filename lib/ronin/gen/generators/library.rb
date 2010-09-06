@@ -45,7 +45,7 @@ module Ronin
         DEFAULT_EMAIL = 'name@host.com'
 
         # Default homepage for the library
-        DEFAULT_HOMEPAGE = 'http://ronin-ruby.github.com'
+        DEFAULT_HOMEPAGE = 'http://ronin-ruby.github.com/'
 
         # Default RSpec version to use
         RSPEC_VERSION = '1.3.0'
