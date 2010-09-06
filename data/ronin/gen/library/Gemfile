@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 RONIN = 'http://github.com/ronin-ruby'
 
+gem 'ronin-support',	'~> 0.1.0', :git => "#{RONIN}/ronin-support.git"
 gem 'ronin',		'~> 0.4.0', :git => "#{RONIN}/ronin.git"
 
 group(:development) do
