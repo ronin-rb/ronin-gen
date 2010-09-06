@@ -90,23 +90,20 @@ module Ronin
         # Generates top-level files.
         #
         def generate
-          cp File.join('ronin','gen','library','.specopts'),
-             '.specopts'
+          cp File.join('ronin','gen','library','Gemfile'), 'Gemfile'
+          erb File.join('ronin','gen','library','Rakefile.erb'), 'Rakefile'
 
+          cp File.join('ronin','gen','library','.rspec'), '.rspec'
           erb File.join('ronin','gen','library','.yardopts.erb'),
               '.yardopts'
 
-          cp File.join('ronin','gen','library','COPYING.txt'),
-             'COPYING.txt'
+          cp File.join('ronin','gen','library','COPYING.txt'), 'COPYING.txt'
 
           erb File.join('ronin','gen','library','ChangeLog.md.erb'),
              'ChangeLog.md'
 
           erb File.join('ronin','gen','library','README.md.erb'),
              'README.md'
-
-          erb File.join('ronin','gen','library','Rakefile.erb'),
-             'Rakefile'
 
           mkdir 'data'
         end

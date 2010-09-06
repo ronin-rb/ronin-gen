@@ -68,12 +68,16 @@ describe Gen::Generators::Library do
       path.join('ChangeLog.md').should be_file
     end
 
+    it "should create a Gemfile" do
+      path.join('Gemfile').should be_file
+    end
+
     it "should create a Rakefile" do
       path.join('Rakefile').should be_file
     end
 
-    it "should create a .specopts file" do
-      path.join('.specopts').should be_file
+    it "should create a .rspec file" do
+      path.join('.rspec').should be_file
     end
 
     it "should create a .yardopts file" do

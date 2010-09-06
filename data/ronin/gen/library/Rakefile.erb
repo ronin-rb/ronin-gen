@@ -1,25 +1,29 @@
 require 'rubygems'
-require 'rake'
-require './lib/ronin/<%= @dir_name %>/version.rb'
+require 'bundler'
 
 begin
-  require 'jeweler'
-  Jeweler::Tasks.new do |gem|
-    gem.name = '<%= @name %>'
-    gem.version = Ronin::<%= @module_name %>::VERSION
-    gem.licenses = ['<%= @license %>']
-    gem.summary = %Q{}
-    gem.description = %Q{}
-    gem.email = '<%= @email %>'
-    gem.homepage = '<%= @homepage %>'
-    gem.authors = ['<%= @author %>']
-    gem.add_dependency 'ronin', '>= 0.4.0'
-    gem.add_development_dependency 'rspec', '>= <%= RSPEC_VERSION %>'
-    gem.add_development_dependency 'yard', '>= <%= YARD_VERSION %>'
-    gem.has_rdoc = 'yard'
-  end
-rescue LoadError
-  puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
+  Bundler.setup(:development, :doc)
+rescue Bundler::BundlerError => e
+  STDERR.puts e.message
+  STDERR.puts "Run `bundle install` to install missing gems"
+  exit e.status_code
+end
+
+require 'rake'
+require 'jeweler'
+require './lib/ronin/<%= @dir_name %>/version.rb'
+
+Jeweler::Tasks.new do |gem|
+  gem.name = '<%= @name %>'
+  gem.version = Ronin::<%= @module_name %>::VERSION
+  gem.licenses = ['<%= @license %>']
+  gem.summary = %Q{}
+  gem.description = %Q{}
+  gem.email = '<%= @email %>'
+  gem.homepage = '<%= @homepage %>'
+  gem.authors = ['<%= @author %>']
+  gem.add_dependency 'ronin', '~> 0.4.0'
+  gem.has_rdoc = 'yard'
 end
 
 require 'spec/rake/spectask'
@@ -29,15 +33,7 @@ Spec::Rake::SpecTask.new(:spec) do |spec|
   spec.spec_opts = ['--options', '.specopts']
 end
 
-task :spec => :check_dependencies
 task :default => :spec
 
-begin
-  require 'yard'
-
-  YARD::Rake::YardocTask.new
-rescue LoadError
-  task :yard do
-    abort "YARD is not available. In order to run yard, you must: gem install yard"
-  end
-end
+require 'yard'
+YARD::Rake::YardocTask.new
