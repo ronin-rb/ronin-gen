@@ -47,12 +47,6 @@ module Ronin
         # Default homepage for the library
         DEFAULT_HOMEPAGE = 'http://ronin-ruby.github.com/'
 
-        # Default RSpec version to use
-        RSPEC_VERSION = '1.3.0'
-
-        # Default YARD version to use
-        YARD_VERSION = '0.5.3'
-
         # Directory to store command classes in
         COMMANDS_DIR = File.join('lib',UI::CommandLine::Commands.namespace_root)
 
