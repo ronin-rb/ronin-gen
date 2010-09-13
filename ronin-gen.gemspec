@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Postmodern"]
-  s.date = %q{2010-09-01}
+  s.date = %q{2010-09-13}
   s.default_executable = %q{ronin-gen}
   s.description = %q{Ronin Gen is a Ruby library for Ronin that provides various generators.}
   s.email = %q{postmodern.mod3@gmail.com}
@@ -29,10 +29,12 @@ Gem::Specification.new do |s|
     "README.md",
     "Rakefile",
     "bin/ronin-gen",
-    "data/ronin/gen/library/.specopts",
+    "data/ronin/gen/library/.gitignore",
+    "data/ronin/gen/library/.rspec",
     "data/ronin/gen/library/.yardopts.erb",
     "data/ronin/gen/library/COPYING.txt",
     "data/ronin/gen/library/ChangeLog.md.erb",
+    "data/ronin/gen/library/Gemfile",
     "data/ronin/gen/library/README.md.erb",
     "data/ronin/gen/library/Rakefile.erb",
     "data/ronin/gen/library/bin/ronin-command.erb",

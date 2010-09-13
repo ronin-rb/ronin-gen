@@ -87,6 +87,7 @@ module Ronin
           cp File.join('ronin','gen','library','Gemfile'), 'Gemfile'
           erb File.join('ronin','gen','library','Rakefile.erb'), 'Rakefile'
 
+          cp File.join('ronin','gen','library','.gitignore'), '.gitignore'
           cp File.join('ronin','gen','library','.rspec'), '.rspec'
           erb File.join('ronin','gen','library','.yardopts.erb'),
               '.yardopts'
