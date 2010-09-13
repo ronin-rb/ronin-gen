@@ -12,6 +12,10 @@ describe Gen::Generators::Library do
       Gen::Generators::Library.generate(path)
     end
 
+    it "should initialize a git repository" do
+      path.join('.git').should be_directory
+    end
+
     it "should create a bin/ directory" do
       path.join('bin').should be_directory
     end

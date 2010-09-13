@@ -62,6 +62,7 @@ module Ronin
                                 :default => DEFAULT_HOMEPAGE
         class_option :commands, :type => :array, :default => []
         class_option :generators, :type => :array, :default => []
+        class_option :no_git, :type => :boolean
 
         def setup
           @name = (options[:name] || File.basename(self.path))
@@ -84,10 +85,17 @@ module Ronin
         # Generates top-level files.
         #
         def generate
+          unless options[:no_git]
+            run("git init #{self.destination_root}")
+          end
+
           cp File.join('ronin','gen','library','Gemfile'), 'Gemfile'
           erb File.join('ronin','gen','library','Rakefile.erb'), 'Rakefile'
 
-          cp File.join('ronin','gen','library','.gitignore'), '.gitignore'
+          unless options[:no_git]
+            cp File.join('ronin','gen','library','.gitignore'), '.gitignore'
+          end
+
           cp File.join('ronin','gen','library','.rspec'), '.rspec'
           erb File.join('ronin','gen','library','.yardopts.erb'),
               '.yardopts'
