@@ -19,7 +19,7 @@ Jeweler::Tasks.new do |gem|
   gem.licenses = ['GPL-2']
   gem.summary = %Q{A Ruby library for Ronin that provides various generators.}
   gem.description = %Q{Ronin Gen is a Ruby library for Ronin that provides various generators.}
-  gem.email = 'postmodern.mod3@gmail.com'
+  gem.email = 'ronin-ruby@googlegroups.com'
   gem.homepage = 'http://github.com/ronin-ruby/ronin-gen'
   gem.authors = ['Postmodern']
   gem.has_rdoc = 'yard'

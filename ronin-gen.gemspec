@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.date = %q{2010-09-13}
   s.default_executable = %q{ronin-gen}
   s.description = %q{Ronin Gen is a Ruby library for Ronin that provides various generators.}
-  s.email = %q{postmodern.mod3@gmail.com}
+  s.email = %q{ronin-ruby@googlegroups.com}
   s.executables = ["ronin-gen"]
   s.extra_rdoc_files = [
     "ChangeLog.md",
