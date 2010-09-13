@@ -85,6 +85,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/ronin-ruby/ronin-gen}
   s.licenses = ["GPL-2"]
   s.require_paths = ["lib"]
+  s.requirements = ["git >= 1.6.0.0, for the library generator"]
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{A Ruby library for Ronin that provides various generators.}
   s.test_files = [

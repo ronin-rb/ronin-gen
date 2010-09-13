@@ -22,6 +22,7 @@ Jeweler::Tasks.new do |gem|
   gem.email = 'ronin-ruby@googlegroups.com'
   gem.homepage = 'http://github.com/ronin-ruby/ronin-gen'
   gem.authors = ['Postmodern']
+  gem.requirements = ['git >= 1.6.0.0, for the library generator']
   gem.has_rdoc = 'yard'
 end
 Jeweler::GemcutterTasks.new
