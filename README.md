@@ -1,6 +1,5 @@
 # Ronin Gen
 
-* [ronin.rubyforge.org/docs/ronin-gen](http://ronin.rubyforge.org/docs/ronin-gen/)
 * [github.com/ronin-ruby/ronin-gen](http://github.com/ronin-ruby/ronin-gen)
 * [github.com/ronin-ruby/ronin-gen/issues](http://github.com/ronin-ruby/ronin-gen/issues)
 * [groups.google.com/group/ronin-ruby](http://groups.google.com/group/ronin-ruby)
