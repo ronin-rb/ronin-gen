@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Postmodern"]
-  s.date = %q{2010-09-13}
+  s.date = %q{2010-09-24}
   s.default_executable = %q{ronin-gen}
   s.description = %q{Ronin Gen is a Ruby library for Ronin that provides various generators.}
   s.email = %q{ronin-ruby@googlegroups.com}
@@ -110,7 +110,7 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<open_namespace>, ["~> 0.3.0"])
       s.add_runtime_dependency(%q<data_paths>, ["~> 0.2.1"])
-      s.add_runtime_dependency(%q<thor>, ["~> 0.14.0"])
+      s.add_runtime_dependency(%q<thor>, ["~> 0.14.2"])
       s.add_runtime_dependency(%q<ronin-support>, ["~> 0.1.0"])
       s.add_runtime_dependency(%q<ronin>, ["~> 0.4.0"])
       s.add_development_dependency(%q<rake>, ["~> 0.8.7"])
@@ -119,7 +119,7 @@ Gem::Specification.new do |s|
     else
       s.add_dependency(%q<open_namespace>, ["~> 0.3.0"])
       s.add_dependency(%q<data_paths>, ["~> 0.2.1"])
-      s.add_dependency(%q<thor>, ["~> 0.14.0"])
+      s.add_dependency(%q<thor>, ["~> 0.14.2"])
       s.add_dependency(%q<ronin-support>, ["~> 0.1.0"])
       s.add_dependency(%q<ronin>, ["~> 0.4.0"])
       s.add_dependency(%q<rake>, ["~> 0.8.7"])
@@ -129,7 +129,7 @@ Gem::Specification.new do |s|
   else
     s.add_dependency(%q<open_namespace>, ["~> 0.3.0"])
     s.add_dependency(%q<data_paths>, ["~> 0.2.1"])
-    s.add_dependency(%q<thor>, ["~> 0.14.0"])
+    s.add_dependency(%q<thor>, ["~> 0.14.2"])
     s.add_dependency(%q<ronin-support>, ["~> 0.1.0"])
     s.add_dependency(%q<ronin>, ["~> 0.4.0"])
     s.add_dependency(%q<rake>, ["~> 0.8.7"])
