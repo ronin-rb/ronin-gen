@@ -52,7 +52,7 @@ module Ronin
       path = name.gsub(/[_-]+/,'_').gsub(/:+/,File::SEPARATOR)
 
       unless (generator = Generators.require_const(path))
-        raise(UnknownGenerator,"unknown generator #{name.dump}",caller)
+        raise(UnknownGenerator,"unknown generator #{name.dump}")
       end
 
       return generator
