@@ -137,6 +137,9 @@ module Ronin
       # @param [Array] arguments
       #   Additional arguments for the generator.
       #
+      # @return [Generator]
+      #   The generate object.
+      #
       # @example
       #   gen.generate
       #
@@ -145,6 +148,8 @@ module Ronin
       def self.generate(options={},arguments=[])
         generator = self.new(arguments, options)
         generator.invoke_all()
+
+        return generator
       end
 
       desc "default generator task"
