@@ -137,6 +137,12 @@ module Ronin
       # @param [Array] arguments
       #   Additional arguments for the generator.
       #
+      # @yield [generator]
+      #   The given block will be passed the new generator.
+      #
+      # @yieldparam [Generator] generator
+      #   The newly created generator object.
+      #
       # @return [Generator]
       #   The generate object.
       #
@@ -145,8 +151,8 @@ module Ronin
       #
       # @since 0.2.0
       #
-      def self.generate(options={},arguments=[])
-        generator = self.new(arguments, options)
+      def self.generate(options={},arguments=[],&block)
+        generator = self.new(arguments,options,&block)
         generator.invoke_all()
 
         return generator
