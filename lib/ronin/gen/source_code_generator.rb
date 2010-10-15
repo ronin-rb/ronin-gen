@@ -34,7 +34,7 @@ module Ronin
       # Generates the source-code file and spawns a text-editor.
       #
       def self.generate(options={},arguments=[],&block)
-        super(options,arguments,&block)
+        generator = super(options,arguments,&block)
 
         if (generator.options.no_edit? && generator.options.editor)
           system(generator.options.editor,generator.path)
