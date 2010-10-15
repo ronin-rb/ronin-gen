@@ -97,6 +97,7 @@ module Ronin
           end
 
           cp File.join('ronin','gen','library','.rspec'), '.rspec'
+          cp File.join('ronin','gen','library','.document'), '.document'
           erb File.join('ronin','gen','library','.yardopts.erb'),
               '.yardopts'
 

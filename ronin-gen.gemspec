@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
     "README.md",
     "Rakefile",
     "bin/ronin-gen",
+    "data/ronin/gen/library/.document",
     "data/ronin/gen/library/.gitignore",
     "data/ronin/gen/library/.rspec",
     "data/ronin/gen/library/.yardopts.erb",
