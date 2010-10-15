@@ -27,6 +27,8 @@ module Ronin
     #
     class RubyGenerator < FileGenerator
 
+      file_extension! :rb
+
       class_option :editor, :default => ENV['EDITOR']
       class_option :no_edit, :type => :boolean
 
@@ -34,9 +36,7 @@ module Ronin
       # Generates the Ruby file and spawns a text-editor.
       #
       def self.generate(options={},arguments=[],&block)
-        generator = super(options,arguments) do |gen|
-          gen.path += '.rb' unless gen.path =~ /\.rb$/
-        end
+        super(options,arguments,&block)
 
         if (!generator.options.no_edit? && generator.options.editor)
           system(generator.options.editor,generator.path)

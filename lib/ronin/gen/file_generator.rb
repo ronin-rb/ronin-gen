@@ -29,6 +29,45 @@ module Ronin
 
       argument :path, :type => :string, :require => true
 
+      #
+      # Generates the file at the given path.
+      #
+      def self.generate(options={},arguments=[])
+        super(options,arguments) do |gen|
+          if (self.file_extension && File.extname(gen.path).empty?)
+            gen.path += ".#{self.file_extension}"
+          end
+
+          yield gen if block_given?
+        end
+      end
+
+      protected
+
+      #
+      # The file extension to append to all paths.
+      #
+      # @return [String, nil]
+      #   The file extension.
+      #
+      # @since 0.3.0
+      #
+      def self.file_extension
+        @file_extension
+      end
+
+      #
+      # Sets the file extension to append to all paths.
+      #
+      # @param [String] ext
+      #   The file extension.
+      #
+      # @since 0.3.0
+      #
+      def self.file_extension!(ext)
+        @file_extension = ext.to_s
+      end
+
     end
   end
 end
