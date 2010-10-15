@@ -18,16 +18,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #
 
-require 'ronin/gen/source_code_generator'
+require 'ronin/gen/file_generator'
 
 module Ronin
   module Gen
     #
-    # A {SourceCodeGenerator} class for creating Ruby files.
+    # A {FileGenerator} class for creating Ruby files.
     #
-    class RubyGenerator < SourceCodeGenerator
+    class SourceCodeGenerator < FileGenerator
 
-      file_extension! :rb
+      class_option :editor, :default => ENV['EDITOR']
+      class_option :no_edit, :type => :boolean, :default => false
+
+      #
+      # Generates the source-code file and spawns a text-editor.
+      #
+      def self.generate(options={},arguments=[],&block)
+        super(options,arguments,&block)
+
+        if (generator.options.no_edit? && generator.options.editor)
+          system(generator.options.editor,generator.path)
+        end
+      end
 
     end
   end
