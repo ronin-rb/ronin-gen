@@ -30,10 +30,6 @@ describe Gen::Generators::Overlay do
     path.should be_directory
   end
 
-  it "should create a tasks/ directory" do
-    path.join('tasks').should be_directory
-  end
-
   it "should create a data/ directory" do
     path.join('data').should be_directory
   end

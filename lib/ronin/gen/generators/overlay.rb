@@ -56,7 +56,6 @@ module Ronin
         class_option :license, :type => :string, :default => DEFAULT_LICENSE
         class_option :description, :type => :string, :default => DEFAULT_DESCRIPTION
         class_option :authors, :type => :hash, :default => DEFAULT_AUTHORS, :banner => 'NAME:EMAIL ...'
-        class_option :tasks, :type => :array, :default => [], :banner => 'TASK ...'
         class_option :test_suite, :type => :string, :banner => 'test_unit|rspec'
         class_option :docs, :type => :boolean
 
@@ -69,7 +68,6 @@ module Ronin
           @description = options[:description]
           @authors = options[:authors]
           @gems = options[:gems]
-          @tasks = options[:tasks]
           @test_suite = case options[:test_suite]
                         when 'test', 'test_unit'
                           :test_unit
@@ -93,8 +91,6 @@ module Ronin
 
           mkdir Ronin::Overlay::DATA_DIR
           mkdir Ronin::Overlay::CACHE_DIR
-
-          mkdir 'tasks'
         end
 
         #
