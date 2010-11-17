@@ -57,7 +57,7 @@ module Ronin
         class_option :description, :type => :string, :default => DEFAULT_DESCRIPTION
         class_option :authors, :type => :hash, :default => DEFAULT_AUTHORS, :banner => 'NAME:EMAIL ...'
         class_option :tasks, :type => :array, :default => [], :banner => 'TASK ...'
-        class_option :test_suite, :type => :string, :banner => 'unit|rspec'
+        class_option :test_suite, :type => :string, :banner => 'test_unit|rspec'
         class_option :docs, :type => :boolean
 
         def setup
@@ -70,7 +70,13 @@ module Ronin
           @authors = options[:authors]
           @gems = options[:gems]
           @tasks = options[:tasks]
-          @test_suite = options[:test_suite]
+          @test_suite = case options[:test_suite]
+                        when 'test', 'test_unit'
+                          :test_unit
+                        when 'spec', 'rspec'
+                          :rspec
+                        end
+
           @docs = options[:docs]
 
           @title ||= File.basename(self.path).gsub(/[_\s]+/,' ').capitalize
@@ -95,15 +101,6 @@ module Ronin
         # Generates the Rakefile of the Overlay.
         #
         def rakefile
-          case @test_suite
-          when 'rspec', 'spec'
-            @tasks << './tasks/spec.rb'
-          end
-
-          if @docs
-            @tasks << './tasks/yard.rb'
-          end
-
           erb File.join('ronin','gen','overlay','Rakefile.erb'), 'Rakefile'
         end
 
@@ -112,25 +109,14 @@ module Ronin
         #
         def test_suite
           case @test_suite
-          when 'test','unit'
+          when :test_unit
             mkdir 'test'
-          when 'rspec', 'spec'
-            cp File.join('ronin','gen','overlay','tasks','spec.rb'),
-               File.join('tasks','spec.rb')
+          when :rspec
+            cp File.join('ronin','gen','overlay','.rspec'), '.rspec'
 
             mkdir 'spec'
             cp File.join('ronin','gen','overlay','spec','spec_helper.rb'),
                File.join('spec','spec_helper.rb')
-          end
-        end
-
-        #
-        # Generate the YARD documentation generation task.
-        #
-        def docs
-          if @docs
-            erb File.join('ronin','gen','overlay','tasks','yard.rb.erb'),
-                File.join('tasks','yard.rb')
           end
         end
 
