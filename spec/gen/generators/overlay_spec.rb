@@ -38,24 +38,16 @@ describe Gen::Generators::Overlay do
     path.join('data').should be_directory
   end
 
-  it "should copy the overlay.xsl file into the data/ directory" do
-    path.join('data','overlay.xsl').should be_file
-  end
-
   it "should create a lib/ directory" do
-    path.join(Ronin::Platform::Overlay::LIB_DIR).should be_directory
+    path.join(Ronin::Overlay::LIB_DIR).should be_directory
   end
 
   it "should create a lib/ronin/ directory" do
-    path.join(Ronin::Platform::Overlay::LIB_DIR,'ronin').should be_directory
+    path.join(Ronin::Overlay::LIB_DIR,'ronin').should be_directory
   end
 
   it "should create a cache/ directory" do
-    path.join(Ronin::Platform::Overlay::CACHE_DIR).should be_directory
-  end
-
-  it "should create a exts/ directory" do
-    path.join(Ronin::Platform::Overlay::EXTS_DIR).should be_directory
+    path.join(Ronin::Overlay::CACHE_DIR).should be_directory
   end
 
   it "should create a Rakefile" do
@@ -63,39 +55,38 @@ describe Gen::Generators::Overlay do
   end
 
   it "should create a XML metadata file" do
-    path.join(Ronin::Platform::Overlay::METADATA_FILE).should be_file
+    path.join(Ronin::Overlay::METADATA_FILE).should be_file
   end
 
-  describe "XML metadata file" do
-    let(:doc) { Nokogiri::XML(open(path.join(Ronin::Platform::Overlay::METADATA_FILE))) }
-    let(:root) { doc.at('/ronin-overlay') }
+  describe "metadata" do
+    subject { YAML.load_file(path.join(Ronin::Overlay::METADATA_FILE)) }
 
-    it "should have a version" do
-      root['version'].to_i.should == Ronin::Platform::Overlay::FORMAT_VERSION
+    it "should contain a Hash" do
+      subject.should be_kind_of(Hash)
     end
 
     it "should have the title" do
-      root.at('title').inner_text.should == title
+      subject['title'].should == title
     end
 
     it "should have the repository URI" do
-      root.at('uri').inner_text.should == uri
+      subject['uri'].should == uri
     end
 
     it "should have the source URL" do
-      root.at('source').inner_text.should == source
+      subject['source'].should == source
     end
 
     it "should have the website URL" do
-      root.at('website').inner_text.should == website
+      subject['website'].should == website
     end
 
     it "should have the license" do
-      root.at('license').inner_text.should == license
+      subject['license'].should == license
     end
 
     it "should have the description" do
-      root.at('description').inner_text.should == description
+      subject['description'].should == description
     end
   end
 
