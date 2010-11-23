@@ -122,7 +122,7 @@ module Ronin
         #
         def bin
           mkdir 'bin'
-          erb File.join('ronin','gen','library','bin','ronin-example.erb'),
+          erb File.join('ronin','gen','library','bin','ronin-name.erb'),
               File.join('bin',"ronin-#{@dir_name}")
         end
 
@@ -132,10 +132,10 @@ module Ronin
         def lib
           mkdir File.join('lib','ronin',@dir_name)
 
-          erb File.join('ronin','gen','library','lib','ronin','example.rb.erb'),
+          erb File.join('ronin','gen','library','lib','ronin','name.rb.erb'),
               File.join('lib','ronin',"#{@dir_name}.rb")
 
-          erb File.join('ronin','gen','library','lib','ronin','example','version.rb.erb'),
+          erb File.join('ronin','gen','library','lib','ronin','name','version.rb.erb'),
               File.join('lib','ronin',@dir_name,'version.rb')
         end
 
@@ -148,7 +148,7 @@ module Ronin
               File.join('spec','spec_helper.rb')
 
           mkdir File.join('spec',@dir_name)
-          erb File.join('ronin','gen','library','spec','example','example_spec.rb.erb'),
+          erb File.join('ronin','gen','library','spec','name','name_spec.rb.erb'),
               File.join('spec',@dir_name,"#{@dir_name}_spec.rb")
         end
 
