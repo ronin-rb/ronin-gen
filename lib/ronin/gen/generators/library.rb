@@ -90,7 +90,12 @@ module Ronin
           end
 
           cp File.join('ronin','gen','library','Gemfile'), 'Gemfile'
-          erb File.join('ronin','gen','library','Rakefile.erb'), 'Rakefile'
+          cp File.join('ronin','gen','library','Rakefile'), 'Rakefile'
+
+          erb File.join('ronin','gen','library','library.gemspec.erb'),
+              "#{@name}.gemspec"
+          erb File.join('ronin','gen','library','gemspec.yml.erb'),
+              'gemspec.yml'
 
           unless options[:no_git]
             cp File.join('ronin','gen','library','.gitignore'), '.gitignore'

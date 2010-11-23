@@ -1,0 +1,20 @@
+name: <%= @name %>
+summary: <%= @summary %>
+description:
+  <%= @description %>
+
+license: GPL-2
+authors: <%= @author %>
+email: <%= @email %>
+homepage: <%= @homepage %>
+has_yard: true
+
+dependencies:
+  # ronin: ~> 1.0.0
+<%- unless options[:generators].empty? -%>
+  # ronin-gen: ~> 0.3.0
+<%- end -%>
+
+development_dependencies:
+  bundler: ~> 1.0.0
+  yard: ~> 0.6.0
