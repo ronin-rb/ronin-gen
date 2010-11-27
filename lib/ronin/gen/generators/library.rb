@@ -19,9 +19,10 @@
 #
 
 require 'ronin/ui/command_line/commands'
-require 'ronin/gen/generators'
-require 'ronin/gen/config'
 require 'ronin/gen/dir_generator'
+require 'ronin/gen/config'
+require 'ronin/gen/version'
+require 'ronin/support/version'
 require 'ronin/version'
 
 module Ronin
@@ -89,7 +90,7 @@ module Ronin
             run("git init #{self.destination_root}")
           end
 
-          cp File.join('ronin','gen','library','Gemfile'), 'Gemfile'
+          erb File.join('ronin','gen','library','Gemfile.erb'), 'Gemfile'
           cp File.join('ronin','gen','library','Rakefile'), 'Rakefile'
 
           erb File.join('ronin','gen','library','library.gemspec.erb'),
