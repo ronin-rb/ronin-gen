@@ -1,8 +1,9 @@
 # Ronin Gen
 
-* [github.com/ronin-ruby/ronin-gen](http://github.com/ronin-ruby/ronin-gen)
-* [github.com/ronin-ruby/ronin-gen/issues](http://github.com/ronin-ruby/ronin-gen/issues)
-* [groups.google.com/group/ronin-ruby](http://groups.google.com/group/ronin-ruby)
+* [Source](http://github.com/ronin-ruby/ronin-gen)
+* [Issues](http://github.com/ronin-ruby/ronin-gen/issues)
+* [Documentation](http://rubydoc.info/github/ronin-ruby/ronin-gen/frames)
+* [Mailing List](http://groups.google.com/group/ronin-ruby)
 * irc.freenode.net #ronin
 
 ## Description
