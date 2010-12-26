@@ -20,7 +20,7 @@
 
 require 'ronin/gen/config'
 require 'ronin/gen/dir_generator'
-require 'ronin/overlay'
+require 'ronin/repository'
 require 'ronin/version'
 
 require 'set'
@@ -29,15 +29,15 @@ module Ronin
   module Gen
     module Generators
       #
-      # Generates a completely new Ronin Overlay.
+      # Generates a completely new Ronin Repository.
       #
-      class Overlay < DirGenerator
+      class Repository < DirGenerator
 
-        # The Overlay metadata file
-        METADATA_FILE = Ronin::Overlay::METADATA_FILE
+        # The repository metadata file
+        METADATA_FILE = Ronin::Repository::METADATA_FILE
 
-        # The Overlay lib directory
-        LIB_DIR = Ronin::Overlay::LIB_DIR
+        # The repository lib directory
+        LIB_DIR = Ronin::Repository::LIB_DIR
 
         # Default license to use
         DEFAULT_LICENSE = 'CC-by'
@@ -46,9 +46,9 @@ module Ronin
         DEFAULT_AUTHORS = {'Name' => 'name@example.com'}
 
         # Default description to use
-        DEFAULT_DESCRIPTION = 'This is an Overlay'
+        DEFAULT_DESCRIPTION = 'This is a Ronin Repository'
 
-        desc 'Generates a new Ronin Overlay'
+        desc 'Generates a new Ronin Repository'
         class_option :title, :type => :string
         class_option :uri, :type => :string
         class_option :source, :type => :string
@@ -82,46 +82,46 @@ module Ronin
         end
 
         #
-        # Generates a skeleton Overlay.
+        # Generates a skeleton repository.
         #
         def generate
           mkdir LIB_DIR
           mkdir File.join(LIB_DIR,'ronin')
-          touch File.join(LIB_DIR,Ronin::Overlay::INIT_FILE)
+          touch File.join(LIB_DIR,Ronin::Repository::INIT_FILE)
 
-          mkdir Ronin::Overlay::DATA_DIR
-          mkdir Ronin::Overlay::CACHE_DIR
+          mkdir Ronin::Repository::DATA_DIR
+          mkdir Ronin::Repository::CACHE_DIR
         end
 
         #
-        # Generates the Rakefile of the Overlay.
+        # Generates the Rakefile of the repository.
         #
         def rakefile
-          erb File.join('ronin','gen','overlay','Rakefile.erb'), 'Rakefile'
+          erb File.join('ronin','gen','repository','Rakefile.erb'), 'Rakefile'
         end
 
         #
-        # Generates a base test suite for the Overlay.
+        # Generates a base test suite for the repository.
         #
         def test_suite
           case @test_suite
           when :test_unit
             mkdir 'test'
           when :rspec
-            cp File.join('ronin','gen','overlay','.rspec'), '.rspec'
+            cp File.join('ronin','gen','repository','.rspec'), '.rspec'
 
             mkdir 'spec'
-            cp File.join('ronin','gen','overlay','spec','spec_helper.rb'),
+            cp File.join('ronin','gen','repository','spec','spec_helper.rb'),
                File.join('spec','spec_helper.rb')
           end
         end
 
         #
-        # Generates the XML metadata file for the Overlay.
+        # Generates the XML metadata file for the repository.
         #
         def metadata
-          erb File.join('ronin','gen','overlay','overlay.yml.erb'),
-              'overlay.yml'
+          erb File.join('ronin','gen','repository','ronin.yml.erb'),
+              'ronin.yml'
         end
 
       end

@@ -1,21 +1,21 @@
 require 'spec_helper'
-require 'ronin/gen/generators/overlay'
+require 'ronin/gen/generators/repository'
 
 require 'pathname'
 require 'tmpdir'
 
-describe Gen::Generators::Overlay do
-  let(:name) { 'ronin_generated_overlay' }
+describe Gen::Generators::Repository do
+  let(:name) { 'ronin_generated_repo' }
   let(:path) { Pathname.new(Dir.tmpdir).join(name) }
-  let(:title) { 'Test Overlay' }
+  let(:title) { 'Test Repository' }
   let(:uri) { 'ssh+svn://www.example.com/var/svn/test/' }
   let(:source) { 'http://www.example.com/test/' }
   let(:website) { 'http://www.example.com/blog/' }
   let(:license) { 'GPL-2' }
-  let(:description) { 'This is a test overlay' }
+  let(:description) { 'This is a test repository' }
 
   before(:all) do
-    Gen::Generators::Overlay.generate(
+    Gen::Generators::Repository.generate(
       path,
       :title => title,
       :uri => uri,
@@ -26,7 +26,7 @@ describe Gen::Generators::Overlay do
     )
   end
 
-  it "should create the overlay directory" do
+  it "should create the repository directory" do
     path.should be_directory
   end
 
@@ -35,15 +35,15 @@ describe Gen::Generators::Overlay do
   end
 
   it "should create a lib/ directory" do
-    path.join(Ronin::Overlay::LIB_DIR).should be_directory
+    path.join(Ronin::Repository::LIB_DIR).should be_directory
   end
 
   it "should create a lib/ronin/ directory" do
-    path.join(Ronin::Overlay::LIB_DIR,'ronin').should be_directory
+    path.join(Ronin::Repository::LIB_DIR,'ronin').should be_directory
   end
 
   it "should create a cache/ directory" do
-    path.join(Ronin::Overlay::CACHE_DIR).should be_directory
+    path.join(Ronin::Repository::CACHE_DIR).should be_directory
   end
 
   it "should create a Rakefile" do
@@ -51,11 +51,11 @@ describe Gen::Generators::Overlay do
   end
 
   it "should create a XML metadata file" do
-    path.join(Ronin::Overlay::METADATA_FILE).should be_file
+    path.join(Ronin::Repository::METADATA_FILE).should be_file
   end
 
   describe "metadata" do
-    subject { YAML.load_file(path.join(Ronin::Overlay::METADATA_FILE)) }
+    subject { YAML.load_file(path.join(Ronin::Repository::METADATA_FILE)) }
 
     it "should contain a Hash" do
       subject.should be_kind_of(Hash)
