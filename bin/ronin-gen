@@ -21,11 +21,11 @@ lib_dir = File.join(root_dir,'lib')
 $LOAD_PATH << lib_dir unless $LOAD_PATH.include?(lib_dir)
 
 require 'ronin/gen/gen'
-require 'ronin/ui/command_line/commands/gen'
-require 'ronin/ui/command_line'
+require 'ronin/ui/cli/commands/gen'
 
 if (ARGV.length > 0 && ARGV.first[0..0] != '-')
   name = ARGV.shift
+
   begin
     Ronin::Gen.generator(name).start
   rescue Ronin::Gen::UnknownGenerator
@@ -34,5 +34,5 @@ if (ARGV.length > 0 && ARGV.first[0..0] != '-')
     exit -1
   end
 else
-  Ronin::UI::CommandLine::Commands::Gen.start
+  Ronin::UI::CLI::Commands::Gen.start
 end

@@ -18,14 +18,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #
 
+require 'ronin/ui/cli/command'
 require 'ronin/gen/gen'
 require 'ronin/gen/version'
-require 'ronin/ui/command_line/command'
-require 'ronin/ui/command_line/command_line'
 
 module Ronin
   module UI
-    module CommandLine
+    module CLI
       module Commands
         #
         # Lists the available generators.
