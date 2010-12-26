@@ -18,7 +18,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #
 
-require 'ronin/ui/command_line/commands'
+require 'ronin/ui/cli/commands'
 require 'ronin/gen/dir_generator'
 require 'ronin/gen/config'
 require 'ronin/gen/version'
@@ -49,7 +49,7 @@ module Ronin
         DEFAULT_HOMEPAGE = 'http://ronin-ruby.github.com/'
 
         # Directory to store command classes in
-        COMMANDS_DIR = File.join('lib',UI::CommandLine::Commands.namespace_root)
+        COMMANDS_DIR = File.join('lib',UI::CLI::Commands.namespace_root)
 
         # Directory to store generator classes in
         GENERATORS_DIR = File.join('lib',Generators.namespace_root)
