@@ -7,8 +7,8 @@ RONIN = 'http://github.com/ronin-ruby'
 gemspec
 
 # Ronin dependencies
-gem 'ronin-support',	'~> 0.1.0', :git => "#{RONIN}/ronin-support.git"
-gem 'ronin',		      '~> 1.0.0', :git => "#{RONIN}/ronin.git"
+# gem 'ronin-support',	'~> 0.1.0', :git => "#{RONIN}/ronin-support.git"
+# gem 'ronin',		      '~> 1.0.0', :git => "#{RONIN}/ronin.git"
 
 group :development do
   gem 'rake',		      '~> 0.8.7'
