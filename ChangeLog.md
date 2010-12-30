@@ -17,7 +17,7 @@
 * Use hoe >= 2.0.0.
 * Require ronin >= 0.2.4.
 * Added `Ronin::Generators::Generator#touch`.
-* Added {Ronin::UI::CommandLine::Commands::Gen} for listing and
+* Added `Ronin::UI::CommandLine::Commands::Gen` for listing and
   invoking generators.
 * Added more defaults to `Ronin::Generators::Platform::Overlay`:
   * Default maintainer.
