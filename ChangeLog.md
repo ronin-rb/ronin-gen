@@ -1,3 +1,16 @@
+### 1.0.0 / 2011-02-01
+
+* Require [ronin-support](http://github.com/ronin-ruby/ronin-support)
+  ~> 0.1.0.
+* Require [ronin](http://github.com/ronin-ruby/ronin) ~> 1.0.0.
+* Switched from [Jeweler](https://github.com/technicalpickles/jeweler)
+  to [Ore](http://github.com/ruby-ore/ore) and [Bundler](http://gembundler.com).
+* Upgraded to [Rspec2](http://relishapp.com/rspec).
+* Renamed `Ronin::Gen::Generators::Overlay` to
+  {Ronin::Gen::Generators::Repository}.
+* Changed {Ronin::Gen::Generators::Library} to generate libraries managed
+  by Ore and Bundler.
+
 ### 0.2.0 / 2009-09-24
 
 * Require ronin >= 0.3.0.
