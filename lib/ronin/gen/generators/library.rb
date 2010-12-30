@@ -156,7 +156,7 @@ module Ronin
         #
         # Generates any optional commands for the library.
         #
-        def command_line
+        def commands
           unless options[:commands].empty?
             mkdir COMMANDS_DIR
 
