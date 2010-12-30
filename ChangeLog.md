@@ -6,10 +6,14 @@
 * Switched from [Jeweler](https://github.com/technicalpickles/jeweler)
   to [Ore](http://github.com/ruby-ore/ore) and [Bundler](http://gembundler.com).
 * Upgraded to [Rspec2](http://relishapp.com/rspec).
+* {Ronin::Gen::FileGenerator} now spawns the default text-editor after
+  completion.
 * Renamed `Ronin::Gen::Generators::Overlay` to
   {Ronin::Gen::Generators::Repository}.
 * Changed {Ronin::Gen::Generators::Library} to generate libraries managed
   by Ore and Bundler.
+* {Ronin::Gen::Generators::Library} now initializes the new library as a
+  Git repository.
 
 ### 0.2.0 / 2009-09-24
 
