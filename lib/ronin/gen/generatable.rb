@@ -27,7 +27,7 @@ module Ronin
       # @param [String] path
       #   The path to pass to the generator.
       #
-      # @since 0.3.0
+      # @since 1.0.0
       #
       def generate(path)
       end

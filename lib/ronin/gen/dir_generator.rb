@@ -64,7 +64,7 @@ module Ronin
       # @param [Hash] config
       #   Additional configuration for the generator.
       #
-      # @since 0.3.0
+      # @since 1.0.0
       #
       def initialize(arguments=[],options={},config={})
         super(arguments,options,config) do |gen|

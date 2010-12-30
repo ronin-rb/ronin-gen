@@ -45,7 +45,7 @@ module Ronin
     #   Gen.generator 'exploits:remote_tcp'
     #   # => Ronin::Gen::Generators::Exploits::RemoteTcp
     #
-    # @since 0.3.0
+    # @since 1.0.0
     #
     def Gen.generator(name)
       name = name.to_s

@@ -50,7 +50,7 @@ module Ronin
       # @return [String, nil]
       #   The file extension.
       #
-      # @since 0.3.0
+      # @since 1.0.0
       #
       def self.file_extension
         @file_extension
@@ -62,7 +62,7 @@ module Ronin
       # @param [String] ext
       #   The file extension.
       #
-      # @since 0.3.0
+      # @since 1.0.0
       #
       def self.file_extension!(ext)
         @file_extension = ext.to_s
