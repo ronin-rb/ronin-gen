@@ -8,7 +8,7 @@ module Ronin
       module Commands
         class <%= @command_class %> < Command
 
-          desc 'A command'
+          desc 'The <%= @command_file %> command'
 
           class_option :name, :type => :string
           argument :path, :type => :string
