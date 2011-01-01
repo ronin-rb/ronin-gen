@@ -106,6 +106,16 @@ module Ronin
         end
 
         #
+        # Generate files needed for documentation.
+        #
+        def docs
+          if options.docs?
+            erb File.join('ronin','gen','repository','.yardopts.erb'),
+                '.yardopts'
+          end
+        end
+
+        #
         # Generates the XML metadata file for the repository.
         #
         def metadata
