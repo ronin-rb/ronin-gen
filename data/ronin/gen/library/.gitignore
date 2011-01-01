@@ -1,6 +1,7 @@
 doc
 pkg
-tmp/*
+vendor/cache
+Gemfile.lock
 .bundle
 .DS_Store
 .yardoc
