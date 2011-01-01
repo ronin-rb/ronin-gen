@@ -63,7 +63,7 @@ Generate a skeleton Extension:
 * [data_paths](http://github.com/postmodern/data_paths) ~> 0.2.1
 * [thor](http://github.com/wycats/thor) ~> 0.14.2
 * [ronin-support](http://github.com/ronin-ruby/ronin-support) ~> 0.1.0
-* [ronin](http://github.com/ronin-ruby/ronin) ~> 0.4.0
+* [ronin](http://github.com/ronin-ruby/ronin) ~> 1.0.0
 
 ## Install
 
