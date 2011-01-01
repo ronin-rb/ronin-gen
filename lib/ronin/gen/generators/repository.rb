@@ -53,9 +53,19 @@ module Ronin
         class_option :uri, :type => :string
         class_option :source, :type => :string
         class_option :website, :type => :string
-        class_option :license, :type => :string, :default => DEFAULT_LICENSE
-        class_option :description, :type => :string, :default => DEFAULT_DESCRIPTION
-        class_option :authors, :type => :array, :default => DEFAULT_AUTHORS, :banner => 'NAME [...]'
+
+        class_option :license, :type => :string,
+                               :default => DEFAULT_LICENSE,
+                               :banner => 'LICENSE'
+
+        class_option :description, :type => :string,
+                                   :default => DEFAULT_DESCRIPTION,
+                                   :banner => 'TEXT'
+
+        class_option :authors, :type => :array,
+                               :default => DEFAULT_AUTHORS,
+                               :banner => 'NAME [...]'
+
         class_option :tests, :type => :boolean
         class_option :docs, :type => :boolean
 
@@ -91,7 +101,8 @@ module Ronin
         # Generates the Rakefile of the repository.
         #
         def rakefile
-          erb File.join('ronin','gen','repository','Rakefile.erb'), 'Rakefile'
+          erb File.join('ronin','gen','repository','Rakefile.erb'),
+              'Rakefile'
         end
 
         #
