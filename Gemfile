@@ -6,7 +6,7 @@ RONIN = 'http://github.com/ronin-ruby'
 
 gemspec
 
-# Ronin dependencies
+# Ronin dependencies:
 # gem 'ronin-support',	'~> 0.1.0', :git => "#{RONIN}/ronin-support.git"
 # gem 'ronin',		      '~> 1.0.0', :git => "#{RONIN}/ronin.git"
 
