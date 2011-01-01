@@ -98,11 +98,13 @@ module Ronin
         # Generates a base RSpec test-suite for the repository.
         #
         def tests
-          cp File.join('ronin','gen','repository','.rspec'), '.rspec'
+          if options.tests?
+            cp File.join('ronin','gen','repository','.rspec'), '.rspec'
 
-          mkdir 'spec'
-          cp File.join('ronin','gen','repository','spec','spec_helper.rb'),
-             File.join('spec','spec_helper.rb')
+            mkdir 'spec'
+            cp File.join('ronin','gen','repository','spec','spec_helper.rb'),
+               File.join('spec','spec_helper.rb')
+          end
         end
 
         #
