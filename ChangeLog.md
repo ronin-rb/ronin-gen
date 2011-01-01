@@ -7,7 +7,6 @@
 * Require ronin ~> 1.0.0.
 * Require bundler ~> 1.0.0.
 * Require yard ~> 0.6.4.
-* Require rspec ~> 2.0.0.
 * Switched from [Jeweler](https://github.com/technicalpickles/jeweler)
   to [Ore](http://github.com/ruby-ore/ore) and [Bundler](http://gembundler.com).
 * {Ronin::Gen::FileGenerator} now spawns the default text-editor after
