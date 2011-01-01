@@ -1,7 +1,6 @@
 # -*- ruby -*-
 
-<%- case @test_suite
-    when :rspec -%>
+<%- if @tests -%>
 begin
   gem 'rspec', '~> 2.0.0'
   require 'rspec/core/rake_task'
@@ -13,7 +12,6 @@ rescue LoadError => e
   end
 end
 task :default => :spec
-<%-   when :test_unit -%>
 <%- end -%>
 
 <%- if @docs -%>
