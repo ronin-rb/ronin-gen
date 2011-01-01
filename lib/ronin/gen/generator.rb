@@ -19,11 +19,11 @@
 #
 
 require 'ronin/templates/template'
+require 'ronin/support/inflector'
 
 require 'thor'
 require 'thor/group'
 require 'thor/actions'
-require 'active_support/inflector'
 require 'data_paths/finders'
 require 'erb'
 
