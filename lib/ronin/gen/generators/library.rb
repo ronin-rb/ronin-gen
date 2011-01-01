@@ -87,7 +87,7 @@ module Ronin
         #
         def generate
           unless options[:no_git]
-            run("git init #{self.destination_root}")
+            run "git init #{self.destination_root}"
           end
 
           erb File.join('ronin','gen','library','Gemfile.erb'), 'Gemfile'
