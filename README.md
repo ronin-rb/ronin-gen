@@ -41,7 +41,7 @@ install or update Overlays.
   can be used to create new generators.
 * Provides {Ronin::Gen::DirGenerator}, a Thor based generator that
   can be used to create new directory generators.
-* Generators for creating new Ronin libraries, Overlays and Extensions.
+* Generators for creating new Ronin Repositories and Libraries.
 
 ## Synopsis
 
@@ -51,11 +51,7 @@ Generate a skeleton Ronin library:
 
 Generate a skeleton Overlay:
 
-    $ ronin-gen overlay PATH [options]
-
-Generate a skeleton Extension:
-
-    $ ronin-gen extension PATH
+    $ ronin-gen repository PATH [options]
 
 ## Requirements
 
