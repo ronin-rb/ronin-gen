@@ -67,7 +67,6 @@ module Ronin
           @license = options[:license]
           @description = options[:description]
           @authors = options[:authors]
-          @gems = options[:gems]
 
           @test_suite = options[:test]
           @docs = options[:docs]
