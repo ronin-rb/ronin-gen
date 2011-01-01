@@ -56,7 +56,7 @@ module Ronin
         class_option :license, :type => :string, :default => DEFAULT_LICENSE
         class_option :description, :type => :string, :default => DEFAULT_DESCRIPTION
         class_option :authors, :type => :array, :default => DEFAULT_AUTHORS, :banner => 'NAME [...]'
-        class_option :test_suite, :type => :string, :banner => 'test_unit|rspec'
+        class_option :tests, :type => :boolean
         class_option :docs, :type => :boolean
 
         def setup
@@ -68,13 +68,8 @@ module Ronin
           @description = options[:description]
           @authors = options[:authors]
           @gems = options[:gems]
-          @test_suite = case options[:test_suite]
-                        when 'test', 'test_unit'
-                          :test_unit
-                        when 'spec', 'rspec'
-                          :rspec
-                        end
 
+          @test_suite = options[:test]
           @docs = options[:docs]
 
           @title ||= File.basename(self.path).gsub(/[_\s]+/,' ').capitalize
@@ -101,19 +96,14 @@ module Ronin
         end
 
         #
-        # Generates a base test suite for the repository.
+        # Generates a base RSpec test-suite for the repository.
         #
-        def test_suite
-          case @test_suite
-          when :test_unit
-            mkdir 'test'
-          when :rspec
-            cp File.join('ronin','gen','repository','.rspec'), '.rspec'
+        def tests
+          cp File.join('ronin','gen','repository','.rspec'), '.rspec'
 
-            mkdir 'spec'
-            cp File.join('ronin','gen','repository','spec','spec_helper.rb'),
-               File.join('spec','spec_helper.rb')
-          end
+          mkdir 'spec'
+          cp File.join('ronin','gen','repository','spec','spec_helper.rb'),
+             File.join('spec','spec_helper.rb')
         end
 
         #
