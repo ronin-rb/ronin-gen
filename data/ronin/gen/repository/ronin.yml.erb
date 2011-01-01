@@ -10,8 +10,8 @@ source: <%= @source %>
 website: <%= @website %>
 <%- end -%>
 authors:
-<%- @authors.each do |name,email| -%>
-  <%= name -%>: <%= email %>
+<%- @authors.each do |name| -%>
+  - <%= name -%>
 <%- end -%>
 
 description:

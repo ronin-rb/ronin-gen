@@ -43,7 +43,7 @@ module Ronin
         DEFAULT_LICENSE = 'CC-by'
 
         # Default authors to use
-        DEFAULT_AUTHORS = {'Name' => 'name@example.com'}
+        DEFAULT_AUTHORS = ['Anonymous']
 
         # Default description to use
         DEFAULT_DESCRIPTION = 'This is a Ronin Repository'
@@ -55,7 +55,7 @@ module Ronin
         class_option :website, :type => :string
         class_option :license, :type => :string, :default => DEFAULT_LICENSE
         class_option :description, :type => :string, :default => DEFAULT_DESCRIPTION
-        class_option :authors, :type => :hash, :default => DEFAULT_AUTHORS, :banner => 'NAME:EMAIL ...'
+        class_option :authors, :type => :array, :default => DEFAULT_AUTHORS, :banner => 'NAME [...]'
         class_option :test_suite, :type => :string, :banner => 'test_unit|rspec'
         class_option :docs, :type => :boolean
 
