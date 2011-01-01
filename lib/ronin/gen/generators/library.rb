@@ -61,8 +61,15 @@ module Ronin
         class_option :email, :type => :string, :default => DEFAULT_EMAIL
         class_option :homepage, :type => :string,
                                 :default => DEFAULT_HOMEPAGE
-        class_option :commands, :type => :array, :default => []
-        class_option :generators, :type => :array, :default => []
+
+        class_option :commands, :type => :array,
+                                :default => [],
+                                :banner => 'NAME [...]'
+
+        class_option :generators, :type => :array,
+                                  :default => [],
+                                  :banner => 'NAME [...]'
+
         class_option :no_git, :type => :boolean
 
         def setup
