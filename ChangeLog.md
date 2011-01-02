@@ -7,10 +7,10 @@
 * Require ronin ~> 1.0.0.
 * Require bundler ~> 1.0.0.
 * Require yard ~> 0.6.4.
+* Added {Ronin::Gen::Generator::SourceCodeGenerator}.
+* Added {Ronin::Gen::Generator::RubyGenerator}.
 * Switched from [Jeweler](https://github.com/technicalpickles/jeweler)
   to [Ore](http://github.com/ruby-ore/ore) and [Bundler](http://gembundler.com).
-* {Ronin::Gen::FileGenerator} now spawns the default text-editor after
-  completion.
 * Renamed `Ronin::Gen::Generators::Overlay` to
   {Ronin::Gen::Generators::Repository}.
 * Changed {Ronin::Gen::Generators::Library} to generate libraries managed
