@@ -3,7 +3,7 @@ summary: A Ruby library for Ronin that provides various generators.
 description:
   Ronin Gen is a Ruby library for Ronin that provides various generators.
 
-license: GPL-2
+license: GPL-3
 authors: Postmodern
 email: postmodern.mod3@gmail.com
 homepage: http://github.com/ronin-ruby/ronin-gen

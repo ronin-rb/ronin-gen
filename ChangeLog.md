@@ -1,5 +1,6 @@
 ### 1.0.0 / 2011-02-01
 
+* Upgraded to the GPL-3 license.
 * Require open_namespace ~> 0.3.0.
 * Require data_paths ~> 0.2.1.
 * Require thor ~> 0.14.3.
