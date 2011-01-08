@@ -8,8 +8,8 @@
 * Require ronin ~> 1.0.0.
 * Require bundler ~> 1.0.0.
 * Require yard ~> 0.6.4.
-* Added {Ronin::Gen::Generator::SourceCodeGenerator}.
-* Added {Ronin::Gen::Generator::RubyGenerator}.
+* Added {Ronin::Gen::SourceCodeGenerator}.
+* Added {Ronin::Gen::RubyGenerator}.
 * Switched from [Jeweler](https://github.com/technicalpickles/jeweler)
   to [Ore](http://github.com/ruby-ore/ore) and [Bundler](http://gembundler.com).
 * Renamed `Ronin::Gen::Generators::Overlay` to
