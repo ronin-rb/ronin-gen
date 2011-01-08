@@ -50,11 +50,11 @@ describe Gen::Generators::Repository do
     path.join('Rakefile').should be_file
   end
 
-  it "should create a XML metadata file" do
+  it "should create a 'ronin.yml' file" do
     path.join(Ronin::Repository::METADATA_FILE).should be_file
   end
 
-  describe "metadata" do
+  describe "ronin.yml" do
     subject { YAML.load_file(path.join(Ronin::Repository::METADATA_FILE)) }
 
     it "should contain a Hash" do
