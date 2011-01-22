@@ -273,8 +273,7 @@ module Ronin
       end
 
       #
-      # Renders the ERB template at the specified _template_path_ and
-      # saves the result at the given _destination_.
+      # Renders the ERB template and saves the result.
       #
       # @param [String] template_path
       #   The relative path to the template.
