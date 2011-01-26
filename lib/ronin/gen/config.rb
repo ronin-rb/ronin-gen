@@ -21,6 +21,9 @@ require 'data_paths'
 
 module Ronin
   module Gen
+    #
+    # Configuration for Ronin Gen.
+    #
     module Config
       include DataPaths
 

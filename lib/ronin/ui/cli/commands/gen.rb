@@ -26,13 +26,16 @@ module Ronin
     module CLI
       module Commands
         #
-        # Lists the available generators.
+        # The `ronin-gen` command.
         #
         class Gen < Command
 
           desc "Prints the list of available generators"
           class_option :version, :type => :boolean
 
+          #
+          # Lists the available generators.
+          #
           def execute
             if options.version?
               puts "ronin-gen #{Ronin::Gen::VERSION}"

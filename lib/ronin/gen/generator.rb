@@ -95,6 +95,12 @@ module Ronin
       include Templates::Template
       include DataPaths::Finders
 
+      #
+      # Sets the namespace of new {Generator} classes.
+      #
+      # @param [Class] super_class
+      #   The new {Generator} class.
+      #
       def self.inherited(super_class)
         class_name = super_class.name.sub('Ronin::Gen::Generators::','')
         gen_name = class_name.split('::').join(':').underscore
