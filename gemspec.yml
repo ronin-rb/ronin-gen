@@ -13,7 +13,7 @@ requirements: git >= 1.6.0.0, for the library generator
 
 dependencies:
   open_namespace: ~> 0.3
-  data_paths: ~> 0.2
+  data_paths: ~> 0.2, >= 0.2.1
   thor: ~> 0.14.3
   # Ronin dependencies:
   ronin-support: ~> 0.1.0.rc1
