@@ -6,6 +6,9 @@ gemspec
 
 # gem 'ronin-support',  '~> <%= Ronin::Support::VERSION %>', :git => "#{RONIN}/ronin-support.git"
 # gem 'ronin',          '~> <%= Ronin::VERSION %>', :git => "#{RONIN}/ronin.git"
+<%- unless options[:generators].empty? -%>
+# gem 'ronin-gen',      '~> <%= Ronin::Gen::VERSION %>', :git => "#{RONIN}/ronin-gen.git"
+<%- end -%>
 
 group(:development) do
   gem 'rake',         '~> 0.8.7'
