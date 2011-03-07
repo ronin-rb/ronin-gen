@@ -1,13 +1,11 @@
 ### 1.0.0 / 2011-02-01
 
 * Upgraded to the GPL-3 license.
-* Require open_namespace ~> 0.3.0.
-* Require data_paths ~> 0.2.1.
+* Require open_namespace ~> 0.3.
+* Require data_paths ~> 0.2, >= 0.2.1.
 * Require thor ~> 0.14.3.
 * Require ronin-support ~> 0.1.0.
 * Require ronin ~> 1.0.0.
-* Require bundler ~> 1.0.0.
-* Require yard ~> 0.6.4.
 * Added {Ronin::Gen::SourceCodeGenerator}.
 * Added {Ronin::Gen::RubyGenerator}.
 * Switched from [Jeweler](https://github.com/technicalpickles/jeweler)
