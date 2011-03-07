@@ -34,11 +34,16 @@ Generate a skeleton Overlay:
 
 ## Requirements
 
-* [open_namespace](http://github.com/postmodern/open_namespace) ~> 0.3.0
-* [data_paths](http://github.com/postmodern/data_paths) ~> 0.2.1
-* [thor](http://github.com/wycats/thor) ~> 0.14.2
-* [ronin-support](http://github.com/ronin-ruby/ronin-support) ~> 0.1.0
-* [ronin](http://github.com/ronin-ruby/ronin) ~> 1.0.0
+* [open_namespace](http://github.com/postmodern/open_namespace#readme)
+  ~> 0.3
+* [data_paths](http://github.com/postmodern/data_paths#readme)
+  ~> 0.2, >= 0.2.1
+* [thor](http://github.com/wycats/thor#readme)
+  ~> 0.14.3
+* [ronin-support](http://github.com/ronin-ruby/ronin-support#readme)
+  ~> 0.1.0
+* [ronin](http://github.com/ronin-ruby/ronin#readme)
+  ~> 1.0.0
 
 ## Install
 
