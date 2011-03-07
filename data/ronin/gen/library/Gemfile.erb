@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 
-RONIN = 'http://github.com/ronin-ruby'
+RONIN_URI = 'http://github.com/ronin-ruby'
 
 gemspec
 
-# gem 'ronin-support',  '~> <%= Ronin::Support::VERSION %>', :git => "#{RONIN}/ronin-support.git"
-# gem 'ronin',          '~> <%= Ronin::VERSION %>', :git => "#{RONIN}/ronin.git"
+# gem 'ronin-support',  '~> <%= Ronin::Support::VERSION %>', :git => "#{RONIN_URI}/ronin-support.git"
+# gem 'ronin',          '~> <%= Ronin::VERSION %>', :git => "#{RONIN_URI}/ronin.git"
 <%- unless options[:generators].empty? -%>
-# gem 'ronin-gen',      '~> <%= Ronin::Gen::VERSION %>', :git => "#{RONIN}/ronin-gen.git"
+# gem 'ronin-gen',      '~> <%= Ronin::Gen::VERSION %>', :git => "#{RONIN_URI}/ronin-gen.git"
 <%- end -%>
 
 group(:development) do
