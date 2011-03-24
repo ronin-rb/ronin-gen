@@ -25,6 +25,7 @@ require 'set'
 
 module Ronin
   module Gen
+    # The loaded generator names
     @generators = SortedSet[]
 
     #
