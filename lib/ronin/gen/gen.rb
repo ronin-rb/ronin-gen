@@ -21,8 +21,12 @@ require 'ronin/gen/exceptions/unknown_generator'
 require 'ronin/gen/generators'
 require 'ronin/installation'
 
+require 'set'
+
 module Ronin
   module Gen
+    @generators = SortedSet[]
+
     #
     # Loads the generator with the given name.
     #
@@ -65,19 +69,22 @@ module Ronin
     # @since 0.3.0
     #
     def Gen.generators
-      unless defined?(@@ronin_gen_generators)
+      if @generators.empty?
         directory = File.join('lib',Generators.namespace_root)
 
-        @@ronin_gen_generators = {}
+        Installation.each_file_in(directory,:rb) do |path|
+          # strip the tailing '.rb' file extension
+          name = path.chomp('.rb')
 
-        Installation.each_file(directory) do |path|
-          name = path.gsub(/\.rb$/,'').split(File::SEPARATOR).join(':')
+          # replace any file separators with a ':', to mimic the
+          # naming convention of Rake/Thor.
+          name.tr!(File::SEPARATOR,':')
 
-          @@ronin_gen_generators[name] = path
+          @generators << name
         end
       end
 
-      return @@ronin_gen_generators
+      return @generators
     end
   end
 end
