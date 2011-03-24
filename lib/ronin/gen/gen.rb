@@ -48,9 +48,8 @@ module Ronin
     #
     def Gen.generator(name)
       name = name.to_s
-      path = name.gsub(/[_-]+/,'_').gsub(/:+/,File::SEPARATOR)
 
-      unless (generator = Generators.require_const(path))
+      unless (generator = Generators.require_const(name))
         raise(UnknownGenerator,"unknown generator #{name.dump}")
       end
 
