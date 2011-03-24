@@ -42,8 +42,8 @@ module Ronin
               return
             end
 
-            print_title 'Available Generators'
-            print_array Ronin::Gen.generators.keys.sort
+            print_array Ronin::Gen.generators,
+                        :title => 'Available Generators'
           end
 
         end
