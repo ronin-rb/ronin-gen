@@ -103,7 +103,7 @@ module Ronin
       #
       def self.inherited(super_class)
         class_name = super_class.name.sub('Ronin::Gen::Generators::','')
-        gen_name = class_name.split('::').join(':').underscore
+        gen_name = Support::Inflector.underscore(class_name.gsub('::',':'))
 
         super_class.namespace(gen_name)
       end
