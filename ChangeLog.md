@@ -1,4 +1,4 @@
-### 1.0.0 / 2011-02-01
+### 1.0.0 / 2011-03-25
 
 * Upgraded to the GPL-3 license.
 * Require open_namespace ~> 0.3.
