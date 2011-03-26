@@ -196,6 +196,15 @@ module Ronin
           end
         end
 
+        #
+        # Finalizes the generated library.
+        #
+        def finalize
+          unless options[:no_git]
+            system('git','commit','-a','-m','Initial commit.')
+          end
+        end
+
       end
     end
   end
