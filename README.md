@@ -37,7 +37,7 @@ Generate a skeleton Overlay:
 * [open_namespace](http://github.com/postmodern/open_namespace#readme)
   ~> 0.3
 * [data_paths](http://github.com/postmodern/data_paths#readme)
-  ~> 0.2, >= 0.2.1
+  ~> 0.3
 * [thor](http://github.com/wycats/thor#readme)
   ~> 0.14.3
 * [ronin-support](http://github.com/ronin-ruby/ronin-support#readme)
