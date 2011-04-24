@@ -41,9 +41,9 @@ Generate a skeleton Overlay:
 * [thor](http://github.com/wycats/thor#readme)
   ~> 0.14.3
 * [ronin-support](http://github.com/ronin-ruby/ronin-support#readme)
-  ~> 0.1.0
+  ~> 0.2
 * [ronin](http://github.com/ronin-ruby/ronin#readme)
-  ~> 1.0.0
+  ~> 1.1
 
 ## Install
 
