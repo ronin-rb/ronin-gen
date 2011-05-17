@@ -6,6 +6,7 @@
 * Include `Ronin::AutoLoad` into {Ronin::Gen::Generators}.
 * Ensure that {Ronin::Gen::Generators::Library} executes `git` commands
   within the destination directory.
+* Have {Ronin::Gen::Generators::Library} call `git add .` then `git commit`.
 * Make sure that {Ronin::Gen::Generators::Repository} creates the new
   `scripts/` directory.
 
