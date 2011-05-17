@@ -17,7 +17,7 @@
 # along with Ronin Gen.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-require 'open_namespace'
+require 'ronin/auto_load'
 
 module Ronin
   module Gen
@@ -25,7 +25,7 @@ module Ronin
     # {Generators} is the namespace where all generators are loaded from.
     #
     module Generators
-      include OpenNamespace
+      include AutoLoad
     end
   end
 end
