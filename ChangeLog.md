@@ -1,3 +1,14 @@
+### 1.0.1 / 2011-05-17
+
+* Require data_paths ~> 0.3.
+* Require ronin-support ~> 0.2.
+* Require ronin ~> 1.1.
+* Include `Ronin::AutoLoad` into {Ronin::Gen::Generators}.
+* Ensure that {Ronin::Gen::Generators::Library} executes `git` commands
+  within the destination directory.
+* Make sure that {Ronin::Gen::Generators::Repository} creates the new
+  `scripts/` directory.
+
 ### 1.0.0 / 2011-03-25
 
 * Upgraded to the GPL-3 license.
