@@ -38,6 +38,9 @@ module Ronin
         # The repository lib directory
         LIB_DIR = Ronin::Repository::LIB_DIR
 
+        # The primary script directory
+        SCRIPT_DIR = Ronin::Repository::SCRIPT_DIRS.first
+
         # Default license to use
         DEFAULT_LICENSE = 'CC-by'
 
@@ -92,8 +95,8 @@ module Ronin
           mkdir File.join(LIB_DIR,'ronin')
           touch File.join(LIB_DIR,Ronin::Repository::INIT_FILE)
 
+          mkdir SCRIPT_DIR
           mkdir Ronin::Repository::DATA_DIR
-          mkdir Ronin::Repository::CACHE_DIR
         end
 
         #

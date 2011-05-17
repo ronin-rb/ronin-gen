@@ -35,15 +35,15 @@ describe Gen::Generators::Repository do
   end
 
   it "should create a lib/ directory" do
-    path.join(Ronin::Repository::LIB_DIR).should be_directory
+    path.join('lib').should be_directory
   end
 
   it "should create a lib/ronin/ directory" do
-    path.join(Ronin::Repository::LIB_DIR,'ronin').should be_directory
+    path.join('lib','ronin').should be_directory
   end
 
-  it "should create a cache/ directory" do
-    path.join(Ronin::Repository::CACHE_DIR).should be_directory
+  it "should create a scripts/ directory" do
+    path.join('scripts').should be_directory
   end
 
   it "should create a Rakefile" do
@@ -51,11 +51,11 @@ describe Gen::Generators::Repository do
   end
 
   it "should create a 'ronin.yml' file" do
-    path.join(Ronin::Repository::METADATA_FILE).should be_file
+    path.join('ronin.yml').should be_file
   end
 
   describe "ronin.yml" do
-    subject { YAML.load_file(path.join(Ronin::Repository::METADATA_FILE)) }
+    subject { YAML.load_file(path.join('ronin.yml')) }
 
     it "should contain a Hash" do
       subject.should be_kind_of(Hash)
