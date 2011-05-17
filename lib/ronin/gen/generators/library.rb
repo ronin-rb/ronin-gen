@@ -129,8 +129,12 @@ module Ronin
         #
         def bin
           mkdir 'bin'
+
+          bin_script = File.join('bin',"ronin-#{@dir_name}")
+
           erb File.join('ronin','gen','library','bin','ronin-name.erb'),
-              File.join('bin',"ronin-#{@dir_name}")
+              bin_script
+          chmod bin_script, 0755
         end
 
         #
