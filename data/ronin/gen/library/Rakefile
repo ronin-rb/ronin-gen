@@ -26,5 +26,4 @@ RSpec::Core::RakeTask.new
 task :default => :spec
 
 require 'yard'
-YARD::Rake::YardocTask.newrequire 'rubygems'
-require 'bundler'
+YARD::Rake::YardocTask.new
