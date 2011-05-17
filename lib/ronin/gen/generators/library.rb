@@ -201,7 +201,10 @@ module Ronin
         #
         def finalize
           unless options[:no_git]
-            inside { run('git commit -a -m "Initial commit."') }
+            inside do
+              run('git add .')
+              run('git commit -m "Initial commit."')
+            end
           end
         end
 
