@@ -93,7 +93,7 @@ module Ronin
         #
         def generate
           unless options[:no_git]
-            run "git init #{self.destination_root}"
+            inside { run "git init" }
           end
 
           erb File.join('ronin','gen','library','Gemfile.erb'), 'Gemfile'
@@ -201,7 +201,7 @@ module Ronin
         #
         def finalize
           unless options[:no_git]
-            system('git','commit','-a','-m','Initial commit.')
+            inside { run('git commit -a -m "Initial commit."') }
           end
         end
 
