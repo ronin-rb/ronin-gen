@@ -10,8 +10,8 @@ if File.directory?(File.join(root_dir,'.git'))
     begin
       Bundler.setup(:default)
     rescue Bundler::BundlerError => e
-      STDERR.puts e.message
-      STDERR.puts "Run `bundle install` to install missing gems"
+      warn e.message
+      warn "Run `bundle install` to install missing gems"
       exit e.status_code
     end
   end
@@ -29,8 +29,8 @@ if (ARGV.length > 0 && ARGV.first[0..0] != '-')
   begin
     Ronin::Gen.generator(name).start
   rescue Ronin::Gen::UnknownGenerator
-    STDERR.puts "ronin-gen: unknown generator #{name}"
-    STDERR.puts "ronin-gen: run 'ronin-gen' for a list of generators"
+    warn "ronin-gen: unknown generator #{name}"
+    warn "ronin-gen: run 'ronin-gen' for a list of generators"
     exit -1
   end
 else
