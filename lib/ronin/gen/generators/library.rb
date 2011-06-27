@@ -99,7 +99,7 @@ module Ronin
           erb File.join('ronin','gen','library','Gemfile.erb'), 'Gemfile'
           cp File.join('ronin','gen','library','Rakefile'), 'Rakefile'
 
-          erb File.join('ronin','gen','library','library.gemspec.erb'),
+          erb File.join('ronin','gen','library','name.gemspec.erb'),
               "#{@name}.gemspec"
           erb File.join('ronin','gen','library','gemspec.yml.erb'),
               'gemspec.yml'
