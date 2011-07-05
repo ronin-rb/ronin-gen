@@ -1,4 +1,4 @@
-### 1.0.1 / 2011-05-17
+### 1.0.1 / 2011-07-04
 
 * Require data_paths ~> 0.3.
 * Require ronin-support ~> 0.2.
@@ -7,6 +7,8 @@
 * Ensure that {Ronin::Gen::Generators::Library} executes `git` commands
   within the destination directory.
 * Have {Ronin::Gen::Generators::Library} call `git add .` then `git commit`.
+* {Ronin::Gen::Generators::Library} now generates a pure-ruby `.gemspec`
+  file which loads the `gemspec.yml` file.
 * Make sure that {Ronin::Gen::Generators::Repository} creates the new
   `scripts/` directory.
 
