@@ -1,8 +1,8 @@
 ### 1.0.1 / 2011-07-04
 
 * Require data_paths ~> 0.3.
-* Require ronin-support ~> 0.2.
-* Require ronin ~> 1.1.
+* Require ronin-support ~> 0.1.
+* Require ronin ~> 1.0.
 * Include `Ronin::AutoLoad` into {Ronin::Gen::Generators}.
 * Ensure that {Ronin::Gen::Generators::Library} executes `git` commands
   within the destination directory.
