@@ -4,13 +4,14 @@
 * Require ronin-support ~> 0.1.
 * Require ronin ~> 1.0.
 * Include `Ronin::AutoLoad` into {Ronin::Gen::Generators}.
-* Ensure that {Ronin::Gen::Generators::Library} executes `git` commands
-  within the destination directory.
-* Have {Ronin::Gen::Generators::Library} call `git add .` then `git commit`.
-* {Ronin::Gen::Generators::Library} now generates a pure-ruby `.gemspec`
-  file which loads the `gemspec.yml` file.
-* Make sure that {Ronin::Gen::Generators::Repository} creates the new
-  `scripts/` directory.
+* {Ronin::Gen::Generators::Library}:
+  * Ensure that `git` commands are executed within the destination
+    directory.
+  * Call `git add .` then `git commit`.
+  * Generate a pure-ruby `.gemspec` file which loads the `gemspec.yml` file.
+  * Generate libraries that require ronin ~> 1.0 and ronin-gen ~> 1.0.
+* {Ronin::Gen::Generators::Repository}:
+  * Create the new `scripts/` directory.
 
 ### 1.0.0 / 2011-03-25
 
