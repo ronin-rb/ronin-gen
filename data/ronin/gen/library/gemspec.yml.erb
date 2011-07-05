@@ -9,9 +9,9 @@ homepage: <%= @homepage %>
 has_yard: true
 
 dependencies:
-  ronin: ~> <%= Ronin::VERSION %>
+  ronin: ~> 1.0
 <%- unless options[:generators].empty? -%>
-  ronin-gen: ~> <%= Ronin::Gen::VERSION %>
+  ronin-gen: ~> 1.0
 <%- end -%>
 
 development_dependencies:
