@@ -47,7 +47,16 @@ Generate a skeleton Overlay:
 
 ## Install
 
+Stable:
+
     $ gem install ronin-gen
+
+Edge:
+
+    $ git clone git://github.com/ronin-ruby/ronin-gen.git
+    $ cd ronin-gen/
+    $ bundle install
+    $ ./bin/ronin-gen --help
 
 ## License
 
