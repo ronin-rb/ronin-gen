@@ -47,7 +47,7 @@ Generate a skeleton Overlay:
 
 ## Install
 
-    $ sudo gem install ronin-gen
+    $ gem install ronin-gen
 
 ## License
 
