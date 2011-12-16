@@ -44,12 +44,17 @@ module Ronin
             if (argv.empty? || argv.first.start_with?('-'))
               super(argv)
             else
-              @generator = Ronin::Gen.generator(argv.shift).new
+              generator_name = argv.shift
+              generator      = Ronin::Gen.generator(generator_name).new
 
-              args = Parameters::Options.parse(@generator)
+              opts = Parameters::Options.parser(generator) do |opts|
+                opts.banner = "ronin-gen #{generator_name} PATH [options]"
+              end
 
-              @generator.path = args.first
-              @generator.generate!
+              args = opts.parse(argv)
+
+              generator.path = args.first
+              generator.generate!
             end
           end
 
