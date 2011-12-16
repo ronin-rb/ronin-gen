@@ -30,6 +30,17 @@ module Ronin
       parameter :path, :type        => String,
                        :description => 'File to generate'
 
+      #
+      # Invokes the new File Generator.
+      #
+      # @param [String] path
+      #   The path for the generator.
+      #
+      # @param [Hash{Symbol => Object}] options
+      #   Additional options for the generator.
+      #
+      # @api public
+      #
       def self.generate(path,options={})
         super(options.merge(:path => path))
       end

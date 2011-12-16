@@ -32,10 +32,28 @@ module Ronin
       parameter :path, :type        => String,
                        :description => 'The destination path'
 
+      #
+      # Invokes the new Dir Generator.
+      #
+      # @param [String] path
+      #   The path for the generator.
+      #
+      # @param [Hash{Symbol => Object}] options
+      #   Additional options for the generator.
+      #
+      # @api public
+      #
       def self.generate(path,options={})
         super(options.merge(:path => path))
       end
 
+      #
+      # Creates the directory and invokes the generator.
+      #
+      # @api semipublic
+      #
+      # @since 1.1.0
+      #
       def generate!
         require_params :path
 

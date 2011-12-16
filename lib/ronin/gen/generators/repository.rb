@@ -61,6 +61,9 @@ module Ronin
         parameter :tests, :type => true
         parameter :docs, :type => true
 
+        #
+        # Sets up the repository generator.
+        #
         def setup
           @title   ||= File.basename(@path).gsub(/[_\s]+/,' ').capitalize
           @website ||= @source

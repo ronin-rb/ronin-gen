@@ -40,6 +40,12 @@ module Ronin
                            :flag => '-V',
                            :description => 'Prints the ronin-gen version'
 
+          #
+          # Starts the `ronin-gen` command.
+          #
+          # @param [Array<String>] argv
+          #   The arguments for the command.
+          #
           def start(argv=ARGV)
             if (argv.empty? || argv.first.start_with?('-'))
               super(argv)

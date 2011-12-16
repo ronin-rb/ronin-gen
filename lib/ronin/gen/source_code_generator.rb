@@ -32,6 +32,13 @@ module Ronin
       parameter :no_edit, :type => true,
                           :default => false
 
+      #
+      # Invokes the generator and spawns an editor for the generated file.
+      #
+      # @since 1.1.0
+      #
+      # @api semipublic
+      #
       def generate!
         super
 

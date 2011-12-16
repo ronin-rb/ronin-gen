@@ -65,6 +65,9 @@ module Ronin
 
         parameter :no_git, :type => true
 
+        #
+        # Sets up the library generator.
+        #
         def setup
           super
 
