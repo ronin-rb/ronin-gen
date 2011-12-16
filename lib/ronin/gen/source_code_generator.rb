@@ -22,7 +22,7 @@ require 'ronin/gen/file_generator'
 module Ronin
   module Gen
     #
-    # A {FileGenerator} class for creating Ruby files.
+    # A {FileGenerator} class for creating source-code files.
     #
     class SourceCodeGenerator < FileGenerator
 
