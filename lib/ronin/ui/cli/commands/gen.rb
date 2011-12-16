@@ -34,6 +34,8 @@ module Ronin
 
           summary "Prints the list of available generators"
 
+          usage '[options] | GENERATOR [options]'
+
           option :version, :type => true,
                            :flag => '-V',
                            :description => 'Prints the ronin-gen version'
