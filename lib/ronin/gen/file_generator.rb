@@ -82,6 +82,7 @@ module Ronin
           @file_extension ||= if superclass < FileGenerator
                                 superclass.file_extension
                               end
+        end
       end
 
     end
