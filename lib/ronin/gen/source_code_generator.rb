@@ -33,18 +33,43 @@ module Ronin
                           :default => false
 
       #
-      # Invokes the generator and spawns an editor for the generated file.
+      # Generates the source code file and spawns a text-editor.
       #
       # @since 1.1.0
       #
       # @api semipublic
       #
-      def generate!
-        super
+      def generate
+        template self.class.template, @path
 
         if (no_edit? && editor?)
           # spawn the text editor for the newly generated file
           system(editor,@path)
+        end
+      end
+
+      protected
+
+      #
+      # The template the Source Code Generator will use.
+      #
+      # @param [String] name
+      #   The new template name.
+      #
+      # @return [String]
+      #   The template the Source Code Generator will use.
+      #
+      # @since 1.1.0
+      #
+      # @api semipublic
+      #
+      def self.template(name=nil)
+        if name
+          @template = name
+        else
+          @template ||= if superclass < SourceCodeGenerator
+                          superclass.template
+                        end
         end
       end
 
