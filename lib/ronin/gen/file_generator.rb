@@ -30,6 +30,10 @@ module Ronin
       parameter :path, :type        => String,
                        :description => 'File to generate'
 
+      def self.generate(path,options={})
+        super(options.merge(:path => path))
+      end
+
       #
       # Sets up the File generator.
       #

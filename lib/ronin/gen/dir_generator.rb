@@ -32,6 +32,10 @@ module Ronin
       parameter :path, :type        => String,
                        :description => 'The destination path'
 
+      def self.generate(path,options={})
+        super(options.merge(:path => path))
+      end
+
       def generate!
         require_params :path
 
