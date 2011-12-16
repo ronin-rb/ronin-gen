@@ -23,16 +23,4 @@ $LOAD_PATH << lib_dir unless $LOAD_PATH.include?(lib_dir)
 require 'ronin/gen/gen'
 require 'ronin/ui/cli/commands/gen'
 
-if (ARGV.length > 0 && ARGV.first[0..0] != '-')
-  name = ARGV.shift
-
-  begin
-    Ronin::Gen.generator(name).start
-  rescue Ronin::Gen::UnknownGenerator
-    warn "ronin-gen: unknown generator #{name}"
-    warn "ronin-gen: run 'ronin-gen' for a list of generators"
-    exit -1
-  end
-else
-  Ronin::UI::CLI::Commands::Gen.start
-end
+Ronin::UI::CLI::Commands::Gen.start

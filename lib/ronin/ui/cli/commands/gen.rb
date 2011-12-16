@@ -21,6 +21,8 @@ require 'ronin/ui/cli/command'
 require 'ronin/gen/gen'
 require 'ronin/gen/version'
 
+require 'parameters/options'
+
 module Ronin
   module UI
     module CLI
@@ -36,11 +38,24 @@ module Ronin
                            :flag => '-V',
                            :description => 'Prints the ronin-gen version'
 
+          def start(argv=ARGV)
+            if (argv.empty? || argv.first.start_with?('-'))
+              super(argv)
+            else
+              @generator = Ronin::Gen.generator(argv.shift).new
+
+              args = Parameters::Options.parse(@generator)
+
+              @generator.path = args.first
+              @generator.generate!
+            end
+          end
+
           #
           # Lists the available generators.
           #
           def execute
-            if @version
+            if version?
               puts "ronin-gen #{Ronin::Gen::VERSION}"
               return
             end
