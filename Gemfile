@@ -10,7 +10,7 @@ gem 'parameters', '~> 0.4', :git => 'http://github.com/postmodern/parameters.git
 gemspec
 
 # Ronin dependencies:
-# gem 'ronin-support',	'~> 0.2', :git => "#{RONIN_URI}/ronin-support.git"
+gem 'ronin-support',	'~> 0.3', :git => "#{RONIN_URI}/ronin-support.git"
 gem 'ronin',		      '~> 1.4', :git => "#{RONIN_URI}/ronin.git",
                                 :branch => '1.4.0'
 
