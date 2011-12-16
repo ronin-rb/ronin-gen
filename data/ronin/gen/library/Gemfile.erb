@@ -6,7 +6,7 @@ gemspec
 
 # gem 'ronin-support',  '~> <%= Ronin::Support::VERSION %>', :git => "#{RONIN_URI}/ronin-support.git"
 # gem 'ronin',          '~> <%= Ronin::VERSION %>', :git => "#{RONIN_URI}/ronin.git"
-<%- unless options[:generators].empty? -%>
+<%- unless @generators.empty? -%>
 # gem 'ronin-gen',      '~> <%= Ronin::Gen::VERSION %>', :git => "#{RONIN_URI}/ronin-gen.git"
 <%- end -%>
 

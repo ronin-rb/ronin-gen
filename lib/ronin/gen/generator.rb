@@ -17,22 +17,20 @@
 # along with Ronin Gen.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-require 'ronin/templates/template'
+require 'ronin/gen/config'
 require 'ronin/support/inflector'
+require 'ronin/templates/erb'
+require 'ronin/ui/output'
 
-require 'thor'
-require 'thor/group'
-require 'thor/actions'
+require 'parameters'
 require 'data_paths/finders'
-require 'erb'
+require 'fileutils'
 
 module Ronin
   module Gen
     #
-    # The {Generator} class leverages `Thor::Group` and `Thor::Actions`
-    # to create a generic generator class. The generator class can
-    # define `class_options` that can be used to parse command-line
-    # arguments or set directly in Ruby.
+    # The {Generator} class is a generate base-class for all file,
+    # source-code or directory generators.
     #
     # # Extending
     #
@@ -50,18 +48,16 @@ module Ronin
     #         module Generators
     #           class MyGenerator < FileGenerator
     #
-    #             desc 'My generator'
-    #
     #             # generator options
-    #             class_option :stuff, :type => :boolean
-    #             class_option :syntax, :type => :string
-    #             class_option :includes, :type => :array
+    #             parameter :stuff, :type => true
+    #             parameter :syntax, :type => String
+    #             parameter :includes, :type => Array
     #
     #             #
     #             # Performs the generation.
     #             #
     #             def generate
-    #               erb 'some_template.erb', self.path
+    #               erb 'some_template.erb', path
     #             end
     #
     #           end
@@ -75,8 +71,10 @@ module Ronin
     # class method with the options and arguments to run the generator with:
     #
     #     MyGenerator.generate(
-    #       {:stuff => true, :syntax => 'bla', :includes => ['other']}
-    #       ['path/to/file'],
+    #       :stuff    => true,
+    #       :syntax   => 'bla',
+    #       :includes => ['other']
+    #       :path     => 'path/to/file',
     #     )
     #
     # To make your generator accessible to the `ronin-gen` command, simply
@@ -87,50 +85,78 @@ module Ronin
     # To run the generator using the `ronin-gen` command, simply specify
     # it's underscored name:
     #
-    #     ronin-gen my_generator path/to/file --stuff --syntax bla --includes other
+    #     ronin-gen my_generator path/to/file --stuff \
+    #                                         --syntax bla \
+    #                                         --includes other
     #
-    class Generator < Thor::Group
+    class Generator
 
-      include Thor::Actions
-      include Templates::Template
+      include Parameters
       include DataPaths::Finders
+      include FileUtils
+      include Templates::Erb
 
       #
-      # Sets the namespace of new {Generator} classes.
+      # Initializes the generator.
       #
-      # @param [Class] super_class
-      #   The new {Generator} class.
+      # @param [String] path
+      #   The destination path for the generator.
       #
-      def self.inherited(super_class)
-        class_name = super_class.name.sub('Ronin::Gen::Generators::','')
-        gen_name = Support::Inflector.underscore(class_name.gsub('::',':'))
+      # @param [Hash{Symbol => Object}] options
+      #   The options for the generator.
+      #
+      # @yield [generator]
+      #   The given block will be passed the newly created generator.
+      #
+      # @yieldparam [Generator]
+      #   The newly created generator.
+      #
+      # @api semipublic
+      #
+      def initialize(options={})
+        initialize_params(options)
 
-        super_class.namespace(gen_name)
+        yield self if block_given?
       end
 
       #
-      # Defines the default source root of the generator as the current
-      # working directory.
-      #
-      # @since 0.2.0
-      #
-      def self.source_root
-        @generator_source_root ||= Dir.pwd
-      end
-
-      #
-      # Sets the source root of the generator.
-      #
-      # @param [String] new_dir
-      #   The new source root directory.
+      # The name of the generator.
       #
       # @return [String]
-      #   The source root directory of the generator.
+      #   The generator name.
       #
-      # @since 1.0.0
+      # @since 1.1.0
       #
-      def self.source_root=(new_dir)
-        @genereator_source_root = File.expand_path(new_dir)
+      # @api semipublic
+      #
+      def self.generator_name
+        class_name = self.name.sub('Ronin::Gen::Generators::','')
+
+        return Support::Inflector.underscore(class_name.gsub('::',':'))
+      end
+
+      #
+      # The default data directory of the generator.
+      #
+      # @param [String] new_dir
+      #   The new data directory.
+      #
+      # @return [String, nil]
+      #   The data directory that the generator will search for source files
+      #   within.
+      #
+      # @since 1.1.0
+      #
+      # @api semipublic
+      #
+      def self.data_dir(new_dir=nil)
+        if new_dir
+          @data_dir = new_dir
+        else
+          @data_dir ||= if superclass < Generator
+                          superclass.data_dir
+                        end
+        end
       end
 
       #
@@ -156,45 +182,28 @@ module Ronin
       #
       # @since 0.2.0
       #
-      def self.generate(options={},arguments=[],&block)
-        generator = self.new(arguments,options,&block)
-        generator.invoke_all()
+      # @api public
+      #
+      def self.generate(options={},&block)
+        generator = new(options,&block)
 
+        generator.generate!
         return generator
       end
 
-      desc "default generator task"
-
       #
-      # Default generator method.
+      # Sets up the generator and calls {#generate}.
       #
-      # @since 0.2.0
+      # @see #setup
+      # @see #generate
       #
-      def generate
-      end
-
-      protected
-
+      # @since 1.1.0
       #
-      # Initializes the generator.
+      # @api public
       #
-      # @param [Array] arguments
-      #   Additional arguments for the generator.
-      #
-      # @param [Hash] options
-      #   Options to pass to the generator.
-      #
-      # @param [Hash] config
-      #   Additional configuration for the generator.
-      #
-      # @since 1.0.0
-      #
-      def initialize(arguments=[],options={},config={})
-        super(arguments,options,config)
-
-        setup()
-
-        yield self if block_given?
+      def generate!
+        setup
+        generate
       end
 
       #
@@ -203,62 +212,145 @@ module Ronin
       #
       # @since 1.0.0
       #
+      # @api semipublic
+      #
       def setup
       end
 
       #
-      # Touches a file.
-      #
-      # @param [String] destination
-      #   The relative path to the file to touch.
-      #
-      # @example
-      #   touch 'TODO.txt'
+      # Default generator method.
       #
       # @since 0.2.0
       #
-      def touch(destination)
-        create_file(destination)
+      # @api semipublic
+      #
+      def generate
+      end
+
+      protected
+
+      #
+      # Runs a command.
+      #
+      # @param [String] command
+      #   The command or program to run.
+      #
+      # @param [Array<String>] arguments
+      #   Additional arguments to run the program with.
+      #
+      # @since 1.1.0
+      #
+      # @api semipublic
+      #
+      def run(command,*arguments)
+        print_action command, *arguments
+
+        system(command,*arguments)
       end
 
       #
-      # Creates an empty directory.
+      # Changes the permissions of a files or directories.
       #
-      # @param [String] destination
-      #   The relative path of the directory to create.
+      # @param [String, Integer] mode
+      #   The new permissions for the fils or directories.
       #
-      # @example
-      #   directory 'sub/dir'
+      # @param [Array<String>] paths
+      #   The path to the files or directories.
       #
-      # @since 0.2.0
+      # @since 1.1.0
       #
-      def mkdir(destination)
-        empty_directory(destination)
+      # @api semipublic
+      #
+      def chmod(mode,paths)
+        print_action 'chmod', mode.to_s(8), *paths
+
+        super(mode,paths)
+      end
+
+      #
+      # Changes the permissions of files/directories, recursively.
+      #
+      # @param [String, Integer] mode
+      #   The new permissions for the files or directories.
+      #
+      # @param [Array<String>] paths
+      #   The path to the files or directories.
+      #
+      # @since 1.1.0
+      #
+      # @api semipublic
+      #
+      def chmod_R(mode,paths)
+        print_action 'chmod -R', mode.to_s(8)
+
+        super(mode,paths)
+      end
+
+      #
+      # Changes ownership of files or directories.
+      #
+      # @param [String, nil] user
+      #   The new owner of the files or directories.
+      #
+      # @param [String, nil] group
+      #   The new group for the files or directories.
+      #
+      # @param [Array<String>] paths
+      #   The path to the files or directories.
+      #
+      # @since 1.1.0
+      #
+      # @api semipublic
+      #
+      def chown(user,group,paths)
+        print_action 'chown', "#{user}:#{group}", *paths
+
+        super(user,group,paths)
+      end
+
+      #
+      # Changes ownership of files/directories, recursively.
+      #
+      # @param [String, nil] user
+      #   The new owner of the files or directories.
+      #
+      # @param [String, nil] group
+      #   The new group for the files or directories.
+      #
+      # @param [Array<String>] paths
+      #   The path to the files or directories.
+      #
+      # @since 1.1.0
+      #
+      # @api semipublic
+      #
+      def chown_R(user,group,paths)
+        print_action 'chown -R', "#{user}:#{group}", *paths
+
+        super(user,group,paths)
       end
 
       #
       # Copies a data file.
       #
-      # @param [String] data_file
+      # @param [String] file
       #   The relative path to the data file.
       #
       # @param [String] destination
       #   The destination to copy the data file to.
       #
-      # @example
-      #   copy_file 'ronin/platform/generators/extension.rb',
-      #             'myext/extension.rb'
-      #
       # @since 0.2.0
       #
-      def cp(data_file,destination)
-        copy_file(find_data_file(data_file),destination)
+      def cp(file,destination=file)
+        print_action 'cp', destination
+
+        super(data_file(file),destination)
       end
 
       #
       # Copies the contents of all data directories.
       #
-      # @param [String] data_dir
+      # @param [String] directory
       #   The data directories to copy from.
       #
       # @param [String, nil] destination
@@ -272,10 +364,266 @@ module Ronin
       #
       # @since 1.0.0
       #
-      def cp_r(data_dir,destination=nil,config={})
-        each_data_dir(data_dir) do |dir|
-          directory(dir,destination || data_dir,config)
+      def cp_r(directory,destination=directory)
+        print_action 'cp -r', destination
+
+        data_dirs(directory) do |dir|
+          cp_r(dir,destination)
         end
+      end
+
+      #
+      # Installs a file.
+      #
+      # @param [String] src
+      #   The file to install.
+      #
+      # @param [String] dest
+      #   The destination path for the file.
+      #
+      # @param [Hash] options
+      #   Additional options.
+      #
+      # @option options [String, Integer] :mode
+      #   The permissions of the installed file.
+      #
+      # @since 1.1.0
+      #
+      # @api semipublic
+      #
+      def install(src,dest,options={})
+        options = {:mode => options[:mode]} # only pass in :mode
+
+        print_action 'install', src, dest
+
+        super(data_file(src),dest,options)
+      end
+
+      #
+      # Creates a hard link.
+      #
+      # @param [String] src
+      #   The path file/directory for the hard link.
+      # 
+      # @param [String] dest
+      #   The destination file/directory of the hard link.
+      #
+      # @since 1.1.0
+      #
+      # @api semipublic
+      #
+      def ln(src,dest)
+        print_action 'ln', src, dest
+
+        super(src,dest)
+      end
+
+      #
+      # Creates a symbolic link.
+      #
+      # @param [String] src
+      #   The path file/directory for the symbolic link.
+      # 
+      # @param [String] dest
+      #   The destination file/directory of the symbolic link.
+      #
+      # @since 1.1.0
+      #
+      # @api semipublic
+      #
+      def ln_s(src,dest)
+        print_action 'ln -s', src, dest
+
+        super(src,dest)
+      end
+
+      #
+      # Forcibly creates a symbolic link.
+      #
+      # @param [String] src
+      #   The path file/directory for the symbolic link.
+      # 
+      # @param [String] dest
+      #   The destination file/directory of the symbolic link.
+      #
+      # @since 1.1.0
+      #
+      # @api semipublic
+      #
+      def ln_sf(src,dest)
+        print_action 'ln -sf', src, dest
+
+        super(src,dest)
+      end
+
+      #
+      # Creates an empty directory.
+      #
+      # @param [String] dir
+      #   The relative path of the directory to create.
+      #
+      # @example
+      #   mkdir 'sub/dir'
+      #
+      # @since 0.2.0
+      #
+      def mkdir(dir)
+        print_action 'mkdir', dir
+
+        super(dir)
+      end
+
+      #
+      # Creates an empty directory.
+      #
+      # @param [String] dir
+      #   The relative path of the directory to create.
+      #
+      # @example
+      #   mkdir 'sub/dir'
+      #
+      # @since 0.2.0
+      #
+      def mkdir_p(dir)
+        print_action 'mkdir -p', dir
+
+        super(dir)
+      end
+
+      #
+      # Moves a file or directory.
+      #
+      # @param [String] src
+      #   The path to the file or directory.
+      #
+      # @param [String] dest
+      #   The new path to move the file or directory to.
+      #
+      # @api semipublic
+      #
+      # @since 1.1.0
+      #
+      def mv(src,dest)
+        print_action 'mv', src, dest
+
+        super(src,dest)
+      end
+
+      #
+      # Removes one or more files.
+      #
+      # @param [Array<String>] paths
+      #   The paths of the files and directories to remove.
+      #
+      # @param [Hash] options
+      #   Additional options.
+      #
+      # @option options [Boolean] :force
+      #   Specifies whether to forcible remove the files.
+      #
+      # @since 1.1.0
+      #
+      # @api semipublic
+      #
+      def rm(paths,options={})
+        options = {:force => options[:force]} # only pass in :force
+
+        print_action 'rm', *paths
+
+        super(paths,options)
+      end
+
+      #
+      # Recursively removes files and directories.
+      #
+      # @param [Array<String>] paths
+      #   The paths of the files and directories to remove.
+      #
+      # @param [Hash] options
+      #   Additional options.
+      #
+      # @option options [Boolean] :force
+      #   Specifies whether to forcible remove the files.
+      #
+      # @since 1.1.0
+      #
+      # @api semipublic
+      #
+      def rm_r(paths,options={})
+        options = {:force => options[:force]} # only pass in :force
+
+        print_action 'rm -r', *paths
+
+        super(paths,options)
+      end
+
+      #
+      # Forcibly removes files and directories, recursively.
+      #
+      # @param [Array<String>] paths
+      #   The paths of the files and directories to remove.
+      #
+      # @since 1.1.0
+      #
+      # @api semipublic
+      #
+      def rm_rf(paths)
+        print_action 'rm -rf', *paths
+
+        super(paths)
+      end
+
+      #
+      # Removes one or more directories.
+      #
+      # @param [Array<String>] dirs
+      #   The paths of the directories.
+      #
+      # @since 1.1.0
+      #
+      # @api semipublic
+      #
+      def rmdir(dirs)
+        print_action 'rmdir', *dirs
+
+        super(dirs)
+      end
+
+      #
+      # Touches a file.
+      #
+      # @param [String] destination
+      #   The relative path to the file to touch.
+      #
+      # @example
+      #   touch 'TODO.txt'
+      #
+      # @since 0.2.0
+      #
+      def touch(file)
+        print_action 'touch', file
+
+        return super(file)
+      end
+
+      #
+      # Opens a file for writing.
+      #
+      # @param [String] path
+      #   The path of the file to write to.
+      #
+      # @yield [file]
+      #   The given block will be passed the newly opened file.
+      #
+      # @yieldparam [File]
+      #   The new file file, opened for writing.
+      #
+      # @since 1.1.0
+      #
+      # @api semipublic
+      #
+      def write(path,&block)
+        File.open(path,'wb',&block)
       end
 
       #
@@ -292,22 +640,149 @@ module Ronin
       #   will be returned.
       #
       # @example
-      #   erb 'ronin/platform/generators/Rakefile.erb', 'Rakefile.erb'
+      #   erb 'Rakefile.erb', 'Rakefile'
       #
       # @example
       #   erb '_helpers.erb'
       #
       # @since 0.2.0
       #
-      def erb(template_path,destination=nil)
-        if destination
-          enter_template(template_path) do |path|
-            template(path,destination)
+      def template(template_path,dest=nil)
+        template_path = data_path(template_path)
+
+        if dest
+          print_action 'erb', dest
+
+          File.open(dest,'w') do |file|
+            file.write(erb_file(template_path))
           end
         else
-          read_template(template_path) do |template|
-            ERB.new(template).result(binding).chomp
+          erb_file(template_path).chomp
+        end
+      end
+
+      private
+
+      #
+      # Joins the path with the Generators {data_dir}.
+      #
+      # @param [String] path
+      #   A relative path.
+      #
+      # @return [String]
+      #   The full `data/` directory path.
+      #
+      # @since 1.1.0
+      #
+      # @api private
+      #
+      def data_path(path)
+        if self.class.data_dir
+          path = File.join(self.class.data_dir,path)
+        end
+
+        return path
+      end
+
+      #
+      # Searches for a file within the Generators {data_dir}.
+      #
+      # @param [String] path
+      #   The relative path to search for.
+      #
+      # @return [String]
+      #   The path to the file.
+      #
+      # @raise [StandardError]
+      #   The file could not be found in the Generators {data_dir}.
+      #
+      # @since 1.1.0
+      #
+      # @api private
+      #
+      def data_file(path)
+        unless (full_path = find_data_file(data_path(path)))
+          raise(StandardError,"cannot find generator file: #{path.dump}")
+        end
+
+        return full_path
+      end
+
+      #
+      # Searches for a directory within the Generators {data_dir}.
+      #
+      # @param [String] path
+      #   The relative path to search for.
+      #
+      # @return [String]
+      #   The path to the directory.
+      #
+      # @raise [StandardError]
+      #   The directory could not be found in the Generators {data_dir}.
+      #
+      # @since 1.1.0
+      #
+      # @api private
+      #
+      def data_dir(path)
+        unless (full_path = find_data_dir(data_path(path)))
+          raise(StandardError,"cannot find generator directory: #{path.dump}")
+        end
+
+        return full_path
+      end
+
+      #
+      # Searches for all matching directories within the Generators {data_dir}.
+      #
+      # @param [String] path
+      #   The relative directory path to search for.
+      #
+      # @yield [dir]
+      #   The given block will be passed each found directory.
+      #
+      # @yieldparam [String] dir
+      #   A directory with the same relative path.
+      #
+      # @since 1.1.0
+      #
+      # @api private
+      #
+      def data_dirs(path,&block)
+        each_data_dir(data_path(directory),&block)
+      end
+
+      # ANSI Bold code
+      BOLD = "\e[1m"
+
+      # ANSI Green code
+      GREEN = "\e[32m"
+
+      # ANSI Clear code
+      CLEAR = "\e[0m"
+
+      #
+      # Prints a file action.
+      #
+      # @param [String] command
+      #   The command/options that represents the file action.
+      #
+      # @param [Array<String>] arguments
+      #   Additional arguments related to the file action.
+      #
+      # @since 1.1.0
+      #
+      # @api private
+      #
+      def print_action(command,*arguments)
+        unless UI::Output.silent?
+          arguments = arguments.join(' ')
+
+          if $stdout.tty?
+            command = BOLD + GREEN + command + CLEAR
           end
+
+          puts "\t#{command}\t#{arguments}"
         end
       end
 

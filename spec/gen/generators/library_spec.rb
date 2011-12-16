@@ -9,7 +9,7 @@ describe Gen::Generators::Library do
     let(:path) { Pathname.new(Dir.tmpdir).join('ronin-name') }
 
     before(:all) do
-      Gen::Generators::Library.generate(path)
+      Gen::Generators::Library.generate(:path => path)
     end
 
     it "should initialize a git repository" do
@@ -98,7 +98,7 @@ describe Gen::Generators::Library do
     let(:path) { Pathname.new(Dir.tmpdir).join('ronin-library') }
 
     before(:all) do
-      Gen::Generators::Library.generate(path, {:name => name})
+      Gen::Generators::Library.generate(:path => path, :name => name)
     end
 
     it "should create a lib/ronin/name.rb file" do

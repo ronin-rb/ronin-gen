@@ -26,7 +26,7 @@ module Ronin
     #
     class RubyGenerator < SourceCodeGenerator
 
-      file_extension! :rb
+      file_extension :rb
 
     end
   end

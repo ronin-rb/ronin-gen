@@ -26,18 +26,22 @@ module Ronin
     #
     class FileGenerator < Generator
 
-      argument :path, :type => :string, :require => true
+      # The destination path for the generator
+      parameter :path, :type        => String,
+                       :description => 'File to generate'
 
       #
-      # Generates the file at the given path.
+      # Sets up the File generator.
       #
-      def self.generate(options={},arguments=[])
-        super(options,arguments) do |gen|
-          if (self.file_extension && File.extname(gen.path).empty?)
-            gen.path += ".#{self.file_extension}"
-          end
+      # @since 1.1.0
+      #
+      # @api semipublic
+      #
+      def setup
+        require_params :path
 
-          yield gen if block_given?
+        if (self.class.file_extension && File.extname(@path).empty?)
+          @path += ".#{self.class.file_extension}"
         end
       end
 
@@ -46,25 +50,23 @@ module Ronin
       #
       # The file extension to append to all paths.
       #
+      # @param [String] ext
+      #   The new file extension to use.
+      #
       # @return [String, nil]
       #   The file extension.
       #
       # @since 1.0.0
       #
-      def self.file_extension
-        @file_extension
-      end
-
+      # @api semipublic
       #
-      # Sets the file extension to append to all paths.
-      #
-      # @param [String] ext
-      #   The file extension.
-      #
-      # @since 1.0.0
-      #
-      def self.file_extension!(ext)
-        @file_extension = ext.to_s
+      def self.file_extension(ext=nil)
+        if ext
+          @file_extension = ext.to_s
+        else
+          @file_extension ||= if superclass < FileGenerator
+                                superclass.file_extension
+                              end
       end
 
     end

@@ -16,7 +16,7 @@ describe Gen::Generators::Repository do
 
   before(:all) do
     Gen::Generators::Repository.generate(
-      path,
+      :path => path,
       :title => title,
       :uri => uri,
       :source => source,

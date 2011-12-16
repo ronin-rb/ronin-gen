@@ -32,20 +32,8 @@ module Ronin
       #
       class Library < DirGenerator
 
-        # Default version of the library
-        DEFAULT_VERSION = '0.1.0'
-
         # Default license of the library
         DEFAULT_LICENSE = 'GPL-2'
-
-        # Default author of the library
-        DEFAULT_AUTHOR = 'Author'
-
-        # Default email of the library
-        DEFAULT_EMAIL = 'name@host.com'
-
-        # Default homepage for the library
-        DEFAULT_HOMEPAGE = 'http://ronin-ruby.github.com/'
 
         # Directory to store command classes in
         COMMANDS_DIR = File.join('lib',UI::CLI::Commands.namespace_root)
@@ -53,27 +41,35 @@ module Ronin
         # Directory to store generator classes in
         GENERATORS_DIR = File.join('lib',Generators.namespace_root)
 
-        desc 'Generates a new Ronin library'
-        class_option :name, :type => :string
-        class_option :version, :type => :string, :default => DEFAULT_VERSION
-        class_option :author, :type => :string, :default => DEFAULT_AUTHOR
-        class_option :email, :type => :string, :default => DEFAULT_EMAIL
-        class_option :homepage, :type => :string,
-                                :default => DEFAULT_HOMEPAGE
+        data_dir File.join('ronin','gen','library')
 
-        class_option :commands, :type => :array,
-                                :default => [],
-                                :banner => 'NAME [...]'
+        parameter :name, :type => String
 
-        class_option :generators, :type => :array,
-                                  :default => [],
-                                  :banner => 'NAME [...]'
+        parameter :version, :type    => String,
+                            :default => '0.1.0'
 
-        class_option :no_git, :type => :boolean
+        parameter :author, :type    => String,
+                          :default => 'Author'
+
+        parameter :email, :type    => String,
+                          :default => 'name@host.com'
+
+        parameter :homepage, :type    => String,
+                             :default => 'http://ronin-ruby.github.com/'
+
+        parameter :commands, :type    => Array[String],
+                             :default => []
+
+        parameter :generators, :type    => Array[String],
+                               :default => []
+
+        parameter :no_git, :type => true
 
         def setup
-          @name = (options[:name] || File.basename(self.path))
-          @dir_name = @name.gsub(/^ronin[-_]/,'')
+          super
+
+          @name      ||= File.basename(@path)
+          @dir_name    = @name.gsub(/^ronin[-_]/,'')
           @module_name = @dir_name.capitalize
 
           @title = @name.split(/[\s_-]+/).map { |word|
@@ -82,133 +78,100 @@ module Ronin
 
           @license = DEFAULT_LICENSE
 
-          @author = options[:author]
-          @email = options[:email]
           @safe_email = @email.gsub(/\s*@\s*/,' at ')
-          @homepage = options[:homepage]
+
+          @bin_script = File.join('bin',"ronin-#{@dir_name}")
         end
 
         #
         # Generates top-level files.
         #
         def generate
-          unless options[:no_git]
-            inside { run "git init" }
+          unless no_git?
+            run "git init"
           end
 
-          erb File.join('ronin','gen','library','Gemfile.erb'), 'Gemfile'
-          cp File.join('ronin','gen','library','Rakefile'), 'Rakefile'
+          template 'Gemfile.erb', 'Gemfile'
+          cp 'Rakefile'
 
-          erb File.join('ronin','gen','library','name.gemspec.erb'),
-              "#{@name}.gemspec"
-          erb File.join('ronin','gen','library','gemspec.yml.erb'),
-              'gemspec.yml'
+          template 'name.gemspec.erb', "#{@name}.gemspec"
+          template 'gemspec.yml.erb', 'gemspec.yml'
 
-          unless options[:no_git]
-            cp File.join('ronin','gen','library','.gitignore'), '.gitignore'
+          unless no_git?
+            cp '.gitignore'
           end
 
-          cp File.join('ronin','gen','library','.rspec'), '.rspec'
-          cp File.join('ronin','gen','library','.document'), '.document'
-          erb File.join('ronin','gen','library','.yardopts.erb'),
-              '.yardopts'
+          cp '.rspec'
+          cp '.document'
+          template '.yardopts.erb', '.yardopts'
 
-          cp File.join('ronin','gen','library','COPYING.txt'), 'COPYING.txt'
+          cp 'COPYING.txt'
 
-          erb File.join('ronin','gen','library','ChangeLog.md.erb'),
-             'ChangeLog.md'
+          template 'ChangeLog.md.erb', 'ChangeLog.md'
+          template 'README.md.erb', 'README.md'
 
-          erb File.join('ronin','gen','library','README.md.erb'),
-             'README.md'
-
-          mkdir 'data'
-        end
-
-        #
-        # Generates the contents of the `bin` directory.
-        #
-        def bin
           mkdir 'bin'
 
-          bin_script = File.join('bin',"ronin-#{@dir_name}")
+          template File.join('bin','ronin-name.erb'), @bin_script
+          chmod 0755, @bin_script
 
-          erb File.join('ronin','gen','library','bin','ronin-name.erb'),
-              bin_script
-          chmod bin_script, 0755
-        end
+          mkdir_p File.join('lib','ronin',@dir_name)
 
-        #
-        # Generates the contents of the `lib` directory.
-        #
-        def lib
-          mkdir File.join('lib','ronin',@dir_name)
+          template File.join('lib','ronin','name.rb.erb'),
+                   File.join('lib','ronin',"#{@dir_name}.rb")
 
-          erb File.join('ronin','gen','library','lib','ronin','name.rb.erb'),
-              File.join('lib','ronin',"#{@dir_name}.rb")
+          template File.join('lib','ronin','name','version.rb.erb'),
+                   File.join('lib','ronin',@dir_name,'version.rb')
 
-          erb File.join('ronin','gen','library','lib','ronin','name','version.rb.erb'),
-              File.join('lib','ronin',@dir_name,'version.rb')
-        end
+          mkdir 'data'
 
-        #
-        # Generates the test suite.
-        #
-        def test_suite
           mkdir 'spec'
-          erb File.join('ronin','gen','library','spec','spec_helper.rb.erb'),
-              File.join('spec','spec_helper.rb')
+          template File.join('spec','spec_helper.rb.erb'),
+                   File.join('spec','spec_helper.rb')
 
           mkdir File.join('spec',@dir_name)
-          erb File.join('ronin','gen','library','spec','name','name_spec.rb.erb'),
-              File.join('spec',@dir_name,"#{@dir_name}_spec.rb")
+          template File.join('spec','name','name_spec.rb.erb'),
+                   File.join('spec',@dir_name,"#{@dir_name}_spec.rb")
+
+          generate_commands   unless @commands.empty?
+          generate_generators unless @generators.empty?
+
+          unless no_git?
+            run 'git add .'
+            run 'git commit -m "Initial commit."'
+          end
         end
 
         #
         # Generates any optional commands for the library.
         #
-        def commands
-          unless options[:commands].empty?
-            mkdir COMMANDS_DIR
+        def generate_commands
+          mkdir COMMANDS_DIR
 
-            options[:commands].each do |name|
-              @command_file = name.downcase.gsub(/[_-]+/,'_')
-              @command_class = @command_file.to_const_string
+          @commands.each do |name|
+            @command_file  = name.downcase.gsub(/[_-]+/,'_')
+            @command_class = @command_file.to_const_string
 
-              erb File.join('ronin','gen','library','bin','ronin-command.erb'),
-                  File.join('bin','ronin-' + @command_file.gsub('_','-'))
+            template File.join('bin','ronin-command.erb'),
+              File.join('bin','ronin-' + @command_file.gsub('_','-'))
 
-              erb File.join('ronin','gen','library',COMMANDS_DIR,'command.rb.erb'),
-                  File.join(COMMANDS_DIR,"#{@command_file}.rb")
-            end
+            template File.join(COMMANDS_DIR,'command.rb.erb'),
+                     File.join(COMMANDS_DIR,"#{@command_file}.rb")
           end
         end
 
         #
         # Generates any optional generators for the library.
         #
-        def gen
-          unless options[:generators].empty?
-            mkdir GENERATORS_DIR
+        def generate_generators
+          mkdir GENERATORS_DIR
 
-            options[:generators].each do |name|
-              @generator_file = name.downcase.gsub(/[_-]+/,'_')
-              @generator_class = @generator_file.to_const_string
+          @generators.each do |name|
+            @generator_file  = name.downcase.gsub(/[_-]+/,'_')
+            @generator_class = @generator_file.to_const_string
 
-              erb File.join('ronin','gen','library',GENERATORS_DIR,'generator.rb.erb'),
-                  File.join(GENERATORS_DIR,"#{@generator_file}.rb")
-            end
-          end
-        end
-
-        #
-        # Finalizes the generated library.
-        #
-        def finalize
-          unless options[:no_git]
-            inside do
-              run('git add .')
-              run('git commit -m "Initial commit."')
-            end
+            template File.join(GENERATORS_DIR,'generator.rb.erb'),
+                     File.join(GENERATORS_DIR,"#{@generator_file}.rb")
           end
         end
 

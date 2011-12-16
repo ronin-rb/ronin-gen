@@ -4,10 +4,10 @@ class TemplatedGenerator < Gen::Generator
 
   TEMPLATE_FILE = File.join('generators','templated.txt.erb')
 
-  class_option :message, :type => :string
+  parameter :message, :type => String
 
   def generate
-    erb TEMPLATE_FILE, 'templated.txt'
+    template TEMPLATE_FILE, 'templated.txt'
   end
 
 end

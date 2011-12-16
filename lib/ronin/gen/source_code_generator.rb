@@ -26,17 +26,18 @@ module Ronin
     #
     class SourceCodeGenerator < FileGenerator
 
-      class_option :editor, :default => ENV['EDITOR']
-      class_option :no_edit, :type => :boolean, :default => false
+      parameter :editor, :type => String,
+                         :default => ENV['EDITOR']
 
-      #
-      # Generates the source-code file and spawns a text-editor.
-      #
-      def self.generate(options={},arguments=[],&block)
-        generator = super(options,arguments,&block)
+      parameter :no_edit, :type => true,
+                          :default => false
 
-        if (generator.options.no_edit? && generator.options.editor)
-          system(generator.options.editor,generator.path)
+      def generate!
+        super
+
+        if (no_edit? && editor?)
+          # spawn the text editor for the newly generated file
+          system(editor,@path)
         end
       end
 

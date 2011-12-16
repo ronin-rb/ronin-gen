@@ -11,15 +11,11 @@ require 'tmpdir'
 require 'fileutils'
 
 describe Gen::Generator do
-  it "should include Thor::Actions" do
-    Gen::Generator.should include(Thor::Actions)
-  end
-
   describe "setup" do
     subject { BasicGenerator.new }
 
     before(:all) do
-      subject.invoke_all
+      subject.setup
     end
 
     it "should set default values before invoking any tasks" do
@@ -55,9 +51,11 @@ describe Gen::Generator do
     end
 
     it "should generate files using templates" do
+      path = File.join(@dir,'templated.txt')
+
       TemplatedGenerator.generate(:message => 'hello')
 
-      File.read(File.join(@dir,'templated.txt')).should == "message: hello\n"
+      File.read(path).chomp.should == "message: hello"
     end
 
     after(:all) do

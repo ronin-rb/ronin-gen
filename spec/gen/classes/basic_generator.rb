@@ -4,13 +4,11 @@ class BasicGenerator < Gen::Generator
 
   attr_reader :var
 
-  def generate
-  end
-
-  protected
-
   def setup
     @var = 'test'
+  end
+
+  def generate
   end
 
 end

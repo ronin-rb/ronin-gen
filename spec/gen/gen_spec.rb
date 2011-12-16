@@ -11,7 +11,7 @@ describe Gen do
     generator = subject.generator('library')
 
     generator.should_not be_nil
-    generator.name.should == 'Ronin::Gen::Generators::Library'
+    generator.should == Ronin::Gen::Generators::Library
   end
 
   it "should raise an UnknownGenerator exception on missing generators" do

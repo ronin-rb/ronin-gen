@@ -28,47 +28,15 @@ module Ronin
     #
     class DirGenerator < Generator
 
-      argument :path, :type => :string, :require => true
+      # The destination path for the generator
+      parameter :path, :type        => String,
+                       :description => 'The destination path'
 
-      #
-      # Invokes the generator.
-      #
-      # @param [String] path
-      #   The directory to generate within.
-      #
-      # @param [Hash] options
-      #   Additional command-line options for the generator.
-      #
-      # @param [Array] arguments
-      #   Additional command-line arguments for the generator.
-      #
-      # @example
-      #   gen.generate('path/to/dir')
-      #
-      def self.generate(path,options={},arguments=[])
-        super(options,[File.expand_path(path)] + arguments)
-      end
+      def generate!
+        require_params :path
 
-      protected
-
-      #
-      # Initializes the generator.
-      #
-      # @param [Array] arguments
-      #   Additional arguments for the generator.
-      #
-      # @param [Hash] options
-      #   Options to pass to the generator.
-      #
-      # @param [Hash] config
-      #   Additional configuration for the generator.
-      #
-      # @since 1.0.0
-      #
-      def initialize(arguments=[],options={},config={})
-        super(arguments,options,config) do |gen|
-          gen.destination_root = self.path
-        end
+        FileUtils.mkdir_p @path
+        chdir(@path) { super }
       end
 
     end

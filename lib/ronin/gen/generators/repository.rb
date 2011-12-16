@@ -22,8 +22,6 @@ require 'ronin/gen/dir_generator'
 require 'ronin/repository'
 require 'ronin/version'
 
-require 'set'
-
 module Ronin
   module Gen
     module Generators
@@ -41,101 +39,61 @@ module Ronin
         # The primary script directory
         SCRIPT_DIR = Ronin::Repository::SCRIPT_DIRS.first
 
-        # Default license to use
-        DEFAULT_LICENSE = 'CC-by'
-
         # Default authors to use
-        DEFAULT_AUTHORS = ['Anonymous']
+        DEFAULT_AUTHOR = 'Anonymous'
 
-        # Default description to use
-        DEFAULT_DESCRIPTION = 'This is a Ronin Repository'
+        data_dir File.join('ronin','gen','repository')
 
-        desc 'Generates a new Ronin Repository'
-        class_option :title, :type => :string
-        class_option :uri, :type => :string
-        class_option :source, :type => :string
-        class_option :website, :type => :string
+        parameter :title, :type => String
+        parameter :uri, :type => String
+        parameter :source, :type => String
+        parameter :website, :type => String
 
-        class_option :license, :type => :string,
-                               :default => DEFAULT_LICENSE,
-                               :banner => 'LICENSE'
+        parameter :license, :type    => String,
+                            :default => 'CC-by'
 
-        class_option :description, :type => :string,
-                                   :default => DEFAULT_DESCRIPTION,
-                                   :banner => 'TEXT'
+        parameter :description, :type    => String,
+                                :default => 'This is a Ronin Repository'
 
-        class_option :authors, :type => :array,
-                               :default => DEFAULT_AUTHORS,
-                               :banner => 'NAME [...]'
+        parameter :authors, :type    => Array[String],
+                            :default => []
 
-        class_option :tests, :type => :boolean
-        class_option :docs, :type => :boolean
+        parameter :tests, :type => true
+        parameter :docs, :type => true
 
         def setup
-          @title = options[:title]
-          @uri = options[:uri]
-          @source = options[:source]
-          @website = options[:website]
-          @license = options[:license]
-          @description = options[:description]
-          @authors = options[:authors]
-
-          @test_suite = options[:test]
-          @docs = options[:docs]
-
-          @title ||= File.basename(self.path).gsub(/[_\s]+/,' ').capitalize
+          @title   ||= File.basename(@path).gsub(/[_\s]+/,' ').capitalize
           @website ||= @source
+
+          if @authors.empty?
+            @authors << DEFAULT_AUTHOR
+          end
         end
 
         #
         # Generates a skeleton repository.
         #
         def generate
+          template 'ronin.yml.erb', 'ronin.yml'
+          template 'Rakefile.erb', 'Rakefile'
+
           mkdir LIB_DIR
           mkdir File.join(LIB_DIR,'ronin')
           touch File.join(LIB_DIR,Ronin::Repository::INIT_FILE)
 
           mkdir SCRIPT_DIR
           mkdir Ronin::Repository::DATA_DIR
-        end
 
-        #
-        # Generates the Rakefile of the repository.
-        #
-        def rakefile
-          erb File.join('ronin','gen','repository','Rakefile.erb'),
-              'Rakefile'
-        end
+          if docs?
+            template '.yardopts.erb', '.yardopts'
+          end
 
-        #
-        # Generates a base RSpec test-suite for the repository.
-        #
-        def tests
-          if options.tests?
-            cp File.join('ronin','gen','repository','.rspec'), '.rspec'
+          if tests?
+            cp '.rspec'
 
             mkdir 'spec'
-            cp File.join('ronin','gen','repository','spec','spec_helper.rb'),
-               File.join('spec','spec_helper.rb')
+            cp File.join('spec','spec_helper.rb')
           end
-        end
-
-        #
-        # Generate files needed for documentation.
-        #
-        def docs
-          if options.docs?
-            erb File.join('ronin','gen','repository','.yardopts.erb'),
-                '.yardopts'
-          end
-        end
-
-        #
-        # Generates the XML metadata file for the repository.
-        #
-        def metadata
-          erb File.join('ronin','gen','repository','ronin.yml.erb'),
-              'ronin.yml'
         end
 
       end
