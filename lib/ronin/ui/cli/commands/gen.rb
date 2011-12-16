@@ -30,14 +30,17 @@ module Ronin
         #
         class Gen < Command
 
-          desc "Prints the list of available generators"
-          class_option :version, :type => :boolean
+          summary "Prints the list of available generators"
+
+          option :version, :type => true,
+                           :flag => '-V',
+                           :description => 'Prints the ronin-gen version'
 
           #
           # Lists the available generators.
           #
           def execute
-            if options.version?
+            if @version
               puts "ronin-gen #{Ronin::Gen::VERSION}"
               return
             end

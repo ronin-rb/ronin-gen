@@ -4,11 +4,15 @@ DM_URI = 'http://github.com/datamapper'
 DM_VERSION = '~> 1.0.2'
 RONIN_URI = 'http://github.com/ronin-ruby'
 
+gem 'parameters', '~> 0.4', :git => 'http://github.com/postmodern/parameters.git',
+                            :branch => '0.4.0'
+
 gemspec
 
 # Ronin dependencies:
 # gem 'ronin-support',	'~> 0.2', :git => "#{RONIN_URI}/ronin-support.git"
-# gem 'ronin',		      '~> 1.1', :git => "#{RONIN_URI}/ronin.git"
+gem 'ronin',		      '~> 1.4', :git => "#{RONIN_URI}/ronin.git",
+                                :branch => '1.4.0'
 
 group :development do
   gem 'rake',		      '~> 0.8'
