@@ -78,7 +78,7 @@ module Ronin
           name = path.chomp('.rb')
 
           # replace any file separators with a ':', to mimic the
-          # naming convention of Rake/Thor.
+          # Rake task naming convention
           name.tr!(File::SEPARATOR,':')
 
           @generators << name

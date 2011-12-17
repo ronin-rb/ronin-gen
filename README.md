@@ -16,10 +16,8 @@ or payloads over many common Source-Code-Management (SCM) systems.
 
 ## Features
 
-* Provides {Ronin::Gen::FileGenerator}, a Thor based generator class that
-  can be used to create new generators.
-* Provides {Ronin::Gen::DirGenerator}, a Thor based generator that
-  can be used to create new directory generators.
+* Provides {Ronin::Gen::FileGenerator}
+* Provides {Ronin::Gen::DirGenerator}
 * Generators for creating new Ronin Repositories and Libraries.
 
 ## Synopsis
@@ -38,8 +36,6 @@ Generate a skeleton Overlay:
   ~> 0.3
 * [data_paths](http://github.com/postmodern/data_paths#readme)
   ~> 0.3
-* [thor](http://github.com/wycats/thor#readme)
-  ~> 0.14.3
 * [ronin-support](http://github.com/ronin-ruby/ronin-support#readme)
   ~> 0.3
 * [ronin](http://github.com/ronin-ruby/ronin#readme)
