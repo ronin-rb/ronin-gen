@@ -18,6 +18,8 @@ or payloads over many common Source-Code-Management (SCM) systems.
 
 * Provides {Ronin::Gen::FileGenerator}
 * Provides {Ronin::Gen::DirGenerator}
+* Provides {Ronin::Gen::SourceCodeGenerator}
+* Provides {Ronin::Gen::RubyGenerator}
 * Generators for creating new Ronin Repositories and Libraries.
 
 ## Synopsis
