@@ -41,7 +41,7 @@ Generate a skeleton Overlay:
 * [parameters](http://github.com/postmodern/parameters#readme)
   ~> 0.4
 * [ronin-support](http://github.com/ronin-ruby/ronin-support#readme)
-  ~> 0.3
+  ~> 0.4
 * [ronin](http://github.com/ronin-ruby/ronin#readme)
   ~> 1.4
 
