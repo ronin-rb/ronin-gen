@@ -38,6 +38,8 @@ Generate a skeleton Overlay:
   ~> 0.3
 * [data_paths](http://github.com/postmodern/data_paths#readme)
   ~> 0.3
+* [parameters](http://github.com/postmodern/parameters#readme)
+  ~> 0.4
 * [ronin-support](http://github.com/ronin-ruby/ronin-support#readme)
   ~> 0.3
 * [ronin](http://github.com/ronin-ruby/ronin#readme)
