@@ -252,7 +252,7 @@ module Ronin
       # Changes the permissions of a files or directories.
       #
       # @param [String, Integer] mode
-      #   The new permissions for the fils or directories.
+      #   The new permissions for the files or directories.
       #
       # @param [Array<String>] paths
       #   The path to the files or directories.
