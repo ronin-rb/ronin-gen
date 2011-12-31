@@ -1,3 +1,16 @@
+### 1.1.0 / 2012-01-01
+
+* Require parameters ~> 0.4.
+* Require ronin-support ~> 0.4.
+* Require ronin ~> 1.4.
+* Added {Ronin::Gen::SourceCodeGenerator.template}.
+* Removed thor from the dependencies.
+* Refactored {Ronin::Gen::Generator} to use
+  [Parameters](http://github.com/postmodern/parameters) and
+  [FileUtils](http://rubydoc.info/stdlib/fileutils/1.9.2/file/README.rdoc).
+* Refactored the `ronin gen` command to use
+  [Parameters::Options](http://rubydoc.info/gems/parameters/0.4.0/Parameters/Options).
+
 ### 1.0.1 / 2011-07-04
 
 * Require data_paths ~> 0.3.
