@@ -60,7 +60,7 @@ Generate a skeleton Overlay:
 
 ## License
 
-Copyright (c) 2009-2011 Hal Brodigan (postmodern.mod3 at gmail.com)
+Copyright (c) 2009-2012 Hal Brodigan (postmodern.mod3 at gmail.com)
 
 This file is part of Ronin Gen.
 
