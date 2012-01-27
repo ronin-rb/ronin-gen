@@ -63,7 +63,8 @@ module Ronin
         parameter :generators, :type    => Array[String],
                                :default => []
 
-        parameter :no_git, :type => true
+        parameter :git, :type    => true,
+                        :default => true
 
         #
         # Sets up the library generator.
@@ -90,9 +91,7 @@ module Ronin
         # Generates top-level files.
         #
         def generate
-          unless no_git?
-            run "git init"
-          end
+          run "git init" if git?
 
           template 'Gemfile.erb', 'Gemfile'
           cp 'Rakefile'
@@ -100,10 +99,7 @@ module Ronin
           template 'name.gemspec.erb', "#{@name}.gemspec"
           template 'gemspec.yml.erb', 'gemspec.yml'
 
-          unless no_git?
-            cp '.gitignore'
-          end
-
+          cp '.gitignore' if git?
           cp '.rspec'
           cp '.document'
           template '.yardopts.erb', '.yardopts'
@@ -139,7 +135,7 @@ module Ronin
           generate_commands   unless @commands.empty?
           generate_generators unless @generators.empty?
 
-          unless no_git?
+          if git?
             run 'git add .'
             run 'git commit -m "Initial commit."'
           end

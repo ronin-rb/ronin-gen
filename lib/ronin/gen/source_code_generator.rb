@@ -29,8 +29,8 @@ module Ronin
       parameter :editor, :type    => String,
                          :default => ENV['EDITOR']
 
-      parameter :no_edit, :type    => true,
-                          :default => false
+      parameter :edit, :type    => true,
+                       :default => true
 
       #
       # Generates the source code file and spawns a text-editor.
@@ -42,7 +42,7 @@ module Ronin
       def generate
         template self.class.template, @path
 
-        if (no_edit? && editor?)
+        if (edit? && editor?)
           # spawn the text editor for the newly generated file
           system(editor,@path)
         end
