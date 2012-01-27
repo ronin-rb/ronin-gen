@@ -58,7 +58,26 @@ module Ronin
         require_params :path
 
         FileUtils.mkdir_p @path
-        chdir(@path) { super }
+        FileUtils.chdir { super }
+      end
+
+      protected
+
+      #
+      # Changes current working directory, relative to the generated directory.
+      #
+      # @param [String] path
+      #   The path within the generated directory to switch to.
+      #
+      # @yield []
+      #   The given block will be ran after the current working directory
+      #   has been changed. After the block has returned, the current working
+      #   directory will be changed back.
+      #
+      # @since 1.1.0
+      #
+      def chdir(path='.')
+        super(File.join(@path,path),&block)
       end
 
     end
