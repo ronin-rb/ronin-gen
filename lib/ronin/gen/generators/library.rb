@@ -152,7 +152,7 @@ module Ronin
             @command_class = @command_file.to_const_string
 
             template File.join('bin','ronin-command.erb'),
-              File.join('bin','ronin-' + @command_file.gsub('_','-'))
+                     File.join('bin','ronin-' + @command_file.gsub('_','-'))
 
             template File.join(COMMANDS_DIR,'command.rb.erb'),
                      File.join(COMMANDS_DIR,"#{@command_file}.rb")
