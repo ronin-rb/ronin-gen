@@ -48,20 +48,20 @@ module Ronin
           #
           def start(argv=ARGV)
             if (argv.empty? || argv.first.start_with?('-'))
-              super(argv)
-            else
-              generator_name = argv.shift
-              generator      = Ronin::Gen.generator(generator_name).new
-
-              opts = Parameters::Options.parser(generator) do |opts|
-                opts.banner = "ronin-gen #{generator_name} PATH [options]"
-              end
-
-              args = opts.parse(argv)
-
-              generator.path = args.first
-              generator.generate!
+              return super(argv)
             end
+
+            generator_name = argv.shift
+            generator      = Ronin::Gen.generator(generator_name).new
+
+            opts = Parameters::Options.parser(generator) do |opts|
+              opts.banner = "ronin-gen #{generator_name} PATH [options]"
+            end
+
+            args = opts.parse(argv)
+
+            generator.path = args.first
+            generator.generate!
           end
 
           #
@@ -73,8 +73,7 @@ module Ronin
               return
             end
 
-            print_array Ronin::Gen.generators,
-                        :title => 'Available Generators'
+            print_array Ronin::Gen.generators, :title => 'Available Generators'
           end
 
         end
