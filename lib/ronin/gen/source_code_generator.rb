@@ -26,10 +26,10 @@ module Ronin
     #
     class SourceCodeGenerator < FileGenerator
 
-      parameter :editor, :type => String,
+      parameter :editor, :type    => String,
                          :default => ENV['EDITOR']
 
-      parameter :no_edit, :type => true,
+      parameter :no_edit, :type    => true,
                           :default => false
 
       #
