@@ -4,6 +4,13 @@
 * Require ronin-support ~> 0.4.
 * Require ronin ~> 1.4.
 * Added {Ronin::Gen::SourceCodeGenerator.template}.
+* Added {Ronin::Gen::Generators::Repository#svn}.
+* Added {Ronin::Gen::Generators::Repository#git}.
+* Added {Ronin::Gen::Generators::Repository#hg}.
+* Renamed `Ronin::Gen::SourceCodeGenerator#no_edit` to
+  {Ronin::Gen::SourceCodeGenerator#edit}.
+* Renamed `Ronin::Gen::Generators::Library#no_git` to
+  {Ronin::Gen::Generators::Library#git}.
 * Removed thor from the dependencies.
 * Refactored {Ronin::Gen::Generator} to use
   [Parameters](http://github.com/postmodern/parameters) and
