@@ -110,9 +110,9 @@ module Ronin
           if svn?
             run 'svnadmin', 'create', @path
           elsif git?
-            run 'git', 'init', '.'
+            run 'git', 'init'
           elsif hg?
-            run 'hg', 'init', '.'
+            run 'hg', 'init'
           end
         end
 
