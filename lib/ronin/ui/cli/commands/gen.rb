@@ -34,7 +34,7 @@ module Ronin
 
           summary "Prints the list of available generators"
 
-          usage '[options] | GENERATOR [options]'
+          usage '[options] | GENERATOR [generator-options]'
 
           option :version, :type => true,
                            :flag => '-V',
