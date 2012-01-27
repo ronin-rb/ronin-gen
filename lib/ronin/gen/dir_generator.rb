@@ -76,6 +76,8 @@ module Ronin
       #
       # @since 1.1.0
       #
+      # @see http://rubydoc.info/stdlib/core/Dir#chdir-class_method
+      #
       def chdir(path='.')
         super(File.join(@path,path),&block)
       end

@@ -261,6 +261,8 @@ module Ronin
       #
       # @api semipublic
       #
+      # @see http://rubydoc.info/stdlib/fileutils/FileUtils#chmod-instance_method
+      #
       def chmod(mode,paths)
         print_action 'chmod', mode.to_s(8), *paths
 
@@ -279,6 +281,8 @@ module Ronin
       # @since 1.1.0
       #
       # @api semipublic
+      #
+      # @see http://rubydoc.info/stdlib/fileutils/FileUtils#chmod_R-instance_method
       #
       def chmod_R(mode,paths)
         print_action 'chmod -R', mode.to_s(8)
@@ -302,6 +306,8 @@ module Ronin
       #
       # @api semipublic
       #
+      # @see http://rubydoc.info/stdlib/fileutils/FileUtils#chown-instance_method
+      #
       def chown(user,group,paths)
         print_action 'chown', "#{user}:#{group}", *paths
 
@@ -324,6 +330,8 @@ module Ronin
       #
       # @api semipublic
       #
+      # @see http://rubydoc.info/stdlib/fileutils/FileUtils#chown_R-instance_method
+      #
       def chown_R(user,group,paths)
         print_action 'chown -R', "#{user}:#{group}", *paths
 
@@ -340,6 +348,8 @@ module Ronin
       #   The destination to copy the data file to.
       #
       # @since 0.2.0
+      #
+      # @see http://rubydoc.info/stdlib/fileutils/FileUtils#cp-instance_method
       #
       def cp(file,destination=file)
         print_action 'cp', destination
@@ -363,6 +373,8 @@ module Ronin
       #   Recursively copies the contents.
       #
       # @since 1.0.0
+      #
+      # @see http://rubydoc.info/stdlib/fileutils/FileUtils#cp_r-instance_method
       #
       def cp_r(directory,destination=directory)
         print_action 'cp -r', destination
@@ -391,6 +403,8 @@ module Ronin
       #
       # @api semipublic
       #
+      # @see http://rubydoc.info/stdlib/fileutils/FileUtils#install-instance_method
+      #
       def install(src,dest,options={})
         options = {:mode => options[:mode]} # only pass in :mode
 
@@ -412,6 +426,8 @@ module Ronin
       #
       # @api semipublic
       #
+      # @see http://rubydoc.info/stdlib/fileutils/FileUtils#ln-instance_method
+      #
       def ln(src,dest)
         print_action 'ln', src, dest
 
@@ -430,6 +446,8 @@ module Ronin
       # @since 1.1.0
       #
       # @api semipublic
+      #
+      # @see http://rubydoc.info/stdlib/fileutils/FileUtils#ln_s-instance_method
       #
       def ln_s(src,dest)
         print_action 'ln -s', src, dest
@@ -450,6 +468,8 @@ module Ronin
       #
       # @api semipublic
       #
+      # @see http://rubydoc.info/stdlib/fileutils/FileUtils#ln_sf-instance_method
+      #
       def ln_sf(src,dest)
         print_action 'ln -sf', src, dest
 
@@ -467,6 +487,8 @@ module Ronin
       #
       # @since 0.2.0
       #
+      # @see http://rubydoc.info/stdlib/fileutils/FileUtils#mkdir-instance_method
+      #
       def mkdir(dir)
         print_action 'mkdir', dir
 
@@ -483,6 +505,8 @@ module Ronin
       #   mkdir 'sub/dir'
       #
       # @since 0.2.0
+      #
+      # @see http://rubydoc.info/stdlib/fileutils/FileUtils#mkdir_p-instance_method
       #
       def mkdir_p(dir)
         print_action 'mkdir -p', dir
@@ -502,6 +526,8 @@ module Ronin
       # @api semipublic
       #
       # @since 1.1.0
+      #
+      # @see http://rubydoc.info/stdlib/fileutils/FileUtils#mv-instance_method
       #
       def mv(src,dest)
         print_action 'mv', src, dest
@@ -524,6 +550,8 @@ module Ronin
       # @since 1.1.0
       #
       # @api semipublic
+      #
+      # @see http://rubydoc.info/stdlib/fileutils/FileUtils#rm-instance_method
       #
       def rm(paths,options={})
         options = {:force => options[:force]} # only pass in :force
@@ -549,6 +577,8 @@ module Ronin
       #
       # @api semipublic
       #
+      # @see http://rubydoc.info/stdlib/fileutils/FileUtils#rm_r-instance_method
+      #
       def rm_r(paths,options={})
         options = {:force => options[:force]} # only pass in :force
 
@@ -567,6 +597,8 @@ module Ronin
       #
       # @api semipublic
       #
+      # @see http://rubydoc.info/stdlib/fileutils/FileUtils#rm_rf-instance_method
+      #
       def rm_rf(paths)
         print_action 'rm -rf', *paths
 
@@ -582,6 +614,8 @@ module Ronin
       # @since 1.1.0
       #
       # @api semipublic
+      #
+      # @see http://rubydoc.info/stdlib/fileutils/FileUtils#rmdir-instance_method
       #
       def rmdir(dirs)
         print_action 'rmdir', *dirs
@@ -599,6 +633,8 @@ module Ronin
       #   touch 'TODO.txt'
       #
       # @since 0.2.0
+      #
+      # @see http://rubydoc.info/stdlib/fileutils/FileUtils#touch-instance_method
       #
       def touch(file)
         print_action 'touch', file
