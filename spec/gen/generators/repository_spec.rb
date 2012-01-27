@@ -88,7 +88,7 @@ describe Gen::Generators::Repository do
     end
 
     it "should have the description" do
-      subject['description'].should == description
+      subject['description'].chomp.should == description
     end
   end
 
