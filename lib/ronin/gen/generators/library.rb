@@ -91,7 +91,7 @@ module Ronin
         # Generates top-level files.
         #
         def generate
-          run "git init" if git?
+          run 'git', 'init' if git?
 
           template 'Gemfile.erb', 'Gemfile'
           cp 'Rakefile'
@@ -136,8 +136,8 @@ module Ronin
           generate_generators unless @generators.empty?
 
           if git?
-            run 'git add .'
-            run 'git commit -m "Initial commit."'
+            run 'git', 'add', '.'
+            run 'git', 'commit', '-m', 'Initial commit.'
           end
         end
 
