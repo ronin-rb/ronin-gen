@@ -54,7 +54,7 @@ describe Gen::Generators::Repository do
     path.join('ronin.yml').should be_file
   end
 
-  context "git = true" do
+  context "when @git == true" do
     it "should initialize a Git repository" do
       path.join('.git').should be_directory
     end
