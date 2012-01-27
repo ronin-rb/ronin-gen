@@ -380,7 +380,7 @@ module Ronin
         print_action 'cp -r', destination
 
         data_dirs(directory) do |dir|
-          cp_r(dir,destination)
+          super(dir,destination)
         end
       end
 
