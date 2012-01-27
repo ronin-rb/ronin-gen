@@ -61,6 +61,15 @@ module Ronin
         parameter :tests, :type => true
         parameter :docs, :type => true
 
+        parameter :svn, :type        => true,
+                        :description => 'Create a SVN repository'
+
+        parameter :git, :type        => true,
+                        :description => 'Create a Git repository'
+
+        parameter :hg, :type        => true,
+                       :description => 'Create a Hg repository'
+
         #
         # Sets up the repository generator.
         #
@@ -96,6 +105,14 @@ module Ronin
 
             mkdir 'spec'
             cp File.join('spec','spec_helper.rb')
+          end
+
+          if svn?
+            run 'svnadmin', 'create', @path
+          elsif git?
+            chdir(@path) { run 'git', 'init', '.' }
+          elsif hg?
+            chdir(@path) { run 'hg', 'init', '.' }
           end
         end
 

@@ -16,11 +16,12 @@ describe Gen::Generators::Repository do
 
   before(:all) do
     Gen::Generators::Repository.generate(path,
-      :title => title,
-      :uri => uri,
-      :source => source,
-      :website => website,
-      :license => license,
+      :git         => true,
+      :title       => title,
+      :uri         => uri,
+      :source      => source,
+      :website     => website,
+      :license     => license,
       :description => description
     )
   end
@@ -51,6 +52,12 @@ describe Gen::Generators::Repository do
 
   it "should create a 'ronin.yml' file" do
     path.join('ronin.yml').should be_file
+  end
+
+  context "git = true" do
+    it "should initialize a Git repository" do
+      path.join('.git').should be_directory
+    end
   end
 
   describe "ronin.yml" do
