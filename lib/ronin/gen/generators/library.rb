@@ -17,10 +17,11 @@
 # along with Ronin Gen.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-require 'ronin/ui/cli/commands'
+require 'ronin/gen/generators'
 require 'ronin/gen/dir_generator'
 require 'ronin/gen/config'
 require 'ronin/gen/version'
+require 'ronin/ui/cli/commands'
 require 'ronin/support/version'
 require 'ronin/version'
 
