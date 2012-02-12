@@ -57,7 +57,7 @@ module Ronin
       def generate!
         require_params :path
 
-        FileUtils.mkdir_p @path
+        FileUtils.mkdir_p(@path)
         FileUtils.chdir(@path) { super }
       end
 
