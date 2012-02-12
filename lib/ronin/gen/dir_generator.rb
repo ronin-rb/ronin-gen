@@ -58,7 +58,7 @@ module Ronin
         require_params :path
 
         FileUtils.mkdir_p @path
-        FileUtils.chdir { super }
+        FileUtils.chdir(@path) { super }
       end
 
       protected
