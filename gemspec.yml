@@ -16,8 +16,8 @@ dependencies:
   data_paths: ~> 0.3
   parameters: ~> 0.4
   # Ronin dependencies:
-  ronin-support: ~> 0.4.0.rc2
-  ronin: ~> 1.4.0.rc2
+  ronin-support: ~> 0.4
+  ronin: ~> 1.4
 
 development_dependencies:
   bundler: ~> 1.0
