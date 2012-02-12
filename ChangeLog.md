@@ -1,4 +1,4 @@
-### 1.1.0 / 2012-01-01
+### 1.1.0 / 2012-02-12
 
 * Require parameters ~> 0.4.
 * Require ronin-support ~> 0.4.
