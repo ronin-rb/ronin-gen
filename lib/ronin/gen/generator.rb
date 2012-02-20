@@ -57,7 +57,7 @@ module Ronin
     #             # Performs the generation.
     #             #
     #             def generate
-    #               erb 'some_template.erb', path
+    #               template 'some_template.erb', path
     #             end
     #
     #           end
@@ -676,10 +676,10 @@ module Ronin
       #   will be returned.
       #
       # @example
-      #   erb 'Rakefile.erb', 'Rakefile'
+      #   template 'Rakefile.erb', 'Rakefile'
       #
       # @example
-      #   erb '_helpers.erb'
+      #   template '_helpers.erb'
       #
       # @since 0.2.0
       #
