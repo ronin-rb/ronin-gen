@@ -49,8 +49,8 @@ module Ronin
     #           class MyGenerator < FileGenerator
     #
     #             # generator options
-    #             parameter :stuff, :type => true
-    #             parameter :syntax, :type => String
+    #             parameter :stuff,    :type => true
+    #             parameter :syntax,   :type => String
     #             parameter :includes, :type => Array
     #
     #             #
