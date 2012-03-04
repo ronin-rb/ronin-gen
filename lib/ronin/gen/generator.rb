@@ -116,6 +116,10 @@ module Ronin
       def initialize(options={})
         initialize_params(options)
 
+        if self.class.data_dir
+          self.template_dirs << find_data_dir(self.class.data_dir)
+        end
+
         yield self if block_given?
       end
 
@@ -684,8 +688,6 @@ module Ronin
       # @since 0.2.0
       #
       def template(template_path,dest=nil)
-        template_path = data_path(template_path)
-
         if dest
           print_action 'erb', dest
 
