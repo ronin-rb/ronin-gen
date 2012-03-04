@@ -1,3 +1,8 @@
+### 1.1.1 / 2012-03-03
+
+* Fixed multiple typos in the Library and Repository template.
+* Fixed a template lookup bug in {Ronin::Gen::Generator#template}.
+
 ### 1.1.0 / 2012-02-12
 
 * Require parameters ~> 0.4.
