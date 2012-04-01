@@ -2,7 +2,7 @@
 
 * [Source](https://github.com/ronin-ruby/ronin-gen)
 * [Issues](https://github.com/ronin-ruby/ronin-gen/issues)
-* [Documentation](http://rubydoc.info/github/ronin-ruby/ronin-gen/frames)
+* [Documentation](http://ronin-ruby.github.com/docs/ronin-gen)
 * [Mailing List](http://groups.google.com/group/ronin-ruby)
 * [irc.freenode.net #ronin](http://webchat.freenode.net/?channels=ronin&uio=Mj10cnVldd)
 
