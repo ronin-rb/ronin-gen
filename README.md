@@ -1,7 +1,7 @@
 # Ronin Gen
 
-* [Source](http://github.com/ronin-ruby/ronin-gen)
-* [Issues](http://github.com/ronin-ruby/ronin-gen/issues)
+* [Source](https://github.com/ronin-ruby/ronin-gen)
+* [Issues](https://github.com/ronin-ruby/ronin-gen/issues)
 * [Documentation](http://rubydoc.info/github/ronin-ruby/ronin-gen/frames)
 * [Mailing List](http://groups.google.com/group/ronin-ruby)
 * [irc.freenode.net #ronin](http://webchat.freenode.net/?channels=ronin&uio=Mj10cnVldd)
@@ -34,15 +34,15 @@ Generate a skeleton Overlay:
 
 ## Requirements
 
-* [open_namespace](http://github.com/postmodern/open_namespace#readme)
+* [open_namespace](https://github.com/postmodern/open_namespace#readme)
   ~> 0.3
-* [data_paths](http://github.com/postmodern/data_paths#readme)
+* [data_paths](https://github.com/postmodern/data_paths#readme)
   ~> 0.3
-* [parameters](http://github.com/postmodern/parameters#readme)
+* [parameters](https://github.com/postmodern/parameters#readme)
   ~> 0.4
-* [ronin-support](http://github.com/ronin-ruby/ronin-support#readme)
+* [ronin-support](https://github.com/ronin-ruby/ronin-support#readme)
   ~> 0.4
-* [ronin](http://github.com/ronin-ruby/ronin#readme)
+* [ronin](https://github.com/ronin-ruby/ronin#readme)
   ~> 1.4
 
 ## Install
