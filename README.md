@@ -34,6 +34,10 @@ Generate a skeleton Overlay:
 
     $ ronin-gen repository PATH [options]
 
+List available generators:
+
+    $ ronin-gen
+
 ## Requirements
 
 * [open_namespace](https://github.com/postmodern/open_namespace#readme)
