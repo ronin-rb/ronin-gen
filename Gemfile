@@ -7,7 +7,7 @@ RONIN_URI  = 'http://github.com/ronin-ruby'
 gemspec
 
 platforms :jruby do
-  gem 'jruby-openssl',	'~> 0.7.0'
+  gem 'jruby-openssl',	'~> 0.7'
 end
 
 # Ronin dependencies:
