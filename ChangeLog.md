@@ -1,3 +1,8 @@
+### 1.2.0 / 2012-05-28
+
+* Added `ronin/spec/gen`.
+* Include [rubygems-tasks] in generated ronin libraries.
+
 ### 1.1.1 / 2012-03-03
 
 * Fixed multiple typos in the Library and Repository templates.
@@ -98,3 +103,4 @@
   * Provides the `ronin-gen` sub-command to invoke other generator
     sub-commands.
 
+[rubygems-tasks]: https://github.com/postmodern/rubygems-tasks#readme
