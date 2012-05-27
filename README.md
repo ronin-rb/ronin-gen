@@ -47,9 +47,9 @@ List available generators:
 * [parameters](https://github.com/postmodern/parameters#readme)
   ~> 0.4
 * [ronin-support](https://github.com/ronin-ruby/ronin-support#readme)
-  ~> 0.4
+  ~> 0.5
 * [ronin](https://github.com/ronin-ruby/ronin#readme)
-  ~> 1.4
+  ~> 1.5
 
 ## Install
 

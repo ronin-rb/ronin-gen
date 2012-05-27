@@ -11,8 +11,10 @@ platforms :jruby do
 end
 
 # Ronin dependencies:
-# gem 'ronin-support',	'~> 0.4.0.rc1', :git => "#{RONIN_URI}/ronin-support.git"
-# gem 'ronin',		      '~> 1.4.0.rc1', :git => "#{RONIN_URI}/ronin.git"
+gem 'ronin-support',	'~> 0.5', :git => "#{RONIN_URI}/ronin-support.git",
+                                :branch => '0.5.0'
+gem 'ronin',		      '~> 1.5', :git => "#{RONIN_URI}/ronin.git",
+                                :branch => '1.5.0'
 
 group :development do
   gem 'rake',		        '~> 0.8'

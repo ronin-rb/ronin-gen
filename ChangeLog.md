@@ -1,5 +1,7 @@
 ### 1.2.0 / 2012-05-28
 
+* Require ronin-support ~> 0.5.
+* Require ronin ~> 1.5.
 * Added `ronin/spec/gen`.
 * Added a man-page for `ronin-gen`.
 * Include [rubygems-tasks] in generated ronin libraries.
