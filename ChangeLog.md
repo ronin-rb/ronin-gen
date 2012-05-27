@@ -3,6 +3,8 @@
 * Added `ronin/spec/gen`.
 * Added a man-page for `ronin-gen`.
 * Include [rubygems-tasks] in generated ronin libraries.
+* Simplified the `name.gemspec` template used by the
+  {Ronin::Gen::Generators::Library library} generator.
 
 ### 1.1.1 / 2012-03-03
 
