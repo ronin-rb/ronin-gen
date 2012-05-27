@@ -76,7 +76,8 @@ Gem::Specification.new do |gemspec|
     gemspec.require_path = metadata['require_paths']
   end
 
-  gemspec.files = filter_files[metadata['files']]
+  gemspec.files  = filter_files[metadata['files']]
+  gemspec.files += Array(metadata['generated_files'])
 
   gemspec.executables = metadata['executables']
   gemspec.extensions = metadata['extensions']

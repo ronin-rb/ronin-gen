@@ -16,10 +16,11 @@ end
 
 group :development do
   gem 'rake',		        '~> 0.8'
-  gem 'kramdown',       '~> 0.12'
-
   gem 'rubygems-tasks', '~> 0.1'
   gem 'rspec',		      '~> 2.4'
+
+  gem 'redcarpet',      '~> 2.1'
+  gem 'md2man',         '~> 1.2', :git => 'http://github.com/postmodern/md2man.git', :branch => 'rake_task'
 end
 
 #
