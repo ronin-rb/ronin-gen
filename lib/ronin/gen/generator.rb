@@ -134,9 +134,9 @@ module Ronin
       # @api semipublic
       #
       def self.generator_name
-        class_name = self.name.sub('Ronin::Gen::Generators::','')
-
-        return Support::Inflector.underscore(class_name.gsub('::',':'))
+        @generator_name ||= Support::Inflector.underscore(
+          self.name.sub('Ronin::Gen::Generators::','').gsub('::',':')
+        )
       end
 
       #
