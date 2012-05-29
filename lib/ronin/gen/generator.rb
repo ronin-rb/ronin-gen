@@ -99,9 +99,6 @@ module Ronin
       #
       # Initializes the generator.
       #
-      # @param [String] path
-      #   The destination path for the generator.
-      #
       # @param [Hash{Symbol => Object}] options
       #   The options for the generator.
       #
@@ -167,10 +164,7 @@ module Ronin
       # Invokes the generator.
       #
       # @param [Hash] options
-      #   Class options to use with the generator.
-      #
-      # @param [Array] arguments
-      #   Additional arguments for the generator.
+      #   Additional generator options.
       #
       # @yield [generator]
       #   The given block will be passed the new generator.
@@ -369,12 +363,6 @@ module Ronin
       #
       # @param [String, nil] destination
       #   The optional destination directory to copy the files to.
-      #
-      # @param [Hash] config
-      #   The optional configuration information.
-      #
-      # @option config [Boolean] :recursive (false)
-      #   Recursively copies the contents.
       #
       # @since 1.0.0
       #
@@ -630,7 +618,7 @@ module Ronin
       #
       # Touches a file.
       #
-      # @param [String] destination
+      # @param [String] path
       #   The relative path to the file to touch.
       #
       # @example
@@ -640,10 +628,10 @@ module Ronin
       #
       # @see http://rubydoc.info/stdlib/fileutils/FileUtils#touch-instance_method
       #
-      def touch(file)
-        print_action 'touch', file
+      def touch(path)
+        print_action 'touch', path
 
-        return super(file)
+        return super(path)
       end
 
       #
@@ -687,11 +675,11 @@ module Ronin
       #
       # @since 0.2.0
       #
-      def template(template_path,dest=nil)
-        if dest
-          print_action 'erb', dest
+      def template(template_path,destination=nil)
+        if destination
+          print_action 'erb', destination
 
-          File.open(dest,'w') do |file|
+          File.open(destination,'w') do |file|
             file.write(erb_file(template_path))
           end
         else
