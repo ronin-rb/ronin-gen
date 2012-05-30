@@ -53,7 +53,7 @@ module Ronin
                           :default => 'Author'
 
         parameter :email, :type    => String,
-                          :default => 'name@host.com'
+                          :default => 'name@example.com'
 
         parameter :homepage, :type    => String,
                              :default => 'http://ronin-ruby.github.com/'
