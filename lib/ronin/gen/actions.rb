@@ -55,9 +55,9 @@ module Ronin
       # @param [Array<String>] arguments
       #   Additional arguments related to the file action.
       #
-      # @since 1.1.0
+      # @since 1.2.0
       #
-      def print_action(command,*arguments)
+      def print_command(command,*arguments)
         unless UI::Output.silent?
           arguments = arguments.join(' ')
 
@@ -81,7 +81,7 @@ module Ronin
       # @since 1.1.0
       #
       def run(command,*arguments)
-        print_action command, *arguments
+        print_command command, *arguments
 
         system(command,*arguments)
       end
@@ -100,7 +100,7 @@ module Ronin
       # @see http://rubydoc.info/stdlib/fileutils/FileUtils#chmod-instance_method
       #
       def chmod(mode,paths)
-        print_action 'chmod', mode.to_s(8), *paths
+        print_command 'chmod', mode.to_s(8), *paths
 
         super(mode,paths)
       end
@@ -119,7 +119,7 @@ module Ronin
       # @see http://rubydoc.info/stdlib/fileutils/FileUtils#chmod_R-instance_method
       #
       def chmod_R(mode,paths)
-        print_action 'chmod -R', mode.to_s(8)
+        print_command 'chmod -R', mode.to_s(8)
 
         super(mode,paths)
       end
@@ -141,7 +141,7 @@ module Ronin
       # @see http://rubydoc.info/stdlib/fileutils/FileUtils#chown-instance_method
       #
       def chown(user,group,paths)
-        print_action 'chown', "#{user}:#{group}", *paths
+        print_command 'chown', "#{user}:#{group}", *paths
 
         super(user,group,paths)
       end
@@ -163,7 +163,7 @@ module Ronin
       # @see http://rubydoc.info/stdlib/fileutils/FileUtils#chown_R-instance_method
       #
       def chown_R(user,group,paths)
-        print_action 'chown -R', "#{user}:#{group}", *paths
+        print_command 'chown -R', "#{user}:#{group}", *paths
 
         super(user,group,paths)
       end
@@ -182,7 +182,7 @@ module Ronin
       # @see http://rubydoc.info/stdlib/fileutils/FileUtils#cp-instance_method
       #
       def cp(file,destination=file)
-        print_action 'cp', destination
+        print_command 'cp', destination
 
         super(data_file(file),destination)
       end
@@ -201,7 +201,7 @@ module Ronin
       # @see http://rubydoc.info/stdlib/fileutils/FileUtils#cp_r-instance_method
       #
       def cp_r(directory,destination=directory)
-        print_action 'cp -r', destination
+        print_command 'cp -r', destination
 
         data_dirs(directory) do |dir|
           super(dir,destination)
@@ -230,7 +230,7 @@ module Ronin
       def install(src,dest,options={})
         options = {:mode => options[:mode]} # only pass in :mode
 
-        print_action 'install', src, dest
+        print_command 'install', src, dest
 
         super(data_file(src),dest,options)
       end
@@ -249,7 +249,7 @@ module Ronin
       # @see http://rubydoc.info/stdlib/fileutils/FileUtils#ln-instance_method
       #
       def ln(src,dest)
-        print_action 'ln', src, dest
+        print_command 'ln', src, dest
 
         super(src,dest)
       end
@@ -268,7 +268,7 @@ module Ronin
       # @see http://rubydoc.info/stdlib/fileutils/FileUtils#ln_s-instance_method
       #
       def ln_s(src,dest)
-        print_action 'ln -s', src, dest
+        print_command 'ln -s', src, dest
 
         super(src,dest)
       end
@@ -287,7 +287,7 @@ module Ronin
       # @see http://rubydoc.info/stdlib/fileutils/FileUtils#ln_sf-instance_method
       #
       def ln_sf(src,dest)
-        print_action 'ln -sf', src, dest
+        print_command 'ln -sf', src, dest
 
         super(src,dest)
       end
@@ -306,7 +306,7 @@ module Ronin
       # @see http://rubydoc.info/stdlib/fileutils/FileUtils#mkdir-instance_method
       #
       def mkdir(dir)
-        print_action 'mkdir', dir
+        print_command 'mkdir', dir
 
         super(dir)
       end
@@ -325,7 +325,7 @@ module Ronin
       # @see http://rubydoc.info/stdlib/fileutils/FileUtils#mkdir_p-instance_method
       #
       def mkdir_p(dir)
-        print_action 'mkdir -p', dir
+        print_command 'mkdir -p', dir
 
         super(dir)
       end
@@ -344,7 +344,7 @@ module Ronin
       # @see http://rubydoc.info/stdlib/fileutils/FileUtils#mv-instance_method
       #
       def mv(src,dest)
-        print_action 'mv', src, dest
+        print_command 'mv', src, dest
 
         super(src,dest)
       end
@@ -368,7 +368,7 @@ module Ronin
       def rm(paths,options={})
         options = {:force => options[:force]} # only pass in :force
 
-        print_action 'rm', *paths
+        print_command 'rm', *paths
 
         super(paths,options)
       end
@@ -392,7 +392,7 @@ module Ronin
       def rm_r(paths,options={})
         options = {:force => options[:force]} # only pass in :force
 
-        print_action 'rm -r', *paths
+        print_command 'rm -r', *paths
 
         super(paths,options)
       end
@@ -408,7 +408,7 @@ module Ronin
       # @see http://rubydoc.info/stdlib/fileutils/FileUtils#rm_rf-instance_method
       #
       def rm_rf(paths)
-        print_action 'rm -rf', *paths
+        print_command 'rm -rf', *paths
 
         super(paths)
       end
@@ -424,7 +424,7 @@ module Ronin
       # @see http://rubydoc.info/stdlib/fileutils/FileUtils#rmdir-instance_method
       #
       def rmdir(dirs)
-        print_action 'rmdir', *dirs
+        print_command 'rmdir', *dirs
 
         super(dirs)
       end
@@ -443,7 +443,7 @@ module Ronin
       # @see http://rubydoc.info/stdlib/fileutils/FileUtils#touch-instance_method
       #
       def touch(path)
-        print_action 'touch', path
+        print_command 'touch', path
 
         return super(path)
       end
@@ -489,7 +489,7 @@ module Ronin
       #
       def template(template_path,destination=nil)
         if destination
-          print_action 'erb', destination
+          print_command 'erb', destination
 
           File.open(destination,'w') do |file|
             file.write(erb_file(template_path))
