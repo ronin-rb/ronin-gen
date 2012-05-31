@@ -62,7 +62,7 @@ module Ronin
       # @raise [RuntimeError]
       #   {#path} was not set.
       #
-      # @api semipublic
+      # @api public
       #
       # @since 1.1.0
       #
