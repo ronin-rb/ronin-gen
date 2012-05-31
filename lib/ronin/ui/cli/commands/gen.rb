@@ -79,26 +79,26 @@ module Ronin
             generator_name  = argv.shift
             generator       = Ronin::Gen.generator(generator_name).new
 
-            opts = Parameters::Options.parser(generator) do |opts|
-              opts.banner = case generator
-                            when Ronin::Gen::FileGenerator,
-                                 Ronin::Gen::DirGenerator
-                              "ronin-gen #{generator_name} PATH [options]"
-                            else
-                              "ronin-gen #{generator_name} [options]"
-                            end
-            end
-            args = opts.parse(argv)
-
             case generator
-            when Ronin::Gen::FileGenerator,
-                 Ronin::Gen::DirGenerator
-              unless args.first
+            when Ronin::Gen::FileGenerator, Ronin::Gen::DirGenerator
+              opts = Parameters::Options.parser(generator) do |opts|
+                opts.banner = "ronin-gen #{generator_name} PATH [options]"
+              end
+
+              args = opts.parse(argv)
+
+              if args.empty?
                 print_error "Must specify a PATH argument"
                 exit -1
               end
 
               generator.path = args.first
+            else
+              opts = Parameters::Options.parser(generator) do |opts|
+                opts.banner = "ronin-gen #{generator_name} [options]"
+              end
+
+              args = opts.parse(argv)
             end
 
             begin
