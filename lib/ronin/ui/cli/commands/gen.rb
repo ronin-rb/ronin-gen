@@ -28,7 +28,25 @@ module Ronin
     module CLI
       module Commands
         #
-        # The `ronin-gen` command.
+        # Runs or lists available generators.
+        #
+        # ## Usage
+        #
+        #     ronin-gen [[options] | GENERATOR [generator-options]]
+        #
+        # ## Options
+        #
+        #     -v, --[no-]verbose               Enable verbose output.
+        #     -q, --[no-]quiet                 Disable verbose output.
+        #         --[no-]silent                Silence all output.
+        #         --[no-]color                 Enables color output.
+        #                                      Default: true
+        #     -V, --[no-]version               Prints the ronin-gen version.
+        #
+        # ## Examples
+        #
+        #     ronin-gen repository myrepo --git
+        #     ronin-gen library ronin-pwn 
         #
         class Gen < Command
 
