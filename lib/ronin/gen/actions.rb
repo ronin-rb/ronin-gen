@@ -325,7 +325,7 @@ module Ronin
       # @see http://rubydoc.info/stdlib/fileutils/FileUtils#mkdir_p-instance_method
       #
       def mkdir_p(dir)
-        print_command 'mkdir -p', dir
+        print_command 'mkdir', dir
 
         super(dir)
       end
