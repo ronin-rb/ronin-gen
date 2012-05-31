@@ -18,6 +18,8 @@
 #
 
 require 'ronin/ui/cli/command'
+require 'ronin/gen/file_generator'
+require 'ronin/gen/dir_generator'
 require 'ronin/gen/gen'
 require 'ronin/gen/version'
 
@@ -74,17 +76,41 @@ module Ronin
               return super(argv)
             end
 
-            generator_name = argv.shift
-            generator      = Ronin::Gen.generator(generator_name).new
+            generator_name  = argv.shift
+            generator       = Ronin::Gen.generator(generator_name).new
 
             opts = Parameters::Options.parser(generator) do |opts|
-              opts.banner = "ronin-gen #{generator_name} PATH [options]"
+              opts.banner = case generator
+                            when Ronin::Gen::FileGenerator,
+                                 Ronin::Gen::DirGenerator
+                              "ronin-gen #{generator_name} PATH [options]"
+                            else
+                              "ronin-gen #{generator_name} [options]"
+                            end
             end
-
             args = opts.parse(argv)
 
-            generator.path = args.first
-            generator.generate!
+            case generator
+            when Ronin::Gen::FileGenerator,
+                 Ronin::Gen::DirGenerator
+              unless args.first
+                print_error "Must specify a PATH argument"
+                exit -1
+              end
+
+              generator.path = args.first
+            end
+
+            begin
+              generator.generate!
+            rescue Parameters::MissingParam => error
+              print_error error
+              print_error "Please see `ronin-gen #{generator_name} --help`"
+              exit -1
+            rescue => error
+              print_exception error
+              exit -1
+            end
           end
 
           #
