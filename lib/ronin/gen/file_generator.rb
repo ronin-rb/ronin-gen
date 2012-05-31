@@ -26,23 +26,50 @@ module Ronin
     #
     class FileGenerator < Generator
 
-      # The destination path for the generator
-      parameter :path, :type        => String,
-                       :description => 'File to generate'
+      # The file to generate
+      attr_accessor :path
 
       #
-      # Invokes the new File Generator.
+      # Initializes the file generator.
       #
       # @param [String] path
-      #   The path for the generator.
+      #   The path to the file to be generated.
       #
       # @param [Hash{Symbol => Object}] options
       #   Additional options for the generator.
       #
+      # @yield [generator]
+      #   The given block will be passed the newly created generator.
+      #
+      # @yieldparam [FileGenerator]
+      #   The newly created generator.
+      #
+      # @api semipublic
+      #
+      # @since 1.2.0
+      #
+      def initialize(path=nil,options={},&block)
+        @path = path
+
+        super(options,&block)
+      end
+
+      #
+      # Sets up the generator and calls {#generate}.
+      #
+      # @raise [RuntimeError]
+      #   {#path} was not set.
+      #
+      # @since 1.2.0
+      #
       # @api public
       #
-      def self.generate(path,options={})
-        super(options.merge(:path => path))
+      def generate!
+        unless @path
+          raise("#{self.class}#path was not set")
+        end
+
+        super
       end
 
       #
@@ -53,8 +80,6 @@ module Ronin
       # @api semipublic
       #
       def setup
-        require_params :path
-
         if (self.class.file_extension && File.extname(@path).empty?)
           @path += ".#{self.class.file_extension}"
         end

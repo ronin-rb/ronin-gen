@@ -28,34 +28,48 @@ module Ronin
     #
     class DirGenerator < Generator
 
-      # The destination path for the generator
-      parameter :path, :type        => String,
-                       :description => 'The destination path'
+      # The directory to generate
+      attr_accessor :path
 
       #
-      # Invokes the new Dir Generator.
+      # Initializes the directory generator.
       #
       # @param [String] path
-      #   The path for the generator.
+      #   The path to the directory to be generated.
       #
       # @param [Hash{Symbol => Object}] options
       #   Additional options for the generator.
       #
-      # @api public
+      # @yield [generator]
+      #   The given block will be passed the newly created generator.
       #
-      def self.generate(path,options={})
-        super(options.merge(:path => path))
+      # @yieldparam [DirGenerator]
+      #   The newly created generator.
+      #
+      # @api semipublic
+      #
+      # @since 1.2.0
+      #
+      def initialize(path=nil,options={},&block)
+        @path = path
+
+        super(options,&block)
       end
 
       #
       # Creates the directory and invokes the generator.
+      #
+      # @raise [RuntimeError]
+      #   {#path} was not set.
       #
       # @api semipublic
       #
       # @since 1.1.0
       #
       def generate!
-        require_params :path
+        unless @path
+          raise("#{self.class}#path was not set")
+        end
 
         FileUtils.mkdir_p(@path)
         FileUtils.chdir(@path) { super }
