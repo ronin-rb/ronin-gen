@@ -2,8 +2,19 @@
 
 * Require ronin-support ~> 0.5.
 * Require ronin ~> 1.5.
+* Added {Ronin::Gen::Actions#print_command}.
 * Added `ronin/spec/gen`.
 * Added a man-page for `ronin-gen`.
+* Moved all `FileUtils` methods into {Ronin::Gen::Actions}.
+* Changed {Ronin::Gen::Generator.generate} to pass arbitrary arguments down to
+  {Ronin::Gen::Generator#initialize}.
+* Overrode {Ronin::Gen::FileGenerator#initialize}.
+* Overrode {Ronin::Gen::DirGenerator#initialize}.
+* {Ronin::Gen::FileGenerator#path} is now an instance variable.
+* {Ronin::Gen::DirGenerator#path} is now an instance variable.
+* Improved the `ronin-gen` command:
+  * Properly set the `path` of File/Dir generators.
+  * Rescue and print exceptions.
 * Include [rubygems-tasks] in generated ronin libraries.
 * Simplified the `name.gemspec` template used by the
   {Ronin::Gen::Generators::Library library} generator.
