@@ -163,8 +163,8 @@ module Ronin
       #
       # Invokes the generator.
       #
-      # @param [Hash] options
-      #   Additional generator options.
+      # @param [Array] arguments
+      #   Arguments for {#initialize}.
       #
       # @yield [generator]
       #   The given block will be passed the new generator.
@@ -182,8 +182,8 @@ module Ronin
       #
       # @api public
       #
-      def self.generate(options={},&block)
-        generator = new(options,&block)
+      def self.generate(*arguments,&block)
+        generator = new(*arguments,&block)
 
         generator.generate!
         return generator
