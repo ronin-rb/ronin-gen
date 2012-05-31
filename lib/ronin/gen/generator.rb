@@ -137,30 +137,6 @@ module Ronin
       end
 
       #
-      # The default data directory of the generator.
-      #
-      # @param [String] new_dir
-      #   The new data directory.
-      #
-      # @return [String, nil]
-      #   The data directory that the generator will search for source files
-      #   within.
-      #
-      # @since 1.1.0
-      #
-      # @api semipublic
-      #
-      def self.data_dir(new_dir=nil)
-        if new_dir
-          @data_dir = new_dir
-        else
-          @data_dir ||= if superclass < Generator
-                          superclass.data_dir
-                        end
-        end
-      end
-
-      #
       # Invokes the generator.
       #
       # @param [Array] arguments
@@ -226,6 +202,30 @@ module Ronin
       end
 
       protected
+
+      #
+      # The default data directory of the generator.
+      #
+      # @param [String] new_dir
+      #   The new data directory.
+      #
+      # @return [String, nil]
+      #   The data directory that the generator will search for source files
+      #   within.
+      #
+      # @since 1.1.0
+      #
+      # @api semipublic
+      #
+      def self.data_dir(new_dir=nil)
+        if new_dir
+          @data_dir = new_dir
+        else
+          @data_dir ||= if superclass < Generator
+                          superclass.data_dir
+                        end
+        end
+      end
 
       #
       # Runs a command.
