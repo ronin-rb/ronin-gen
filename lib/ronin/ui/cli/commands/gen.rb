@@ -40,6 +40,11 @@ module Ronin
                            :flag => '-V',
                            :description => 'Prints the ronin-gen version'
 
+          examples [
+            "ronin-gen repository myrepo --git",
+            "ronin-gen library ronin-pwn"
+          ]
+
           #
           # Starts the `ronin-gen` command.
           #
