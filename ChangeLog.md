@@ -8,8 +8,8 @@
 * Moved all `FileUtils` methods into {Ronin::Gen::Actions}.
 * Changed {Ronin::Gen::Generator.generate} to pass arbitrary arguments down to
   {Ronin::Gen::Generator#initialize}.
-* Overrode {Ronin::Gen::FileGenerator#initialize}.
-* Overrode {Ronin::Gen::DirGenerator#initialize}.
+* Overrode {Ronin::Gen::FileGenerator#initialize} to accept a `path` argument.
+* Overrode {Ronin::Gen::DirGenerator#initialize} to accept a `path` argument.
 * {Ronin::Gen::FileGenerator#path} is now an instance variable.
 * {Ronin::Gen::DirGenerator#path} is now an instance variable.
 * Improved the `ronin-gen` command:
