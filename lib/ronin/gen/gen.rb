@@ -73,7 +73,7 @@ module Ronin
       if @generators.empty?
         directory = File.join('lib',Generators.namespace_root)
 
-        Installation.each_file_in(directory,:rb) do |path|
+        Installation.each_file_in(directory,'rb') do |path|
           # strip the tailing '.rb' file extension
           name = path.chomp('.rb')
 
