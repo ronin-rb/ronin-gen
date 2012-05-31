@@ -32,7 +32,7 @@ module Ronin
         #
         class Gen < Command
 
-          summary "Prints the list of available generators"
+          summary "Runs or lists available generators"
 
           usage '[[options] | GENERATOR [generator-options]]'
 
