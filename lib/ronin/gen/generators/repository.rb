@@ -50,7 +50,7 @@ module Ronin
         parameter :website, :type => String
 
         parameter :license, :type    => String,
-                            :default => 'CC-by'
+                            :default => 'MIT'
 
         parameter :description, :type    => String,
                                 :default => 'This is a Ronin Repository'
