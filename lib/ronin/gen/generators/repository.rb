@@ -74,6 +74,8 @@ module Ronin
         # Sets up the repository generator.
         #
         def setup
+          super
+
           @title   ||= File.basename(@path).gsub(/[_\s]+/,' ').capitalize
           @website ||= @source
 
