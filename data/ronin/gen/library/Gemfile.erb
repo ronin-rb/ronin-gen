@@ -4,6 +4,9 @@ RONIN_URI = 'http://github.com/ronin-ruby'
 
 gemspec
 
+gem 'jruby-openssl',	'~> 0.7', :platforms => :jruby
+
+# Ronin dependencies:
 # gem 'ronin-support',  '~> <%= Ronin::Support::VERSION %>', :git => "#{RONIN_URI}/ronin-support.git"
 # gem 'ronin',          '~> <%= Ronin::VERSION %>', :git => "#{RONIN_URI}/ronin.git"
 <%- unless @generators.empty? -%>
