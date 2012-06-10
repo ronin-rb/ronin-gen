@@ -20,6 +20,6 @@
 module Ronin
   module Gen
     # Ronin Gen version
-    VERSION = '1.2.0.rc2'
+    VERSION = '1.2.0.rc3'
   end
 end
