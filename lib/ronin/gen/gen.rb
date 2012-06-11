@@ -55,7 +55,7 @@ module Ronin
       name = name.to_s
       path = name.tr(':','/')
 
-      unless (generator = Generators.require_const(name))
+      unless (generator = Generators.require_const(path))
         raise(UnknownGenerator,"unknown generator #{name.dump}")
       end
 
