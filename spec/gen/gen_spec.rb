@@ -7,16 +7,23 @@ describe Gen do
     subject.const_defined?('VERSION').should == true
   end
 
-  it "should load generators from 'ronin/gen/generators'" do
-    generator = subject.generator('library')
+  describe "generators" do
+    subject { described_class.generators }
 
-    generator.should_not be_nil
-    generator.should == Ronin::Gen::Generators::Library
+    it { should_not be_empty }
   end
 
-  it "should raise an UnknownGenerator exception on missing generators" do
-    lambda {
-      subject.generator('lolbadfail')
-    }.should raise_error(Gen::UnknownGenerator)
+  describe "generator" do
+    it "should load generators from 'ronin/gen/generators/'" do
+      generator = subject.generator('library')
+
+      generator.should == Ronin::Gen::Generators::Library
+    end
+
+    it "should raise an UnknownGenerator for unknown generators" do
+      lambda {
+        subject.generator('foo')
+      }.should raise_error(Gen::UnknownGenerator)
+    end
   end
 end
