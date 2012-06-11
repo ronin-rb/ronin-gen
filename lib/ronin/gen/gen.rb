@@ -53,6 +53,7 @@ module Ronin
     #
     def Gen.generator(name)
       name = name.to_s
+      path = name.tr(':','/')
 
       unless (generator = Generators.require_const(name))
         raise(UnknownGenerator,"unknown generator #{name.dump}")
