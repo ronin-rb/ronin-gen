@@ -17,9 +17,12 @@
 # along with Ronin Gen.  If not, see <http://www.gnu.org/licenses/>.
 #
 
+require 'ronin/gen/config'
 require 'ronin/gen/generator'
 require 'ronin/gen/file_generator'
 require 'ronin/gen/dir_generator'
-require 'ronin/gen/generatable'
+require 'ronin/gen/source_code_generator'
+require 'ronin/gen/ruby_generator'
+require 'ronin/gen/generators'
 require 'ronin/gen/gen'
 require 'ronin/gen/version'
