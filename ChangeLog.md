@@ -1,4 +1,4 @@
-### 1.2.0 / 2012-05-28
+### 1.2.0 / 2012-06-16
 
 * Require ronin-support ~> 0.5.
 * Require ronin ~> 1.5.
