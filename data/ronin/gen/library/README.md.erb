@@ -25,9 +25,9 @@ or payloads over many common Source-Code-Management (SCM) systems.
 
 ## Requirements
 
-* [ronin](http://github.com/ronin-ruby/ronin#readme) ~> 1.0
+* [ronin] ~> 1.0
 <%- unless @generators.empty? -%>
-* [ronin-gen](http://github.com/ronin-ruby/ronin-gen#readme) ~> 1.0
+* [ronin-gen] ~> 1.0
 <%- end -%>
 
 ## Install
@@ -54,3 +54,8 @@ You should have received a copy of the GNU General Public License
 along with <%= @title %>.  If not, see <http://www.gnu.org/licenses/>.
 
 [Ronin]: http://ronin-ruby.github.com/
+
+[ronin]: http://github.com/ronin-ruby/ronin#readme
+<%- unless @generators.empty? -%>
+[ronin-gen]: http://github.com/ronin-ruby/ronin-gen#readme
+<%- end -%>
