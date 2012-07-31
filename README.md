@@ -10,7 +10,7 @@
 
 Ronin Gen is a Ruby library for Ronin that provides various generators.
 
-Ronin is a Ruby platform for exploit development and security research.
+[Ronin] is a Ruby platform for exploit development and security research.
 Ronin allows for the rapid development and distribution of code, exploits
 or payloads over many common Source-Code-Management (SCM) systems.
 
@@ -82,3 +82,5 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Ronin Gen.  If not, see <http://www.gnu.org/licenses/>.
+
+[Ronin]: http://ronin-ruby.github.com/
