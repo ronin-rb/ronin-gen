@@ -40,16 +40,11 @@ List available generators:
 
 ## Requirements
 
-* [open_namespace](https://github.com/postmodern/open_namespace#readme)
-  ~> 0.3
-* [data_paths](https://github.com/postmodern/data_paths#readme)
-  ~> 0.3
-* [parameters](https://github.com/postmodern/parameters#readme)
-  ~> 0.4
-* [ronin-support](https://github.com/ronin-ruby/ronin-support#readme)
-  ~> 0.5
-* [ronin](https://github.com/ronin-ruby/ronin#readme)
-  ~> 1.5
+* [open_namespace] ~> 0.3
+* [data_paths] ~> 0.3
+* [parameters] ~> 0.4
+* [ronin-support] ~> 0.5
+* [ronin] ~> 1.5
 
 ## Install
 
@@ -84,3 +79,9 @@ You should have received a copy of the GNU General Public License
 along with Ronin Gen.  If not, see <http://www.gnu.org/licenses/>.
 
 [Ronin]: http://ronin-ruby.github.com/
+
+[open_namespace]: https://github.com/postmodern/open_namespace#readme
+[data_paths]: https://github.com/postmodern/data_paths#readme
+[parameters]: https://github.com/postmodern/parameters#readme
+[ronin-support]: https://github.com/ronin-ruby/ronin-support#readme
+[ronin]: https://github.com/ronin-ruby/ronin#readme
