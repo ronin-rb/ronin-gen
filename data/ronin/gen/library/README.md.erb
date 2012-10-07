@@ -19,6 +19,8 @@ or payloads over many common Source-Code-Management (SCM) systems.
 
 ## Synopsis
 
+Start the Ronin console with <%= @title %> preloaded:
+
     $ ronin <%= @dir_name %>
 
 ## Examples
@@ -32,7 +34,16 @@ or payloads over many common Source-Code-Management (SCM) systems.
 
 ## Install
 
+### Stable
+
     $ gem install <%= @name %>
+
+### Edge
+
+    $ git clone git://github.com/ronin-ruby/<%= @name %>.git
+    $ cd <%= @name %>/
+    $ bundle install
+    $ ./bin/<%= @dir_name %>
 
 ## License
 
