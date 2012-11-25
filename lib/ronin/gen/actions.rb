@@ -18,7 +18,7 @@
 #
 
 require 'ronin/templates/erb'
-require 'ronin/ui/output'
+require 'ronin/ui/printing'
 
 require 'fileutils'
 
@@ -58,15 +58,16 @@ module Ronin
       # @since 1.2.0
       #
       def print_command(command,*arguments)
-        unless UI::Output.silent?
-          arguments = arguments.join(' ')
+        return false if UI::Printing.silent?
 
-          if $stdout.tty?
-            command = BOLD + GREEN + command + CLEAR
-          end
+        arguments = arguments.join(' ')
 
-          puts "\t#{command}\t#{arguments}"
+        if $stdout.tty?
+          command = BOLD + GREEN + command + CLEAR
         end
+
+        puts "\t#{command}\t#{arguments}"
+        return true
       end
 
       #
