@@ -1,12 +1,12 @@
 title: <%= @title %>
 license: <%= @license %>
-<%- if @uri -%>
+<%- if uri? -%>
 uri: <%= @uri %>
 <%- end -%>
-<%- if @source -%>
+<%- if source? -%>
 source: <%= @source %>
 <%- end -%>
-<%- if @website -%>
+<%- if website? -%>
 website: <%= @website %>
 <%- end -%>
 authors:

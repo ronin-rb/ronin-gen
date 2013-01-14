@@ -1,4 +1,4 @@
-<%- if @tests -%>
+<%- if tests? -%>
 begin
   gem 'rspec', '~> 2.0.0'
   require 'rspec/core/rake_task'
@@ -12,7 +12,7 @@ end
 task :default => :spec
 <%- end -%>
 
-<%- if @docs -%>
+<%- if docs? -%>
 begin
   gem 'yard', '~> 0.6.0'
   require 'yard'
