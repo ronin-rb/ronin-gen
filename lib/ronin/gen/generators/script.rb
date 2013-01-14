@@ -25,6 +25,8 @@ module Ronin
       #
       # A {RubyGenerator} class for creating executable Ruby scripts.
       #
+      # @since 1.3.0
+      #
       class Script < RubyGenerator
 
         data_dir File.join('ronin/gen')
