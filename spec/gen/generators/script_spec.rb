@@ -30,6 +30,18 @@ describe Gen::Generators::Script do
     it "should include 'if $0 == __FILE__'" do
       subject.should include("if $0 == __FILE__")
     end
+
+    context "when database is enabled" do
+      before(:all) { described_class.generate(path, :database => true) }
+
+      it "should require 'ronin/database'" do
+        subject.should include("require 'ronin/database'")
+      end
+
+      it "should call Ronin::Database.setup" do
+        subject.should include("Ronin::Database.setup")
+      end
+    end
   end
 
   after(:all) do

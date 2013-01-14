@@ -33,6 +33,9 @@ module Ronin
 
         template 'script.rb.erb'
 
+        parameter :database, :type        => true,
+                             :description => 'Enables the Ronin Database'
+
         #
         # Generates a new Ruby script.
         #

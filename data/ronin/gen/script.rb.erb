@@ -1,7 +1,13 @@
 #!/usr/bin/env ruby
 
 require 'ronin/ui/printing'
+<%- if database? -%>require 'ronin/database'<%- end -%>
+
 include Ronin::UI::Printing
+
+<%- if database? -%>
+Ronin::Database.setup
+<%- end -%>
 
 if $0 == __FILE__
   require 'optparse'
