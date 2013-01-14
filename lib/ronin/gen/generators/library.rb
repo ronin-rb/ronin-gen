@@ -50,7 +50,7 @@ module Ronin
                             :default => '0.1.0'
 
         parameter :author, :type    => String,
-                          :default => 'Author'
+                           :default => 'Author'
 
         parameter :email, :type    => String,
                           :default => 'name@example.com'

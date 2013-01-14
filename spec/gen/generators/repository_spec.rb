@@ -15,7 +15,7 @@ describe Gen::Generators::Repository do
   let(:description) { 'This is a test repository' }
 
   before(:all) do
-    Gen::Generators::Repository.generate(path,
+    described_class.generate(path,
       :git         => true,
       :title       => title,
       :uri         => uri,
