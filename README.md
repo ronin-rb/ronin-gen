@@ -21,10 +21,15 @@ or payloads over many common Source-Code-Management (SCM) systems.
 * Provides {Ronin::Gen::SourceCodeGenerator}
 * Provides {Ronin::Gen::RubyGenerator}
 * Generators for creating new Ronin
-  {Ronin::Gen::Generators::Repository Repositories} and
-  {Ronin::Gen::Generators::Library Libraries}.
+  {Ronin::Gen::Generators::Script scripts},
+  {Ronin::Gen::Generators::Repository repositories} and
+  {Ronin::Gen::Generators::Library libraries}.
 
 ## Synopsis
+
+Generate a skeleton Ruby script:
+
+    $ ronin-gen script myscript.rb
 
 Generate a skeleton Ronin library:
 
