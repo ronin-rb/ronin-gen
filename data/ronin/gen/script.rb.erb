@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require 'ronin/support'
+<%- if support? -%>require 'ronin/support'<%- end -%>
 <%- if database? -%>require 'ronin/database'<%- end -%>
 
 include Ronin
