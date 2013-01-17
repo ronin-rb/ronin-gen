@@ -42,6 +42,14 @@ describe Gen::Generators::Script do
         subject.should include("require 'ronin'")
       end
     end
+
+    context "when ronin_asm is enabled" do
+      before(:all) { described_class.generate(path, :ronin_asm => true) }
+
+      it "should require 'ronin/asm'" do
+        subject.should include("require 'ronin/asm'")
+      end
+    end
   end
 
   after(:all) do

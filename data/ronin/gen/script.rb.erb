@@ -6,12 +6,21 @@ begin
 rescue LoadError
   abort "Could not load ronin. Please run `gem install ronin`"
 end
-<%- elsif ronin_support? -%>
+<%- else %>
+<%-   if ronin_support? -%>
 begin
   require 'ronin/support'
 rescue LoadError
   abort "Could not load ronin/support. Please run `gem install ronin-support`"
 end
+<%-   end -%>
+<%-   if ronin_asm? -%>
+begin
+  require 'ronin/asm'
+rescue LoadError
+  abort "Could not load ronin/asm. Please run `gem install ronin-asm`"
+end
+<%-   end -%>
 <%- end -%>
 
 if $0 == __FILE__
