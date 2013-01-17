@@ -1,9 +1,17 @@
 #!/usr/bin/env ruby
 
 <%- if ronin? -%>
-require 'ronin'
+begin
+  require 'ronin'
+rescue LoadError
+  abort "Could not load ronin. Please run `gem install ronin`"
+end
 <%- elsif ronin_support? -%>
-require 'ronin/support'
+begin
+  require 'ronin/support'
+rescue LoadError
+  abort "Could not load ronin/support. Please run `gem install ronin-support`"
+end
 <%- end -%>
 
 if $0 == __FILE__
