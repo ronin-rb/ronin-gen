@@ -1,9 +1,9 @@
 #!/usr/bin/env ruby
 
-require 'ronin/ui/printing'
+require 'ronin/support'
 <%- if database? -%>require 'ronin/database'<%- end -%>
 
-include Ronin::UI::Printing
+include Ronin
 
 <%- if database? -%>
 Ronin::Database.setup
