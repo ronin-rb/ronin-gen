@@ -31,12 +31,8 @@ describe Gen::Generators::Script do
       subject.should include("if $0 == __FILE__")
     end
 
-    context "when support is enabled" do
-      before(:all) { described_class.generate(path, :support => true) }
-
-      it "should require 'ronin/support'" do
-        subject.should include("require 'ronin/support'")
-      end
+    it "should require 'ronin/support'" do
+      subject.should include("require 'ronin/support'")
     end
 
     context "when database is enabled" do
