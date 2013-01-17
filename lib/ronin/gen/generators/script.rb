@@ -43,9 +43,6 @@ module Ronin
         parameter :ronin_asm, :type        => true,
                               :description => 'Load ronin-asm'
 
-        parameter :database, :type        => true,
-                             :description => 'Enables the Ronin Database'
-
         #
         # Generates a new Ruby script.
         #
