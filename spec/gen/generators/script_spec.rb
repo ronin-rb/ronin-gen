@@ -35,15 +35,11 @@ describe Gen::Generators::Script do
       subject.should include("require 'ronin/support'")
     end
 
-    context "when database is enabled" do
-      before(:all) { described_class.generate(path, :database => true) }
+    context "when ronin is enabled" do
+      before(:all) { described_class.generate(path, :ronin => true) }
 
-      it "should require 'ronin/database'" do
-        subject.should include("require 'ronin/database'")
-      end
-
-      it "should call Ronin::Database.setup" do
-        subject.should include("Ronin::Database.setup")
+      it "should require 'ronin'" do
+        subject.should include("require 'ronin'")
       end
     end
   end

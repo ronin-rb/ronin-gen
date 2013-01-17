@@ -1,12 +1,9 @@
 #!/usr/bin/env ruby
 
-<%- if support? -%>require 'ronin/support'<%- end -%>
-<%- if database? -%>require 'ronin/database'<%- end -%>
-
-include Ronin
-
-<%- if database? -%>
-Ronin::Database.setup
+<%- if ronin? -%>
+require 'ronin'
+<%- elsif ronin_support? -%>
+require 'ronin/support'
 <%- end -%>
 
 if $0 == __FILE__

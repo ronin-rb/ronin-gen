@@ -33,9 +33,12 @@ module Ronin
 
         template 'script.rb.erb'
 
-        parameter :support, :type        => true,
-                            :default     => true,
-                            :description => 'Load ronin-support'
+        parameter :ronin, :type        => true,
+                          :description => 'Load ronin'
+
+        parameter :ronin_support, :type        => true,
+                                  :default     => true,
+                                  :description => 'Load ronin-support'
 
         parameter :database, :type        => true,
                              :description => 'Enables the Ronin Database'
