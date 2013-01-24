@@ -74,8 +74,8 @@ module Ronin
               return super(argv)
             end
 
-            generator_name  = argv.shift
-            generator       = Ronin::Gen.generator(generator_name).new
+            generator_name = argv.shift
+            generator      = Ronin::Gen.generator(generator_name).new
 
             case generator
             when Ronin::Gen::FileGenerator, Ronin::Gen::DirGenerator
