@@ -19,7 +19,6 @@
 
 require 'ronin/gen/config'
 require 'ronin/gen/actions'
-require 'ronin/support/inflector'
 
 require 'parameters'
 require 'data_paths/finders'
@@ -115,22 +114,6 @@ module Ronin
         end
 
         yield self if block_given?
-      end
-
-      #
-      # The name of the generator.
-      #
-      # @return [String]
-      #   The generator name.
-      #
-      # @since 1.1.0
-      #
-      # @api semipublic
-      #
-      def self.generator_name
-        @generator_name ||= Support::Inflector.underscore(
-          self.name.sub('Ronin::Gen::Generators::','').gsub('::',':')
-        )
       end
 
       #
