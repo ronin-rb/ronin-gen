@@ -45,6 +45,7 @@ List available generators:
 
 ## Requirements
 
+* [Ruby] >= 1.9.1
 * [open_namespace] ~> 0.3
 * [data_paths] ~> 0.3
 * [parameters] ~> 0.4
@@ -83,6 +84,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Ronin Gen.  If not, see <http://www.gnu.org/licenses/>.
 
+[Ruby]: http://www.ruby-lang.org
 [Ronin]: http://ronin-ruby.github.com/
 
 [open_namespace]: https://github.com/postmodern/open_namespace#readme
