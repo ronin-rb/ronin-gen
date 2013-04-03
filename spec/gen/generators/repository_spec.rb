@@ -16,13 +16,13 @@ describe Gen::Generators::Repository do
 
   before(:all) do
     described_class.generate(path,
-      :git         => true,
-      :title       => title,
-      :uri         => uri,
-      :source      => source,
-      :website     => website,
-      :license     => license,
-      :description => description
+      git:         true,
+      title:       title,
+      uri:         uri,
+      source:      source,
+      website:     website,
+      license:     license,
+      description: description
     )
   end
 

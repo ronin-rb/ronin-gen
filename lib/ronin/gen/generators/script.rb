@@ -33,15 +33,15 @@ module Ronin
 
         template 'script.rb.erb'
 
-        parameter :ronin_support, :type        => true,
-                                  :default     => true,
-                                  :description => 'Load ronin-support'
+        parameter :ronin_support, type:        true,
+                                  default:     true,
+                                  description: 'Load ronin-support'
 
-        parameter :ronin, :type        => true,
-                          :description => 'Load ronin'
+        parameter :ronin, type:        true,
+                          description: 'Load ronin'
 
-        parameter :ronin_asm, :type        => true,
-                              :description => 'Load ronin-asm'
+        parameter :ronin_asm, type:        true,
+                              description: 'Load ronin-asm'
 
         #
         # Generates a new Ruby script.

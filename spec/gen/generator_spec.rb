@@ -53,7 +53,7 @@ describe Gen::Generator do
     it "should generate files using templates" do
       path = File.join(@dir,'templated.txt')
 
-      TemplatedGenerator.generate(:message => 'hello')
+      TemplatedGenerator.generate(message: 'hello')
 
       File.read(path).chomp.should == "message: hello"
     end

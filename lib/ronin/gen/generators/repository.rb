@@ -44,31 +44,31 @@ module Ronin
 
         data_dir File.join('ronin','gen','repository')
 
-        parameter :title, :type => String
-        parameter :uri, :type => String
-        parameter :source, :type => String
-        parameter :website, :type => String
+        parameter :title, type: String
+        parameter :uri, type: String
+        parameter :source, type: String
+        parameter :website, type: String
 
-        parameter :license, :type    => String,
-                            :default => 'MIT'
+        parameter :license, type:    String,
+                            default: 'MIT'
 
-        parameter :description, :type    => String,
-                                :default => 'This is a Ronin Repository'
+        parameter :description, type:    String,
+                                default: 'This is a Ronin Repository'
 
-        parameter :authors, :type    => Array[String],
-                            :default => []
+        parameter :authors, type:    Array[String],
+                            default: []
 
-        parameter :tests, :type => true
-        parameter :docs, :type => true
+        parameter :tests, type: true
+        parameter :docs, type: true
 
-        parameter :svn, :type        => true,
-                        :description => 'Create a SVN repository'
+        parameter :svn, type:        true,
+                        description: 'Create a SVN repository'
 
-        parameter :git, :type        => true,
-                        :description => 'Create a Git repository'
+        parameter :git, type:        true,
+                        description: 'Create a Git repository'
 
-        parameter :hg, :type        => true,
-                       :description => 'Create a Hg repository'
+        parameter :hg, type:        true,
+                       description: 'Create a Hg repository'
 
         #
         # Sets up the repository generator.

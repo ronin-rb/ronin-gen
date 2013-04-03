@@ -44,28 +44,28 @@ module Ronin
 
         data_dir File.join('ronin','gen','library')
 
-        parameter :name, :type => String
+        parameter :name, type: String
 
-        parameter :version, :type    => String,
-                            :default => '0.1.0'
+        parameter :version, type:    String,
+                            default: '0.1.0'
 
-        parameter :author, :type    => String,
-                           :default => 'Author'
+        parameter :author, type:    String,
+                           default: 'Author'
 
-        parameter :email, :type    => String,
-                          :default => 'name@example.com'
+        parameter :email, type:    String,
+                          default: 'name@example.com'
 
-        parameter :homepage, :type    => String,
-                             :default => 'http://ronin-ruby.github.com/'
+        parameter :homepage, type:    String,
+                             default: 'http://ronin-ruby.github.com/'
 
-        parameter :commands, :type    => Array[String],
-                             :default => []
+        parameter :commands, type:    Array[String],
+                             default: []
 
-        parameter :generators, :type    => Array[String],
-                               :default => []
+        parameter :generators, type:    Array[String],
+                               default: []
 
-        parameter :git, :type    => true,
-                        :default => true
+        parameter :git, type:    true,
+                        default: true
 
         #
         # Sets up the library generator.

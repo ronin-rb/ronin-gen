@@ -229,7 +229,7 @@ module Ronin
       # @see http://rubydoc.info/stdlib/fileutils/FileUtils#install-instance_method
       #
       def install(src,dest,options={})
-        options = {:mode => options[:mode]} # only pass in :mode
+        options = {mode: options[:mode]} # only pass in :mode
 
         print_command 'install', src, dest
 
@@ -367,7 +367,7 @@ module Ronin
       # @see http://rubydoc.info/stdlib/fileutils/FileUtils#rm-instance_method
       #
       def rm(paths,options={})
-        options = {:force => options[:force]} # only pass in :force
+        options = {force: options[:force]} # only pass in :force
 
         print_command 'rm', *paths
 
@@ -391,7 +391,7 @@ module Ronin
       # @see http://rubydoc.info/stdlib/fileutils/FileUtils#rm_r-instance_method
       #
       def rm_r(paths,options={})
-        options = {:force => options[:force]} # only pass in :force
+        options = {force: options[:force]} # only pass in :force
 
         print_command 'rm -r', *paths
 

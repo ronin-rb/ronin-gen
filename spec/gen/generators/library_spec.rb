@@ -98,7 +98,7 @@ describe Gen::Generators::Library do
     let(:path) { Pathname.new(Dir.tmpdir).join('ronin-library') }
 
     before(:all) do
-      described_class.generate(path, :name => name)
+      described_class.generate(path, name: name)
     end
 
     it "should create a lib/ronin/name.rb file" do

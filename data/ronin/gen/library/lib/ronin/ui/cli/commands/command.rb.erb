@@ -10,8 +10,9 @@ module Ronin
 
           desc 'The <%= @command_file %> command'
 
-          class_option :name, :type => :string
-          argument :path, :type => :string
+          class_option :name, type: :string
+
+          argument :path, type: :string
 
           def execute
           end

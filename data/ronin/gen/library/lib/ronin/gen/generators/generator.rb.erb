@@ -7,8 +7,9 @@ module Ronin
     module Generators
       class <%= @generator_class %> < FileGenerator
 
-        class_option :opt, :type => :string
-        arguments :arg, :type => :string
+        class_option :opt, type: :string
+
+        arguments :arg, type: :string
 
         def setup
         end

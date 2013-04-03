@@ -46,9 +46,9 @@ module Ronin
     #           class MyGenerator < FileGenerator
     #
     #             # generator options
-    #             parameter :stuff,    :type => true
-    #             parameter :syntax,   :type => String
-    #             parameter :includes, :type => Array
+    #             parameter :stuff,    type: true
+    #             parameter :syntax,   type: String
+    #             parameter :includes, type: Array
     #
     #             #
     #             # Performs the generation.
@@ -68,10 +68,10 @@ module Ronin
     # class method with the options and arguments to run the generator with:
     #
     #     MyGenerator.generate(
-    #       :stuff    => true,
-    #       :syntax   => 'bla',
-    #       :includes => ['other']
-    #       :path     => 'path/to/file',
+    #       stuff:    true,
+    #       syntax:   'bla',
+    #       includes: ['other']
+    #       path:     'path/to/file',
     #     )
     #
     # To make your generator accessible to the `ronin-gen` command, simply

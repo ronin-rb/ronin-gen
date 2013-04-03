@@ -36,7 +36,7 @@ describe Gen::Generators::Script do
     end
 
     context "when ronin is enabled" do
-      before(:all) { described_class.generate(path, :ronin => true) }
+      before(:all) { described_class.generate(path, ronin: true) }
 
       it "should require 'ronin'" do
         subject.should include("require 'ronin'")
@@ -44,7 +44,7 @@ describe Gen::Generators::Script do
     end
 
     context "when ronin_asm is enabled" do
-      before(:all) { described_class.generate(path, :ronin_asm => true) }
+      before(:all) { described_class.generate(path, ronin_asm: true) }
 
       it "should require 'ronin/asm'" do
         subject.should include("require 'ronin/asm'")

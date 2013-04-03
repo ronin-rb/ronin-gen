@@ -54,9 +54,9 @@ module Ronin
 
           usage '[[options] | GENERATOR [generator-options]]'
 
-          option :version, :type => true,
-                           :flag => '-V',
-                           :description => 'Prints the ronin-gen version'
+          option :version, type: true,
+                           flag: '-V',
+                           description: 'Prints the ronin-gen version'
 
           examples [
             "ronin-gen repository myrepo --git",
@@ -120,7 +120,7 @@ module Ronin
               return
             end
 
-            print_array Ronin::Gen.generators, :title => 'Available Generators'
+            print_array Ronin::Gen.generators, title: 'Available Generators'
           end
 
         end
