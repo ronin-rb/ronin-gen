@@ -6,13 +6,13 @@ RONIN_URI  = 'http://github.com/ronin-ruby'
 
 gemspec
 
-gem 'jruby-openssl',	'~> 0.7', :platforms => :jruby
+gem 'jruby-openssl',	'~> 0.7', platforms: :jruby
 
 # Ronin dependencies:
-# gem 'ronin-support',  '~> <%= Ronin::Support::VERSION %>', :git => "#{RONIN_URI}/ronin-support.git"
-# gem 'ronin',          '~> <%= Ronin::VERSION %>', :git => "#{RONIN_URI}/ronin.git"
+# gem 'ronin-support',  '~> <%= Ronin::Support::VERSION %>', git: "#{RONIN_URI}/ronin-support.git"
+# gem 'ronin',          '~> <%= Ronin::VERSION %>', git: "#{RONIN_URI}/ronin.git"
 <%- unless @generators.empty? -%>
-# gem 'ronin-gen',      '~> <%= Ronin::Gen::VERSION %>', :git => "#{RONIN_URI}/ronin-gen.git"
+# gem 'ronin-gen',      '~> <%= Ronin::Gen::VERSION %>', git: "#{RONIN_URI}/ronin-gen.git"
 <%- end -%>
 
 group :development do
@@ -41,5 +41,5 @@ adapters = (ENV['ADAPTER'] || ENV['ADAPTERS']).to_s
 adapters = Set.new(adapters.to_s.tr(',',' ').split)
 
 (DM_ADAPTERS & adapters).each do |adapter|
-  gem "dm-#{adapter}-adapter", DM_VERSION #, :git => "#{DM_URI}/dm-#{adapter}-adapter.git"
+  gem "dm-#{adapter}-adapter", DM_VERSION #, git: "#{DM_URI}/dm-#{adapter}-adapter.git"
 end
