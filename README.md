@@ -49,8 +49,8 @@ List available generators:
 * [open_namespace] ~> 0.3
 * [data_paths] ~> 0.3
 * [parameters] ~> 0.4
-* [ronin-support] ~> 0.5
-* [ronin] ~> 1.5
+* [ronin-support] ~> 0.6
+* [ronin] ~> 1.6
 
 ## Install
 
