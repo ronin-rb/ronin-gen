@@ -37,5 +37,8 @@ require 'yard'
 YARD::Rake::YardocTask.new
 task :docs => :yard
 
-require 'md2man/task'
-Md2Man::Task.new
+begin
+  require 'md2man/task'
+  Md2Man::Task.new
+rescue LoadError
+end
