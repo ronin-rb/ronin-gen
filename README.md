@@ -6,6 +6,8 @@
 * [Mailing List](https://groups.google.com/group/ronin-ruby)
 * [irc.freenode.net #ronin](http://ronin-ruby.github.com/irc/)
 
+[![Build Status](https://secure.travis-ci.org/ronin-ruby/ronin-gen.png?branch=master)](https://travis-ci.org/ronin-ruby/ronin-gen)
+
 ## Description
 
 Ronin Gen is a Ruby library for Ronin that provides various generators.
