@@ -12,27 +12,27 @@ available Generators.
 ## ARGUMENTS
 
 *GENERATOR*
-  The Ronin Generator to run.
+	The Ronin Generator to run.
 
 ## OPTIONS
 
 `-v`, `--[no-]verbose`
-  Enable verbose output.
+	Enable verbose output.
 
 `-q`, `--[no-]quiet`
-  Disable verbose output.
+	Disable verbose output.
 
 `--[no-]silent`
-  Silence all output.
+	Silence all output.
 
 `--[no-]color`
-  Enables color output.
+	Enables color output.
 
 `-V`, `--[no-]version`
-  Prints the ronin-gen version.
+	Prints the ronin-gen version.
 
 *generator-options*
-  Additional options for the *GENERATOR*.
+	Additional options for the *GENERATOR*.
 
 ## AUTHOR
 
