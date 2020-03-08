@@ -4,7 +4,7 @@ require 'ronin/gen/version'
 
 describe Gen do
   it "should have a version" do
-    subject.const_defined?('VERSION').should == true
+    expect(subject.const_defined?('VERSION')).to eq(true)
   end
 
   describe "generators" do
@@ -17,13 +17,13 @@ describe Gen do
     it "should load generators from 'ronin/gen/generators/'" do
       generator = subject.generator('library')
 
-      generator.should == Ronin::Gen::Generators::Library
+      expect(generator).to eq(Ronin::Gen::Generators::Library)
     end
 
     it "should raise an UnknownGenerator for unknown generators" do
-      lambda {
+      expect {
         subject.generator('foo')
-      }.should raise_error(Gen::UnknownGenerator)
+      }.to raise_error(Gen::UnknownGenerator)
     end
   end
 end

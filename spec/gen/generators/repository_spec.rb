@@ -27,36 +27,36 @@ describe Gen::Generators::Repository do
   end
 
   it "should create the repository directory" do
-    path.should be_directory
+    expect(path).to be_directory
   end
 
   it "should create a data/ directory" do
-    path.join('data').should be_directory
+    expect(path.join('data')).to be_directory
   end
 
   it "should create a lib/ directory" do
-    path.join('lib').should be_directory
+    expect(path.join('lib')).to be_directory
   end
 
   it "should create a lib/ronin/ directory" do
-    path.join('lib','ronin').should be_directory
+    expect(path.join('lib','ronin')).to be_directory
   end
 
   it "should create a scripts/ directory" do
-    path.join('scripts').should be_directory
+    expect(path.join('scripts')).to be_directory
   end
 
   it "should create a Rakefile" do
-    path.join('Rakefile').should be_file
+    expect(path.join('Rakefile')).to be_file
   end
 
   it "should create a 'ronin.yml' file" do
-    path.join('ronin.yml').should be_file
+    expect(path.join('ronin.yml')).to be_file
   end
 
   context "when @git == true" do
     it "should initialize a Git repository" do
-      path.join('.git').should be_directory
+      expect(path.join('.git')).to be_directory
     end
   end
 
@@ -64,31 +64,31 @@ describe Gen::Generators::Repository do
     subject { YAML.load_file(path.join('ronin.yml')) }
 
     it "should contain a Hash" do
-      subject.should be_kind_of(Hash)
+      expect(subject).to be_kind_of(Hash)
     end
 
     it "should have the title" do
-      subject['title'].should == title
+      expect(subject['title']).to eq(title)
     end
 
     it "should have the repository URI" do
-      subject['uri'].should == uri
+      expect(subject['uri']).to eq(uri)
     end
 
     it "should have the source URL" do
-      subject['source'].should == source
+      expect(subject['source']).to eq(source)
     end
 
     it "should have the website URL" do
-      subject['website'].should == website
+      expect(subject['website']).to eq(website)
     end
 
     it "should have the license" do
-      subject['license'].should == license
+      expect(subject['license']).to eq(license)
     end
 
     it "should have the description" do
-      subject['description'].chomp.should == description
+      expect(subject['description'].chomp).to eq(description)
     end
   end
 

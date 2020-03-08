@@ -19,7 +19,7 @@ describe Gen::Generator do
     end
 
     it "should set default values before invoking any tasks" do
-      subject.var.should == 'test'
+      expect(subject.var).to eq('test')
     end
   end
 
@@ -35,19 +35,19 @@ describe Gen::Generator do
     it "should generate files" do
       FileGenerator.generate
 
-      File.read(File.join(@dir,'test.txt')).should == "hello"
+      expect(File.read(File.join(@dir,'test.txt'))).to eq("hello")
     end
 
     it "should touch files" do
       TouchGenerator.generate
 
-      File.file?(File.join(@dir,'test2.txt')).should == true
+      expect(File.file?(File.join(@dir,'test2.txt'))).to eq(true)
     end
 
     it "should generate directories" do
       DirGenerator.generate
 
-      File.directory?(File.join(@dir,'test')).should == true
+      expect(File.directory?(File.join(@dir,'test'))).to eq(true)
     end
 
     it "should generate files using templates" do
@@ -55,7 +55,7 @@ describe Gen::Generator do
 
       TemplatedGenerator.generate(:message => 'hello')
 
-      File.read(path).chomp.should == "message: hello"
+      expect(File.read(path).chomp).to eq("message: hello")
     end
 
     after(:all) do
