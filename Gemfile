@@ -13,7 +13,7 @@ gem 'jruby-openssl',	'~> 0.7', :platforms => :jruby
 # gem 'ronin',		      '~> 1.5', :git => "#{RONIN_URI}/ronin.git"
 
 group :development do
-  gem 'rake',		        '~> 10.0'
+  gem 'rake'
   gem 'rubygems-tasks', '~> 0.1'
   gem 'rspec',		      '~> 3.0'
 
